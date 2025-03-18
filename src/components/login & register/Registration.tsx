@@ -139,12 +139,31 @@ const Registration = () => {
                 text: 'ההרשמה הצליחה!',
             });
             setIsLogin(true);
-        } catch (e: any) {
-            Swal.fire({
-                icon: 'error',
-                title: 'שגיאה',
-                text: 'ההרשמה נכשלה!',
-            });
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response) {
+                const status = error.response.status;
+                let errorMessage = 'שגיאה לא ידועה.';
+
+                if (status === 400) {
+                    errorMessage = 'אנא ודא שהזנת אימייל וסיסמה.';
+                } else if (status === 409) {
+                    errorMessage = 'המשתמש כבר קיים.';
+                } else if (status === 500) {
+                    errorMessage = 'אירעה שגיאה בשרת. אנא נסה שוב מאוחר יותר.';
+                }
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: errorMessage,
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'אירעה שגיאה לא צפויה. אנא נסה שוב מאוחר יותר.',
+                });
+            }
         }
     };
 

@@ -1,11 +1,11 @@
 import { AppBar, Toolbar, Button, Avatar, Menu, MenuItem } from '@mui/material';
-import useStyles from './style/UseStyle';
+import UseStylesHeader from './style/UseStyleHeader';
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
 
 const Header = () => {
-    const classes = useStyles();
+    const classes = UseStylesHeader();
     const [isLogin] = useContext(IsLogin);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const UseStylesHeader = makeStyles(() => ({
     appBar: {
         position: 'static',
         top: 0,
@@ -50,4 +50,4 @@ const useStyles = makeStyles(() => ({
         },
     },
 }));
-export default useStyles;
+export default UseStylesHeader;

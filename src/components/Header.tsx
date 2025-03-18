@@ -1,15 +1,19 @@
 import { AppBar, Toolbar, Button, Avatar, Menu, MenuItem } from '@mui/material';
 import UseStylesHeader from './style/UseStyleHeader';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
+import { logoutUser } from './logout';
+import { UserContext } from '../Store/Store';
 
 const Header = () => {
     const classes = UseStylesHeader();
-    const [isLogin] = useContext(IsLogin);
+    const { userDispatch } = useContext(UserContext);
+    const [isLogin,setIsLogin] = useContext(IsLogin);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [selectedButton, setSelectedButton] = useState<string>('home-page');
+    const navigate = useNavigate();
 
     return (
         <>
@@ -40,7 +44,7 @@ const Header = () => {
                         onClick={() => setSelectedButton('compose-blessing')}>
                         הרכבת ברכה
                     </Button>
-                    {isLogin && ( 
+                    {isLogin && (
                         <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'personal-area' ? 'selected' : ''}`}
                             onClick={() => setSelectedButton('personal-area')}>
@@ -69,7 +73,10 @@ const Header = () => {
                         <>
                             <Button color="inherit" style={{ color: '#eeb451' }}
                                 className={`${classes.menuButton} ${selectedButton === 'logout' ? 'selected' : ''}`}
-                                onClick={() => setSelectedButton('logout')}>
+                                onClick={() => {
+                                    setSelectedButton('logout');
+                                    logoutUser(userDispatch, navigate, setIsLogin);
+                                }}>
                                 התנתקות
                             </Button>
                             <Avatar className={classes.avatar} onClick={(event) => setAnchorEl(event.currentTarget)} />

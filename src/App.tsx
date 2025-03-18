@@ -9,7 +9,7 @@ import { router } from './Routes';
 
 export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => null])
 const App=()=>{
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
   const [user, userDispatch] = useReducer(UserReducer, initialUserState);
 
   return (

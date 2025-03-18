@@ -4,6 +4,7 @@ import Login from "./components/login & register/Login";
 import Registration from "./components/login & register/Registration";
 import Home from "./components/Home";
 
+
 export const router = createBrowserRouter([
     {
         path: '/', element: <AppLayout/>,

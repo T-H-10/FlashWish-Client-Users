@@ -6,10 +6,14 @@ export type UserType = {
     name: string;
     email: string;
     password: string; 
-    createdAt: Date;
-    updatedAt: Date;
+    // createdAt: Date;
+    // updatedAt: Date;
     // roles?: Role[]; 
     // greetingCards?: GreetingCard[];
+}
+export type UserWithTokenType = {
+    user: UserType;
+    token: string;
 }
 export type GreetingCard = {
     id: number;
@@ -26,8 +30,8 @@ export const initialUserState: UserType = {
     name: '', 
     email: '', 
     password: '', 
-    createdAt: new Date(), 
-    updatedAt: new Date(), 
+    // createdAt: new Date(), 
+    // updatedAt: new Date(), 
     // roles: [],
     // greetingCards: [] 
 };

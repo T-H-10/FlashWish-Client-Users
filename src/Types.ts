@@ -1,9 +1,11 @@
 import { Action } from "@reduxjs/toolkit";
 import { Dispatch } from "react";
 
+export const API_URL='http://localhost:5279/api';
+
 export type UserType = {
     id: number;
-    name: string;
+    userName: string;
     email: string;
     password: string; 
     // createdAt: Date;
@@ -27,7 +29,7 @@ export type Role = {
 }
 export const initialUserState: UserType = {
     id: 0,
-    name: '', 
+    userName: '', 
     email: '', 
     password: '', 
     // createdAt: new Date(), 

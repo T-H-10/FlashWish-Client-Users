@@ -19,10 +19,12 @@ const useStyles = makeStyles(() => ({
         marginRight: '5px', // theme.spacing(2),
         width: '90px',
     },
+    link:{
+        color: '#eeb451'
+    },
     menuButton: {
         backgroundColor: '#25173b',
         position: 'relative',
-        // color:'#eeb451',
         '&:after': {
             content: '""',
             position: 'absolute',

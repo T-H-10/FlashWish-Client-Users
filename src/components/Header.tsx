@@ -1,9 +1,8 @@
 import { AppBar, Toolbar, Button, Avatar, Menu, MenuItem } from '@mui/material';
 import useStyles from './style/UseStyle';
 import { Link } from 'react-router-dom';
-import { createContext, Dispatch, useContext, useState } from 'react';
-
-export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => null])
+import { useContext, useState } from 'react';
+import { IsLogin } from '../App';
 
 const Header = () => {
     const classes = useStyles();
@@ -25,24 +24,24 @@ const Header = () => {
                         </Button>
                     </Link>
                     {/* <Link to='/Gallery/templates'> */}
-                    <Button color="inherit"
+                    <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-template')}>
                         בחירת תבנית לרקע
                     </Button>
                     {/* </Link> */}
-                    <Button color="inherit"
+                    <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-content' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-content')}>
                         בחירת תוכן לברכה
                     </Button>
-                    <Button color="inherit"
+                    <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'compose-blessing' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('compose-blessing')}>
                         הרכבת ברכה
                     </Button>
-                    {isLogin && (
-                        <Button color="inherit"
+                    {isLogin && ( 
+                        <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'personal-area' ? 'selected' : ''}`}
                             onClick={() => setSelectedButton('personal-area')}>
                             אזור אישי
@@ -58,15 +57,17 @@ const Header = () => {
                                     התחברות
                                 </Button>
                             </Link>
-                            <Button color="inherit"
-                                className={`${classes.menuButton} ${selectedButton === 'register' ? 'selected' : ''}`}
-                                onClick={() => setSelectedButton('register')}>
-                                הרשמה
-                            </Button>
+                            <Link to='/register'>
+                                <Button color="inherit" style={{ color: '#eeb451' }}
+                                    className={`${classes.menuButton} ${selectedButton === 'register' ? 'selected' : ''}`}
+                                    onClick={() => setSelectedButton('register')}>
+                                    הרשמה
+                                </Button>
+                            </Link>
                         </>
                     ) : (
                         <>
-                            <Button color="inherit"
+                            <Button color="inherit" style={{ color: '#eeb451' }}
                                 className={`${classes.menuButton} ${selectedButton === 'logout' ? 'selected' : ''}`}
                                 onClick={() => setSelectedButton('logout')}>
                                 התנתקות

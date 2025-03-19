@@ -1,18 +1,20 @@
-import { initialUserState, UserType, UserWithTokenType } from "../Types"
+import { initialUserState, UserType } from "../../Types/UserTypes"
 
 export type Action = {
     type: 'REGISTER_USER',
-    payload: UserWithTokenType
+    payload: { user: UserType; token: string }
 } | {
-    type: 'LOGIN_USER',
-    payload: UserWithTokenType
+    type: 'LOGIN_USER';
+    payload: { user: UserType; token: string }
 } | {
     type: 'UPDATE_USER',
     payload: Partial<UserType>,
 } | {
     type: 'DELETE_USER'
 } | {
-    type: 'GET_USER' | 'LOGOUT_USER'
+    type: 'GET_USER'
+} | {
+    type: 'LOGOUT_USER'
 }
 
 export default (state: UserType, action: Action): UserType => {

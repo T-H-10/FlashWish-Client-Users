@@ -1,5 +1,5 @@
 import { Action } from "@reduxjs/toolkit";
-import { Dispatch } from "react";
+import { createContext, Dispatch } from "react";
 
 export const API_URL='http://localhost:5279/api';
 
@@ -13,20 +13,11 @@ export type UserType = {
     // roles?: Role[]; 
     // greetingCards?: GreetingCard[];
 }
-export type UserWithTokenType = {
-    user: UserType;
-    token: string;
-}
-export type GreetingCard = {
-    id: number;
-    message: string; 
-    createdAt: Date;
-    userId: number;
-}
-export type Role = {
-    id: number;
-    name: string;
-}
+// export type UserWithTokenType = {
+//     user: UserType;
+//     token: string;
+// }
+
 export const initialUserState: UserType = {
     id: 0,
     userName: '', 
@@ -42,3 +33,8 @@ export type UserContextType={
     user: UserType | null;
     userDispatch: Dispatch<Action>;
 };
+
+export const UserContext = createContext<{ user: UserType, userDispatch: Dispatch<Action> }>({
+    user: initialUserState,
+    userDispatch: () => null
+});

@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
 import { logoutUser } from './logout';
-import { UserContext } from '../Store/Store';
+import { UserContext } from '../Types/UserTypes';
+
 
 const Header = () => {
     const classes = UseStylesHeader();
@@ -27,13 +28,13 @@ const Header = () => {
                             עמוד בית
                         </Button>
                     </Link>
-                    {/* <Link to='/Gallery/templates'> */}
+                    <Link to='/Gallery/templates'>
                     <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-template')}>
                         בחירת תבנית לרקע
                     </Button>
-                    {/* </Link> */}
+                    </Link>
                     <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-content' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-content')}>

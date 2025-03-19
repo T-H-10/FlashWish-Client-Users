@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import FormContainer from './FormContainer';
-import { UserContext } from '../../Store/Store';
-import { API_URL } from '../../Types';
+import { API_URL, UserContext } from '../../Types/UserTypes';
 import Validation from './Validation';
 import { IsLogin } from '../../App';
 import EmailInput from './FormInputs/EmailInput';
@@ -34,7 +33,6 @@ const Registration = () => {
 
         try {
             const res = await axios.post(`${API_URL}/Auth/register`, { userName, email, password });
-            console.log(res.data);
             const token: string = res.data.token;
             userDispatch({
                 type: 'REGISTER_USER',

@@ -36,7 +36,7 @@ const Registration = () => {
             const token: string = res.data.token;
             userDispatch({
                 type: 'REGISTER_USER',
-                payload: { user: res.data.user, token }
+                payload: res.data
             });
             Swal.fire({
                 icon: 'success',

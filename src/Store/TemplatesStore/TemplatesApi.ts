@@ -5,11 +5,14 @@ import Swal from 'sweetalert2';
 import { API_URL } from "../../Types/UserTypes";
 import { Template, TemplatePostModel } from "../../Types/TemplateType";
 
-const routerURLTemplates = API_URL+"/templates";
+const routerURLTemplates = API_URL+"/Templates";
 
 export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thunkAPI) => {
+    console.log("in fetch templates");
+    
     try {
         const response = await axios.get(routerURLTemplates);
+        console.log(response.data);
         return response.data as Template[];
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
@@ -19,11 +22,18 @@ export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thun
     }
 });
 
-export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplate, userId }: { newTemplate: TemplatePostModel, userId: number }, thunkAPI) => {
+export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplate }: { newTemplate: TemplatePostModel }, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLTemplates, newTemplate, {
-            headers: { "User-id": userId }
-        });
+        const formData= new FormData();
+        formData.append('templateName', newTemplate.templateName);
+        formData.append('categoryID', newTemplate.categoryID.toString());
+        formData.append('userID', newTemplate.userID.toString());
+        formData.append('ImageFile', newTemplate.image);      
+        const response = await axios.post(routerURLTemplates, formData,
+            {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        }
+    );
         Swal.fire('Success', 'התבנית נוספה בהצלחה', 'success');
         return response.data;
     } catch (e: any) {

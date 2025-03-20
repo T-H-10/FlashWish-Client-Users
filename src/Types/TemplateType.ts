@@ -12,7 +12,7 @@ export type TemplatePostModel = {
     templateName: string;     // שם התבנית
     categoryID: number;       // מזהה הקטגוריה
     userID: number;           // מזהה המשתמש
-    imageURL: string;         // URL לתמונה
+    image: File;         // URL לתמונה
 }
 
 // הגדרת שגיאה API

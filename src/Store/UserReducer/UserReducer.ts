@@ -19,10 +19,10 @@ export type Action = {
 
 export default (state: UserType, action: Action): UserType => {
     switch (action.type) {
-        case 'REGISTER_USER':
-            return { ...state, ...action.payload };
+        case 'REGISTER_USER':         
+            return { ...state, ...action.payload.user };
         case 'LOGIN_USER':
-            return { ...state, ...action.payload };
+            return { ...state, ...action.payload.user };
         case 'LOGOUT_USER':
             return initialUserState;
         case 'UPDATE_USER':
@@ -31,5 +31,5 @@ export default (state: UserType, action: Action): UserType => {
             return state;
         default:
             return state;
-    }
+    }    
 }

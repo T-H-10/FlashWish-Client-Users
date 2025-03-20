@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
-import CategorySelector from './CategorySelector';
+import React, { useContext, useState } from 'react';
+import CategorySelector from '../Categories/CategorySelector';
+import Swal from 'sweetalert2';
+import { UserContext } from '../../Types/UserTypes';
+import { useDispatch } from 'react-redux';
+import { addTemplate } from '../../Store/TemplatesStore/TemplatesApi';
+import { appDispatch } from '../../Store/Store';
+import { TemplatePostModel } from '../../Types/TemplateType';
+
 interface ImageUploadFormProps {
     onClose: () => void;
 }
 
 const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
     const [imageName, setImageName] = useState<string>('');
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const [imageFile, setImageFile] = useState<File | null>(null);
-
+    const { user } = useContext(UserContext);
+    const dispatch = useDispatch<appDispatch>();
     const handleUpload = () => {
         if (!imageName || !imageFile || !selectedCategory) {
-            alert("נא למלא את כל השדות");
+            Swal.fire({
+                icon: 'warning',
+                title: 'שגיאה',
+                text: 'נא למלא את כל השדות',
+            });
             return;
         }
 
-        const uploadData = {
-            imageName,
-            categoryId: selectedCategory,
-            imagePath: imageFile.name, // כאן ניתן לשמור את הנתיב או את הקובץ עצמו
+        const uploadData: TemplatePostModel = {
+            templateName: imageName,
+            categoryID: selectedCategory,
+            userID: user.id,
+            image: imageFile, 
         };
 
-        console.log(uploadData);
         // שלח את uploadData לשרת כאן
-
+        dispatch(addTemplate({newTemplate: uploadData}))
         // Reset form
         setImageName('');
-        setSelectedCategory('');
+        setSelectedCategory(0);
         setImageFile(null);
         onClose();
     };

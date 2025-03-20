@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { storeType } from "./Store";
 import { addTemplate, deleteTemplate, fetchTemplates, updateTemplate } from "./TemplatesApi";
-import { Template } from "../Types/TemplateType";
 import Swal from 'sweetalert2';
+import { Template } from "../../Types/TemplateType";
+import { storeType } from "../Store";
 
 const templatesSlice = createSlice({
     name: 'templates',
@@ -12,7 +12,7 @@ const templatesSlice = createSlice({
         builder
             .addCase(fetchTemplates.fulfilled, (state, action) => {
                 state.templatesList = action.payload;
-                state.loading = false;
+                state.loading = false;                
             })
             .addCase(fetchTemplates.pending, (state) => {
                 state.loading = true;
@@ -33,7 +33,7 @@ const templatesSlice = createSlice({
                 handleApiError(action.error);
             })
             .addCase(updateTemplate.fulfilled, (state, action: PayloadAction<Template>) => {
-                const index = state.templatesList.findIndex(template => template.templateID === action.payload.templateID);
+                const index = state.templatesList.findIndex((template: Template) => template.templateID === action.payload.templateID);
                 if (index >= 0) {
                     state.templatesList[index] = action.payload;
                 }

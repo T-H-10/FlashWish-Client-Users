@@ -1,43 +1,24 @@
-import { useEffect, useState } from 'react';
-import { API_URL } from '../../Types/UserTypes';
+import { useEffect } from 'react';
 import { Template } from "../../Types/TemplateType";
 import { Box, Typography } from '@mui/material';
 import StyledImageContainer from '../style/StyledImageContainer';
 import ImageUploadButton from './ImageUploadButton';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { appDispatch } from '../../Store/Store';
+import { fetchTemplates } from '../../Store/TemplatesStore/TemplatesApi';
+import { selectTemplates } from '../../Store/TemplatesStore/TemplatesSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 const TemplatesGallery = () => {
-    const [templates, setTemplates] = useState<Template[]>([]);
-    const fetchTemplates = async () => {
-        const response = await fetch(API_URL + '/Templates');
-        const data = await response.json();
-        setTemplates(data);
-    };
-    useEffect(() => {
-        fetchTemplates();
-    }, []);
-    const handleImageUpload = async (newTemplate: Template) => {
-        console.log(newTemplate);
-        
-        const response = await fetch(API_URL + '/Templates', {
-            method: 'POST',
-            body: JSON.stringify(newTemplate),
-        });
-        if (response.ok) {
-            const createdTemplate = await response.json();
-            console.log(createdTemplate);
-            setTemplates(prevTemplates => [...prevTemplates, createdTemplate]); // עדכון המערך עם התמונה החדשה
-        } else {
-            // טיפול בשגיאות
-            const errorMessage = await response.text();
-            console.error('Failed to upload image:', errorMessage);
-        }
-    };
+    const dispatch = useDispatch<appDispatch>();
+    const { templatesList, loading } = useSelector(selectTemplates);
+    useEffect(() => {      
+        dispatch(fetchTemplates())        
+    }, [dispatch]);
     return (
         <>
-            {/* <UploadImage onImageUpload={handleImageUpload} /> */}
             <ImageUploadButton/>
             <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                {templates.map((template: Template) => (
+                {templatesList.map((template: Template) => (
                     <StyledImageContainer
                         key={template.templateID}
                         width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}
@@ -67,6 +48,11 @@ const TemplatesGallery = () => {
                     </StyledImageContainer>
                 ))}
             </Box>
+            {loading &&
+                <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
+                    <CircularProgress />
+                    <h2 style={{ marginLeft: '10px' }}>מעלה...</h2>
+                </div>}
         </>
     );
 };

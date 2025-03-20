@@ -9,10 +9,13 @@ import { fetchTemplates } from '../../Store/TemplatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/TemplatesStore/TemplatesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useOutletContext, useParams } from 'react-router-dom';
+import { CategoriesListContext } from '../Categories/CategoriesList';
+import { selectCategories } from '../../Store/CtagoriesStore/CategoriesSlice';
 
 const TemplatesGallery = () => {
     // const { categoryId } = useParams<{ categoryId: string }>();
     // const categoryIdNumber =categoryId?  parseInt(categoryId): 0;
+    const { categoriesList } = useSelector(selectCategories);
     const dispatch = useDispatch<appDispatch>();
     const { templatesList, loading } = useSelector(selectTemplates);
     const {selectedCategoryId}:{selectedCategoryId: number} = useOutletContext();
@@ -23,7 +26,9 @@ const TemplatesGallery = () => {
     }, [dispatch]);
     return (
         <>
+        <CategoriesListContext.Provider value={categoriesList}>
             <ImageUploadButton/>
+        </CategoriesListContext.Provider>
             <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                 {filteredTemplates.map((template: Template) => (
                     <StyledImageContainer

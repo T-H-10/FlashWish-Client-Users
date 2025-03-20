@@ -10,6 +10,8 @@ export const fetchCategories = createAsyncThunk('categories/fetch', async (_, th
         console.log("here");
         
         const response = await axios.get(routerURLCategories);
+        console.log(response);
+        
         return response.data as Category[];
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

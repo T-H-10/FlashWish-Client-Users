@@ -50,9 +50,10 @@ const CategoriesComponent = ({ onCategorySelect }: { onCategorySelect: Function 
                     {category.categoryName}
                 </button>
             ))}
-            <CategoriesListContext.Provider value={categoriesList}>
+            
+                
                 <AddCategory existingCategories={[]} onAddCategory={handleAddCategory} />
-            </CategoriesListContext.Provider>
+           
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />

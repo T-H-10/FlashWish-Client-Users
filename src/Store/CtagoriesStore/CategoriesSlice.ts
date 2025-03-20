@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addCategory, deleteCategory, fetchCategories, updateCategory } from "./CategoriesApi";
 import Swal from 'sweetalert2';
 import { Category } from "../../Types/CategoryTypes";
+import { storeType } from "../Store";
 
 const categoriesSlice = createSlice({
     name: 'categories',
@@ -77,5 +78,5 @@ const handleApiError = (error: any) => {
     });
 };
 
-export const selectCategories = (state: any) => state.categories;
+export const selectCategories = (state: storeType) => state.categories;
 export default categoriesSlice;

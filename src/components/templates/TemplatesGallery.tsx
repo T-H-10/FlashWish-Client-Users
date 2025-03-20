@@ -8,9 +8,16 @@ import { appDispatch } from '../../Store/Store';
 import { fetchTemplates } from '../../Store/TemplatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/TemplatesStore/TemplatesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useOutletContext, useParams } from 'react-router-dom';
+
 const TemplatesGallery = () => {
+    // const { categoryId } = useParams<{ categoryId: string }>();
+    // const categoryIdNumber =categoryId?  parseInt(categoryId): 0;
     const dispatch = useDispatch<appDispatch>();
     const { templatesList, loading } = useSelector(selectTemplates);
+    const {selectedCategoryId}:{selectedCategoryId: number} = useOutletContext();
+    const filteredTemplates= selectedCategoryId===0? templatesList
+         : templatesList.filter(template=> template.categoryID===selectedCategoryId);
     useEffect(() => {      
         dispatch(fetchTemplates())        
     }, [dispatch]);
@@ -18,16 +25,17 @@ const TemplatesGallery = () => {
         <>
             <ImageUploadButton/>
             <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                {templatesList.map((template: Template) => (
+                {filteredTemplates.map((template: Template) => (
                     <StyledImageContainer
                         key={template.templateID}
                         width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}
                     >
+                        <span>
                         <img
                             src={template.imageURL}
                             alt={template.templateName}
                             style={{ maxWidth: '100%', maxHeight: '100%', transition: 'transform 0.3s ease' }}
-                        />
+                        /></span>
                         <Typography
                             className="image-title"
                             variant="subtitle1"

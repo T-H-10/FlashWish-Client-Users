@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import CategorySelector from '../Categories/CategorySelector';
+import CategorySelector from './CategorySelector';
 import Swal from 'sweetalert2';
 import { UserContext } from '../../Types/UserTypes';
 import { useDispatch } from 'react-redux';
 import { addTemplate } from '../../Store/TemplatesStore/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
 import { TemplatePostModel } from '../../Types/TemplateType';
+import { TextField, Button, Box } from '@mui/material';
 
 interface ImageUploadFormProps {
     onClose: () => void;
@@ -34,9 +35,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             image: imageFile, 
         };
 
-        // שלח את uploadData לשרת כאן
         dispatch(addTemplate({newTemplate: uploadData}))
-        // Reset form
         setImageName('');
         setSelectedCategory(0);
         setImageFile(null);

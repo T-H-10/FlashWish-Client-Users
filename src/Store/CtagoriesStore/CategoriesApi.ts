@@ -7,6 +7,8 @@ const routerURLCategories = `${API_URL}/Categories`;
 
 export const fetchCategories = createAsyncThunk('categories/fetch', async (_, thunkAPI) => {
     try {
+        console.log("here");
+        
         const response = await axios.get(routerURLCategories);
         return response.data as Category[];
     } catch (e: any) {
@@ -17,9 +19,9 @@ export const fetchCategories = createAsyncThunk('categories/fetch', async (_, th
     }
 });
 
-export const addCategory = createAsyncThunk('categories/add', async (newCategory: CategoryPostModel, thunkAPI) => {
+export const addCategory = createAsyncThunk('categories/add', async (categoryName: CategoryPostModel, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLCategories, newCategory);
+        const response = await axios.post(routerURLCategories, {categoryName});
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

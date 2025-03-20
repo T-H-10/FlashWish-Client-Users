@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from "react";
-import userReducer from "../Reducer";
 import { UserContext, UserContextType } from "../../Types/UserTypes";
 
 // export const UserContext = createContext<UserContextType | undefined>(undefined);

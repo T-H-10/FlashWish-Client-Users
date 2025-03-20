@@ -1,9 +1,10 @@
 import { Box, styled } from "@mui/material";
 
 const StyledImageContainer = styled(Box)(() => ({
-    border: '2px solid #25173b',
-    borderRadius: '8px',
-    height: '200px',
+    // border: '2px solid #25173b',
+    // borderRadius: '8px',
+    // height: '200px',
+    width: '200px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

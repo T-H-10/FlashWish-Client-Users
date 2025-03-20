@@ -7,12 +7,9 @@ import { Template, TemplatePostModel } from "../../Types/TemplateType";
 
 const routerURLTemplates = API_URL+"/Templates";
 
-export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thunkAPI) => {
-    console.log("in fetch templates");
-    
+export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thunkAPI) => {   
     try {
         const response = await axios.get(routerURLTemplates);
-        console.log(response.data);
         return response.data as Template[];
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

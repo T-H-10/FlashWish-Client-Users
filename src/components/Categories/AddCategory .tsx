@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 const AddCategory = ({ existingCategories, onAddCategory }: { existingCategories: string[], onAddCategory: Function }) => {
     const [isInputVisible, setInputVisible] = useState(false);
+
     const validationSchema = Yup.object().shape({
         categoryName: Yup.string()
             .required('שם הקטגוריה לא יכול להיות ריק.')

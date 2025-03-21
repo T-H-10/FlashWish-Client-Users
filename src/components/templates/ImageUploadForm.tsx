@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import CategorySelector from './CategorySelector';
 import Swal from 'sweetalert2';
-import { UserContext } from '../../Types/UserTypes';
+import { UserContext } from '../../types/UserTypes';
 import { useDispatch } from 'react-redux';
-import { addTemplate } from '../../Store/TemplatesStore/TemplatesApi';
+import { addTemplate } from '../../Store/templatesStore/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
-import { TemplatePostModel } from '../../Types/TemplateType';
+import { TemplatePostModel } from '../../types/TemplateType';
 import { TextField, Button, Box } from '@mui/material';
 
 interface ImageUploadFormProps {

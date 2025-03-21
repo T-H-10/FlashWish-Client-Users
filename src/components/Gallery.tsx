@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { Outlet } from 'react-router';
-import CategoriesList from './Categories/CategoriesList';
+import CategoriesList from './categories/CategoriesList';
 import { useState } from 'react';
 
 const Gallery = () => {
@@ -9,7 +9,7 @@ const Gallery = () => {
     return (
         <>
             <Box display="flex" flexDirection={'column'} justifyContent="space-between" p={2} width={"100vw"} margin={'30px'}>
-                <Paper style={{ padding: '16px', height: '30vh'}}>
+                <Paper style={{ padding: '16px'}}>
                     <Typography variant="h6" gutterBottom>
                         קטגוריות:
                     </Typography>

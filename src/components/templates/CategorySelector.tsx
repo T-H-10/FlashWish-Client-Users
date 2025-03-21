@@ -4,8 +4,8 @@
 // }
 
 import { useContext } from "react";
-import { Category } from "../../Types/CategoryTypes";
-import { CategoriesListContext } from "../Categories/CategoriesList";
+import { Category } from "../../types/CategoryTypes";
+import { CategoriesListContext } from "../categories/CategoriesList";
 
 const CategorySelector = ({ selectedCategory, setSelectedCategory }: { selectedCategory: number, setSelectedCategory: Function }) => {
     const allCategories: Category[] = useContext(CategoriesListContext);

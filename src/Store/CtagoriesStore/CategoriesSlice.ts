@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addCategory, deleteCategory, fetchCategories, updateCategory } from "./CategoriesApi";
 import Swal from 'sweetalert2';
-import { Category } from "../../Types/CategoryTypes";
+import { Category } from "../../types/CategoryTypes";
 import { storeType } from "../Store";
 
 const categoriesSlice = createSlice({

@@ -1,6 +1,6 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import templatesSlice from "./TemplatesStore/TemplatesSlice";
-import categoriesSlice from "./CtagoriesStore/CategoriesSlice";
+import templatesSlice from "./templatesStore/TemplatesSlice";
+import categoriesSlice from "./ctagoriesStore/CategoriesSlice";
 
 
 const Store = configureStore({

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import FormContainer from './FormContainer';
-import { API_URL, UserContext, UserType } from '../../Types/UserTypes';
+import { API_URL, UserContext, UserType } from '../../types/UserTypes';
 import { IsLogin } from '../../App';
 import Validation from './Validation';
 import EmailInput from './FormInputs/EmailInput';
@@ -32,7 +32,6 @@ const Login = () => {
 
         try {
             const res = await axios.post<{ user: UserType, token: string }>(API_URL + '/Auth/login', { email, password });
-            console.log(res.data);
             userDispatch({
                 type: 'LOGIN_USER',
                 payload: { user: res.data.user, token: res.data.token }

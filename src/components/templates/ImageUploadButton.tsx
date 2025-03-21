@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ImageUploadForm from './ImageUploadForm';
 import { useSelector } from 'react-redux';
-import { selectTemplates } from '../../Store/TemplatesStore/TemplatesSlice';
+import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import UploadIcon from '@mui/icons-material/Upload';
 

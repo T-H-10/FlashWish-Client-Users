@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
-import { Template } from "../../Types/TemplateType";
+import { Template } from "../../types/TemplateType";
 import { Box, Typography } from '@mui/material';
 import StyledImageContainer from '../style/StyledImageContainer';
 import ImageUploadButton from './ImageUploadButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
-import { fetchTemplates } from '../../Store/TemplatesStore/TemplatesApi';
-import { selectTemplates } from '../../Store/TemplatesStore/TemplatesSlice';
+import { fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
+import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useOutletContext, useParams } from 'react-router-dom';
-import { CategoriesListContext } from '../Categories/CategoriesList';
-import { selectCategories } from '../../Store/CtagoriesStore/CategoriesSlice';
+import { useOutletContext } from 'react-router-dom';
+import { CategoriesListContext } from '../categories/CategoriesList';
+import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 
 const TemplatesGallery = () => {
     // const { categoryId } = useParams<{ categoryId: string }>();

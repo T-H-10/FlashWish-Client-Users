@@ -1,16 +1,16 @@
-// CategoriesComponent.tsx
 import { createContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCategory, fetchCategories } from '../../Store/CtagoriesStore/CategoriesApi';
-import { selectCategories } from '../../Store/CtagoriesStore/CategoriesSlice';
+import { addCategory, fetchCategories } from '../../Store/ctagoriesStore/CategoriesApi';
+import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 import { appDispatch } from '../../Store/Store';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Category } from '../../Types/CategoryTypes';
+import { Category } from '../../types/CategoryTypes';
 import AddCategory from './AddCategory ';
+
 
 export const CategoriesListContext = createContext<Category[]>([]);
 
-const CategoriesComponent = ({ onCategorySelect }: { onCategorySelect: Function }) => {
+const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) => {
     const dispatch = useDispatch<appDispatch>();
     const { categoriesList, loading } = useSelector(selectCategories);
     // const categories = useSelector(selectCategories);
@@ -52,7 +52,7 @@ const CategoriesComponent = ({ onCategorySelect }: { onCategorySelect: Function 
             ))}
             
                 
-                <AddCategory existingCategories={[]} onAddCategory={handleAddCategory} />
+                <AddCategory existingCategories={categoriesWithAll.map(category=>category.categoryName)} onAddCategory={handleAddCategory} />
            
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
@@ -63,4 +63,4 @@ const CategoriesComponent = ({ onCategorySelect }: { onCategorySelect: Function 
     );
 };
 
-export default CategoriesComponent;
+export default CategoriesList;

@@ -3,8 +3,8 @@ import UseStylesHeader from './style/UseStyleHeader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
-import { logoutUser } from './logout';
-import { UserContext } from '../Types/UserTypes';
+import { logoutUser } from './Logout';
+import { UserContext } from '../types/UserTypes';
 
 
 const Header = () => {

@@ -1,17 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_URL } from "../../Types/UserTypes";
-import { Category, CategoryPostModel } from "../../Types/CategoryTypes";
+import { API_URL } from "../../types/UserTypes";
+import { Category, CategoryPostModel } from "../../types/CategoryTypes";
 
 const routerURLCategories = `${API_URL}/Categories`;
 
 export const fetchCategories = createAsyncThunk('categories/fetch', async (_, thunkAPI) => {
     try {
-        console.log("here");
-        
-        const response = await axios.get(routerURLCategories);
-        console.log(response);
-        
+        const response = await axios.get(routerURLCategories);       
         return response.data as Category[];
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

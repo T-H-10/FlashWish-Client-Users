@@ -35,11 +35,13 @@ const Header = () => {
                         בחירת תבנית לרקע
                     </Button>
                     </Link>
+                    <Link to={'/Gallery/content'}>
                     <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-content' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-content')}>
                         בחירת תוכן לברכה
                     </Button>
+                    </Link>
                     <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'compose-blessing' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('compose-blessing')}>

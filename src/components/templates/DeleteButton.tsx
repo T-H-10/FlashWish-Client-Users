@@ -7,12 +7,12 @@ import { appDispatch } from '../../Store/Store';
 import { deleteTemplate } from '../../Store/templatesStore/TemplatesApi';
 
 type DeleteButtonProps= {
-    templateId: number;
+    itemId: number;
     uploaderId: number; // מזהה המשתמש שהעלה את התמונה
     currentUserId: number; // מזהה המשתמש המחובר
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ templateId, uploaderId, currentUserId }) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, currentUserId }) => {
     const dispatch = useDispatch<appDispatch>();
 
     const handleDeleteTemplate = () => {
@@ -25,7 +25,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ templateId, uploaderId, cur
             cancelButtonText: 'לא, השאר את זה'
         }).then((result) => {
             if (result.isConfirmed) {
-                dispatch(deleteTemplate(templateId)); // שליחת פעולה למחיקת התמונה
+                dispatch(deleteTemplate(itemId)); // שליחת פעולה למחיקת התמונה
                 Swal.fire(
                     'מחק!',
                     'התמונה נמחקה בהצלחה.',

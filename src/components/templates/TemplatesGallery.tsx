@@ -24,6 +24,11 @@ const TemplatesGallery = () => {
     const currentUserId= useContext(UserContext).user.id;
     const filteredTemplates= selectedCategoryId===1012? templatesList
     : templatesList.filter(template=> template.categoryID===selectedCategoryId);
+
+    if(filteredTemplates.length==0){
+        return null;
+    }
+
     useEffect(() => {      
         dispatch(fetchTemplates())        
     }, [dispatch]);
@@ -62,7 +67,7 @@ const TemplatesGallery = () => {
                             {template.templateName}
                         </Typography>
                         <DeleteButton 
-                            templateId={template.templateID}
+                            itemId={template.templateID}
                             uploaderId={template.userID} 
                             currentUserId={currentUserId} 
                         />

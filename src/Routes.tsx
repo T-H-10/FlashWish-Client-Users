@@ -5,6 +5,7 @@ import Registration from "./components/login & register/Registration";
 import Home from "./components/Home";
 import Gallery from "./components/Gallery";
 import TemplatesGallery from "./components/templates/TemplatesGallery";
+import GreetingMessagesGallery from "./components/messages/MessagesGallery";
 
 
 export const router = createBrowserRouter([
@@ -17,7 +18,8 @@ export const router = createBrowserRouter([
             { path: 'register', element: <Registration/>},
             {path: 'Gallery', element: <Gallery/>,
                 children:[
-                    {path: 'templates', element: <TemplatesGallery/>}
+                    {path: 'templates', element: <TemplatesGallery/>},
+                    {path: 'content', element: <GreetingMessagesGallery/>}
                 ]
              }
             

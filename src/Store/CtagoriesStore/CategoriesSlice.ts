@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { Category } from "../../types/CategoryTypes";
 import { storeType } from "../Store";
 
-const categoriesSlice = createSlice({
+const CategoriesSlice = createSlice({
     name: 'categories',
     initialState: { categoriesList: [] as Category[], loading: true },
     reducers: {},
@@ -79,4 +79,4 @@ const handleApiError = (error: any) => {
 };
 
 export const selectCategories = (state: storeType) => state.categories;
-export default categoriesSlice;
+export default CategoriesSlice;

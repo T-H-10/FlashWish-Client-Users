@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { Template } from "../../types/TemplateType";
 import { storeType } from "../Store";
 
-const templatesSlice = createSlice({
+const TemplatesSlice = createSlice({
     name: 'templates',
     initialState: { templatesList: [] as Template[], loading: true },
     reducers: {},
@@ -80,4 +80,4 @@ const handleApiError = (error: any) => {
 };
 
 export const selectTemplates = (state: storeType) => state.templates;
-export default templatesSlice;
+export default TemplatesSlice;

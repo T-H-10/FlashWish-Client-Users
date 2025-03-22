@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Template } from "../../types/TemplateType";
 import { Box, Typography } from '@mui/material';
 import StyledImageContainer from '../style/StyledImageContainer';
@@ -11,6 +11,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useOutletContext } from 'react-router-dom';
 import { CategoriesListContext } from '../categories/CategoriesList';
 import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
+import { UserContext } from '../../types/UserTypes';
+import DeleteButton from './DeleteButton';
 
 const TemplatesGallery = () => {
     // const { categoryId } = useParams<{ categoryId: string }>();
@@ -19,8 +21,9 @@ const TemplatesGallery = () => {
     const dispatch = useDispatch<appDispatch>();
     const { templatesList, loading } = useSelector(selectTemplates);
     const {selectedCategoryId}:{selectedCategoryId: number} = useOutletContext();
-    const filteredTemplates= selectedCategoryId===0? templatesList
-         : templatesList.filter(template=> template.categoryID===selectedCategoryId);
+    const currentUserId= useContext(UserContext).user.id;
+    const filteredTemplates= selectedCategoryId===1012? templatesList
+    : templatesList.filter(template=> template.categoryID===selectedCategoryId);
     useEffect(() => {      
         dispatch(fetchTemplates())        
     }, [dispatch]);
@@ -58,13 +61,18 @@ const TemplatesGallery = () => {
                         >
                             {template.templateName}
                         </Typography>
+                        <DeleteButton 
+                            templateId={template.templateID}
+                            uploaderId={template.userID} 
+                            currentUserId={currentUserId} 
+                        />
                     </StyledImageContainer>
                 ))}
             </Box>
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />
-                    <h2 style={{ marginLeft: '10px' }}>מעלה...</h2>
+                    <h2 style={{ marginLeft: '10px' }}>מעלה תבניות לרקע...</h2>
                 </div>}
         </>
     );

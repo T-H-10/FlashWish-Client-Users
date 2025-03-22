@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import ImageUploadForm from './ImageUploadForm';
-import { useSelector } from 'react-redux';
-import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
-import CircularProgress from '@mui/material/CircularProgress';
 import UploadIcon from '@mui/icons-material/Upload';
+import ImageUploadForm from './ImageUploadForm';
 
 const ImageUploadButton = () => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
-    const { loading } = useSelector(selectTemplates);
+    // const { loading } = useSelector(selectTemplates);
     return (
         <>
             <button onClick={() => setModalVisible(true)}>
@@ -20,11 +17,11 @@ const ImageUploadButton = () => {
                 </div>
             )}
 
-            {loading &&
+            {/* {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />
-                    <h2 style={{ marginLeft: '10px' }}>מעלה...</h2>
-                </div>}
+                    <h2 style={{ marginLeft: '10px' }}>מעלה תמונה...</h2>
+                </div>} */}
         </>
     );
 };

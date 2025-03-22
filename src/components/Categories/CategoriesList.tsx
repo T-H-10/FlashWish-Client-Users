@@ -28,13 +28,13 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
     // const handleDeleteCategory = (id: number) => {
     //     dispatch(deleteCategory(id));
     // };
-    const categoriesWithAll = [{ categoryID: 0, categoryName: 'הכל' }, ...categoriesList];
+    // const categoriesWithAll = [{ categoryID: 0, categoryName: 'הכל' }, ...categoriesList];
 
     return (
         <>
             <h1>קטגוריות</h1>
             {/* כאן תוכל להוסיף את הקוד להציג את הקטגוריות, הוספה, עדכון ומחיקה */}
-            {categoriesWithAll.map((category: Category) => (
+            {categoriesList.map((category: Category) => (
                 <button
                     key={category.categoryID}
                     onClick={() => onCategorySelect(category.categoryID)}
@@ -52,12 +52,12 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
             ))}
             
                 
-                <AddCategory existingCategories={categoriesWithAll.map(category=>category.categoryName)} onAddCategory={handleAddCategory} />
+                <AddCategory existingCategories={categoriesList.map(category=>category.categoryName)} onAddCategory={handleAddCategory} />
            
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />
-                    <h2 style={{ marginLeft: '10px' }}>מעלה...</h2>
+                    <h2 style={{ marginLeft: '10px' }}>טוען קטגוריות...</h2>
                 </div>}
         </>
     );

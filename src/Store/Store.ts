@@ -1,12 +1,14 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import templatesSlice from "./templatesStore/TemplatesSlice";
-import categoriesSlice from "./ctagoriesStore/CategoriesSlice";
+import TemplatesSlice from "./templatesStore/TemplatesSlice";
+import CategoriesSlice from "./ctagoriesStore/CategoriesSlice";
+import GreetingMessagesSlice from "./messagesStore/GreetingMessagesSlice";
 
 
 const Store = configureStore({
     reducer: combineSlices(
-       templatesSlice,
-       categoriesSlice
+       TemplatesSlice,
+       CategoriesSlice,
+       GreetingMessagesSlice
     ),
 });
 

@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
-import CategorySelector from './CategorySelector';
 import Swal from 'sweetalert2';
 import { UserContext } from '../../types/UserTypes';
 import { useDispatch } from 'react-redux';
 import { addTemplate } from '../../Store/templatesStore/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
 import { TemplatePostModel } from '../../types/TemplateType';
-import { TextField, Button, Box } from '@mui/material';
+import CategorySelector from './CategorySelector';
 
 interface ImageUploadFormProps {
     onClose: () => void;

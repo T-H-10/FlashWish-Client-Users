@@ -4,7 +4,7 @@ import CategoriesList from './categories/CategoriesList';
 import { useState } from 'react';
 
 const Gallery = () => {
-    const [selectedCategoryId, setSelectedCategoryId] = useState(0); 
+    const [selectedCategoryId, setSelectedCategoryId] = useState(1012); 
 
     return (
         <>

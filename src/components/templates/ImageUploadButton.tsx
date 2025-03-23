@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import UploadIcon from '@mui/icons-material/Upload';
 import ImageUploadForm from './ImageUploadForm';
+import UseStyleImageUploaderForm from '../style/UseStyleAddNewForm';
 
 const ImageUploadButton = () => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     // const { loading } = useSelector(selectTemplates);
+    const classes=UseStyleImageUploaderForm();
     return (
         <>
-            <button onClick={() => setModalVisible(true)}>
+            <button className={classes.button} onClick={() => setModalVisible(true)}>
                 <UploadIcon />
                 העלאת תמונה
             </button>

@@ -34,9 +34,9 @@ const GreetingCard = ({ message }: { message: GreetingMessage }) => {
                 {message.signature}
             </Typography>
             <div style={{
-                    position: 'absolute', // מיקום אבסולוטי
-                    top: '1%', // מרחק מהחלק העליון
-                    right: '80%', // מרחק מהצד השמאלי
+                    position: 'absolute',
+                    top: '1%', 
+                    right: '80%', 
                 }} >
             <DeleteButton 
                 itemId={message.textID}

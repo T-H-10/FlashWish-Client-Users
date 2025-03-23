@@ -5,32 +5,30 @@ import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
 import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 import { GreetingMessagePostModel } from '../../types/GreetingMessageType';
-import useStyleGreetingForm from '../style/UseStyleGreetingForm';
+import CategorySelector from '../templates/CategorySelector';
+import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
 
 interface GreetingFormProps {
     onClose: () => void;
 }
-
 const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
-    const classes = useStyleGreetingForm();
+    const classes = UseStyleAddNewForm();
+    const { user } = useContext(UserContext);
     const [formData, setFormData] = useState({
-        categoryID: 0,
         title: '',
         content: '',
         signature: '',
-        userID: 1, // נניח שהמשתמש מחובר עם ID 1
+        userID: user.id, 
     });
-    const { user } = useContext(UserContext);
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const dispatch = useDispatch<appDispatch>();
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
     const validate = () => {
         const { title, content, signature } = formData;
-        if (!title || !content || !signature) {
+        if (!title || !content || !signature ) {
             Swal.fire({
                 icon: 'warning',
                 title: 'שגיאה',
@@ -40,42 +38,32 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
         }
         return true;
     };
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validate()) {
             const greetingData: GreetingMessagePostModel = {
                 ...formData,
                 userID: user.id,
+                categoryID: selectedCategory
             };
             dispatch(addGreetingMessage(greetingData));
             resetForm();
             onClose();
         }
     };
-
     const resetForm = () => {
         setFormData({
-            categoryID: 0,
             title: '',
             content: '',
             signature: '',
             userID: 1,
         });
+        setSelectedCategory(0);
     };
-
     return (
         <div className={classes.formContainer}>
             <form onSubmit={handleSubmit} className={classes.form}>
-                <input
-                    type="number"
-                    placeholder="קטגוריה ID"
-                    name="categoryID"
-                    value={formData.categoryID}
-                    onChange={handleChange}
-                    required
-                    className={classes.input}
-                />
+                <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} /> 
                 <input
                     type="text"
                     placeholder="כותרת"
@@ -102,8 +90,10 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
                     required
                     className={classes.input}
                 />
+                <div>
                 <button type="submit" className={`${classes.button} ${classes.submitButton}`}>שלח</button>
                 <button type="button" onClick={onClose} className={`${classes.button} ${classes.closeButton}`}>סגור</button>
+                </div>
             </form>
         </div>
     );

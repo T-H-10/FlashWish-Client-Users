@@ -6,6 +6,7 @@ import { addTemplate } from '../../Store/templatesStore/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
 import { TemplatePostModel } from '../../types/TemplateType';
 import CategorySelector from './CategorySelector';
+import UseStyleImageUploaderForm from '../style/UseStyleAddNewForm';
 
 interface ImageUploadFormProps {
     onClose: () => void;
@@ -31,23 +32,24 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             templateName: imageName,
             categoryID: selectedCategory,
             userID: user.id,
-            image: imageFile, 
+            image: imageFile,
         };
 
-        dispatch(addTemplate({newTemplate: uploadData}))
+        dispatch(addTemplate({ newTemplate: uploadData }))
         setImageName('');
         setSelectedCategory(0);
         setImageFile(null);
         onClose();
     };
-
+    const classes = UseStyleImageUploaderForm();
     return (
-        <div>
+        <div className={classes.formContainer}>
             <input
                 type="text"
                 placeholder="שם התמונה"
                 value={imageName}
                 onChange={(e) => setImageName(e.target.value)}
+                className={classes.input}
             />
             <input
                 type="file"
@@ -56,10 +58,13 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
                         setImageFile(e.target.files[0]);
                     }
                 }}
+                className={classes.input}
             />
             <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-            <button onClick={handleUpload}>שלח</button>
-            <button onClick={onClose}>סגור</button>
+            <div>
+                <button className={classes.submitButton} onClick={handleUpload}>שלח</button>
+                <button className={classes.closeButton} onClick={onClose}>סגור</button>
+            </div>
         </div>
     );
 };

@@ -18,17 +18,17 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, current
     const handleDeleteTemplate = () => {
         Swal.fire({
             title: 'אתה בטוח?',
-            text: "לא תוכל לשחזר את התמונה לאחר המחיקה!",
+            text: "לא תוכל לשחזר לאחר המחיקה!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'כן, מחק את זה!',
             cancelButtonText: 'לא, השאר את זה'
         }).then((result) => {
             if (result.isConfirmed) {
-                dispatch(deleteTemplate(itemId)); // שליחת פעולה למחיקת התמונה
+                dispatch(deleteTemplate(itemId)); 
                 Swal.fire(
-                    'מחק!',
-                    'התמונה נמחקה בהצלחה.',
+                    'נמחק!',
+                    'נמחק בהצלחה.',
                     'success'
                 );
             }
@@ -40,7 +40,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, current
     }
 
     return (
-        <IconButton onClick={handleDeleteTemplate} color="error" sx={{ position: 'absolute', top: 10, right: 10 }}>
+        <IconButton onClick={handleDeleteTemplate} color="default" sx={{ position: 'absolute', top: 10, right: 10 }}>
             <DeleteIcon />
         </IconButton>
     );

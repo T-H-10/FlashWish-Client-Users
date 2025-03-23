@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import UploadIcon from '@mui/icons-material/Upload';
-import ImageUploadForm from './ImageUploadForm';
+import AddIcon from '@mui/icons-material/Add'; // נשתמש באייקון שונה
+import GreetingForm from './GreetingForm';
 
-const ImageUploadButton = () => {
+const GreetingCreateButton = () => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
-    // const { loading } = useSelector(selectTemplates);
+
     return (
         <>
             <button onClick={() => setModalVisible(true)}>
-                <UploadIcon />
-                העלאת תמונה
+                <AddIcon />
+                יצירת תוכן חדש
             </button>
             {modalVisible && (
                 <div style={{ border: '1px solid black', padding: '20px', marginTop: '10px' }}>
-                    <ImageUploadForm onClose={() => setModalVisible(false)} />
+                    <GreetingForm onClose={() => setModalVisible(false)} />
                 </div>
             )}
-
         </>
     );
 };
 
-export default ImageUploadButton;
+export default GreetingCreateButton;

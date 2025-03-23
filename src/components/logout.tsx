@@ -17,8 +17,6 @@ export const logoutUser = (userDispatch: Function, navigate: Function, setIsLogi
             setIsLogin(false);
             navigate('/');
             console.log('User logged out');
-        } else {
-            navigate('/');
-        }
+        } 
     });
 };

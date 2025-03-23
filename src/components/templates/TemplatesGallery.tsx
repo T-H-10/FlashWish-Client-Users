@@ -25,10 +25,6 @@ const TemplatesGallery = () => {
     const filteredTemplates= selectedCategoryId===1012? templatesList
     : templatesList.filter(template=> template.categoryID===selectedCategoryId);
 
-    if(filteredTemplates.length==0){
-        return null;
-    }
-
     useEffect(() => {      
         dispatch(fetchTemplates())        
     }, [dispatch]);
@@ -37,6 +33,7 @@ const TemplatesGallery = () => {
         <CategoriesListContext.Provider value={categoriesList}>
             <ImageUploadButton/>
         </CategoriesListContext.Provider>
+        {!loading && filteredTemplates.length !== 0 &&
             <Box display="flex" flexWrap="wrap" justifyContent="space-around">
                 {filteredTemplates.map((template: Template) => (
                     <StyledImageContainer
@@ -74,6 +71,7 @@ const TemplatesGallery = () => {
                     </StyledImageContainer>
                 ))}
             </Box>
+}
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />

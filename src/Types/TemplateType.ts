@@ -9,7 +9,7 @@ export type Template = {
 }
 // הגדרת TemplatePostModel
 export type TemplatePostModel = {
-    templateName: string;     // שם התבנית
+    templateName: string;     // שם
     categoryID: number;       // מזהה הקטגוריה
     userID: number;           // מזהה המשתמש
     image: File;         // URL לתמונה

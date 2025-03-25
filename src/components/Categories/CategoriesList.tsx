@@ -6,6 +6,7 @@ import { appDispatch } from '../../Store/Store';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Category } from '../../types/CategoryTypes';
 import AddCategory from './AddCategory ';
+import MyButton from '../style/MyButton';
 
 
 export const CategoriesListContext = createContext<Category[]>([]);
@@ -35,20 +36,23 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
             <h1>קטגוריות</h1>
             {/* כאן תוכל להוסיף את הקוד להציג את הקטגוריות, הוספה, עדכון ומחיקה */}
             {categoriesList.map((category: Category) => (
-                <button
-                    key={category.categoryID}
-                    onClick={() => onCategorySelect(category.categoryID)}
-                    style={{
-                        margin: '5px',
-                        padding: '10px',
-                        backgroundColor: '#f0f0f0',
-                        border: '1px solid #ccc',
-                        borderRadius: '5px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    {category.categoryName}
-                </button>
+                <span key={category.categoryID}>
+                    <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName}/>
+                </span>
+                // <button
+                //     key={category.categoryID}
+                //     onClick={() => onCategorySelect(category.categoryID)}
+                //     style={{
+                //         margin: '5px',
+                //         padding: '10px',
+                //         backgroundColor: '#f0f0f0',
+                //         border: '1px solid #ccc',
+                //         borderRadius: '5px',
+                //         cursor: 'pointer'
+                //     }}
+                // >
+                //     {category.categoryName}
+                // </button>
             ))}
             
                 

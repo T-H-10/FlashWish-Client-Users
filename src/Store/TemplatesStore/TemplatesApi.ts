@@ -31,7 +31,7 @@ export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplat
             headers: { 'Content-Type': 'multipart/form-data' }
         }
     );
-        Swal.fire('Success', 'התבנית נוספה בהצלחה', 'success');
+        Swal.fire('Success', 'הרקע נוסף בהצלחה', 'success');
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

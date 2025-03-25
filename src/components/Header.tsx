@@ -6,6 +6,7 @@ import { IsLogin } from '../App';
 import { logoutUser } from './Logout';
 import { UserContext } from '../types/UserTypes';
 import MyAvatar from './style/MyAvatar';
+import UserProfileModal from './login & register/UserProfileModal';
 
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [selectedButton, setSelectedButton] = useState<string>('home-page');
+    const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
 
     return (
@@ -33,7 +35,7 @@ const Header = () => {
                     <Button color="inherit" style={{ color: '#eeb451' }}
                         className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
                         onClick={() => setSelectedButton('choose-template')}>
-                        בחירת תבנית לרקע
+                        בחירת רקע
                     </Button>
                     </Link>
                     <Link to={'/Gallery/content'}>
@@ -83,7 +85,7 @@ const Header = () => {
                                 }}>
                                 התנתקות
                             </Button>
-                            <span onClick={(event) => setAnchorEl(event.currentTarget)}>
+                            {/* <span onClick={(event) => setAnchorEl(event.currentTarget)}>
                             <MyAvatar userName={user.userName} ></MyAvatar>
                             </span>
                             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
@@ -93,11 +95,18 @@ const Header = () => {
                                 <MenuItem onClick={() => setAnchorEl(null)} className={classes.menuItem}>
                                     עדכון פרטי משתמש
                                 </MenuItem>
-                            </Menu>
+                            </Menu> */}
+                            <Button color="inherit" onClick={() => setModalOpen(true)}>
+                                פרטי משתמש
+                            </Button>
+                            <MyAvatar user={user} />
+                           
                         </>
                     )}
                 </Toolbar>
             </AppBar>
+            <UserProfileModal open={modalOpen} handleClose={() => setModalOpen(false)} />
+
         </>
     )
 }

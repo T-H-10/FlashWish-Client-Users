@@ -1,36 +1,3 @@
-// const validateEmail = (email: string) => {
-//     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return re.test(String(email).toLowerCase());
-// };
-
-// const validatePassword = (password: string) => {
-//     return password.length >= 6;
-// };
-
-// const validateUserName = (userName: string) => {
-//     return userName.trim() !== '';
-// };
-
-// const Validation = {
-//     login: ({ email, password }: { email: string, password: string }) => {
-//         const isValid = () => {
-//             return validateEmail(email) && validatePassword(password);
-//         };
-
-//         return { isValid };
-//     },
-
-//     registration: ({ userName, email, password }: { userName: string, email: string, password: string }) => {
-//         const isValid = () => {
-//             return validateUserName(userName) && validateEmail(email) && validatePassword(password);
-//         };
-
-//         return { isValid };
-//     }
-// };
-
-// export default Validation;
-
 import * as Yup from 'yup';
 
 const userSchema = Yup.object().shape({

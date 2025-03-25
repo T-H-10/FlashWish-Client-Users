@@ -1,21 +1,30 @@
 import { Avatar } from '@mui/material';
 import UseStylesHeader from './UseStyleHeader';
+import { UserType } from '../../types/UserTypes';
 
 
-const MyAvatar = ({userName}:{userName:string}) => {
+const MyAvatar = ({user}:{user:UserType}) => {
     const classes = UseStylesHeader();
 
-    const getRandomColor = () => {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+    const getColorFromString  = (input: string) => {
+        let hash = 0;
+        for (let i = 0; i < input.length; i++) {
+            hash += input.charCodeAt(i);
         }
+        
+        // השתמש ב-hash כדי ליצור צבע
+        let color = '#';
+        for (let i = 0; i < 3; i++) {
+            const value = (hash >> (i * 8)) & 0xFF; // קח את הבתים של ה-hash
+            const hex = value.toString(16).padStart(2, '0'); // הפוך ל-hex
+            color += hex;
+        }
+        
         return color;
-    };
+    }
 
-    const firstLetter = userName.charAt(0).toUpperCase();
-    const avatarColor = getRandomColor();
+    const firstLetter = user.userName.charAt(0).toUpperCase();
+    const avatarColor = getColorFromString (user.userName+user.email);
 
     return (
         <Avatar 

@@ -6,7 +6,7 @@ const UseStylesHeader = makeStyles(() => ({
         top: 0,
         left: 0,
         right: 0,
-        width: '100vw',
+        width: '100%',
         backgroundColor: '#25173b',
         color: 'black',
     },

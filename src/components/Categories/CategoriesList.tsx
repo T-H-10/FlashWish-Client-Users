@@ -33,29 +33,13 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
 
     return (
         <>
-            <h1>קטגוריות</h1>
-            {/* כאן תוכל להוסיף את הקוד להציג את הקטגוריות, הוספה, עדכון ומחיקה */}
+            <h3>בחר קטגוריה:</h3>
             {categoriesList.map((category: Category) => (
                 <span key={category.categoryID}>
                     <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName}/>
                 </span>
-                // <button
-                //     key={category.categoryID}
-                //     onClick={() => onCategorySelect(category.categoryID)}
-                //     style={{
-                //         margin: '5px',
-                //         padding: '10px',
-                //         backgroundColor: '#f0f0f0',
-                //         border: '1px solid #ccc',
-                //         borderRadius: '5px',
-                //         cursor: 'pointer'
-                //     }}
-                // >
-                //     {category.categoryName}
-                // </button>
             ))}
-            
-                
+                           
                 <AddCategory existingCategories={categoriesList.map(category=>category.categoryName)} onAddCategory={handleAddCategory} />
            
             {loading &&

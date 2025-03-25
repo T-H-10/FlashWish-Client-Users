@@ -11,9 +11,9 @@ import UserProfileModal from './login & register/UserProfileModal';
 
 const Header = () => {
     const classes = UseStylesHeader();
-    const {user, userDispatch } = useContext(UserContext);
-    const [isLogin,setIsLogin] = useContext(IsLogin);
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const { user, userDispatch } = useContext(UserContext);
+    const [isLogin, setIsLogin] = useContext(IsLogin);
+    // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [selectedButton, setSelectedButton] = useState<string>('home-page');
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,24 +32,26 @@ const Header = () => {
                         </Button>
                     </Link>
                     <Link to='/Gallery/templates'>
-                    <Button color="inherit" style={{ color: '#eeb451' }}
-                        className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
-                        onClick={() => setSelectedButton('choose-template')}>
-                        בחירת רקע
-                    </Button>
+                        <Button color="inherit" style={{ color: '#eeb451' }}
+                            className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
+                            onClick={() => setSelectedButton('choose-template')}>
+                            בחירת רקע
+                        </Button>
                     </Link>
                     <Link to={'/Gallery/content'}>
-                    <Button color="inherit" style={{ color: '#eeb451' }}
-                        className={`${classes.menuButton} ${selectedButton === 'choose-content' ? 'selected' : ''}`}
-                        onClick={() => setSelectedButton('choose-content')}>
-                        בחירת תוכן לברכה
-                    </Button>
+                        <Button color="inherit" style={{ color: '#eeb451' }}
+                            className={`${classes.menuButton} ${selectedButton === 'choose-content' ? 'selected' : ''}`}
+                            onClick={() => setSelectedButton('choose-content')}>
+                            בחירת תוכן לברכה
+                        </Button>
                     </Link>
-                    <Button color="inherit" style={{ color: '#eeb451' }}
-                        className={`${classes.menuButton} ${selectedButton === 'compose-blessing' ? 'selected' : ''}`}
-                        onClick={() => setSelectedButton('compose-blessing')}>
-                        הרכבת ברכה
-                    </Button>
+                    <Link to={'/creatingCard'}>
+                        <Button color="inherit" style={{ color: '#eeb451' }}
+                            className={`${classes.menuButton} ${selectedButton === 'compose-blessing' ? 'selected' : ''}`}
+                            onClick={() => setSelectedButton('compose-blessing')}>
+                            הרכבת ברכה
+                        </Button>
+                    </Link>
                     {isLogin && (
                         <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'personal-area' ? 'selected' : ''}`}
@@ -100,7 +102,7 @@ const Header = () => {
                                 פרטי משתמש
                             </Button>
                             <MyAvatar user={user} />
-                           
+
                         </>
                     )}
                 </Toolbar>

@@ -8,7 +8,7 @@ const Gallery = () => {
 
     return (
         <>
-            <Box display="flex" flexDirection={'column'} justifyContent="space-between" p={2} width={"100vw"} margin={'30px'}>
+            <Box display="flex" flexDirection={'column'} justifyContent="space-between" p={2} width={"100&"} margin={'30px'}>
                 <Paper style={{ padding: '16px'}}>
                     <Typography variant="h6" gutterBottom>
                         קטגוריות:

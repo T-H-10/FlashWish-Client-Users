@@ -63,7 +63,6 @@ const TemplatesSlice = createSlice({
 const handleApiError = (error: any) => {
     let errorMessage = 'נסה מאוחר יותר.';
     
-    // דוגמת טיפול בשגיאות
     if (error.message.includes('401')) {
         errorMessage = 'שגיאת אימות. אנא התחבר מחדש.';
     } else if (error.message.includes('400')) {

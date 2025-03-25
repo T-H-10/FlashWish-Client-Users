@@ -1,15 +1,16 @@
-import { AppBar, Toolbar, Button, Avatar, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Button, Menu, MenuItem } from '@mui/material';
 import UseStylesHeader from './style/UseStyleHeader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
 import { logoutUser } from './Logout';
 import { UserContext } from '../types/UserTypes';
+import MyAvatar from './style/MyAvatar';
 
 
 const Header = () => {
     const classes = UseStylesHeader();
-    const { userDispatch } = useContext(UserContext);
+    const {user, userDispatch } = useContext(UserContext);
     const [isLogin,setIsLogin] = useContext(IsLogin);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -82,7 +83,9 @@ const Header = () => {
                                 }}>
                                 התנתקות
                             </Button>
-                            <Avatar className={classes.avatar} onClick={(event) => setAnchorEl(event.currentTarget)} />
+                            <span onClick={(event) => setAnchorEl(event.currentTarget)}>
+                            <MyAvatar userName={user.userName} ></MyAvatar>
+                            </span>
                             <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
                                 <MenuItem onClick={() => setAnchorEl(null)} className={classes.menuItem}>
                                     פרטי משתמש

@@ -11,6 +11,7 @@ const GreetingCard = ({ message }: { message: GreetingMessage }) => {
     return (
         <Box
             sx={{
+                cursor: 'pointer',
                 border: '2px solid #25173b',
                 borderRadius: '8px',
                 padding: '10px',

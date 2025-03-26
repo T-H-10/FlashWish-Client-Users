@@ -4,14 +4,18 @@ import TextAddition from "./TextAddition";
 import TextColor from "./TextColor";
 import TextSize from "./TextSize";
 import TextBold from "./TextBold";
-import TextBackground from "./TextBackGround";
+import TextBackground from "./TextBackground";
+import DownloadButton from "./DownLoadButton";
+import TextItalic from "./TextItalic";
 
-const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
+const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
 
-    useEffect(() => {
-        const newCanvas = new fabric.Canvas('c');
-        setCanvas(newCanvas);
+const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
+    try{
+        // const response = await fetch(url, {mode: "cors"});
+        // const blob = await response.blob();
+        // const imgURL = URL.createObjectURL(blob);
 
         fabric.Image.fromURL(imageUrl, { crossOrigin: "anonymous" }).then((img: any) => {
             if (!img) return;
@@ -23,6 +27,16 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
             newCanvas.renderAll();
             newCanvas.hoverCursor = 'default';
         });
+    }catch (error) {
+        console.error("Error loading image:", error);
+    }
+}
+
+    useEffect(() => {
+        const newCanvas = new fabric.Canvas('c');
+        setCanvas(newCanvas);
+
+        loadImage(imageUrl, newCanvas);
 
         return () => {
             newCanvas.dispose();
@@ -34,17 +48,19 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
         <>
             <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                 <canvas id="c" style={{ cursor: 'default' }} />
-                {canvas &&
+                {canvas && (
                     <div>
                         <div>
                             <TextAddition canvas={canvas} />
                         </div>
                         <TextBold canvas={canvas} />
-                        <TextColor canvas={canvas} />
                         <TextSize canvas={canvas} />
+                        <TextItalic canvas={canvas}/>
+                        <TextColor canvas={canvas} />
                         <TextBackground canvas={canvas}/>
+                        <DownloadButton canvas={canvas} />
                     </div>
-                }
+                )}
             </div>
         </>
     );

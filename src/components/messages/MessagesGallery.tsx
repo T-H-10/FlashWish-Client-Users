@@ -9,7 +9,7 @@ import { CategoriesListContext } from '../categories/CategoriesList';
 import { selectGreetingMessages } from '../../Store/messagesStore/GreetingMessagesSlice';
 import { fetchGreetingMessages } from '../../Store/messagesStore/GreetingsMessagesApi';
 import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
-import GreetingCard from './GreetingCard';
+import GreetingCard from './GreetingCardMessage';
 import GreetingCreateButton from './GreetingCreateButton';
 
 const GreetingMessagesGallery = () => {

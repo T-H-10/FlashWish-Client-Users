@@ -1,13 +1,22 @@
 import { Box, Paper } from "@mui/material";
 import CategoriesList from "../categories/CategoriesList";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import EditableCanvas from "./EditableCanvas";
+import { useDispatch } from "react-redux";
+import { appDispatch } from "../../Store/Store";
+import { fetchTemplateById } from "../../Store/templatesStore/TemplatesApi";
+import { CardContext } from "../../Store/cardReducer/CardContext";
 
 const CreatingCard = () => {
     const defaultTemplate = "https://res.cloudinary.com/dnschz6cr/image/upload/v1742676818/Flux_Schnell_Create_a_vibrant_and_whimsical_frame_design_for_a_3.jpeg.jpg"
     const [selectedCategoryId, setSelectedCategoryId] = useState(1012);
-
+    const dispatch = useDispatch<appDispatch>();
+    const { cardDispatch } = useContext(CardContext);
+    
+    // useEffect(()=>{
+    //     dispatch(fetchTemplateById())
+    // },[dispatch])
     return (
         //להוסיף הגדרת לפי גודל המסך שאם מידי קטן יהיה flex wrap.
         <>

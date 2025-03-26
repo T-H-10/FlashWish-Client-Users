@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../types/UserTypes';
 
 
-const GreetingCard = ({ message }: { message: GreetingMessage }) => {
+const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     const content: string[] = message.content.split('#');
     const currentUserId = useContext(UserContext).user.id;
     return (
@@ -49,4 +49,4 @@ const GreetingCard = ({ message }: { message: GreetingMessage }) => {
     );
 };
 
-export default GreetingCard;
+export default GreetingCardMessage;

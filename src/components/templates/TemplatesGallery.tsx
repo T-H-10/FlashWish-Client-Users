@@ -28,11 +28,12 @@ const TemplatesGallery = () => {
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(fetchTemplates())
     }, [dispatch]);
-    const navigate = useNavigate();
+
     const handleTemplateClick = (templateID: number) => {
         const newCard = {
             userID: currentUserId,
@@ -79,14 +80,13 @@ const TemplatesGallery = () => {
                                         color: '#25173b',
                                         backgroundColor: 'transparent',
                                         padding: '5px',
-                                        borderRadius: '5px',
                                         opacity: 1,
                                         transition: 'opacity 0.3s ease',
                                     }}
                                 >
                                     {template.templateName}
-                                </Typography>
-                                &&
+                                </Typography>}
+                                {lastSegment == 'templates' &&
                                 <DeleteButton
                                     itemId={template.templateID}
                                     uploaderId={template.userID}

@@ -4,8 +4,8 @@ export type Template = {
     categoryID: number,
     userID: number,
     imageURL: string,
-    createdAt: Date,
-    updatedAt: Date
+    // createdAt: Date,
+    // updatedAt: Date
 }
 // הגדרת TemplatePostModel
 export type TemplatePostModel = {
@@ -13,6 +13,15 @@ export type TemplatePostModel = {
     categoryID: number;       // מזהה הקטגוריה
     userID: number;           // מזהה המשתמש
     image: File;         // URL לתמונה
+}
+export const initialTemplate:Template={
+    templateID : 0,
+    templateName: 'רקע ברירת מחדל',
+    categoryID: 0,
+    userID: 0,
+    imageURL: 'default',
+    // createdAt: new Date(Date.now()),
+    // updatedAt: new Date(Date.now())
 }
 
 // הגדרת שגיאה API

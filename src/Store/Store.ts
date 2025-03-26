@@ -3,6 +3,7 @@ import TemplatesSlice from "./templatesStore/TemplatesSlice";
 import CategoriesSlice from "./ctagoriesStore/CategoriesSlice";
 import GreetingMessagesSlice from "./messagesStore/GreetingMessagesSlice";
 import GreetingCardsSlice from "./cardsStore/GreetingCardsSlice";
+import CurrentGreetingCardSlice from "./cardsStore/CurrentGreetingCardSlice";
 
 
 const Store = configureStore({
@@ -10,7 +11,8 @@ const Store = configureStore({
        TemplatesSlice,
        CategoriesSlice,
        GreetingMessagesSlice,
-       GreetingCardsSlice
+       GreetingCardsSlice,
+       CurrentGreetingCardSlice
     ),
 });
 

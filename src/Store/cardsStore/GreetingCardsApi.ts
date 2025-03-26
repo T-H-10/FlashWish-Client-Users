@@ -2,14 +2,28 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { API_URL } from "../../types/UserTypes";
-import { GreetingCardPostModel, GreetingMessageDTO } from "../../types/GreetingCardsTypes";
+import { GreetingCard, GreetingCardPostModel } from "../../types/GreetingCardsTypes";
 
 const routerURLGreetingCards = API_URL + "/GreetingCards";
 
 export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async (_, thunkAPI) => {   
     try {
         const response = await axios.get(routerURLGreetingCards);
-        return response.data as GreetingMessageDTO[];
+        return response.data as GreetingCard[];
+    } catch (e: any) {
+        return thunkAPI.rejectWithValue({
+            message: e.message,
+            status: e.response ? e.response.status : 500,
+        });
+    }
+});
+
+export const fetchGreetingCardById = createAsyncThunk('greetingCards/fetchById', async (id: number, thunkAPI) => {
+    try {
+        const response = await axios.get(`${routerURLGreetingCards}/${id}`);
+        console.log(response);
+        
+        return response.data as GreetingCard;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
             message: e.message,
@@ -31,9 +45,11 @@ export const addGreetingCard = createAsyncThunk('greetingCards/add', async ({ ne
     }
 });
 
-export const updateGreetingCard = createAsyncThunk('greetingCards/update', async ({ id, updatedCard }: { id: number, updatedCard: GreetingCardPostModel }, thunkAPI) => {
+export const updateGreetingCard = createAsyncThunk('greetingCards/update', async ({ id, greetingCard }: { id: number, greetingCard: GreetingCardPostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLGreetingCards}/${id}`, updatedCard);
+        const response = await axios.put(`${routerURLGreetingCards}/${id}`, greetingCard);
+        console.log(response);
+        
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

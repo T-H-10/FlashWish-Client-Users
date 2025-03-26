@@ -9,6 +9,17 @@ export type GreetingMessage = {
     updatedAt: Date;
 }
 
+// export type GreetingMessageDTO = {
+//     textID: number;
+//     categoryID: number;
+//     title: string;
+//     content: string;
+//     signature: string;
+//     userID: number;
+//     createdAt: Date;
+//     updatedAt: Date;
+// }
+
 export type GreetingMessagePostModel = {
     categoryID: number;
     title: string;
@@ -16,3 +27,4 @@ export type GreetingMessagePostModel = {
     signature: string;
     userID: number;
 }
+

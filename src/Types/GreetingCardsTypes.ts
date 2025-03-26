@@ -5,13 +5,24 @@ export type GreetingCardPostModel = {
     CategoryID: number;
 }
 
-export type GreetingMessageDTO = {
-    TextID: number;
-    CategoryID: number;
-    Title: string;
-    Content: string;
-    Signature: string;
-    UserID: number;
-    CreatedAt: Date;
-    UpdatedAt: Date;
+
+
+export type GreetingCard={
+    cardID: number;
+    userID:number;
+    templateID:number;
+    textID: number;
+    categoryID:number;
+    // createdAt: Date;
+    // updatedAt: Date;
+}
+
+export let initialGreetingCardState:GreetingCard={
+    cardID: 0,
+    userID: 0,
+    templateID: 0,
+    textID: 0,
+    categoryID: 0,
+    // createdAt: new Date(Date.now()),
+    // updatedAt: new Date(Date.now())
 }

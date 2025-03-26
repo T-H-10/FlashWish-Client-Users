@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { addTemplate, deleteTemplate, fetchTemplates, updateTemplate } from "./TemplatesApi";
+import { addTemplate, deleteTemplate, fetchTemplateById, fetchTemplates, updateTemplate } from "./TemplatesApi";
 import Swal from 'sweetalert2';
-import { Template } from "../../types/TemplateType";
+import { initialTemplate, Template } from "../../types/TemplateType";
 import { storeType } from "../Store";
 
 const TemplatesSlice = createSlice({
     name: 'templates',
-    initialState: { templatesList: [] as Template[], loading: true },
+    initialState: { templatesList: [] as Template[], loading: true, selectedTemplate: initialTemplate },
     reducers: {},
     extraReducers: (builder) => {
         builder
@@ -19,6 +19,13 @@ const TemplatesSlice = createSlice({
             })
             .addCase(fetchTemplates.rejected, (state, action) => {
                 state.loading = false;
+                handleApiError(action.error);
+            })
+            .addCase(fetchTemplateById.fulfilled, (state, action: PayloadAction<Template>) => {
+                // כאן תוכל לעדכן את ה-state עם התבנית שהתקבלה
+                state.selectedTemplate = action.payload; // תוודאי שהוספת selectedTemplate ל-initialState
+            })
+            .addCase(fetchTemplateById.rejected, (state, action) => {
                 handleApiError(action.error);
             })
             .addCase(addTemplate.fulfilled, (state, action: PayloadAction<Template>) => {
@@ -77,6 +84,6 @@ const handleApiError = (error: any) => {
         text: errorMessage,
     });
 };
-
+export const selectSelectedTemplate = (state: storeType) => state.templates.selectedTemplate;
 export const selectTemplates = (state: storeType) => state.templates;
 export default TemplatesSlice;

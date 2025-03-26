@@ -19,6 +19,18 @@ export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thun
     }
 });
 
+export const fetchTemplateById = createAsyncThunk('templates/fetchById', async (id: number, thunkAPI) => {
+    try {
+        const response = await axios.get<Template>(`${routerURLTemplates}/${id}`);
+        return response.data as Template;
+    } catch (e: any) {
+        return thunkAPI.rejectWithValue({
+            message: e.message,
+            status: e.response ? e.response.status : 500,
+        });
+    }
+});
+
 export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplate }: { newTemplate: TemplatePostModel }, thunkAPI) => {
     try {
         const formData= new FormData();

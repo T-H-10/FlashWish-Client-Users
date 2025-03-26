@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Gallery from "./components/Gallery";
 import TemplatesGallery from "./components/templates/TemplatesGallery";
 import GreetingMessagesGallery from "./components/messages/MessagesGallery";
-import CreatingCard from "./components/creatingCard/creatingCard";
+import CreatingCard from "./components/creatingCard/CreatingCard";
 
 export const router = createBrowserRouter([
     {

@@ -41,7 +41,7 @@ const TemplatesGallery = () => {
             TextID: 0,
             CategoryID: selectedCategoryId,
         };
-        dispatch(updateGreetingCard({ id: newCard.TemplateID, updatedCard: newCard }));
+        dispatch(updateGreetingCard({ id: newCard.TemplateID, greetingCard: newCard }));
         if (lastSegment == 'templates') {
             navigate('/Gallery/content');
         }

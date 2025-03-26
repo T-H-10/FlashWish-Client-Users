@@ -12,7 +12,7 @@ const CreatingCard = () => {
         //להוסיף הגדרת לפי גודל המסך שאם מידי קטן יהיה flex wrap.
         <>
             <Box display="flex" flexDirection={'row'} justifyContent="space-between" p={2} width={"100%"} marginTop={'100px'}>
-                <Paper style={{ width: '30%', padding: '16px', }}>
+                <Paper style={{ width: '50%', padding: '16px', }}>
                     <CategoriesList onCategorySelect={setSelectedCategoryId} />
                     <Outlet context={{ selectedCategoryId }} />
                 </Paper>

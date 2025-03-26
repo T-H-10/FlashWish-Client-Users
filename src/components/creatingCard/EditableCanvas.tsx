@@ -4,6 +4,7 @@ import TextAddition from "./TextAddition";
 import TextColor from "./TextColor";
 import TextSize from "./TextSize";
 import TextBold from "./TextBold";
+import TextBackground from "./TextBackGround";
 
 const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
@@ -41,6 +42,7 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
                         <TextBold canvas={canvas} />
                         <TextColor canvas={canvas} />
                         <TextSize canvas={canvas} />
+                        <TextBackground canvas={canvas}/>
                     </div>
                 }
             </div>

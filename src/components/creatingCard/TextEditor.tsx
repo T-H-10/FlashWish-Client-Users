@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 interface TextEditorProps {
     currentText: string;
     onSave: (newText: string) => void;
@@ -34,7 +33,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ currentText, onSave }) => {
                 onChange={(e) => setText(e.target.value)}
                 rows={6}
                 style={{
-                    width: '100%',
+                    width: '90%',
                     padding: '10px',
                     fontSize: '16px',
                     borderRadius: '8px',

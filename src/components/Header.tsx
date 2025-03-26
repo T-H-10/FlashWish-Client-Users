@@ -31,7 +31,7 @@ const Header = () => {
                             עמוד בית
                         </Button>
                     </Link>
-                    <Link to='/Gallery/templates'>
+                    <Link to={'/Gallery/templates'}>
                         <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'choose-template' ? 'selected' : ''}`}
                             onClick={() => setSelectedButton('choose-template')}>

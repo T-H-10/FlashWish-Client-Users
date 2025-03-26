@@ -25,7 +25,7 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     const [content, setContent] = useState<string>(messageCard?.content || DEFAULT_CONTENT);
     const [signature, setSignature] = useState<string>(messageCard?.signature || DEFAULT_SIGNATURE);
     const [isEditing, setIsEditing] = useState<{ field: 'title' | 'content' | 'signature' | null }>({ field: null });
-
+    const [modalTitle, setModalTitile] = useState<string>('');
     useEffect(() => {
         const textObjects = canvas.getObjects('text') as fabric.Text[];
     
@@ -72,11 +72,11 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     return (
         <>
-            <button onClick={() => setIsEditing({ field: 'title' })}>ערוך כותרת</button>
-            <button onClick={() => setIsEditing({ field: 'content' })}>ערוך תוכן</button>
-            <button onClick={() => setIsEditing({ field: 'signature' })}>ערוך חתימה</button>
+            <button onClick={() => {setIsEditing({ field: 'title' }); setModalTitile('ערוך כותרת')}}>ערוך כותרת</button>
+            <button onClick={() => {setIsEditing({ field: 'content' }); setModalTitile('ערוך תוכן')}}>ערוך תוכן</button>
+            <button onClick={() => {setIsEditing({ field: 'signature' }); setModalTitile('ערוך חתימה')}}>ערוך חתימה</button>
 
-            <MyModal isOpen={isEditing.field !== null} onClose={() => setIsEditing({ field: null })}>
+            <MyModal isOpen={isEditing.field !== null} title={modalTitle} onClose={() => setIsEditing({ field: null })}>
             {isEditing.field && (
                 <TextEditor currentText={
                     isEditing.field === 'title' ? title :

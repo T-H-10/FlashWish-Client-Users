@@ -1,18 +1,19 @@
 import React from 'react';
-
+import CloseIcon from '@mui/icons-material/Close';
 // interface ModalProps {
 //     isOpen: boolean;
 //     onClose: () => void;
 //     children: React.ReactNode;
 // }
 
-const MyModal = ({ isOpen, onClose, children }:{ isOpen:boolean, onClose: ()=>void, children:React.ReactNode }) => {
+const MyModal = ({ isOpen, title, onClose, children }: { isOpen: boolean, title: string, onClose: () => void, children: React.ReactNode }) => {
     if (!isOpen) return null;
 
     return (
         <div style={overlayStyle}>
             <div style={modalStyle}>
-                <button onClick={onClose} style={closeButtonStyle}>סגור</button>
+                <button onClick={onClose} style={closeButtonStyle}><CloseIcon /></button>
+                <h2>{title}</h2>
                 {children}
             </div>
         </div>

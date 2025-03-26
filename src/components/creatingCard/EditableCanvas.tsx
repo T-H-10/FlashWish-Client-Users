@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import TextAddition from "./TextAddition";
 import TextColor from "./TextColor";
 import TextSize from "./TextSize";
+import TextBold from "./TextBold";
 
 const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
@@ -37,6 +38,7 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string; }) => {
                         <div>
                             <TextAddition canvas={canvas} />
                         </div>
+                        <TextBold canvas={canvas} />
                         <TextColor canvas={canvas} />
                         <TextSize canvas={canvas} />
                     </div>

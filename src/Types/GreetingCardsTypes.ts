@@ -20,7 +20,7 @@ export type GreetingCard={
 export let initialGreetingCardState:GreetingCard={
     cardID: 0,
     userID: 0,
-    templateID: 0,
+    templateID: 20,
     textID: 0,
     categoryID: 0,
     // createdAt: new Date(Date.now()),

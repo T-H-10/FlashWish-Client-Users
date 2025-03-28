@@ -7,10 +7,13 @@ import TextBold from "./TextBold";
 import TextBackground from "./TextBackground";
 import DownloadButton from "./DownLoadButton";
 import TextItalic from "./TextItalic";
+import TextUnderline from "./TextUnderline";
 
 const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
-
+    console.log('in editable canvas');
+    console.log(imageUrl);
+    
 const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
     try{
         // const response = await fetch(url, {mode: "cors"});
@@ -56,6 +59,7 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
                         <TextBold canvas={canvas} />
                         <TextSize canvas={canvas} />
                         <TextItalic canvas={canvas}/>
+                        <TextUnderline canvas={canvas}/>
                         <TextColor canvas={canvas} />
                         <TextBackground canvas={canvas}/>
                         <DownloadButton canvas={canvas} />

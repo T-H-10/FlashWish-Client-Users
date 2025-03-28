@@ -3,31 +3,44 @@ import CategoriesList from "../categories/CategoriesList";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import EditableCanvas from "./EditableCanvas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { appDispatch } from "../../Store/Store";
-import { fetchTemplateById } from "../../Store/templatesStore/TemplatesApi";
+import { fetchTemplates } from "../../Store/templatesStore/TemplatesApi";
 import { CardContext } from "../../Store/cardReducer/CardContext";
+import { selectTemplates } from "../../Store/templatesStore/TemplatesSlice";
+import { initialTemplate, Template } from "../../types/TemplateType";
 
 const CreatingCard = () => {
     const defaultTemplate = "https://res.cloudinary.com/dnschz6cr/image/upload/v1742676818/Flux_Schnell_Create_a_vibrant_and_whimsical_frame_design_for_a_3.jpeg.jpg"
     const [selectedCategoryId, setSelectedCategoryId] = useState(1012);
     const dispatch = useDispatch<appDispatch>();
-    const { cardDispatch } = useContext(CardContext);
+    // const { cardDispatch } = useContext(CardContext);
+    const currentCard = useContext(CardContext).card;
+    const { templatesList, loading } = useSelector(selectTemplates);
+    let currentTemplate:Template | undefined=initialTemplate;
+    useEffect(()=>{
+        dispatch(fetchTemplates())
+    },[dispatch])
+    console.log(currentCard);
     
-    // useEffect(()=>{
-    //     dispatch(fetchTemplateById())
-    // },[dispatch])
+    if(!loading){
+        currentTemplate= templatesList.find((template: Template)=>template.templateID===currentCard.templateID);
+        console.log(currentTemplate?.imageURL);
+    }
     return (
         //להוסיף הגדרת לפי גודל המסך שאם מידי קטן יהיה flex wrap.
         <>
             <Box display="flex" flexDirection={'row'} justifyContent="space-between" p={2} width={"100%"} marginTop={'100px'}>
-                <Paper style={{ width: '50%', padding: '16px', }}>
+                <Paper style={{ width: '90%', padding: '16px', }}>
                     <CategoriesList onCategorySelect={setSelectedCategoryId} />
                     <Outlet context={{ selectedCategoryId }} />
                 </Paper>
-                <Paper style={{ width: '70%', padding: '16px' }}>
+                <Paper style={{ width: '90%', padding: '16px' }}>
                     {/* <h1> here will be the picture!</h1> */}
-                    <EditableCanvas imageUrl={defaultTemplate} />
+                    <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate
+                        // ? currentTemplate.imageURL : defaultTemplate
+                    } 
+                        />
                 </Paper>
             </Box >
         </>

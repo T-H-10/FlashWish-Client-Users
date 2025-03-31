@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Box, CircularProgress, Paper } from "@mui/material";
 import CategoriesList from "../categories/CategoriesList";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -19,28 +19,31 @@ const CreatingCard = () => {
     const { templatesList, loading } = useSelector(selectTemplates);
     let currentTemplate:Template | undefined=initialTemplate;
     useEffect(()=>{
+        if(!loading) return;
         dispatch(fetchTemplates())
-    },[dispatch])
+    },[dispatch, loading]);
+
     console.log(currentCard);
     
     if(!loading){
         currentTemplate= templatesList.find((template: Template)=>template.templateID===currentCard.templateID);
-        console.log(currentTemplate?.imageURL);
     }
     return (
         //להוסיף הגדרת לפי גודל המסך שאם מידי קטן יהיה flex wrap.
         <>
-            <Box display="flex" flexDirection={'row'} justifyContent="space-between" p={2} width={"100%"} marginTop={'100px'}>
+            <Box display="flex" flexDirection={'row'} justifyContent="space-between" p={2} width={"100%"} marginTop={'100px'} flexWrap={'wrap'}>
                 <Paper style={{ width: '90%', padding: '16px', }}>
                     <CategoriesList onCategorySelect={setSelectedCategoryId} />
                     <Outlet context={{ selectedCategoryId }} />
                 </Paper>
                 <Paper style={{ width: '90%', padding: '16px' }}>
                     {/* <h1> here will be the picture!</h1> */}
-                    <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate
-                        // ? currentTemplate.imageURL : defaultTemplate
-                    } 
-                        />
+                    {loading? (
+                        <CircularProgress/>
+                    ):(
+
+                        <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate}/>
+                    )}
                 </Paper>
             </Box >
         </>

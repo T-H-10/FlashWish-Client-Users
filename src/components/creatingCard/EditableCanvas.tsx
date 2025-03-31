@@ -4,7 +4,7 @@ import TextAddition from "./TextAddition";
 import TextColor from "./TextColor";
 import TextSize from "./TextSize";
 import TextBold from "./TextBold";
-import TextBackground from "./TextBackground";
+import TextBackground from "./TextBackgroundColor";
 import DownloadButton from "./DownLoadButton";
 import TextItalic from "./TextItalic";
 import TextUnderline from "./TextUnderline";

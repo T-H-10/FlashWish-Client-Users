@@ -1,5 +1,6 @@
 import saveAs from "file-saver";
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
+import MyOptionToStyleButton from "../style/MyOptionToStyleButton";
 
 const DownloadButton = ({ canvas }: { canvas: fabric.Canvas }) => {
     const downloadImage = () => {
@@ -15,7 +16,11 @@ const DownloadButton = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     return (
         <>
-        <button
+            <MyOptionToStyleButton onClick={downloadImage}
+                isActive={true}>
+                <DownloadRoundedIcon />
+            </MyOptionToStyleButton>
+            {/* <button
             onClick={downloadImage}
             style={{
                 backgroundColor: '#f0f0f0',
@@ -26,7 +31,7 @@ const DownloadButton = ({ canvas }: { canvas: fabric.Canvas }) => {
             }}
         >
             <DownloadRoundedIcon/>
-        </button>
+        </button> */}
         </>
     );
 };

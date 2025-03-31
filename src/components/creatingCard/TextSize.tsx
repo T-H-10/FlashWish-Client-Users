@@ -1,6 +1,9 @@
 import { TextField } from '@mui/material';
 import * as fabric from 'fabric';
 import { useState } from 'react';
+import MyOptionToStyleButton from '../style/MyOptionToStyleButton';
+import TextDecreaseRoundedIcon from '@mui/icons-material/TextDecreaseRounded';
+import TextIncreaseRoundedIcon from '@mui/icons-material/TextIncreaseRounded';
 
 const TextSize = ({ canvas }: { canvas: fabric.Canvas }) => {
     const [fontSize, setFontSize] = useState<number>(30);
@@ -34,7 +37,15 @@ const TextSize = ({ canvas }: { canvas: fabric.Canvas }) => {
     };
     return (
         <>
-        <button
+        <MyOptionToStyleButton onClick={increaseFontSize}
+            isActive={false}>
+            <TextIncreaseRoundedIcon/>
+        </MyOptionToStyleButton>
+        <MyOptionToStyleButton onClick={decreaseFontSize}
+            isActive={false}>
+                <TextDecreaseRoundedIcon/>
+            </MyOptionToStyleButton>
+        {/* <button
                     onClick={() => increaseFontSize()}
                     style={{
                         margin: '5px',
@@ -46,8 +57,8 @@ const TextSize = ({ canvas }: { canvas: fabric.Canvas }) => {
                     }}
                 >
                     A
-                </button>
-                <button
+                </button> */}
+                {/* <button
                     onClick={() => decreaseFontSize()}
                     style={{
                         margin: '5px',
@@ -59,7 +70,7 @@ const TextSize = ({ canvas }: { canvas: fabric.Canvas }) => {
                     }}
                 >
                     a
-                </button>
+                </button> */}
             <TextField
                 type="number"
                 value={fontSize}

@@ -1,4 +1,5 @@
 import * as fabric from 'fabric';
+import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 
 const TextColor = ({ canvas }: { canvas: fabric.Canvas }) => {
 
@@ -12,7 +13,38 @@ const TextColor = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     return (
         <>
-        <input type='color' onChange={(e)=>changeTextColor(e.target.value)}></input>
+ <span style={{ position: 'relative' }}>
+            <span
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 13,
+                    color: '#aaa',
+                    backgroundColor: 'transparent',
+                    pointerEvents: 'none',
+                    opacity: 1,
+                    transition: 'opacity 0.3s ease',
+                }}
+            >
+                <FormatColorTextIcon/>
+            </span>
+            <input
+                type="color"
+                color='white'
+                // value={color}
+                onChange={(e)=>changeTextColor(e.target.value)}
+                style={{height:'40px', marginRight: '5px' }} 
+            />
+            </span>
+
+        {/* <input type='color' 
+        onChange={(e)=>changeTextColor(e.target.value)}
+        style={{
+            width: '35px',
+            height: '35px'
+        }}
+        >
+        </input> */}
         </>
     )
 }

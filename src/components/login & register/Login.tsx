@@ -9,6 +9,7 @@ import EmailInput from './FormInputs/EmailInput';
 import PasswordInput from './FormInputs/PasswordInput';
 import LoginButton from './FormInputs/LoginButton';
 import { useNavigate } from 'react-router-dom';
+import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ const Login = () => {
     const [, setIsLogin] = useContext(IsLogin);
     const { userDispatch } = useContext(UserContext);
     const navigate = useNavigate();
+    const {cardDispatch} = useContext(CurrentCardContext);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -42,6 +44,9 @@ const Login = () => {
                 text: '!ברוך הבא',
             });
             setIsLogin(true);
+            cardDispatch({
+                type: 'CREATE_NEW_CARD'
+            });
             navigate('/');
         } catch (e: any) {
             let errorMessage: string;

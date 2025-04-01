@@ -14,6 +14,7 @@ import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 import { UserContext } from '../../types/UserTypes';
 import DeleteButton from './DeleteButton';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
+import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 
 const TemplatesGallery = () => {
     // const { categoryId } = useParams<{ categoryId: string }>();
@@ -29,7 +30,7 @@ const TemplatesGallery = () => {
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];
     const navigate = useNavigate();
-
+    const { cardDispatch } = useContext(CurrentCardContext);
     useEffect(() => {
         dispatch(fetchTemplates())
     }, [dispatch]);
@@ -37,11 +38,19 @@ const TemplatesGallery = () => {
     const handleTemplateClick = (templateID: number) => {
         const newCard = {
             userID: currentUserId,
-            TemplateID: templateID,
-            TextID: 0,
-            CategoryID: selectedCategoryId,
+            templateID: templateID,
+            textID: 0,
+            categoryID: selectedCategoryId,
         };
-        dispatch(updateGreetingCard({ id: newCard.TemplateID, greetingCard: newCard }));
+        cardDispatch({
+            type: 'UPDATE_CARD',
+            data: {
+                userID: currentUserId,
+                templateID: templateID,
+                categoryID: selectedCategoryId
+            }
+        });
+        dispatch(updateGreetingCard({ id: newCard.templateID, greetingCard: newCard }));
         if (lastSegment == 'templates') {
             navigate('/Gallery/content');
         }
@@ -86,7 +95,7 @@ const TemplatesGallery = () => {
                                 >
                                     {template.templateName}
                                 </Typography>}
-                                {lastSegment == 'templates' &&
+                            {lastSegment == 'templates' &&
                                 <DeleteButton
                                     itemId={template.templateID}
                                     uploaderId={template.userID}

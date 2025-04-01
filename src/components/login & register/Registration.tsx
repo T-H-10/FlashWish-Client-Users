@@ -6,10 +6,11 @@ import { API_URL, UserContext } from '../../types/UserTypes';
 import Validation from './Validation';
 import { IsLogin } from '../../App';
 import EmailInput from './FormInputs/EmailInput';
-import PasswordInput from './FormInputs/PasswordInput'; 
-import LoginButton from './FormInputs/LoginButton'; 
-import NameInput from './FormInputs/NameInput'; 
+import PasswordInput from './FormInputs/PasswordInput';
+import LoginButton from './FormInputs/LoginButton';
+import NameInput from './FormInputs/NameInput';
 import { useNavigate } from 'react-router-dom';
+import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 
 const Registration = () => {
     const [userName, setName] = useState('');
@@ -17,7 +18,9 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const { userDispatch } = useContext(UserContext);
     const [, setIsLogin] = useContext(IsLogin);
+    const { cardDispatch } = useContext(CurrentCardContext);
     const navigate = useNavigate();
+
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -44,6 +47,9 @@ const Registration = () => {
                 text: 'ההרשמה הצליחה!',
             });
             setIsLogin(true);
+            cardDispatch({
+                type: 'CREATE_NEW_CARD'
+            });
             navigate('/');
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {

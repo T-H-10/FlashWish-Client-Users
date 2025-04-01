@@ -1,8 +1,8 @@
 export type GreetingCardPostModel = {
     userID: number;
-    TemplateID: number;
-    TextID: number;
-    CategoryID: number;
+    templateID: number;
+    textID: number;
+    categoryID: number;
 }
 
 
@@ -18,7 +18,7 @@ export type GreetingCard={
 }
 
 export let initialGreetingCardState:GreetingCard={
-    cardID: 0,
+    cardID: -1,
     userID: 0,
     templateID: 20,
     textID: 0,

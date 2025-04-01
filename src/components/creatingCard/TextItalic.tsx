@@ -22,19 +22,9 @@ const TextItalic = ({ canvas }: { canvas: fabric.Canvas }) => {
     return (
         <>
         <MyOptionToStyleButton onClick={toggleItalic} 
-            isActive={isItalic}>
+            isActive={!isItalic}>
             <FormatItalicRoundedIcon />
         </MyOptionToStyleButton>
-            {/* <button onClick={toggleItalic}
-            style={{
-                backgroundColor: '#f0f0f0',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                alignItems: 'center'
-            }}>
-            <FormatItalicRoundedIcon />
-            </button> */}
         </>
     );
 };

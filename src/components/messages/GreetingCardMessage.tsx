@@ -3,13 +3,40 @@ import { GreetingMessage } from "../../types/GreetingMessageType";
 import DeleteButton from '../templates/DeleteButton';
 import { useContext } from 'react';
 import { UserContext } from '../../types/UserTypes';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
+import { appDispatch } from '../../Store/Store';
+import { useDispatch } from 'react-redux';
+import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 
 
 const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     const content: string[] = message.content.split('#');
     const currentUserId = useContext(UserContext).user.id;
+    const dispatch = useDispatch<appDispatch>();
+    const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
+    const navigate = useNavigate();
+    const { cardDispatch } = useContext(CurrentCardContext);
+    const handleMessageClick=(messageID: number)=>{
+        const newCard={
+            userID: currentUserId,
+            textID: messageID,
+            categoryID: selectedCategoryId
+        };
+        cardDispatch({
+            type: 'UPDATE_CARD',
+            data: {
+                userID: currentUserId,
+                textID: messageID,
+                categoryID: selectedCategoryId
+            }
+        });
+        dispatch(updateGreetingCard({id: newCard.textID, greetingCard: {...newCard, templateID: 0}}));//fix it!
+        navigate('/creatingCard');
+    };
     return (
-        <Box
+        <>
+        <Box onClick={()=>{handleMessageClick(message.textID)}}
             sx={{
                 cursor: 'pointer',
                 border: '2px solid #25173b',
@@ -46,6 +73,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
             />
             </div>
         </Box>
+        </>
     );
 };
 

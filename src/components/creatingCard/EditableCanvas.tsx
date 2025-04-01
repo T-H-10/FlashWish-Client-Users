@@ -9,10 +9,10 @@ import DownloadButton from "./DownLoadButton";
 import TextItalic from "./TextItalic";
 import TextUnderline from "./TextUnderline";
 
-const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
+const EditableCanvas = ({ imageUrl }: { imageUrl: string}) => {
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
-    console.log('in editable canvas');
-    console.log(imageUrl);
+    // console.log('in editable canvas');
+    // console.log(imageUrl);
     
 const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
     try{

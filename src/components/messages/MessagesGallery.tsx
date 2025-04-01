@@ -34,7 +34,6 @@ const GreetingMessagesGallery = () => {
                     {filteredGreetingMessages.map((message: GreetingMessage) => (
                         <>
                             <GreetingCard key={message.textID} message={message} />
-                            
                         </>
                     )
                     )}

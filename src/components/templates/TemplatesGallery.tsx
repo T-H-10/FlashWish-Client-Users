@@ -40,7 +40,7 @@ const TemplatesGallery = () => {
             userID: currentUserId,
             templateID: templateID,
             textID: 0,
-            categoryID: selectedCategoryId,
+            categoryID: selectedCategoryId
         };
         cardDispatch({
             type: 'UPDATE_CARD',
@@ -50,7 +50,7 @@ const TemplatesGallery = () => {
                 categoryID: selectedCategoryId
             }
         });
-        dispatch(updateGreetingCard({ id: newCard.templateID, greetingCard: newCard }));
+        dispatch(updateGreetingCard({ id: newCard.templateID, greetingCard: newCard })); //fix it!
         if (lastSegment == 'templates') {
             navigate('/Gallery/content');
         }

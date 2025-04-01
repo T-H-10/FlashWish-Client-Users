@@ -51,6 +51,9 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
                 onChange={(e) => setImageName(e.target.value)}
                 className={classes.input}
             />
+            <div>
+                <small>שים לב! בהעלאת תמונה היא תהפך לציבורית וכולם יוכלו לשתמש בה.</small>
+            </div>
             <input
                 type="file"
                 onChange={(e) => {
@@ -62,7 +65,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             />
             <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <div>
-                <button className={classes.submitButton} onClick={handleUpload}>שלח</button>
+                <button className={classes.submitButton} onClick={handleUpload}>הוסף</button>
                 <button className={classes.closeButton} onClick={onClose}>סגור</button>
             </div>
         </div>

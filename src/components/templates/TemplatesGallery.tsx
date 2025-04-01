@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Template } from "../../types/TemplateType";
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import StyledImageContainer from '../style/StyledImageContainer';
 import ImageUploadButton from './ImageUploadButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,10 +15,9 @@ import { UserContext } from '../../types/UserTypes';
 import DeleteButton from './DeleteButton';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
+import ChoosingButton from '../ChoosingButton';
 
 const TemplatesGallery = () => {
-    // const { categoryId } = useParams<{ categoryId: string }>();
-    // const categoryIdNumber =categoryId?  parseInt(categoryId): 0;
     const { categoriesList } = useSelector(selectCategories);
     const dispatch = useDispatch<appDispatch>();
     const { templatesList, loading } = useSelector(selectTemplates);
@@ -67,7 +66,6 @@ const TemplatesGallery = () => {
                         <StyledImageContainer
                             key={template.templateID}
                             width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}
-                            onClick={() => handleTemplateClick(template.templateID)}
                             style={{ cursor: 'pointer' }}>
                             <span style={{
                                 height: '100%', margin: '3px', backgroundColor: '#eee',
@@ -91,16 +89,19 @@ const TemplatesGallery = () => {
                                         padding: '5px',
                                         opacity: 1,
                                         transition: 'opacity 0.3s ease',
-                                    }}
-                                >
+                                    }}>
                                     {template.templateName}
                                 </Typography>}
+                                <ChoosingButton onClick={()=>handleTemplateClick(template.templateID)}/>
+                            {/* <IconButton onClick={() => handleTemplateClick(template.templateID)} color="default" sx={{ position: 'absolute', top: 10, left: 10 }}>
+                                <CheckCircleOutlineRoundedIcon />
+                            </IconButton> */}
                             {lastSegment == 'templates' &&
                                 <DeleteButton
                                     itemId={template.templateID}
                                     uploaderId={template.userID}
                                     currentUserId={currentUserId}
-                                />}
+                                /> }
                         </StyledImageContainer>
                     ))}
                 </Box>

@@ -11,8 +11,8 @@ type Action =
 const initialState: GreetingCard = initialGreetingCardState;
 
 const cardReducer = (state = initialState, action: Action): GreetingCard => {
-    console.log(action.type);
-    console.log(state);
+    // console.log(action.type);
+    // console.log(state);
     
     switch (action.type) {
         case "CREATE_NEW_CARD":
@@ -20,7 +20,7 @@ const cardReducer = (state = initialState, action: Action): GreetingCard => {
             // return { ...state, ...action.data }; // הוספת הכרטיס החדש ל-state
         case "UPDATE_CARD":
             {
-                console.log({...state, ...action.data});
+                // console.log({...state, ...action.data});
                 return { ...state, ...action.data };
             }
         case "DELETE_CARD": 

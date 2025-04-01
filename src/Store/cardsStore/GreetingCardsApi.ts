@@ -21,7 +21,7 @@ export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async 
 export const fetchGreetingCardById = createAsyncThunk('greetingCards/fetchById', async (id: number, thunkAPI) => {
     try {
         const response = await axios.get(`${routerURLGreetingCards}/${id}`);
-        console.log(response);
+        // console.log(response);
         
         return response.data as GreetingCard;
     } catch (e: any) {
@@ -48,7 +48,7 @@ export const addGreetingCard = createAsyncThunk('greetingCards/add', async ({ ne
 export const updateGreetingCard = createAsyncThunk('greetingCards/update', async ({ id, greetingCard }: { id: number, greetingCard: GreetingCardPostModel }, thunkAPI) => {
     try {
         const response = await axios.put(`${routerURLGreetingCards}/${id}`, greetingCard);
-        console.log(response);
+        // console.log(response);
         
         return response.data;
     } catch (e: any) {

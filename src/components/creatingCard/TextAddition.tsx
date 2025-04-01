@@ -27,18 +27,6 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     if (!loading) {
         currentMessage = greetingMessagesList.find((message: GreetingMessage) => message.textID === currentCard.textID) || initialMessage;
     }
-    // הודעת ברכה לדוגמה
-    // const messageCard: GreetingMessage | null = {
-    //     textID: 4,
-    //     categoryID: 1012,
-    //     title: "כותרת דוגמא",
-    //     content: "תוכן דוגמא",
-    //     signature: "חתימה דוגמא",
-    //     userID: 0,
-    //     // createdAt: new Date(),
-    //     // updatedAt: new Date(),
-    // };
-
     const [title, setTitle] = useState<string>(currentMessage?.title || DEFAULT_TITLE);
     const [content, setContent] = useState<string>(currentMessage?.content || DEFAULT_CONTENT);
     const [signature, setSignature] = useState<string>(currentMessage?.signature || DEFAULT_SIGNATURE);

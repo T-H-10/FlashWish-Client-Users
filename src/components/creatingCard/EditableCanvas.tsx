@@ -20,7 +20,7 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
         // const blob = await response.blob();
         // const imgURL = URL.createObjectURL(blob);
 
-        fabric.Image.fromURL(imageUrl, { crossOrigin: "anonymous" }).then((img: any) => {
+        fabric.Image.fromURL(url, { crossOrigin: "anonymous" }).then((img: any) => {
             if (!img) return;
 
             img.scaleToWidth(500);
@@ -38,14 +38,25 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
     useEffect(() => {
         const newCanvas = new fabric.Canvas('c');
         setCanvas(newCanvas);
-
-        loadImage(imageUrl, newCanvas);
+        if(imageUrl){
+            loadImage(imageUrl, newCanvas);
+        } else {
+            console.error("imageUrl is not defined");
+        }
 
         return () => {
             newCanvas.dispose();
         };
-
     }, [imageUrl]);
+
+    
+    const saveDesign = () => {
+        if (canvas) {
+            const json = canvas.toJSON();
+            // dispatch(addCard({ id: Date.now(), design: json })); // Save the design
+            console.log("Design saved:", json);
+        }
+    };
 
     return (
         <>
@@ -63,6 +74,7 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
                         <TextColor canvas={canvas} />
                         <TextBackground canvas={canvas}/>
                         <DownloadButton canvas={canvas} />
+                        <button onClick={saveDesign}>שמור עיצוב</button>
                     </div>
                 )}
             </div>

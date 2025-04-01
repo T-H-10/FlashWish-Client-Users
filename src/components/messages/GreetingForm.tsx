@@ -25,6 +25,8 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        // console.log(formData);
+        
     };
     const validate = () => {
         const { title, content, signature } = formData;
@@ -91,7 +93,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
                     className={classes.input}
                 />
                 <div>
-                <button type="submit" className={`${classes.button} ${classes.submitButton}`}>שלח</button>
+                <button type="submit" className={`${classes.button} ${classes.submitButton}`}>הוסף</button>
                 <button type="button" onClick={onClose} className={`${classes.button} ${classes.closeButton}`}>סגור</button>
                 </div>
             </form>

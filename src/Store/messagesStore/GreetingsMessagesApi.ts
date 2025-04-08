@@ -4,11 +4,11 @@ import { API_URL } from "../../types/UserTypes";
 import Swal from "sweetalert2";
 import { GreetingMessage, GreetingMessagePostModel } from "../../types/GreetingMessageType";
 
-const routerURLTemplates = API_URL+"/GreetingMessages";
+const routerURLMessages = API_URL+"/GreetingMessages";
 
 export const fetchGreetingMessages = createAsyncThunk('greetingMessages/fetch', async (_, thunkAPI) => {
     try {
-        const response = await axios.get(routerURLTemplates);
+        const response = await axios.get(routerURLMessages);
         return response.data as GreetingMessage[];
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
@@ -20,7 +20,7 @@ export const fetchGreetingMessages = createAsyncThunk('greetingMessages/fetch', 
 
 export const addGreetingMessage = createAsyncThunk('greetingMessages/add', async (message: GreetingMessagePostModel, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLTemplates, message);
+        const response = await axios.post(routerURLMessages, message);
         Swal.fire('Success', 'הכרטיס נוספה בהצלחה', 'success');
         return response.data;
     } catch (e: any) {
@@ -33,7 +33,7 @@ export const addGreetingMessage = createAsyncThunk('greetingMessages/add', async
 
 export const updateGreetingMessage = createAsyncThunk('greetingMessages/update', async ({ id, message }: { id: number, message: GreetingMessagePostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLTemplates}/:${id}`, message);
+        const response = await axios.put(`${routerURLMessages}/:${id}`, message);
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
@@ -45,7 +45,7 @@ export const updateGreetingMessage = createAsyncThunk('greetingMessages/update',
 
 export const deleteGreetingMessage = createAsyncThunk('greetingMessages/delete', async (id: number, thunkAPI) => {
     try {
-        await axios.delete(`${routerURLTemplates}/${id}`);
+        await axios.delete(`${routerURLMessages}/${id}`);
         return id;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

@@ -7,6 +7,7 @@ import Gallery from "./components/Gallery";
 import TemplatesGallery from "./components/templates/TemplatesGallery";
 import GreetingMessagesGallery from "./components/messages/MessagesGallery";
 import CreatingCard from "./components/creatingCard/CreatingCard";
+import MyCardsGallery from "./components/myCards/MyCardsGallery";
 
 export const router = createBrowserRouter([
     {
@@ -16,17 +17,18 @@ export const router = createBrowserRouter([
             {path: '/', element: <Home/>},
             { path: 'login', element: <Login/>},
             { path: 'register', element: <Registration/>},
+            {path: 'myCards', element: <MyCardsGallery/>},
             {path: 'Gallery', element: <Gallery/>,
                 children:[
                     {path: 'templates', element: <TemplatesGallery/>},
                     {path: 'content', element: <GreetingMessagesGallery/>}
                 ]
-             },
-             { path: 'creatingCard', element: <CreatingCard/>,
+            },
+            { path: 'creatingCard', element: <CreatingCard/>,
                 children:[
                     {path: '', element: <TemplatesGallery/>}
                 ]
-              }
+            },
             
         ]
     }

@@ -9,6 +9,7 @@ import { appDispatch } from '../../Store/Store';
 import { useDispatch } from 'react-redux';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import ChoosingButton from '../ChoosingButton';
+import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 
 
 const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
@@ -72,6 +73,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                         itemId={message.textID}
                         uploaderId={message.userID}
                         currentUserId={currentUserId}
+                        deleteFunc={()=>deleteGreetingMessage(message.textID)}
                     />
                     <ChoosingButton onClick={() => { handleMessageClick(message.textID) }} />
                 </div>

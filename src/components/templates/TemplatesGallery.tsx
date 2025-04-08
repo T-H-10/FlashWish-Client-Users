@@ -5,7 +5,7 @@ import StyledImageContainer from '../style/StyledImageContainer';
 import ImageUploadButton from './ImageUploadButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
-import { fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
+import { deleteTemplate, fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
@@ -101,6 +101,7 @@ const TemplatesGallery = () => {
                                     itemId={template.templateID}
                                     uploaderId={template.userID}
                                     currentUserId={currentUserId}
+                                    deleteFunc={()=>deleteTemplate(template.templateID)}
                                 /> }
                         </StyledImageContainer>
                     ))}

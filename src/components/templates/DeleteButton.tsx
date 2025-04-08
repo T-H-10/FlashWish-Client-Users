@@ -4,15 +4,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
-import { deleteTemplate } from '../../Store/templatesStore/TemplatesApi';
+// import { deleteTemplate } from '../../Store/templatesStore/TemplatesApi';
 
 type DeleteButtonProps= {
     itemId: number;
     uploaderId: number; // מזהה המשתמש שהעלה את התמונה
     currentUserId: number; // מזהה המשתמש המחובר
+    deleteFunc: Function;
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, currentUserId }) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, currentUserId, deleteFunc }) => {
     const dispatch = useDispatch<appDispatch>();
 
     const handleDeleteTemplate = () => {
@@ -25,7 +26,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, current
             cancelButtonText: 'לא, השאר את זה'
         }).then((result) => {
             if (result.isConfirmed) {
-                dispatch(deleteTemplate(itemId)); 
+                dispatch(deleteFunc()); 
                 Swal.fire(
                     'נמחק!',
                     'נמחק בהצלחה.',

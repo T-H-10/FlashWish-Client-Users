@@ -30,12 +30,12 @@ export type ApiError = {
     status: number;           // קוד סטטוס HTTP של השגיאה
 }
 
-export type GreetingCard = {
-    id: number;
-    message: string; 
-    createdAt: Date;
-    userId: number;
-}
+// export type GreetingCard = {
+//     id: number;
+//     message: string; 
+//     createdAt: Date;
+//     userId: number;
+// }
 export type Role = {
     id: number;
     name: string;

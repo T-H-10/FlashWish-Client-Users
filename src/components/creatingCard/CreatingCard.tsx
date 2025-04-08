@@ -8,7 +8,7 @@ import { appDispatch } from "../../Store/Store";
 import { fetchTemplates } from "../../Store/templatesStore/TemplatesApi";
 // import { CardContext } from "../../Store/cardReducer/CardContext";
 import { selectTemplates } from "../../Store/templatesStore/TemplatesSlice";
-import { GreetingCard, initialTemplate, Template } from "../../types/TemplateType";
+import { initialTemplate, Template } from "../../types/TemplateType";
 import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
 import { selectGreetingMessages } from "../../Store/messagesStore/GreetingMessagesSlice";
 import { GreetingMessage, initialMessage } from "../../types/GreetingMessageType";
@@ -21,8 +21,8 @@ const CreatingCard = () => {
     // const { cardDispatch } = useContext(CardContext);
     // const currentCard = useContext(CardContext).card;
     const { templatesList, loading } = useSelector(selectTemplates);
-    const { greetingMessagesList } = useSelector(selectGreetingMessages);
-    const { currentCard, cardDispatch } = useContext(CurrentCardContext);
+    // const { greetingMessagesList } = useSelector(selectGreetingMessages);
+    const { currentCard } = useContext(CurrentCardContext);
     let currentTemplate: Template = initialTemplate;
    
     useEffect(() => {
@@ -47,12 +47,12 @@ const CreatingCard = () => {
                     <Outlet context={{ selectedCategoryId }} />
                 </Paper>
                 <Paper style={{ width: '50%', padding: '16px' }}>
-                    {/* <h1> here will be the picture!</h1> */}
                     {loading ? (
                         <CircularProgress />
                     ) : (
                         <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate}/>
-                    )}
+                    )
+                    }
                 </Paper>
             </Box >
         </>

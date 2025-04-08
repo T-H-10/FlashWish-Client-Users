@@ -36,7 +36,7 @@ const Registration = () => {
 
         try {
             const res = await axios.post(`${API_URL}/Auth/register`, { userName, email, password });
-            const token: string = res.data.token;
+            // const token: string = res.data.token;
             userDispatch({
                 type: 'REGISTER_USER',
                 payload: res.data

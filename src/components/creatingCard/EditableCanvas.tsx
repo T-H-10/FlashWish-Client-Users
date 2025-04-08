@@ -8,8 +8,11 @@ import TextBackground from "./TextBackgroundColor";
 import DownloadButton from "./DownLoadButton";
 import TextItalic from "./TextItalic";
 import TextUnderline from "./TextUnderline";
+import { appDispatch } from "../../Store/Store";
+import { useDispatch } from "react-redux";
 
 const EditableCanvas = ({ imageUrl }: { imageUrl: string}) => {
+    const dispatch = useDispatch<appDispatch>();
     const [canvas, setCanvas] = useState<fabric.Canvas | null>(null);
     // console.log('in editable canvas');
     // console.log(imageUrl);
@@ -36,14 +39,13 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
 }
 
     useEffect(() => {
-        const newCanvas = new fabric.Canvas('c');
-        setCanvas(newCanvas);
+        const newCanvas =canvas? canvas : new fabric.Canvas('c');
+        // setCanvas(newCanvas);
         if(imageUrl){
             loadImage(imageUrl, newCanvas);
         } else {
             console.error("imageUrl is not defined");
         }
-
         return () => {
             newCanvas.dispose();
         };
@@ -53,7 +55,7 @@ const loadImage = async (url: string, newCanvas: fabric.Canvas)=>{
     const saveDesign = () => {
         if (canvas) {
             const json = canvas.toJSON();
-            // dispatch(addCard({ id: Date.now(), design: json })); // Save the design
+            dispatch(addCard({ id: Date.now(), design: json })); // Save the design
             console.log("Design saved:", json);
         }
     };

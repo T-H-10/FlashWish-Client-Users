@@ -1,21 +1,33 @@
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add'; // נשתמש באייקון שונה
 import GreetingForm from './GreetingForm';
+import BlessingGenerator from './BlessingGenerator';
 
 const GreetingCreateButton = () => {
-    const [modalVisible, setModalVisible] = useState<boolean>(false);
+    const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
+    const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
 
     return (
         <>
-            <button onClick={() => setModalVisible(true)}>
+            <button id='add' style={{margin: '3px'}} onClick={() => setAddModalVisible(true)}>
                 <AddIcon />
                 יצירת תוכן חדש
             </button>
-            {modalVisible && (
+            <button id='create' style={{margin: '3px'}} onClick={()=>setCreateModalVisible(true)}>
+                <AddIcon />
+                בקשת תוכן חדש ע"י AI
+            </button>
+            {addModalVisible && (
                 <div style={{ border: '1px solid black', padding: '20px', marginTop: '10px' }}>
-                    <GreetingForm onClose={() => setModalVisible(false)} />
+                    <GreetingForm onClose={() => setAddModalVisible(false)} />
                 </div>
             )}
+            {/* {createModalVisible && ( */}
+                <div style={{ border: '1px solid black', padding: '20px', marginTop: '10px' }}>
+                <BlessingGenerator onClose={()=>setCreateModalVisible(false)}/>
+            </div>
+            {/* )} */}
+                
         </>
     );
 };

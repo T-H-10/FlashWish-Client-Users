@@ -58,7 +58,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
             title: '',
             content: '',
             signature: '',
-            userID: 1,
+            userID: 1, //current userID
         });
         setSelectedCategory(0);
     };

@@ -22,14 +22,6 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
     const handleAddCategory = (newCategory: { categoryName: string }) => {
         dispatch(addCategory(newCategory));
     };
-    // const handleUpdateCategory = (id: number, updatedCategory: { categoryName: string }) => {
-    //     dispatch(updateCategory({ id, updatedCategory }));
-    // };
-
-    // const handleDeleteCategory = (id: number) => {
-    //     dispatch(deleteCategory(id));
-    // };
-    // const categoriesWithAll = [{ categoryID: 0, categoryName: 'הכל' }, ...categoriesList];
 
     return (
         <>

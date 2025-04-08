@@ -53,11 +53,13 @@ const Header = () => {
                         </Button>
                     </Link>
                     {isLogin && (
+                    <Link to='/myCards'>
                         <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'personal-area' ? 'selected' : ''}`}
                             onClick={() => setSelectedButton('personal-area')}>
                             אזור אישי
                         </Button>
+                    </Link>
                     )}
                     <div style={{ flexGrow: 1 }} />
                     {!isLogin ? (

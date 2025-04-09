@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add'; // נשתמש באייקון שונה
 import GreetingForm from './GreetingForm';
-import BlessingGenerator from './BlessingGenerator';
+import BlessingGenerator from './generateMessage/BlessingGenerator';
 
 const GreetingCreateButton = () => {
     const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
@@ -22,11 +22,11 @@ const GreetingCreateButton = () => {
                     <GreetingForm onClose={() => setAddModalVisible(false)} />
                 </div>
             )}
-            {/* {createModalVisible && ( */}
+            {createModalVisible && (
                 <div style={{ border: '1px solid black', padding: '20px', marginTop: '10px' }}>
-                <BlessingGenerator onClose={()=>setCreateModalVisible(false)}/>
+                <BlessingGenerator onClose={async () => setCreateModalVisible(false)}/>
             </div>
-            {/* )} */}
+            )}
                 
         </>
     );

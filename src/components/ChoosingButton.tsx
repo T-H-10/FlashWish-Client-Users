@@ -4,7 +4,15 @@ import { IconButton } from '@mui/material';
 const ChoosingButton = ({ onClick }: { onClick: Function }) => {
     return (
         <>
-            <IconButton onClick={() => onClick()} color="default" sx={{ position: 'absolute', top: 10, left: 10 }}>
+            <IconButton onClick={() => onClick()} color="default" sx={{
+                position: 'absolute',
+                top: 10,
+                left: 10,
+                color: '#25173b',
+                '&:hover': {
+                    color: '#eeb451',
+                }
+            }}>
                 <CheckCircleOutlineRoundedIcon />
             </IconButton>
         </>

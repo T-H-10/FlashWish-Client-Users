@@ -1,21 +1,18 @@
 import { useContext, useEffect } from 'react';
-import { Template } from "../../types/TemplateType";
-import { Box, Typography, IconButton } from '@mui/material';
-import StyledImageContainer from '../style/StyledImageContainer';
 import ImageUploadButton from './ImageUploadButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
-import { deleteTemplate, fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
+import { fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { CategoriesListContext } from '../categories/CategoriesList';
 import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 import { UserContext } from '../../types/UserTypes';
-import DeleteButton from './DeleteButton';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
-import ChoosingButton from '../ChoosingButton';
+import LoadingIndicator from './LoadingIndicator';
+import TemplatesGrid from './TemplateGrid';
+import { GreetingCardPostModel } from '../../types/GreetingCardsTypes';
 
 const TemplatesGallery = () => {
     const { categoriesList } = useSelector(selectCategories);
@@ -31,14 +28,18 @@ const TemplatesGallery = () => {
     const navigate = useNavigate();
     const { cardDispatch } = useContext(CurrentCardContext);
     useEffect(() => {
-        dispatch(fetchTemplates())
-    }, [dispatch]);
+        if(templatesList.length === 0) {
+            dispatch(fetchTemplates());
+        }
+        // dispatch(fetchTemplates())
+    }, [dispatch, templatesList.length]);
 
     const handleTemplateClick = (templateID: number) => {
-        const newCard = {
+        const newCard: GreetingCardPostModel = {
             userID: currentUserId,
             templateID: templateID,
             textID: 0,
+            canvasStyle:'',
             categoryID: selectedCategoryId
         };
         cardDispatch({
@@ -49,7 +50,7 @@ const TemplatesGallery = () => {
                 categoryID: selectedCategoryId
             }
         });
-        dispatch(updateGreetingCard({ id: newCard.templateID, greetingCard: newCard })); //fix it!
+        dispatch(updateGreetingCard({ id: newCard.templateID, updatedCard: newCard })); //fix it!
         if (lastSegment == 'templates') {
             navigate('/Gallery/content');
         }
@@ -60,8 +61,18 @@ const TemplatesGallery = () => {
             <CategoriesListContext.Provider value={categoriesList}>
                 <ImageUploadButton />
             </CategoriesListContext.Provider>
-            {!loading && filteredTemplates.length !== 0 &&
-                <Box display="flex" flexWrap="wrap" justifyContent="space-around">
+            { loading? (
+                <LoadingIndicator/>
+            ):(
+                <TemplatesGrid
+                templates={filteredTemplates}
+                onTemplateClick={handleTemplateClick}
+                isEditable={lastSegment==='templates'}
+                currentUserId={currentUserId}
+                />
+            )}
+            {/* {!loading && filteredTemplates.length !== 0 &&
+                <Box  >
                     {filteredTemplates.map((template: Template) => (
                         <StyledImageContainer
                             key={template.templateID}
@@ -96,7 +107,7 @@ const TemplatesGallery = () => {
                             {/* <IconButton onClick={() => handleTemplateClick(template.templateID)} color="default" sx={{ position: 'absolute', top: 10, left: 10 }}>
                                 <CheckCircleOutlineRoundedIcon />
                             </IconButton> */}
-                            {lastSegment == 'templates' &&
+                            {/* {lastSegment == 'templates' &&
                                 <DeleteButton
                                     itemId={template.templateID}
                                     uploaderId={template.userID}
@@ -110,8 +121,8 @@ const TemplatesGallery = () => {
             {loading &&
                 <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                     <CircularProgress />
-                    <h2 style={{ marginLeft: '10px' }}>מעלה תבניות לרקע...</h2>
-                </div>}
+                    <h2 style={{ marginLeft: '10px' }}>מעלה רקעים...</h2>
+                </div>} */} 
         </>
     );
 };

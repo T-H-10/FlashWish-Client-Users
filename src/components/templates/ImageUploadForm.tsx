@@ -65,8 +65,8 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             />
             <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <div>
-                <button className={classes.submitButton} onClick={handleUpload}>הוסף</button>
-                <button className={classes.closeButton} onClick={onClose}>סגור</button>
+                <button className={classes.button} onClick={handleUpload}>הוסף</button>
+                <button className={classes.button} onClick={onClose}>סגור</button>
             </div>
         </div>
     );

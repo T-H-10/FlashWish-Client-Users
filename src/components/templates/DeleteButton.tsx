@@ -37,11 +37,19 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, current
     };
 
     if (uploaderId !== currentUserId) {
-        return null; // אם המשתמש המחובר אינו זה שהעלה את התמונה, לא להציג את הכפתור
+        return null; 
     }
 
     return (
-        <IconButton onClick={handleDeleteTemplate} color="default" sx={{ position: 'absolute', top: 10, right: 10 }}>
+        <IconButton onClick={handleDeleteTemplate} color="default" sx={{ 
+            position: 'absolute',
+            top: 10, 
+            right: 10,
+            color:'#25173b',
+            '&:hover': {
+                color: '#eeb451', 
+            }
+            }}>
             <DeleteIcon />
         </IconButton>
     );

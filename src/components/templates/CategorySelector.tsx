@@ -10,7 +10,7 @@ const CategorySelector = ({ selectedCategory, setSelectedCategory }: { selectedC
         <select value={selectedCategory} className={classes.select} onChange={(e) => setSelectedCategory(parseInt(e.target.value))}>
             <option value={0}>בחר קטגוריה</option>
             {allCategories.map((category: Category) => (
-                <option value={category.categoryID}>{category.categoryName}</option>
+                <option key={category.categoryID} value={category.categoryID}>{category.categoryName}</option>
             ))}
         </select>
     );

@@ -19,30 +19,49 @@ const UseStyleAddNewForm = makeStyles(() => ({
         fontSize: '16px',
     },
     button: {
-        // width: '70%',
-        padding: '10px 15px',
+        padding: '10px 20px',
+        margin: '5px',
         border: 'none',
         borderRadius: '4px',
-        cursor: 'pointer',
         fontSize: '16px',
-        margin: '5px',
-    },
-    submitButton: {
-        width: '10%',
+        cursor: 'pointer',
+        minWidth: '100px',
+        textAlign: 'center',
         backgroundColor: '#25173b',
         color: 'white',
-        margin: '5px'
+        transition: 'background-color 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#eeb451',
+        },
     },
-    closeButton: {
-        width: '10%',
-        backgroundColor: '#25173b',
-        color: 'white',
-        margin: '5px'
-    },
-    form: {
-        // display: 'flex',
-        // flexDirection: 'column',
-        // gap: '10px',
-    },
+    // buttonContainer: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     gap: '10px',
+    //     marginTop: '1rem',
+    //     justifyContent: 'center',
+    //     flexWrap: 'wrap',
+    // }
 }));
+
+
+//     submitButton: {
+//         width: '10%',
+//         backgroundColor: '#25173b',
+//         color: 'white',
+//         margin: '5px'
+//     },
+//     closeButton: {
+//         width: '10%',
+//         backgroundColor: '#25173b',
+//         color: 'white',
+//         margin: '5px'
+//     },
+//     form: {
+//         // display: 'flex',
+//         // flexDirection: 'column',
+//         // gap: '10px',
+//     },
+//    
+// }));
 export default UseStyleAddNewForm;

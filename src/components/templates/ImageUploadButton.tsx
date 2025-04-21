@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ImageUploadForm from './ImageUploadForm';
 import UseStyleImageUploaderForm from '../style/UseStyleAddNewForm';
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
+
 const ImageUploadButton = () => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     // const { loading } = useSelector(selectTemplates);

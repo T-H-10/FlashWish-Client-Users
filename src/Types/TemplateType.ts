@@ -19,7 +19,7 @@ export const initialTemplate:Template={
     templateName: 'רקע ברירת מחדל',
     categoryID: 0,
     userID: 0,
-    imageURL: 'default',
+    imageURL: 'https://res.cloudinary.com/dnschz6cr/image/upload/v1745241133/Flux_Schnell_Create_a_lush_and_naturalthemed_border_for_Sukkot_2.jpeg.jpg',
     // createdAt: new Date(Date.now()),
     // updatedAt: new Date(Date.now())
 }

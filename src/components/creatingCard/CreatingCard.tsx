@@ -16,45 +16,66 @@ import { fetchGreetingMessages } from "../../Store/messagesStore/GreetingsMessag
 import LoadingIndicator from "../LoadingIndicator";
 
 const CreatingCard = () => {
-    const defaultTemplate = "https://res.cloudinary.com/dnschz6cr/image/upload/v1742676818/Flux_Schnell_Create_a_vibrant_and_whimsical_frame_design_for_a_3.jpeg.jpg"
+    const defaultTemplate = "https://res.cloudinary.com/dnschz6cr/image/upload/v1745237681/Flux_Dev_Create_a_stunning_and_intricately_designed_background_3.jpeg.jpg";//לשנות ניתוב לניתוב דפולטיבי
+
     const [selectedCategoryId, setSelectedCategoryId] = useState(1012);
+    const [currentTemplate, setCurrentTemplate] = useState<Template>(initialTemplate);
+
     const dispatch = useDispatch<appDispatch>();
     // const { cardDispatch } = useContext(CardContext);
     // const currentCard = useContext(CardContext).card;
     const { templatesList, loading } = useSelector(selectTemplates);
     // const { greetingMessagesList } = useSelector(selectGreetingMessages);
     const { currentCard } = useContext(CurrentCardContext);
-    let currentTemplate: Template = initialTemplate;
-   
+    // let currentTemplate: Template = initialTemplate;
+
     useEffect(() => {
-        if (!loading) return;
-        dispatch(fetchTemplates());
+        if (templatesList.length === 0) {
+            dispatch(fetchTemplates());
+        }
+        // if (!loading) return;
         // dispatch(fetchGreetingMessages());
-    }, [dispatch, loading]);
+    }, [dispatch, templatesList.length]);
+
+    useEffect(() => {
+        if (currentCard.templateID && templatesList.length > 0) {
+            const template = templatesList.find((template: Template) => template.templateID === currentCard.templateID);
+            if (template) {
+                setCurrentTemplate(template);
+            }
+        }
+    }, [currentCard.templateID, templatesList]);
     // currentTemplate=templatesList.find((template: Template)=>template.templateID===currentCard.templateID) || initialTemplate;
     // currentMessage=greetingMessagesList.find((message:GreetingMessage)=> message.textID===currentCard.textID) || initialMessage;
     // console.log(currentCard);
 
-    if (!loading) {
-        currentTemplate = templatesList.find((template: Template) => template.templateID === currentCard.templateID) || initialTemplate;
-        // currentMessage = greetingMessagesList.find((message: GreetingMessage) => message.textID === currentCard.textID) || initialMessage;
-    }
+    // if (!loading) {
+    //     currentTemplate = templatesList.find((template: Template) => template.templateID === currentCard.templateID) || initialTemplate;
+    //     // currentMessage = greetingMessagesList.find((message: GreetingMessage) => message.textID === currentCard.textID) || initialMessage;
+    // }
     return (
         //להוסיף הגדרת לפי גודל המסך שאם מידי קטן יהיה flex wrap.
         <>
-            <Box display="inline-flex" flexDirection={'row'} justifyContent="space-between" p={2} width={"100%"} marginTop={'100px'} flexWrap={'nowrap'}>
-                <Paper style={{ width: '50%', padding: '16px', }}>
+            <Box
+                display="flex"
+                flexDirection={{ xs: 'column-reverse', md: 'row' }}
+                flexWrap={{ xs: 'wrap', md: 'nowrap' }}
+                justifyContent="space-between"
+                p={2}
+                width="100%"
+                marginTop={'100px'}
+            >
+                <Paper style={{ width: '100%',marginBottom: '16px', maxWidth: '600px', padding: '16px', }}>
                     <CategoriesList onCategorySelect={setSelectedCategoryId} />
                     <Outlet context={{ selectedCategoryId }} />
                 </Paper>
-                <Paper style={{ width: '50%', padding: '16px' }}>
+                <Paper style={{ width: '100%',maxWidth:'600px', padding: '16px' }}>
                     {loading ? (
-                        <LoadingIndicator content=''/>
+                        <LoadingIndicator content='' />
                         // <CircularProgress />
                     ) : (
-                        <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate}/>
-                    )
-                    }
+                        <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate} />
+                    )}
                 </Paper>
             </Box >
         </>

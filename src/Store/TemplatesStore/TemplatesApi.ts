@@ -55,7 +55,7 @@ export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplat
 
 export const updateTemplate = createAsyncThunk('templates/update', async ({ id, updatedTemplate }: { id: number, updatedTemplate: TemplatePostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLTemplates}/:${id}`, updatedTemplate);
+        const response = await axios.put(`${routerURLTemplates}/${id}`, updatedTemplate); //לבדוק האם צריך להוסיף : לפני הid.
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

@@ -1,9 +1,9 @@
 import { CircularProgress } from "@mui/material";
 
-const LoadingIndicator = () => (
+const LoadingIndicator = ({content}:{content:string}) => (
     <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
         <CircularProgress />
-        <h2 style={{ marginLeft: '10px' }}>מעלה רקעים...</h2>
+        <h2 style={{ marginLeft: '10px' }}>{content}</h2>
     </div>
 );
 

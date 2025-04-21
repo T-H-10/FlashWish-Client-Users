@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCategory, fetchCategories } from '../../Store/ctagoriesStore/CategoriesApi';
 import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 import { appDispatch } from '../../Store/Store';
-import CircularProgress from '@mui/material/CircularProgress';
 import { Category } from '../../types/CategoryTypes';
 import AddCategory from './AddCategory ';
 import MyButton from '../style/MyButton';
+import LoadingIndicator from '../LoadingIndicator';
 
 
 export const CategoriesListContext = createContext<Category[]>([]);
@@ -28,17 +28,15 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
             <h3>בחר קטגוריה:</h3>
             {categoriesList.map((category: Category) => (
                 <span key={category.categoryID}>
-                    <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName}/>
+                    <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName} />
                 </span>
             ))}
-                           
-                <AddCategory existingCategories={categoriesList.map(category=>category.categoryName)} onAddCategory={handleAddCategory} />
-           
+
+            <AddCategory existingCategories={categoriesList.map(category => category.categoryName)} onAddCategory={handleAddCategory} />
+
             {loading &&
-                <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
-                    <CircularProgress />
-                    <h2 style={{ marginLeft: '10px' }}>טוען קטגוריות...</h2>
-                </div>}
+                <LoadingIndicator content='טוען קטגוריות...' />
+            }
         </>
     );
 };

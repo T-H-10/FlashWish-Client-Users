@@ -29,7 +29,7 @@ const TemplatesSlice = createSlice({
                 handleApiError(action.error);
             })
             .addCase(addTemplate.fulfilled, (state, action: PayloadAction<Template>) => {
-                state.templatesList = [...state.templatesList, { ...action.payload }];
+                state.templatesList.push(action.payload);
                 state.loading = false;
             })
             .addCase(addTemplate.pending, (state) => {

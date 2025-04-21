@@ -2,18 +2,19 @@ import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add'; // נשתמש באייקון שונה
 import GreetingForm from './GreetingForm';
 import BlessingGenerator from './generateMessage/BlessingGenerator';
+import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
 
 const GreetingCreateButton = () => {
     const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
     const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
-
+    const classes=UseStyleAddNewForm();
     return (
         <>
-            <button id='add' style={{margin: '3px'}} onClick={() => setAddModalVisible(true)}>
+            <button id='add' className={classes.button} onClick={() => setAddModalVisible(true)}>
                 <AddIcon />
                 יצירת תוכן חדש
             </button>
-            <button id='create' style={{margin: '3px'}} onClick={()=>setCreateModalVisible(true)}>
+            <button id='create' className={classes.button} onClick={()=>setCreateModalVisible(true)}>
                 <AddIcon />
                 בקשת תוכן חדש ע"י AI
             </button>

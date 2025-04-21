@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Paper } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import CategoriesList from "../categories/CategoriesList";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -13,6 +13,7 @@ import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
 import { selectGreetingMessages } from "../../Store/messagesStore/GreetingMessagesSlice";
 import { GreetingMessage, initialMessage } from "../../types/GreetingMessageType";
 import { fetchGreetingMessages } from "../../Store/messagesStore/GreetingsMessagesApi";
+import LoadingIndicator from "../LoadingIndicator";
 
 const CreatingCard = () => {
     const defaultTemplate = "https://res.cloudinary.com/dnschz6cr/image/upload/v1742676818/Flux_Schnell_Create_a_vibrant_and_whimsical_frame_design_for_a_3.jpeg.jpg"
@@ -48,7 +49,8 @@ const CreatingCard = () => {
                 </Paper>
                 <Paper style={{ width: '50%', padding: '16px' }}>
                     {loading ? (
-                        <CircularProgress />
+                        <LoadingIndicator content=''/>
+                        // <CircularProgress />
                     ) : (
                         <EditableCanvas imageUrl={currentTemplate?.imageURL || defaultTemplate}/>
                     )

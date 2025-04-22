@@ -6,7 +6,7 @@ import { IsLogin } from '../App';
 import { logoutUser } from './Logout';
 import { UserContext } from '../types/UserTypes';
 import MyAvatar from './style/MyAvatar';
-import UserProfileModal from './login & register/UserProfileModal';
+import UserProfileModal from './login & register/userProfileModal/UserProfileModal';
 
 
 const Header = () => {

@@ -33,7 +33,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                 categoryID: selectedCategoryId
             }
         });
-        dispatch(updateGreetingCard({ id: newCard.textID, greetingCard: { ...newCard, templateID: 0 } }));//fix it!
+        // dispatch(updateGreetingCard({ id: newCard.textID, greetingCard: { ...newCard, templateID: 0 } }));//fix it!
         navigate('/creatingCard');
     };
     return (

@@ -1,5 +1,5 @@
 import * as fabric from "fabric";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import TextAddition from "./TextAddition";
 import TextColor from "./TextColor";
 import TextSize from "./TextSize";
@@ -11,6 +11,8 @@ import TextUnderline from "./TextUnderline";
 import { appDispatch } from "../../Store/Store";
 import { useDispatch } from "react-redux";
 import LoadingIndicator from "../LoadingIndicator";
+import { addGreetingCard, updateGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
+import { UserContext } from "../../types/UserTypes";
 
 // נתיב לרקע דיפולטיבי
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dnschz6cr/image/upload/v1745242362/Flux_Schnell_Create_a_rich_and_textured_background_for_Passove_0.jpeg.jpg";
@@ -21,6 +23,8 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const fabricRef = useRef<fabric.Canvas | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
+    const currentUserId = useContext(UserContext).user.id;
+    // const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     // מעלה תמונה ומציבה כרקע בקנבס
     const setCanvasBackground = async (url: string) => {
         if (!fabricRef.current) return;
@@ -79,6 +83,23 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
         if (fabricRef.current) {
             const json = fabricRef.current.toJSON();
             console.log("Design saved:", json);
+
+            try{
+                const response = dispatch(addGreetingCard(
+                    {
+                        userID: currentUserId,
+                        textID:11,
+                        categoryID: 1012,
+                        templateID: 41,
+                        canvasStyle: json,
+                    }));
+                console.log(response);
+                
+            }
+            catch (error) {
+                console.error("Error saving design:", error);
+                alert("שגיאה בשמירת העיצוב");
+            }
         }
     };
 

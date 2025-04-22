@@ -9,7 +9,7 @@ const DownloadButton = ({ canvas }: { canvas: fabric.Canvas }) => {
 
         canvasElement.toBlob((blob) => {
             if (blob) {
-                saveAs(blob, "greeting-card.png");
+                saveAs(blob, "greeting-card-flashwish.png");
             }
         }, "image/png");
     };

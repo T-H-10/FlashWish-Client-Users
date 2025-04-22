@@ -33,13 +33,25 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     const [isEditing, setIsEditing] = useState<{ field: 'title' | 'content' | 'signature' | null }>({ field: null });
     const [modalTitle, setModalTitile] = useState<string>('');
     useEffect(() => {
-        const textObjects = canvas.getObjects('text') as fabric.Text[];
+        const hasTextType = (type: string) =>
+            canvas.getObjects('textbox').some((obj) => obj.get('customType') === type);
 
-        if (textObjects.length === 0) {
+        if (!hasTextType('title')) {
             addTextToCanvas(title, 100, 50, 'title');
+        }
+        if (!hasTextType('content')) {
             addTextToCanvas(content, 100, 150, 'content');
+        }
+        if (!hasTextType('signature')) {
             addTextToCanvas(signature, 100, 250, 'signature');
         }
+        // const textObjects = canvas.getObjects('text') as fabric.Textbox[];
+
+        // if (textObjects.length === 0) {
+        // addTextToCanvas(title, 100, 50, 'title');
+        // addTextToCanvas(content, 100, 150, 'content');
+        // addTextToCanvas(signature, 100, 250, 'signature');
+        // }
     }, [canvas]);
 
     useEffect(() => updateCanvasText('title', title), [title, canvas]);
@@ -54,13 +66,16 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     };
 
     const addTextToCanvas = (text: string, left: number, top: number, type: 'title' | 'content' | 'signature') => {
-        const textObject = new fabric.Text(text, {
+        const textObject = new fabric.Textbox(text, {
             left,
             top,
+            width: canvas.width - 200,
             fontSize: type === 'title' ? 40 : type === 'content' ? 30 : 25,
             fill: 'black',
             selectable: true,
             fontWeight: type === 'title' ? 'bold' : 'normal',
+            direction: 'rtl',
+            textAlign: 'right',
         });
         textObject.set('customType', type); // שומר סוג האובייקט
         canvas.add(textObject);
@@ -68,7 +83,7 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     };
 
     const updateCanvasText = (type: 'title' | 'content' | 'signature', newText: string) => {
-        const textObjects = canvas.getObjects('text') as fabric.Text[];
+        const textObjects = canvas.getObjects('textbox') as fabric.Textbox[];
         const textObj = textObjects.find(obj => obj.get('customType') === type);
         if (textObj) {
             textObj.set({ text: newText });
@@ -78,19 +93,21 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     return (
         <>
-            <button onClick={() => { setIsEditing({ field: 'title' }); setModalTitile('ערוך כותרת') }}>ערוך כותרת</button>
-            <button onClick={() => { setIsEditing({ field: 'content' }); setModalTitile('ערוך תוכן') }}>ערוך תוכן</button>
-            <button onClick={() => { setIsEditing({ field: 'signature' }); setModalTitile('ערוך חתימה') }}>ערוך חתימה</button>
+            <div>
+                <button onClick={() => { setIsEditing({ field: 'title' }); setModalTitile('ערוך כותרת') }}>ערוך כותרת</button>
+                <button onClick={() => { setIsEditing({ field: 'content' }); setModalTitile('ערוך תוכן') }}>ערוך תוכן</button>
+                <button onClick={() => { setIsEditing({ field: 'signature' }); setModalTitile('ערוך חתימה') }}>ערוך חתימה</button>
 
-            <MyModal isOpen={isEditing.field !== null} title={modalTitle} onClose={() => setIsEditing({ field: null })}>
-                {isEditing.field && (
-                    <TextEditor currentText={
-                        isEditing.field === 'title' ? title :
-                            isEditing.field === 'content' ? content :
-                                signature
-                    } onSave={updateText} />
-                )}
-            </MyModal>
+                <MyModal isOpen={isEditing.field !== null} title={modalTitle} onClose={() => setIsEditing({ field: null })}>
+                    {isEditing.field && (
+                        <TextEditor currentText={
+                            isEditing.field === 'title' ? title :
+                                isEditing.field === 'content' ? content :
+                                    signature
+                        } onSave={updateText} />
+                    )}
+                </MyModal>
+            </div>
         </>
     );
 };

@@ -8,6 +8,7 @@ import { GreetingCard } from '../../types/GreetingCardsTypes';
 
 
 const MyCardsGallery = () => {
+   
     const dispatch = useDispatch<appDispatch>();
     const { greetingCardsList, loading } = useSelector(selectGreetingCards);
 
@@ -19,15 +20,19 @@ const MyCardsGallery = () => {
         return <p>טוען...</p>;
     }
 
+    console.log(greetingCardsList.length);
+    
     return (
-        <div>
+        <>
             <h1>הכרטיסים המעוצבים שלי</h1>
             <div className="gallery">
-                {greetingCardsList.map((card: GreetingCard) => (
+                {
+                !loading &&
+                greetingCardsList.map((card: GreetingCard) => (
                     <GreetingCardItem key={card.cardID} card={card} />
                 ))}
             </div>
-        </div>
+        </>
     );
 };
 

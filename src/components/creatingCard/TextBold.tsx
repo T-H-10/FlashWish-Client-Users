@@ -7,7 +7,7 @@ const TextBold = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     const toggleBold = () => {
         const activeObject = canvas?.getActiveObject();
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             const newFontWeight = isBold ? 'normal' : 'bold';
             activeObject.set('fontWeight', newFontWeight);
             setIsBold(!isBold);

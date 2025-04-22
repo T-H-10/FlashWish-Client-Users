@@ -11,7 +11,7 @@ const TextSize = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     const changeTextSize = (size: number) => {
         const activeObject = canvas?.getActiveObject();
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             activeObject.set('fontSize', size);
             canvas?.renderAll();
         }

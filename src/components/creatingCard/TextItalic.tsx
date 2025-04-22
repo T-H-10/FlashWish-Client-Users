@@ -11,7 +11,7 @@ const TextItalic = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     const toggleItalic = () => {
         const activeObject = canvas?.getActiveObject() as CustomFabricText;
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             const newFontStyle = isItalic ? 'italic' : 'normal';
             activeObject.set('fontStyle', newFontStyle);
             setIsItalic(!isItalic);

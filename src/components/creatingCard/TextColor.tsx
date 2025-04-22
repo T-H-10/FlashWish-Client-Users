@@ -5,7 +5,7 @@ const TextColor = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     const changeTextColor = (color: string) => {
         const activeObject = canvas?.getActiveObject();
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             activeObject.set('fill', color);
             canvas?.renderAll();
         }

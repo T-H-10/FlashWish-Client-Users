@@ -21,7 +21,7 @@ const TextBackground = ({ canvas }: { canvas: fabric.Canvas }) => {
 
     const updateBackgroundColor = (color: string, alpha: number) => {
         const activeObject = canvas?.getActiveObject();
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             activeObject.set('backgroundColor', hexToRgba(color, alpha));
             canvas?.renderAll(); 
         }

@@ -13,7 +13,7 @@ const TextUnderline = ({ canvas }: { canvas: fabric.Canvas }) => {
     const toggleUnderline = () => {
         // console.log(isUnderlined);
         const activeObject = canvas?.getActiveObject() as CustomFabricText;
-        if (activeObject && activeObject.type === 'text') {
+        if (activeObject && activeObject.type === 'textbox') {
             // const newTextDecoration = isUnderlined ? 'none' : 'underline';
             // activeObject.set('textDecoration', newTextDecoration);
             activeObject.set('underline', !isUnderlined);

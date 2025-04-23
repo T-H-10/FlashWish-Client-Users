@@ -9,23 +9,26 @@ import { initialUserState, UserContext } from './types/UserTypes';
 import CardReducer, { CurrentCardContext } from './Store/cardReducer/CardReducer';
 import { initialGreetingCardState } from './types/GreetingCardsTypes';
 
-export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => null])
+export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => {}]);
+
 const App = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [user, userDispatch] = useReducer(UserReducer, initialUserState);
   const [currentCard, cardDispatch] = useReducer(CardReducer, initialGreetingCardState);
+  
   return (
     <>
-      <title>FlashWish</title>
-      <IsLogin value={[isLogin, setIsLogin]}>
-        <UserContext value={{ user, userDispatch }}>
-          <CurrentCardContext value={{ currentCard, cardDispatch }}>
+      {/* <title>FlashWish</title> */}
+      {/* לבדוק האם חייבים provider */}
+      <IsLogin.Provider value={[isLogin, setIsLogin]}> 
+        <UserContext.Provider value={{ user, userDispatch }}>
+          <CurrentCardContext.Provider value={{ currentCard, cardDispatch }}>
             <Provider store={Store}>
               <RouterProvider router={router} />
             </Provider>
-          </CurrentCardContext>
-        </UserContext>
-      </IsLogin>
+          </CurrentCardContext.Provider>
+        </UserContext.Provider>
+      </IsLogin.Provider>
     </>
   )
 }

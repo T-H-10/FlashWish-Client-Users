@@ -49,6 +49,8 @@ const Login = () => {
             });
             navigate('/');
         } catch (e: any) {
+            console.log(typeof(e));
+            
             let errorMessage: string;
             if (e.response?.status === 401) {
                 errorMessage = '!אימייל או סיסמה שגויים';

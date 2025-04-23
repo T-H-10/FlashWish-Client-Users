@@ -3,10 +3,10 @@ import UseStylesHeader from './style/UseStyleHeader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
-import { LogoutUser } from './Logout';
 import { UserContext } from '../types/UserTypes';
 import MyAvatar from './style/MyAvatar';
 import UserProfileModal from './login & register/userProfileModal/UserProfileModal';
+import LogoutUser from './Logout';
 
 
 const Header = () => {

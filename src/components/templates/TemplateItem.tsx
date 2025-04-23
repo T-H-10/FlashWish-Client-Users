@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import StyledImageContainer from "../style/StyledImageContainer";
 import { Template } from "../../types/TemplateType";
 import DeleteButton from "./DeleteButton";
-import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
+import { deleteTemplate } from "../../Store/templatesStore-change/TemplatesApi";
 import ChoosingButton from "../ChoosingButton";
 
 const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ template:Template, onClick:Function, isEditable: boolean, currentUserId:number }) => (

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { UserContext } from '../../types/UserTypes';
 import { useDispatch } from 'react-redux';
-import { addTemplate } from '../../Store/templatesStore/TemplatesApi';
+import { addTemplate } from '../../Store/templatesStore-change/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
 import { TemplatePostModel } from '../../types/TemplateType';
 import CategorySelector from './CategorySelector';

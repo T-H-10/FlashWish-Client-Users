@@ -1,5 +1,5 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import TemplatesSlice from "./templatesStore/TemplatesSlice";
+import TemplatesSlice from "./templatesStore-change/TemplatesSlice";
 import CategoriesSlice from "./categoriesStore/CategoriesSlice";
 import GreetingMessagesSlice from "./messagesStore/GreetingMessagesSlice";
 import GreetingCardsSlice from "./cardsStore/GreetingCardsSlice";

@@ -14,7 +14,7 @@ const DEFAULT_CONTENT = 'תוכן ברירת מחדל';
 const DEFAULT_SIGNATURE = 'חתימה ברירת מחדל';
 
 const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
-    const { currentCard, cardDispatch } = useContext(CurrentCardContext);
+    const { currentCard } = useContext(CurrentCardContext);
     const { greetingMessagesList, loading } = useSelector(selectGreetingMessages);
     const dispatch = useDispatch<appDispatch>();
     useEffect(() => {

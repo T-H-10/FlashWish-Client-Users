@@ -6,13 +6,9 @@ import EditableCanvas from "./EditableCanvas";
 import { useDispatch, useSelector } from "react-redux";
 import { appDispatch } from "../../Store/Store";
 import { fetchTemplates } from "../../Store/templatesStore/TemplatesApi";
-// import { CardContext } from "../../Store/cardReducer/CardContext";
 import { selectTemplates } from "../../Store/templatesStore/TemplatesSlice";
 import { initialTemplate, Template } from "../../types/TemplateType";
 import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
-import { selectGreetingMessages } from "../../Store/messagesStore/GreetingMessagesSlice";
-import { GreetingMessage, initialMessage } from "../../types/GreetingMessageType";
-import { fetchGreetingMessages } from "../../Store/messagesStore/GreetingsMessagesApi";
 import LoadingIndicator from "../LoadingIndicator";
 
 const CreatingCard = () => {

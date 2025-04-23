@@ -11,7 +11,7 @@ import TextUnderline from "./TextUnderline";
 import { appDispatch } from "../../Store/Store";
 import { useDispatch } from "react-redux";
 import LoadingIndicator from "../LoadingIndicator";
-import { addGreetingCard, updateGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
+import { addGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
 import { UserContext } from "../../types/UserTypes";
 
 // נתיב לרקע דיפולטיבי
@@ -81,7 +81,7 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
 
     const saveDesign = () => {
         if (fabricRef.current) {
-            const json = fabricRef.current.toJSON();
+            const json =JSON.stringify( fabricRef.current.toJSON());
             console.log("Design saved:", json);
 
             try{

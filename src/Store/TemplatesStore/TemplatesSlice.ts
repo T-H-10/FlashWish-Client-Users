@@ -26,6 +26,7 @@ const TemplatesSlice = createSlice({
                 state.selectedTemplate = action.payload; // תוודאי שהוספת selectedTemplate ל-initialState
             })
             .addCase(fetchTemplateById.rejected, (state, action) => {
+                state.loading = false;
                 handleApiError(action.error);
             })
             .addCase(addTemplate.fulfilled, (state, action: PayloadAction<Template>) => {

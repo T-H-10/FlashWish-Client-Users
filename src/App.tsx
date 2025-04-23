@@ -11,7 +11,7 @@ import { initialGreetingCardState } from './types/GreetingCardsTypes';
 
 export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => null])
 const App = () => {
-  const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
   const [user, userDispatch] = useReducer(UserReducer, initialUserState);
   const [currentCard, cardDispatch] = useReducer(CardReducer, initialGreetingCardState);
   return (

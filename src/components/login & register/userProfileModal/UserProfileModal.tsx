@@ -1,4 +1,4 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Button } from '@mui/material';
 import UserProfileForm from './UserProfileForm';
 
 const UserProfileModal = ({

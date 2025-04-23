@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectGreetingCards } from '../../Store/cardsStore/GreetingCardsSlice';
 import { fetchGreetingCards } from '../../Store/cardsStore/GreetingCardsApi';
 import { appDispatch } from '../../Store/Store';
-import GreetingCardItem from './GreetingCardItem';
+// import GreetingCardItem from './GreetingCardItem';
 import { GreetingCard } from '../../types/GreetingCardsTypes';
+import GreetingCardPreview from './GreetingCardPreview';
 
 
 const MyCardsGallery = () => {
@@ -29,8 +30,10 @@ const MyCardsGallery = () => {
                 {
                 !loading &&
                 greetingCardsList.map((card: GreetingCard) => (
-                    <GreetingCardItem key={card.cardID} card={card} />
-                ))}
+                    // <GreetingCardItem key={card.cardID} card={card} />
+                    <GreetingCardPreview key={card.cardID} canvasStyle={card.canvasStyle} width={500} height={500} />
+                )
+                )}
             </div>
         </>
     );

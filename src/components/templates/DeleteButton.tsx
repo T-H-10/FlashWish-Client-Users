@@ -15,7 +15,8 @@ type DeleteButtonProps= {
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, currentUserId, deleteFunc }) => {
     const dispatch = useDispatch<appDispatch>();
-
+    console.log(itemId); //can be removed from the props!!
+    
     const handleDeleteTemplate = () => {
         Swal.fire({
             title: 'אתה בטוח?',

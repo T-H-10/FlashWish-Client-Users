@@ -64,7 +64,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
     };
     return (
         <div className={classes.formContainer}>
-            <form onSubmit={handleSubmit} className={classes.form}>
+            <form onSubmit={handleSubmit}>
                 <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} /> 
                 <input
                     type="text"
@@ -93,8 +93,8 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
                     className={classes.input}
                 />
                 <div>
-                <button type="submit" className={`${classes.button} ${classes.submitButton}`}>הוסף</button>
-                <button type="button" onClick={onClose} className={`${classes.button} ${classes.closeButton}`}>סגור</button>
+                <button type="submit" className={`${classes.button}`}>הוסף</button>
+                <button type="button" onClick={onClose} className={`${classes.button}`}>סגור</button>
                 </div>
             </form>
         </div>

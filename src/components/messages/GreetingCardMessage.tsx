@@ -5,9 +5,6 @@ import { useContext } from 'react';
 import { UserContext } from '../../types/UserTypes';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
-import { appDispatch } from '../../Store/Store';
-import { useDispatch } from 'react-redux';
-import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import ChoosingButton from '../ChoosingButton';
 import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 
@@ -15,16 +12,16 @@ import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessag
 const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     const content: string[] = message.content.split('\n');
     const currentUserId = useContext(UserContext).user.id;
-    const dispatch = useDispatch<appDispatch>();
+    // const dispatch = useDispatch<appDispatch>();
     const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     const navigate = useNavigate();
     const { cardDispatch } = useContext(CurrentCardContext);
     const handleMessageClick = (messageID: number) => {
-        const newCard = {
-            userID: currentUserId,
-            textID: messageID,
-            categoryID: selectedCategoryId
-        };
+        // const newCard = {
+        //     userID: currentUserId,
+        //     textID: messageID,
+        //     categoryID: selectedCategoryId
+        // };
         cardDispatch({
             type: 'UPDATE_CARD',
             data: {

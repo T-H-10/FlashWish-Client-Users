@@ -6,7 +6,7 @@ import { fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { CategoriesListContext } from '../categories/CategoriesList';
-import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
+import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
 import { UserContext } from '../../types/UserTypes';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';

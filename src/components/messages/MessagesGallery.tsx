@@ -7,7 +7,7 @@ import { useOutletContext } from 'react-router-dom';
 import { CategoriesListContext } from '../categories/CategoriesList';
 import { selectGreetingMessages } from '../../Store/messagesStore/GreetingMessagesSlice';
 import { fetchGreetingMessages } from '../../Store/messagesStore/GreetingsMessagesApi';
-import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
+import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
 import GreetingCard from './GreetingCardMessage';
 import GreetingCreateButton from './GreetingCreateButton';
 import LoadingIndicator from '../LoadingIndicator';

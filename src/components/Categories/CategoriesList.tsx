@@ -1,12 +1,12 @@
 import { createContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCategory, fetchCategories } from '../../Store/ctagoriesStore/CategoriesApi';
-import { selectCategories } from '../../Store/ctagoriesStore/CategoriesSlice';
 import { appDispatch } from '../../Store/Store';
 import { Category } from '../../types/CategoryTypes';
 import AddCategory from './AddCategory ';
 import MyButton from '../style/MyButton';
 import LoadingIndicator from '../LoadingIndicator';
+import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
+import { addCategory, fetchCategories } from '../../Store/categoriesStore/CategoriesApi';
 
 
 export const CategoriesListContext = createContext<Category[]>([]);

@@ -2,7 +2,7 @@
 import { createContext, Dispatch } from "react";
 import { Action } from "../Store/userReducer/UserReducer";
 
-export const API_URL='http://localhost:5279/api';
+export const API_URL= import.meta.env.VITE_API_URL;
 
 export type UserType = {
     id: number;

@@ -2,8 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import Swal from 'sweetalert2';
-import { API_URL } from "../../types/UserTypes";
-import { Template, TemplatePostModel } from "../../types/TemplateType";
+import { API_URL } from "../../types-change/UserTypes";
+import { Template, TemplatePostModel } from "../../types-change/TemplateType";
 
 const routerURLTemplates = API_URL+"/Templates";
 

@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import { GreetingMessage } from "../../types/GreetingMessageType";
+import { GreetingMessage } from "../../types-change/GreetingMessageType";
 import DeleteButton from '../templates/DeleteButton';
 import { useContext } from 'react';
-import { UserContext } from '../../types/UserTypes';
+import { UserContext } from '../../types-change/UserTypes';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import ChoosingButton from '../ChoosingButton';

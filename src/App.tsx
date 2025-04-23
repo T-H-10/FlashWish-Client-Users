@@ -1,13 +1,13 @@
 import { createContext, Dispatch, useReducer, useState } from 'react';
 import './App.css'
 import Store from './Store/Store'
-import UserReducer from './Store/userReducer/UserReducer';
+import UserReducer from './Store/userReducer-change/UserReducer';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './Routes';
-import { initialUserState, UserContext } from './types/UserTypes';
+import { initialUserState, UserContext } from './types-change/UserTypes';
 import CardReducer, { CurrentCardContext } from './Store/cardReducer/CardReducer';
-import { initialGreetingCardState } from './types/GreetingCardsTypes';
+import { initialGreetingCardState } from './types-change/GreetingCardsTypes';
 
 export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => {}]);
 

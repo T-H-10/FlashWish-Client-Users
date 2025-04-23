@@ -3,8 +3,8 @@ import UseStylesHeader from './style/UseStyleHeader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { IsLogin } from '../App';
-import { logoutUser } from './Logout';
-import { UserContext } from '../types/UserTypes';
+import { LogoutUser } from './Logout-change';
+import { UserContext } from '../types-change/UserTypes';
 import MyAvatar from './style/MyAvatar';
 import UserProfileModal from './login & register/userProfileModal/UserProfileModal';
 
@@ -85,7 +85,7 @@ const Header = () => {
                                 className={`${classes.menuButton} ${selectedButton === 'logout' ? 'selected' : ''}`}
                                 onClick={() => {
                                     setSelectedButton('logout');
-                                    logoutUser(userDispatch, navigate, setIsLogin);
+                                    LogoutUser(userDispatch, navigate, setIsLogin);
                                 }}>
                                 התנתקות
                             </Button>

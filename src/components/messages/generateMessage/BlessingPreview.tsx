@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography, IconButton, Box } from '@mui/material';
 import { Celebration, Done } from '@mui/icons-material';
-import { GreetingMessagePostModel } from '../../../types/GreetingMessageType';
+import { GreetingMessagePostModel } from '../../../types-change/GreetingMessageType';
 
 const BlessingPreview = ({ blessing, onSave }: { blessing: GreetingMessagePostModel; onSave: () => void }) => (
   <Card sx={{ mt: 4, p: 2, backgroundColor: '#f9f9f9' }}>

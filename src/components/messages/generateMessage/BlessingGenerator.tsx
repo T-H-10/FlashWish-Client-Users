@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { Card, Typography, CircularProgress, FormControl, InputLabel, Select, MenuItem, TextField, Checkbox, FormControlLabel } from '@mui/material';
 import axios from 'axios';
-import { API_URL, UserContext } from '../../../types/UserTypes';
-import { GreetingMessagePostModel } from '../../../types/GreetingMessageType';
+import { API_URL, UserContext } from '../../../types-change/UserTypes';
+import { GreetingMessagePostModel } from '../../../types-change/GreetingMessageType';
 import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../../Store/Store';
 import { addGreetingMessage } from '../../../Store/messagesStore/GreetingsMessagesApi';

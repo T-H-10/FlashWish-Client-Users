@@ -1,24 +1,7 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "*": ["node_modules/*", "src/*"]
-    }
-  },
-  "include": [
-    "src",
-    "vite.config.ts"
-  ],
+  "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ]
 }
-
-// {
-//   "files": [],
-//   "references": [
-//     { "path": "./tsconfig.app.json" },
-//     { "path": "./tsconfig.node.json" }
-//   ]
-// }

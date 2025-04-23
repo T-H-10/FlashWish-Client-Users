@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import FormContainer from './FormContainer';
-import { API_URL, UserContext, UserType } from '../../types/UserTypes';
+import { API_URL, UserContext, UserType } from '../../types-change/UserTypes';
 import { IsLogin } from '../../App';
 import Validation from './Validation';
 import EmailInput from './FormInputs/EmailInput';

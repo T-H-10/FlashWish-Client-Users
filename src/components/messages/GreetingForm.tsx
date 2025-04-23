@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { UserContext } from '../../types/UserTypes';
+import { UserContext } from '../../types-change/UserTypes';
 import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
 import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
-import { GreetingMessagePostModel } from '../../types/GreetingMessageType';
+import { GreetingMessagePostModel } from '../../types-change/GreetingMessageType';
 import CategorySelector from '../templates/CategorySelector';
 import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
 

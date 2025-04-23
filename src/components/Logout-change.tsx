@@ -1,7 +1,6 @@
-// logout.js
 import Swal from 'sweetalert2';
 
-export const logoutUser = (userDispatch: Function, navigate: Function, setIsLogin: Function ) => {
+const LogoutUser = (userDispatch: Function, navigate: Function, setIsLogin: Function ) => {
     Swal.fire({
         title: 'האם אתה בטוח?',
         text: "לאחר שתצא, תצטרך להתחבר שוב.",
@@ -20,3 +19,4 @@ export const logoutUser = (userDispatch: Function, navigate: Function, setIsLogi
         } 
     });
 };
+export default LogoutUser;

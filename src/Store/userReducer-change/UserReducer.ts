@@ -1,4 +1,4 @@
-import { initialUserState, UserType } from "../../types/UserTypes"
+import { initialUserState, UserType } from "../../types-change/UserTypes"
 
 export type Action = {
     type: 'REGISTER_USER',

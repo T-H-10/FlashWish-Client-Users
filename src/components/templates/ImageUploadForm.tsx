@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import { UserContext } from '../../types/UserTypes';
+import { UserContext } from '../../types-change/UserTypes';
 import { useDispatch } from 'react-redux';
 import { addTemplate } from '../../Store/templatesStore/TemplatesApi';
 import { appDispatch } from '../../Store/Store';
-import { TemplatePostModel } from '../../types/TemplateType';
+import { TemplatePostModel } from '../../types-change/TemplateType';
 import CategorySelector from './CategorySelector';
 import UseStyleImageUploaderForm from '../style/UseStyleAddNewForm';
 

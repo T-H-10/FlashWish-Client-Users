@@ -5,15 +5,15 @@ import { appDispatch } from '../../Store/Store';
 import { fetchTemplates } from '../../Store/templatesStore/TemplatesApi';
 import { selectTemplates } from '../../Store/templatesStore/TemplatesSlice';
 import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
-import { CategoriesListContext } from '../categories/CategoriesList';
+import { CategoriesListContext } from '../categories-change/CategoriesList';
 import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
-import { UserContext } from '../../types/UserTypes';
+import { UserContext } from '../../types-change/UserTypes';
 import { updateGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import TemplatesGrid from './TemplateGrid';
-import { GreetingCardPostModel } from '../../types/GreetingCardsTypes';
+import { GreetingCardPostModel } from '../../types-change/GreetingCardsTypes';
 import LoadingIndicator from '../LoadingIndicator';
-import { Template } from '../../types/TemplateType';
+import { Template } from '../../types-change/TemplateType';
 
 const TemplatesGallery = () => {
     const { categoriesList } = useSelector(selectCategories);

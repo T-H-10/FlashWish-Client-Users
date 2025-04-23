@@ -13,15 +13,16 @@ import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import TemplatesGrid from './TemplateGrid';
 import { GreetingCardPostModel } from '../../types/GreetingCardsTypes';
 import LoadingIndicator from '../LoadingIndicator';
+import { Template } from '../../types/TemplateType';
 
 const TemplatesGallery = () => {
     const { categoriesList } = useSelector(selectCategories);
-    const dispatch = useDispatch<appDispatch>();
-    const { templatesList, loading } = useSelector(selectTemplates);
+    const dispatch: appDispatch = useDispatch<appDispatch>();
+    const { templatesList, loading }: { templatesList: Template[]; loading: boolean } = useSelector(selectTemplates);
     const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     const currentUserId = useContext(UserContext).user.id;
     const filteredTemplates = selectedCategoryId === 1012 ? templatesList
-        : templatesList.filter(template => template.categoryID === selectedCategoryId);
+        : templatesList.filter((template:Template) => template.categoryID === selectedCategoryId);
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];

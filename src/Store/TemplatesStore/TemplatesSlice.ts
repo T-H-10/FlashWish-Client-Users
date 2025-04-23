@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addTemplate, deleteTemplate, fetchTemplateById, fetchTemplates, updateTemplate } from "./TemplatesApi";
 import Swal from 'sweetalert2';
-import { initialTemplate, Template } from "../../types-change/TemplateType";
+import { initialTemplate, Template } from "../../types/TemplateType";
 import { storeType } from "../Store";
 
 const TemplatesSlice = createSlice({

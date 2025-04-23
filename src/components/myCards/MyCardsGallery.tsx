@@ -4,7 +4,7 @@ import { selectGreetingCards } from '../../Store/cardsStore/GreetingCardsSlice';
 import { fetchGreetingCards } from '../../Store/cardsStore/GreetingCardsApi';
 import { appDispatch } from '../../Store/Store';
 // import GreetingCardItem from './GreetingCardItem';
-import { GreetingCard } from '../../types-change/GreetingCardsTypes';
+import { GreetingCard } from '../../types/GreetingCardsTypes';
 import GreetingCardPreview from './GreetingCardPreview';
 
 

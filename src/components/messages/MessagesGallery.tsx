@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { GreetingMessage } from "../../types-change/GreetingMessageType";
+import { GreetingMessage } from "../../types/GreetingMessageType";
 import { Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
 import { useOutletContext } from 'react-router-dom';
-import { CategoriesListContext } from '../categories-change/CategoriesList';
+import { CategoriesListContext } from '../categories/CategoriesList';
 import { selectGreetingMessages } from '../../Store/messagesStore/GreetingMessagesSlice';
 import { fetchGreetingMessages } from '../../Store/messagesStore/GreetingsMessagesApi';
 import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';

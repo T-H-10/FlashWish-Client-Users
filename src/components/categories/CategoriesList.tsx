@@ -1,7 +1,7 @@
 import { createContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
-import { Category } from '../../types-change/CategoryTypes';
+import { Category } from '../../types/CategoryTypes';
 import AddCategory from './AddCategory ';
 import MyButton from '../style/MyButton';
 import LoadingIndicator from '../LoadingIndicator';

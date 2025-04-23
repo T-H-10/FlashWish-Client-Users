@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Template } from "../../types-change/TemplateType";
+import { Template } from "../../types/TemplateType";
 import TemplateItem from "./TemplateItem";
 
 const TemplatesGrid = ({ templates, onTemplateClick, isEditable, currentUserId }:{ templates: Template[], onTemplateClick: Function, isEditable: boolean, currentUserId: number }) => (

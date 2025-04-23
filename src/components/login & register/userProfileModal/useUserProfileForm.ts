@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { API_URL, UserContext } from '../../../types-change/UserTypes';
+import { API_URL, UserContext } from '../../../types/UserTypes';
 
 const useUserProfileForm = (handleClose: () => void) => {
   const { user, userDispatch } = useContext(UserContext);

@@ -12,7 +12,7 @@ import { appDispatch } from "../../Store/Store";
 import { useDispatch } from "react-redux";
 import LoadingIndicator from "../LoadingIndicator";
 import { addGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
-import { UserContext } from "../../types-change/UserTypes";
+import { UserContext } from "../../types/UserTypes";
 
 // נתיב לרקע דיפולטיבי
 const DEFAULT_IMAGE = "https://res.cloudinary.com/dnschz6cr/image/upload/v1745242362/Flux_Schnell_Create_a_rich_and_textured_background_for_Passove_0.jpeg.jpg";

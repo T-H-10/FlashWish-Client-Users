@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { Category } from "../../types-change/CategoryTypes";
-import { CategoriesListContext } from "../categories-change/CategoriesList";
+import { Category } from "../../types/CategoryTypes";
+import { CategoriesListContext } from "../categories/CategoriesList";
 import UseStyleCategorySelector from "../style/UseStyleCategorySelector";
 
 const CategorySelector = ({ selectedCategory, setSelectedCategory }: { selectedCategory: number, setSelectedCategory: Function }) => {

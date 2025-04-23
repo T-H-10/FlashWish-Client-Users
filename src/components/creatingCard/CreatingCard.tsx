@@ -1,5 +1,5 @@
 import { Box, Paper } from "@mui/material";
-import CategoriesList from "../categories-change/CategoriesList";
+import CategoriesList from "../categories/CategoriesList";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import EditableCanvas from "./EditableCanvas";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { appDispatch } from "../../Store/Store";
 import { fetchTemplates } from "../../Store/templatesStore/TemplatesApi";
 import { selectTemplates } from "../../Store/templatesStore/TemplatesSlice";
-import { initialTemplate, Template } from "../../types-change/TemplateType";
+import { initialTemplate, Template } from "../../types/TemplateType";
 import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
 import LoadingIndicator from "../LoadingIndicator";
 

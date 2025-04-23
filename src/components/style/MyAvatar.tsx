@@ -1,6 +1,6 @@
 import { Avatar } from '@mui/material';
 import UseStylesHeader from './UseStyleHeader';
-import { UserType } from '../../types-change/UserTypes';
+import { UserType } from '../../types/UserTypes';
 
 
 const MyAvatar = ({user}:{user:UserType}) => {

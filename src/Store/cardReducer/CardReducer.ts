@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from "react";
-import { GreetingCard, GreetingCardPostModel, initialGreetingCardState } from "../../types-change/GreetingCardsTypes";
+import { GreetingCard, GreetingCardPostModel, initialGreetingCardState } from "../../types/GreetingCardsTypes";
 
 // פעולה שמייצגת שינויים בכרטיס
 export type CardAction =

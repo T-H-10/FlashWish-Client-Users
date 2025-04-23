@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_URL } from "../../types-change/UserTypes";
+import { API_URL } from "../../types/UserTypes";
 import Swal from "sweetalert2";
-import { GreetingMessage, GreetingMessagePostModel } from "../../types-change/GreetingMessageType";
+import { GreetingMessage, GreetingMessagePostModel } from "../../types/GreetingMessageType";
 
 const routerURLMessages = API_URL+"/GreetingMessages";
 

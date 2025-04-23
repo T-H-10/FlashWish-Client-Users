@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Swal from 'sweetalert2';
 import { addGreetingMessage, deleteGreetingMessage, fetchGreetingMessages, updateGreetingMessage } from './GreetingsMessagesApi';
 import { storeType } from '../Store';
-import { GreetingMessage } from '../../types-change/GreetingMessageType';
+import { GreetingMessage } from '../../types/GreetingMessageType';
 
 const GreetingMessagesSlice = createSlice({
     name: 'greetingMessages',

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "../../types-change/UserTypes";
-import { GreetingCard, GreetingCardPostModel } from "../../types-change/GreetingCardsTypes";
+import { API_URL } from "../../types/UserTypes";
+import { GreetingCard, GreetingCardPostModel } from "../../types/GreetingCardsTypes";
 import axios from "axios";
 
 const routerURLGreetingCards = `${API_URL}/GreetingCards`;

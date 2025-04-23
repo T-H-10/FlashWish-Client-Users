@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
-import { GreetingCard } from "../../types-change/GreetingCardsTypes";
+import { GreetingCard } from "../../types/GreetingCardsTypes";
 import { addGreetingCard, deleteGreetingCard, fetchGreetingCards, updateGreetingCard } from "./GreetingCardsApi";
 // import { GreetingCard, GreetingCardPostModel } from "../../types/GreetingCardType";
 

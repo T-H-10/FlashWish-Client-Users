@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_URL } from "../../types-change/UserTypes";
-import { Category, CategoryPostModel } from "../../types-change/CategoryTypes";
+import { API_URL } from "../../types/UserTypes";
+import { Category, CategoryPostModel } from "../../types/CategoryTypes";
 
 const routerURLCategories = `${API_URL}/Categories`;
 

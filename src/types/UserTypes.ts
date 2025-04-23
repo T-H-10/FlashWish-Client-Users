@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from "react";
-import { Action } from "../Store/userReducer-change/UserReducer";
+import { Action } from "../Store/userReducer/UserReducer";
 
 export const API_URL= import.meta.env.VITE_API_URL + '/api';
 

@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { Outlet } from 'react-router';
-import CategoriesList from './categories-change/CategoriesList';
+import CategoriesList from './categories/CategoriesList';
 import { useState } from 'react';
 
 const Gallery = () => {

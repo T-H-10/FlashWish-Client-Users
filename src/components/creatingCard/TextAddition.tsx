@@ -2,7 +2,7 @@ import * as fabric from 'fabric';
 import { useContext, useEffect, useState } from 'react';
 import TextEditor from './TextEditor';
 import MyModal from '../style/MyModal';
-import { GreetingMessage, initialMessage } from '../../types-change/GreetingMessageType';
+import { GreetingMessage, initialMessage } from '../../types/GreetingMessageType';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import { appDispatch } from '../../Store/Store';
 import { useDispatch, useSelector } from 'react-redux';

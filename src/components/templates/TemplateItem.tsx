@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import StyledImageContainer from "../style/StyledImageContainer";
-import { Template } from "../../types-change/TemplateType";
+import { Template } from "../../types/TemplateType";
 import DeleteButton from "./DeleteButton";
 import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
 import ChoosingButton from "../ChoosingButton";

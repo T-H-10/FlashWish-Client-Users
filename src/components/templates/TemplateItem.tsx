@@ -5,12 +5,14 @@ import DeleteButton from "./DeleteButton";
 import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
 import ChoosingButton from "../ChoosingButton";
 
-const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ template:Template, onClick:Function, isEditable: boolean, currentUserId:number }) => (
+const CLOUDE_URL_START= import.meta.env.VITE_CLOUDE_URL_START;
+const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ template:Template, onClick:Function, isEditable: boolean, currentUserId:number })=>{
+  return(
     <StyledImageContainer width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}>
       <span style={{ height: '100%', margin: '3px', backgroundColor: '#eee',
                     display: 'flex', justifyContent: 'center', alignItems: 'center'
             }}>
-        <img src={template.imageURL} alt={template.templateName} style={{ maxWidth: '100%', maxHeight: '100%', transition: 'transform 0.3s ease' }} />
+        <img src={CLOUDE_URL_START+template.imageURL} alt={template.templateName} style={{ maxWidth: '100%', maxHeight: '100%', transition: 'transform 0.3s ease' }} />
       </span>
   
       {isEditable && (
@@ -39,6 +41,7 @@ const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ templat
         />
       )}
     </StyledImageContainer>
-  );
+    );
+  }
 
   export default TemplateItem;

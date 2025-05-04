@@ -5,10 +5,19 @@ import axios from "axios";
 
 const routerURLGreetingCards = `${API_URL}/GreetingCards`;
 
-export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async (_, thunkAPI) => {   
+export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async (_, thunkAPI) => {
     try {
-        const response = await axios.get(routerURLGreetingCards);
-        return response.data as GreetingCard[];
+        const userId = sessionStorage.getItem('userId')||'0';
+        console.log(userId);
+
+        const response = await axios.get(routerURLGreetingCards + '/MyCards/' + userId);
+        // if (response.status !== 200) {
+        //     console.log(response)
+        //     return [] as GreetingCard[];
+        // }
+        // else {
+            return response.data as GreetingCard[];
+        // }
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
             message: e.message,

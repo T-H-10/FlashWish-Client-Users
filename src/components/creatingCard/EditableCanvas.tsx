@@ -14,6 +14,8 @@ import LoadingIndicator from "../LoadingIndicator";
 import { addGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
 import { UserContext } from "../../types/UserTypes";
 import { CLOUDE_URL_START } from "../templates/TemplateItem";
+import Swal from "sweetalert2";
+import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
 
 // נתיב לרקע דיפולטיבי
 const DEFAULT_IMAGE = "v1746302666/logo.jpg.jpg";
@@ -23,7 +25,7 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const fabricRef = useRef<fabric.Canvas | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-
+    const { currentCard } = useContext(CurrentCardContext);
     const currentUserId = useContext(UserContext).user.id;
     // const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     // מעלה תמונה ומציבה כרקע בקנבס
@@ -65,13 +67,19 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
         });
         fabricRef.current = canvas;
 
+        if(currentCard && currentCard.canvasStyle) {
+            const {canvasStyle} = currentCard;
+            fabricRef.current.loadFromJSON(canvasStyle, canvas.renderAll.bind(canvas));
+        }
+        else{
         // טען רקע דיפולטיבי כשנוצר הקנבס
         setCanvasBackground(DEFAULT_IMAGE);
+        }
         return () => {
             canvas.dispose();
             fabricRef.current = null;
         };
-    }, []);
+    }, [currentCard]);
 
     // בכל פעם ש-imageUrl משתנה, נעדכן רקע
     useEffect(() => {
@@ -94,17 +102,26 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
                 const response = dispatch(addGreetingCard(
                     {
                         userID: currentUserId,
-                        textID: 11,
-                        categoryID: 1012,
-                        templateID: 41,
+                        textID: currentCard.textID,
+                        categoryID: currentCard.categoryID,
+                        templateID: currentCard.templateID,
                         canvasStyle: json,
                     }));
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'העיצוב נשמר בהצלחה!',
+                    });
                 console.log(response);
 
             }
             catch (error) {
                 console.error("Error saving design:", error);
-                alert("שגיאה בשמירת העיצוב");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'שגיאה בשמירת העיצוב. אנא נסה שוב מאוחר יותר.',
+                });
+
             }
         }
     };

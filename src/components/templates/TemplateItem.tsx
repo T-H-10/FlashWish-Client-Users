@@ -5,7 +5,7 @@ import DeleteButton from "./DeleteButton";
 import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
 import ChoosingButton from "../ChoosingButton";
 
-const CLOUDE_URL_START= import.meta.env.VITE_CLOUDE_URL_START;
+export const CLOUDE_URL_START= import.meta.env.VITE_CLOUDE_URL_START;
 const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ template:Template, onClick:Function, isEditable: boolean, currentUserId:number })=>{
   return(
     <StyledImageContainer width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}>

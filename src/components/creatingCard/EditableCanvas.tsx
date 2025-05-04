@@ -13,9 +13,10 @@ import { useDispatch } from "react-redux";
 import LoadingIndicator from "../LoadingIndicator";
 import { addGreetingCard } from "../../Store/cardsStore/GreetingCardsApi";
 import { UserContext } from "../../types/UserTypes";
+import { CLOUDE_URL_START } from "../templates/TemplateItem";
 
 // נתיב לרקע דיפולטיבי
-const DEFAULT_IMAGE = "https://res.cloudinary.com/dnschz6cr/image/upload/v1745242362/Flux_Schnell_Create_a_rich_and_textured_background_for_Passove_0.jpeg.jpg";
+const DEFAULT_IMAGE = "v1746302666/logo.jpg.jpg";
 
 const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const dispatch = useDispatch<appDispatch>();
@@ -75,7 +76,7 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     // בכל פעם ש-imageUrl משתנה, נעדכן רקע
     useEffect(() => {
         if (fabricRef.current && imageUrl) {
-            setCanvasBackground(imageUrl);
+            setCanvasBackground(CLOUDE_URL_START+imageUrl);
         }
     }, [imageUrl]);
 

@@ -1,18 +1,19 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+// import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const PasswordInput = ({ password, setPassword }:{password: string, setPassword: Function}) => {
-    const [showPassword, setShowPassword] = useState(false);
+    // const [showPassword, setShowPassword] = useState(false);
 
-    const handleClickShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
+    // const handleClickShowPassword = () => {
+    //     setShowPassword(!showPassword);
+    // };
 
     return (
         <TextField
             label="Password"
-            type={showPassword ? 'text' : 'password'}
+            type='password'
+            // type={showPassword ? 'text' : 'password'}
             variant="outlined"
             margin="normal"
             fullWidth
@@ -21,12 +22,12 @@ const PasswordInput = ({ password, setPassword }:{password: string, setPassword:
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
-                        <IconButton
+                        {/* <IconButton
                             onClick={handleClickShowPassword}
                             onMouseDown={(event) => event.preventDefault()}
                         >
                             {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
+                        </IconButton> */}
                     </InputAdornment>
                 ),
             }}

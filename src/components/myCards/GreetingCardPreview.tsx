@@ -59,9 +59,9 @@ const GreetingCardPreview: React.FC<GreetingCardPreviewProps> = ({ canvasStyle, 
   const bg = parsed.backgroundImage;
   const w = width ?? bg.width;
   const h = height ?? bg.height;
-
+  
   return (
-    <div
+    <span
       style={{
         position: 'relative',
         width: w,
@@ -97,10 +97,19 @@ const GreetingCardPreview: React.FC<GreetingCardPreviewProps> = ({ canvasStyle, 
         if (obj.type.toLowerCase() !== 'textbox') return null;
         if (!obj.text?.trim()) return null;
 
+        const centerX=(bg.width + obj.width * (obj.scaleX ?? 1)) / 2;
+        const centerY=(bg.height + obj.height * (obj.scaleY ?? 1)) / 2;
+        // const centerX = (bg.width - obj.width) / 2; // חישוב מיקום אופקי במרכז
+        // const centerY = (bg.height - obj.height) / 2; // חישוב מיקום אנכי במרכז
+    
         const transform = `
-          translate(${obj.left}px, ${obj.top}px)
-          rotate(${obj.angle}deg)
+            translate(${centerX}px, ${centerY}px)
+            rotate(${obj.angle}deg)
         `.trim();
+        // const transform = `
+        //   translate(${obj.left}px, ${obj.top}px)
+        //   rotate(${obj.angle}deg)
+        // `.trim();
 
         const textDecoration = [
           obj.underline ? 'underline' : '',
@@ -116,7 +125,7 @@ const GreetingCardPreview: React.FC<GreetingCardPreviewProps> = ({ canvasStyle, 
 
         return (
           <>
-          <div
+          <span
             key={idx}
             style={{
               position: 'absolute',
@@ -148,12 +157,12 @@ const GreetingCardPreview: React.FC<GreetingCardPreviewProps> = ({ canvasStyle, 
             }}
           >
             {obj.text}
-          </div>
+          </span>
           
           </>
         );
       })}
-    </div>
+    </span>
   );
 };
 

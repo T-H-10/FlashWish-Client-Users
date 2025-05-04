@@ -25,7 +25,6 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        // console.log(formData);
         
     };
     const validate = () => {

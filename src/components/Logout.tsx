@@ -14,8 +14,8 @@ const LogoutUser = (userDispatch: Function, navigate: Function, setIsLogin: Func
                 type: 'LOGOUT_USER'
             });
             setIsLogin(false);
+            sessionStorage.removeItem('userId');
             navigate('/');
-            // console.log('User logged out');
         } 
     });
 };

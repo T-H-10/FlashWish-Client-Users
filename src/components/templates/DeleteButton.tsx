@@ -7,15 +7,14 @@ import { appDispatch } from '../../Store/Store';
 // import { deleteTemplate } from '../../Store/templatesStore/TemplatesApi';
 
 type DeleteButtonProps= {
-    itemId: number;
+    // itemId: number;
     uploaderId: number; // מזהה המשתמש שהעלה את התמונה
     currentUserId: number; // מזהה המשתמש המחובר
     deleteFunc: Function;
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ itemId, uploaderId, currentUserId, deleteFunc }) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ({ uploaderId, currentUserId, deleteFunc }) => {
     const dispatch = useDispatch<appDispatch>();
-    console.log(itemId); //can be removed from the props!!
     
     const handleDeleteTemplate = () => {
         Swal.fire({

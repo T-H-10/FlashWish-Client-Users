@@ -36,7 +36,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     return (
         <>
             <Box
-                //  onClick={()=>{handleMessageClick(message.textID)}}
+                 onClick={()=>{handleMessageClick(message.textID)}}
                 sx={{
                     cursor: 'pointer',
                     border: '2px solid #25173b',
@@ -67,12 +67,12 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                     right: '80%',
                 }} >
                     <DeleteButton
-                        itemId={message.textID}
+                        // itemId={message.textID}
                         uploaderId={message.userID}
                         currentUserId={currentUserId}
                         deleteFunc={()=>deleteGreetingMessage(message.textID)}
                     />
-                    <ChoosingButton onClick={() => { handleMessageClick(message.textID) }} />
+                    {/* <ChoosingButton onClick={() => { handleMessageClick(message.textID) }} /> */}
                 </div>
             </Box>
         </>

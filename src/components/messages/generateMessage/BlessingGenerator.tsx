@@ -25,42 +25,6 @@ const BlessingGenerator = ({ onClose }: { onClose: () => {} }) => {
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
   const { user } = useContext(UserContext);
 
-  // const generateBlessing = async () => {
-  //   if (!prompt.trim()) return;
-  //   setLoading(true);
-  //   setResult(null);
-  //   try {
-  //     console.log(prompt);
-  //     console.log(tone);
-  //     console.log(rhymed);
-  //     console.log(length);
-  //     console.log(gender);
-  //     console.log(requiredWords);
-
-  //     const response = await axios.post(`${API_URL}/Content/generate`, {
-  //       prompt,
-  //       style: tone, 
-  //       rhyming: rhymed,
-  //       length,
-  //       recipientGender: gender, 
-  //       importantWords: requiredWords.split(',').map(word => word.trim()),
-  //     });
-  //     if (response.data.title && response.data.content && response.data.signature) {
-  //       setResult({
-  //         ...response.data,
-  //         userID: user.id,
-  //         categoryID: selectedCategory,
-  //       });
-  //     } else {
-  //       setResult(null);
-  //     }
-  //   } catch (error: any) {
-  //     console.error('Error:', error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const generateBlessing = async () => {
     if (!prompt.trim()) return;
     setLoading(true);

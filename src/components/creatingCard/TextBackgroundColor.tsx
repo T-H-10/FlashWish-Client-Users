@@ -4,7 +4,7 @@ import FormatColorFillRoundedIcon from '@mui/icons-material/FormatColorFillRound
 
 const TextBackground = ({ canvas }: { canvas: fabric.Canvas }) => {
     const [color, setColor] = useState<string>('#ff0000'); 
-    const [alpha, setAlpha] = useState<number>(1);
+    const [alpha, setAlpha] = useState<number>(0);
 
     useEffect(() => {
         updateBackgroundColor(color, alpha);

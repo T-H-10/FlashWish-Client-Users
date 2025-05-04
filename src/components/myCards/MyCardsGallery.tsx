@@ -20,8 +20,6 @@ const MyCardsGallery = () => {
     if (loading) {
         return <p>טוען...</p>;
     }
-
-    console.log(greetingCardsList.length);
     
     return (
         <>

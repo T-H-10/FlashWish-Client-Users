@@ -30,27 +30,27 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     const setCanvasBackground = async (url: string) => {
         if (!fabricRef.current) return;
         setLoading(true);
-        try { 
-             // קודם נוודא שהתמונה אכן זמינה
-        const loadedImage = await new Promise<HTMLImageElement>((resolve, reject) => {
-            const testImg = new Image();
-            testImg.crossOrigin = "anonymous";
-            testImg.onload = () => resolve(testImg);
-            testImg.onerror = () => reject(new Error("Image failed to load"));
-            testImg.src = url;
-        });
-        // רק לאחר שהטעינה הצליחה, נטען לפבריק
-        const img = new fabric.Image(loadedImage);
-        img.scaleToWidth(500);
+        try {
+            // קודם נוודא שהתמונה אכן זמינה
+            const loadedImage = await new Promise<HTMLImageElement>((resolve, reject) => {
+                const testImg = new Image();
+                testImg.crossOrigin = "anonymous";
+                testImg.onload = () => resolve(testImg);
+                testImg.onerror = () => reject(new Error("Image failed to load"));
+                testImg.src = url;
+            });
+            // רק לאחר שהטעינה הצליחה, נטען לפבריק
+            const img = new fabric.Image(loadedImage);
+            img.scaleToWidth(500);
 
-        const canvas = fabricRef.current;
-        canvas.setWidth(img.width || 500);
-        canvas.setHeight(img.height || 500);
-        canvas.backgroundImage=img;
-        canvas.renderAll.bind(canvas);
-    } catch (err) {
+            const canvas = fabricRef.current;
+            canvas.setWidth(img.width || 500);
+            canvas.setHeight(img.height || 500);
+            canvas.backgroundImage = img;
+            canvas.renderAll.bind(canvas);
+        } catch (err) {
             console.error("Error setting background:", err);
-            alert("הרקע נכשל בטעינה – ייתכן שיש בעיית קישור או תמונה לא זמינה");
+            // alert("הרקע נכשל בטעינה – ייתכן שיש בעיית קישור או תמונה לא זמינה");
         } finally {
             setLoading(false);
         }
@@ -76,26 +76,31 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
     // בכל פעם ש-imageUrl משתנה, נעדכן רקע
     useEffect(() => {
         if (fabricRef.current && imageUrl) {
-            setCanvasBackground(CLOUDE_URL_START+imageUrl);
+            if (imageUrl.includes("http")) {
+                setCanvasBackground(imageUrl);
+            } else {
+                setCanvasBackground(CLOUDE_URL_START + imageUrl);
+            }
         }
     }, [imageUrl]);
 
     const saveDesign = () => {
         if (fabricRef.current) {
-            const json =JSON.stringify( fabricRef.current.toJSON());
+            const json = JSON.stringify(fabricRef.current.toJSON());
             console.log("Design saved:", json);
-
-            try{
+            console.log(currentUserId);
+            
+            try {
                 const response = dispatch(addGreetingCard(
                     {
                         userID: currentUserId,
-                        textID:11,
+                        textID: 11,
                         categoryID: 1012,
                         templateID: 41,
                         canvasStyle: json,
                     }));
                 console.log(response);
-                
+
             }
             catch (error) {
                 console.error("Error saving design:", error);
@@ -118,7 +123,9 @@ const EditableCanvas = ({ imageUrl }: { imageUrl: string }) => {
                     <TextColor canvas={fabricRef.current} />
                     <TextBackground canvas={fabricRef.current} />
                     <DownloadButton canvas={fabricRef.current} />
+            {sessionStorage.getItem('userId') && 
                     <button onClick={saveDesign}>שמור עיצוב</button>
+            }
                 </div>
             )}
 

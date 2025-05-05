@@ -3,12 +3,30 @@ import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import { useContext } from 'react';
 import { GreetingCard } from '../../types/GreetingCardsTypes';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { appDispatch } from '../../Store/Store';
+import { deleteGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
+import Swal from 'sweetalert2';
 
 const ActionsOnCards = ({ index, card }: { index: number, card: GreetingCard }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<appDispatch>();
   const { currentCard, cardDispatch } = useContext(CurrentCardContext);
   const handleDelete = (index: number) => {
-    console.log(`מחקת את הכרטיס מספר ${index}`);
+    cardDispatch({
+      type: 'DELETE_CARD',
+      id: card.cardID
+    })
+    try{
+      dispatch(deleteGreetingCard(card.cardID));
+      Swal.fire({ icon: 'success', title: 'הכרטיס נמחק בהצלחה!' });
+    } catch{
+      Swal.fire({
+        icon: 'error',
+        title: 'שגיאה',
+        text: 'שגיאה במחיקת הכרטיס. אנא נסה שוב מאוחר יותר.',
+    });
+    }
   };
 
   const handleEdit = () => {

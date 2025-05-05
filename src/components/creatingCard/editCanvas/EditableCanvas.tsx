@@ -9,7 +9,7 @@ import { selectTemplates } from "../../../Store/templatesStore/TemplatesSlice";
 import * as fabric from "fabric";
 import { fetchTemplateById } from "../../../Store/templatesStore/TemplatesApi";
 import setCanvasBackground from "./setCanvasBackground";
-import { addGreetingCard } from "../../../Store/cardsStore/GreetingCardsApi";
+import { addGreetingCard, updateGreetingCard } from "../../../Store/cardsStore/GreetingCardsApi";
 import LoadingIndicator from "../../LoadingIndicator";
 import { GreetingCard } from "../../../types/GreetingCardsTypes";
 // נתיב לרקע דיפולטיבי
@@ -38,9 +38,9 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
         // יצירת קנבס מתוך ה-JSON
         fabricRef.current.loadFromJSON(parsedJSON);
         console.log(parsedJSON.objects);
-        
+
         // נוסיף את כל הטקסטים מה-JSON לקנבס
-        
+
         parsedJSON.objects.forEach((obj: any) => {
             if (obj.type === "Textbox") {
                 const { left, top, width, height, fontSize, fontWeight, fontFamily, fill, text, textAlign, angle } = obj;
@@ -65,14 +65,14 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                 }
             }
         });
-        if(fabricRef.current) {
+        if (fabricRef.current) {
             fabricRef.current.renderAll(); // רענן את הקנבס
         }
     };
 
     useEffect(() => {
         console.log(selectedTemplate);
-        
+
         const element = canvasRef.current;
         if (!element) return;
 
@@ -85,7 +85,7 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
             // אם התבנית לא טעונה, נבקש לטעון אותה
             if (selectedTemplate.templateID !== templateID || !selectedTemplate) {
                 console.log("טעינה מחדש של התבנית...");
-                
+
                 dispatch(fetchTemplateById(templateID));
             }
             // אם יש סגנון קנבס, נטען אותו. אחרת נטען את התמונה מהתבנית או דיפולטיבית
@@ -112,8 +112,28 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
 
     const saveDesign = () => {
         if (fabricRef.current) {
-            const json = JSON.stringify(fabricRef.current.toJSON());
             try {
+            const json = JSON.stringify(fabricRef.current.toJSON());
+            // try{
+            // dispatch(fetchGreetingCardById(cardData.cardID));
+            // }catch(e: any){
+            //     if(e.status===404){
+            //         console.log(e);
+            //     }
+            // }
+            // console.log(selectedCard);
+            // if (selectedCard) 
+            if(cardData.cardID!=-1)
+                {
+                    dispatch(updateGreetingCard({
+                        id: cardData.cardID,
+                        updatedCard: {
+                            ...cardData,
+                            canvasStyle: json
+                        }
+                    }))
+                    Swal.fire({ icon: 'success', title: 'העיצוב עודכן בהצלחה!' });
+            } else{
                 dispatch(addGreetingCard({
                     userID: currentUserId,
                     textID: cardData.textID,
@@ -122,6 +142,8 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                     canvasStyle: json,
                 }));
                 Swal.fire({ icon: 'success', title: 'העיצוב נשמר בהצלחה!' });
+            }
+            
             } catch (error) {
                 Swal.fire({
                     icon: 'error',

@@ -24,6 +24,13 @@ const GreetingCardsSlice = createSlice({
                 state.loading = false;
                 handleApiError(action.error);
             })
+            // .addCase(fetchGreetingCardById.fulfilled, (state, action: PayloadAction<GreetingCard>)=>{
+            //     state.selectedCard=action.payload;
+            // })
+            // .addCase(fetchGreetingCardById.rejected, (state, action)=>{
+            //     state.loading = false;
+            //     handleApiError(action.error);
+            // })
             .addCase(addGreetingCard.fulfilled, (state, action: PayloadAction<GreetingCard>) => {
                 if(!Array.isArray(state.greetingCardsList)){
                     state.greetingCardsList = [];

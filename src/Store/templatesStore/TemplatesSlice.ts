@@ -30,10 +30,11 @@ const TemplatesSlice = createSlice({
                 handleApiError(action.error);
             })
             .addCase(addTemplate.fulfilled, (state, action: PayloadAction<Template>) => {
-                if(!Array.isArray(state.templatesList)){
-                    state.templatesList = [];
-                }
-                state.templatesList.push(action.payload);
+                // if(!Array.isArray(state.templatesList)){
+                //     state.templatesList = [];
+                // }
+                // state.templatesList.push(action.payload);
+                state.templatesList=[...state.templatesList, action.payload];
                 state.loading = false;
             })
             .addCase(addTemplate.pending, (state) => {

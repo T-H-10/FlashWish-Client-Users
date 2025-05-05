@@ -25,6 +25,17 @@ export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async 
         });
     }
 });
+// export const fetchGreetingCardById = createAsyncThunk('greetingCards/fetchById', async (id: number, thunkAPI)=>{
+//     try{
+//         const response = await axios.get<GreetingCard>(`${routerURLGreetingCards}/${id}`);
+//         return response.data as GreetingCard;
+//     } catch (e: any){
+//         return thunkAPI.rejectWithValue({
+//             message: e.message,
+//             status: e.response? e.response.status : 500,
+//         });
+//     }
+// });
 
 export const addGreetingCard = createAsyncThunk('greetingCards/add', async (newCard: GreetingCardPostModel, thunkAPI) => {
     try {

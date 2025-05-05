@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2';
 import { GreetingCard } from "../../types/GreetingCardsTypes";
 import { addGreetingCard, deleteGreetingCard, fetchGreetingCards, updateGreetingCard } from "./GreetingCardsApi";
+import { storeType } from "../Store";
 // import { GreetingCard, GreetingCardPostModel } from "../../types/GreetingCardType";
 
 
@@ -24,6 +25,9 @@ const GreetingCardsSlice = createSlice({
                 handleApiError(action.error);
             })
             .addCase(addGreetingCard.fulfilled, (state, action: PayloadAction<GreetingCard>) => {
+                if(!Array.isArray(state.greetingCardsList)){
+                    state.greetingCardsList = [];
+                }
                 state.greetingCardsList.push(action.payload);
                 state.loading = false;
             })
@@ -80,6 +84,6 @@ const handleApiError = (error: any) => {
     });
 };
 
-export const selectGreetingCards = (state: any) => state.greetingCards;
+export const selectGreetingCards = (state: storeType) => state.greetingCards;
 
 export default GreetingCardsSlice;

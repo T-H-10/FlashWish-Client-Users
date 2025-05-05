@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import { UserContext } from '../../types/UserTypes';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
-import ChoosingButton from '../ChoosingButton';
 import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 
 
@@ -15,7 +14,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     // const dispatch = useDispatch<appDispatch>();
     const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     const navigate = useNavigate();
-    const { cardDispatch } = useContext(CurrentCardContext);
+    const {currentCard, cardDispatch } = useContext(CurrentCardContext);
     const handleMessageClick = (messageID: number) => {
         // const newCard = {
         //     userID: currentUserId,
@@ -30,6 +29,8 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                 categoryID: selectedCategoryId
             }
         });
+        console.log(currentCard);
+        
         // dispatch(updateGreetingCard({ id: newCard.textID, greetingCard: { ...newCard, templateID: 0 } }));//fix it!
         navigate('/creatingCard');
     };

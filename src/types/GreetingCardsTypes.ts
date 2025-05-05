@@ -15,17 +15,13 @@ export type GreetingCard={
     textID: number;
     categoryID:number;
     canvasStyle: string
-    // createdAt: Date;
-    // updatedAt: Date;
 }
 
 export let initialGreetingCardState:GreetingCard={
     cardID: -1,
     userID: 0,
-    templateID: 20,
+    templateID: 0,
     textID: 0,
     categoryID: 0,
     canvasStyle: ''
-    // createdAt: new Date(Date.now()),
-    // updatedAt: new Date(Date.now())
 }

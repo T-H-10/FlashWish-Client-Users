@@ -25,12 +25,21 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
 
     return (
         <>
-            <h3>בחר קטגוריה:</h3>
-            {categoriesList.map((category: Category) => (
-                <span key={category.categoryID}>
-                    <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName} />
-                </span>
-            ))}
+            {categoriesList.length === 0 && !loading && (
+                <div>
+                    לא נמצאו קטגוריות, אנא הוסף קטגוריה חדשה
+                </div>
+            )}
+            {categoriesList.length > 0 && (
+                <div>
+                    <h3>בחר קטגוריה:</h3>
+                    {categoriesList.map((category: Category) => (
+                        <span key={category.categoryID}>
+                            <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName} />
+                        </span>
+                    ))}
+                </div>)
+            }
 
             <AddCategory existingCategories={categoriesList.map(category => category.categoryName)} onAddCategory={handleAddCategory} />
 

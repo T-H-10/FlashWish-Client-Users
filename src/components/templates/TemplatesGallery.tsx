@@ -27,7 +27,7 @@ const TemplatesGallery = () => {
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];
     const navigate = useNavigate();
-    const { cardDispatch } = useContext(CurrentCardContext);
+    const {cardDispatch } = useContext(CurrentCardContext);
     useEffect(() => {
         if(templatesList.length === 0) {
             dispatch(fetchTemplates());
@@ -36,22 +36,24 @@ const TemplatesGallery = () => {
     }, [dispatch, templatesList.length]);
 
     const handleTemplateClick = (templateID: number) => {
-        const newCard: GreetingCardPostModel = {
-            userID: currentUserId,
-            templateID: templateID,
-            textID: 0,
-            canvasStyle:'',
-            categoryID: selectedCategoryId
-        };
+        // const newCard: GreetingCardPostModel = {
+        //     userID: currentUserId,
+        //     templateID: templateID,
+        //     textID: 0,
+        //     canvasStyle:'',
+        //     categoryID: selectedCategoryId
+        // };
         cardDispatch({
             type: 'UPDATE_CARD',
             data: {
                 userID: currentUserId,
                 templateID: templateID,
-                categoryID: selectedCategoryId
+                categoryID: selectedCategoryId,
+                canvasStyle:''
             }
         });
-        dispatch(updateGreetingCard({ id: newCard.templateID, updatedCard: newCard })); //fix it!
+        
+        // dispatch(updateGreetingCard({ id: newCard.templateID, updatedCard: newCard })); //fix it!
         if (lastSegment == 'templates') {
             navigate('/Gallery/content');
         }
@@ -64,13 +66,22 @@ const TemplatesGallery = () => {
             </CategoriesListContext.Provider>
             { loading? (
                 <LoadingIndicator content='מעלה רקעים...'/>
-            ):(
+            ):filteredTemplates.length>0 ? (
+                
                 <TemplatesGrid
                 templates={filteredTemplates}
                 onTemplateClick={handleTemplateClick}
                 isEditable={lastSegment==='templates'}
                 currentUserId={currentUserId}
                 />
+            ):(
+                <div style={{
+                    marginTop: '100px',
+                    textAlign: 'center',
+                    fontSize: '2rem'
+                }}>
+                    <p>לא נמצאו רקעים</p>
+                </div>
             )}
         </>
     );

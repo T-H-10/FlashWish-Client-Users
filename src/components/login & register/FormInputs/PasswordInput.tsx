@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { TextField, InputAdornment, IconButton } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 // import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const PasswordInput = ({ password, setPassword }:{password: string, setPassword: Function}) => {

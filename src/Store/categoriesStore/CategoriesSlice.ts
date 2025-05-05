@@ -22,6 +22,9 @@ const CategoriesSlice = createSlice({
                 handleApiError(action.error);
             })
             .addCase(addCategory.fulfilled, (state, action: PayloadAction<Category>) => {
+                if(!Array.isArray(state.categoriesList)){
+                    state.categoriesList = [];
+                }
                 state.categoriesList.push(action.payload);
                 state.loading = false;
             })

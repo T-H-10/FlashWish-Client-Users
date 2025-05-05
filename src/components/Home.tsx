@@ -14,15 +14,15 @@ const Home = () => {
                 <h2>דוגמאות לעיצובים אפשריים:</h2>
                 <div className={classes.designExamples}>
                     <div className={classes.designExample}>
-                        <img src="example1.png" alt="עיצוב 1" className={classes.designExampleImg} />
+                        <img src="public/flashwish.png" alt="עיצוב 1" className={classes.designExampleImg} />
                         <p>עיצוב קלאסי</p>
                     </div>
                     <div className={classes.designExample}>
-                        <img src="example2.png" alt="עיצוב 2" className={classes.designExampleImg} />
+                        <img style={{marginTop: '50px'}} src="public/flashwish.png" alt="עיצוב 2" className={classes.designExampleImg} />
                         <p>עיצוב מודרני</p>
                     </div>
                     <div className={classes.designExample}>
-                        <img src="example3.png" alt="עיצוב 3" className={classes.designExampleImg} />
+                        <img src="public/flashwish.png" alt="עיצוב 3" className={classes.designExampleImg} />
                         <p>עיצוב צבעוני</p>
                     </div>
                 </div>

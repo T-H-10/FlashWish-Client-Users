@@ -47,14 +47,21 @@ const UseStylesHome = makeStyles({
         display: 'flex',
         justifyContent: 'space-around',
         marginTop: '20px',
+        flexWrap: 'wrap',
+        gap: '20px',
+        flexDirection: 'row',
+
     },
     designExample: {
         textAlign: 'center',
+
     },
     designExampleImg: {
-        width: '150px',
-        height: '150px',
+        width: '350px',
+        height: '350px',
         objectFit: 'cover',
+        borderRadius: '10px',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
     },
 });
 export default UseStylesHome;

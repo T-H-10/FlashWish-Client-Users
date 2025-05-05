@@ -7,7 +7,7 @@ const BlessingPreview = ({ blessing, onSave }: { blessing: GreetingMessagePostMo
     <CardContent>
       <Celebration color="secondary" fontSize="large" />
       <Typography variant="h6" gutterBottom>{blessing.title}</Typography>
-      <Typography sx={{ my: 2 }}>{blessing.content}</Typography>
+      <Typography sx={{ my: 2 , whiteSpace: 'pre-line'}}>{blessing.content}</Typography>
       <Typography variant="subtitle2" align="right">{blessing.signature}</Typography>
     </CardContent>
     <Box display="flex" justifyContent="center" gap={2}>

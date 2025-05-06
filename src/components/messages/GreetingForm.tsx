@@ -7,6 +7,8 @@ import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesA
 import { GreetingMessagePostModel } from '../../types/GreetingMessageType';
 import CategorySelector from '../templates/CategorySelector';
 import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
+import { IconButton } from '@mui/material';
+import {Done, Close } from '@mui/icons-material';
 
 interface GreetingFormProps {
     onClose: () => void;
@@ -18,18 +20,18 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
         title: '',
         content: '',
         signature: '',
-        userID: user.id, 
+        userID: user.id,
     });
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
     const dispatch = useDispatch<appDispatch>();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        
+
     };
     const validate = () => {
         const { title, content, signature } = formData;
-        if (!title || !content || !signature ) {
+        if (!title || !content || !signature) {
             Swal.fire({
                 icon: 'warning',
                 title: 'שגיאה',
@@ -64,7 +66,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
     return (
         <div className={classes.formContainer}>
             <form onSubmit={handleSubmit}>
-                <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} /> 
+                <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 <input
                     type="text"
                     placeholder="כותרת"
@@ -92,8 +94,15 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
                     className={classes.input}
                 />
                 <div>
-                <button type="submit" className={`${classes.button}`}>הוסף</button>
-                <button type="button" onClick={onClose} className={`${classes.button}`}>סגור</button>
+{/*  */}
+                    {/* <button type="submit" className={`${classes.button}`}>הוסף</button> */}
+                    <IconButton type='submit' title="שמור ברכה">
+                        <Done />
+                    </IconButton>
+                    <IconButton onClick={onClose} title="סגור">
+                        <Close />
+                    </IconButton>
+                    {/* <button type="button" onClick={onClose} className={`${classes.button}`}>סגור</button> */}
                 </div>
             </form>
         </div>

@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
 import { Category } from '../../types/CategoryTypes';
@@ -7,6 +7,7 @@ import MyButton from '../style/MyButton';
 import LoadingIndicator from '../LoadingIndicator';
 import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
 import { addCategory, fetchCategories } from '../../Store/categoriesStore/CategoriesApi';
+import { IsLogin } from '../../App';
 
 
 export const CategoriesListContext = createContext<Category[]>([]);
@@ -14,6 +15,7 @@ export const CategoriesListContext = createContext<Category[]>([]);
 const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) => {
     const dispatch = useDispatch<appDispatch>();
     const { categoriesList, loading } = useSelector(selectCategories);
+    const [isLogin] = useContext(IsLogin);
     // const categories = useSelector(selectCategories);
     useEffect(() => {
         dispatch(fetchCategories());
@@ -40,9 +42,9 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
                     ))}
                 </div>)
             }
-
-            <AddCategory existingCategories={categoriesList.map(category => category.categoryName)} onAddCategory={handleAddCategory} />
-
+            {isLogin &&
+                <AddCategory existingCategories={categoriesList.map(category => category.categoryName)} onAddCategory={handleAddCategory} />
+            }
             {loading &&
                 <LoadingIndicator content='טוען קטגוריות...' />
             }

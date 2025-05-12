@@ -7,9 +7,7 @@ const routerURLGreetingCards = `${API_URL}/GreetingCards`;
 
 export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async (_, thunkAPI) => {
     try {
-        const userId = sessionStorage.getItem('userId')||'0';
-        console.log(userId);
-
+        const userId = localStorage.getItem('userId')||'0';
         const response = await axios.get(routerURLGreetingCards + '/MyCards/' + userId);
         // if (response.status !== 200) {
         //     console.log(response)
@@ -39,7 +37,11 @@ export const fetchGreetingCards = createAsyncThunk('greetingCards/fetch', async 
 
 export const addGreetingCard = createAsyncThunk('greetingCards/add', async (newCard: GreetingCardPostModel, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLGreetingCards, newCard);
+        const response = await axios.post(routerURLGreetingCards, newCard,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

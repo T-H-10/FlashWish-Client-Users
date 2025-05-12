@@ -44,7 +44,8 @@ const Login = () => {
                 text: '!ברוך הבא',
             });
             setIsLogin(true);
-            sessionStorage.setItem('userId', JSON.stringify(res.data.user.id));
+            localStorage.setItem('userId', JSON.stringify(res.data.user.id));
+            localStorage.setItem('token', res.data.token);
             cardDispatch({
                 type: 'CREATE_NEW_CARD'
             });

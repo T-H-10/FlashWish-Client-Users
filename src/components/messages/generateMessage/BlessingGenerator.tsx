@@ -42,6 +42,10 @@ const BlessingGenerator = ({ onClose }: { onClose: () => {} }) => {
         length,
         recipientGender: gender,
         importantWords
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
   
       if (response.data.title && response.data.content && response.data.signature) {

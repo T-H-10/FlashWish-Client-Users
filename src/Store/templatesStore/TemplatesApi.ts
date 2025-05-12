@@ -38,9 +38,13 @@ export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplat
         formData.append('categoryID', newTemplate.categoryID.toString());
         formData.append('userID', newTemplate.userID.toString());
         formData.append('ImageFile', newTemplate.image);      
+        const token = localStorage.getItem("token"); // Or your specific key
+
         const response = await axios.post(routerURLTemplates, formData,
             {
-            headers: { 'Content-Type': 'multipart/form-data' }
+            headers: { 'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`
+             }
         }
     );
         Swal.fire('Success', 'הרקע נוסף בהצלחה', 'success');

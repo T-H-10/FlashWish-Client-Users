@@ -14,7 +14,8 @@ const LogoutUser = (userDispatch: Function, navigate: Function, setIsLogin: Func
                 type: 'LOGOUT_USER'
             });
             setIsLogin(false);
-            sessionStorage.removeItem('userId');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('token');
             navigate('/');
         } 
     });

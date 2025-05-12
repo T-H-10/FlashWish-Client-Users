@@ -14,8 +14,10 @@ import TemplatesGrid from './TemplateGrid';
 import { GreetingCardPostModel } from '../../types/GreetingCardsTypes';
 import LoadingIndicator from '../LoadingIndicator';
 import { Template } from '../../types/TemplateType';
+import { IsLogin } from '../../App';
 
 const TemplatesGallery = () => {
+    const [isLogin] = useContext(IsLogin);
     const { categoriesList } = useSelector(selectCategories);
     const dispatch: appDispatch = useDispatch<appDispatch>();
     const { templatesList, loading }: { templatesList: Template[]; loading: boolean } = useSelector(selectTemplates);
@@ -61,9 +63,11 @@ const TemplatesGallery = () => {
 
     return (
         <>
+        {isLogin && 
             <CategoriesListContext.Provider value={categoriesList}>
                 <ImageUploadButton />
             </CategoriesListContext.Provider>
+        }
             { loading? (
                 <LoadingIndicator content='מעלה רקעים...'/>
             ):filteredTemplates.length>0 ? (

@@ -19,7 +19,12 @@ export const fetchCategories = createAsyncThunk('categories/fetch', async (_, th
 
 export const addCategory = createAsyncThunk('categories/add', async (categoryName: CategoryPostModel, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLCategories, {categoryName});
+        const token = localStorage.getItem("token"); // Or your specific key
+        const response = await axios.post(routerURLCategories, {categoryName},{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

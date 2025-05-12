@@ -20,7 +20,11 @@ export const fetchGreetingMessages = createAsyncThunk('greetingMessages/fetch', 
 
 export const addGreetingMessage = createAsyncThunk('greetingMessages/add', async (message: GreetingMessagePostModel, thunkAPI) => {
     try {
-        const response = await axios.post(routerURLMessages, message);
+        const response = await axios.post(routerURLMessages, message,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         Swal.fire('Success', 'הכרטיס נוספה בהצלחה', 'success');
         return response.data;
     } catch (e: any) {

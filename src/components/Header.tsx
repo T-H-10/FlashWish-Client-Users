@@ -23,7 +23,7 @@ const Header = () => {
         <>
             <AppBar className={classes.appBar} >
                 <Toolbar className={classes.toolbar}>
-                    <img src={import.meta.env.BASE_URL + 'logo.png'} alt="Logo" className={classes.logo} />
+                    <img src="../public/logo.jpg" alt="Logo" className={classes.logo} />
                     <Link to='/'>
                         <Button color="inherit" style={{ color: '#eeb451' }}
                             className={`${classes.menuButton} ${selectedButton === 'home-page' ? 'selected' : ''}`}

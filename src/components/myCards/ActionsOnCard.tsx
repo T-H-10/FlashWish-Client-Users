@@ -8,7 +8,7 @@ import { appDispatch } from '../../Store/Store';
 import { deleteGreetingCard } from '../../Store/cardsStore/GreetingCardsApi';
 import Swal from 'sweetalert2';
 
-const ActionsOnCards = ({ index, card }: { index: number, card: GreetingCard }) => {
+const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<appDispatch>();
   const { currentCard, cardDispatch } = useContext(CurrentCardContext);

@@ -100,7 +100,7 @@ const CanvasPreview = ({ card ,index}: { card:GreetingCard, index: number }) => 
 
       ))}
       {hoveredIndex === index && (
-            <ActionsOnCards card={card} index={index}/>
+            <ActionsOnCards card={card}/>
           )}
     </div>
   );

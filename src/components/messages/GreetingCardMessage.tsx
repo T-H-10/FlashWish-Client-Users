@@ -14,7 +14,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
     // const dispatch = useDispatch<appDispatch>();
     const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     const navigate = useNavigate();
-    const {currentCard, cardDispatch } = useContext(CurrentCardContext);
+    const {cardDispatch } = useContext(CurrentCardContext);
     const handleMessageClick = (messageID: number) => {
         // const newCard = {
         //     userID: currentUserId,

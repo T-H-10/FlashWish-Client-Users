@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ActionsOnCards from './ActionsOnCard';
 import { GreetingCard } from '../../types/GreetingCardsTypes';
 

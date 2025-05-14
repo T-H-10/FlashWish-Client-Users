@@ -9,8 +9,8 @@ import { selectTemplates } from "../../Store/templatesStore/TemplatesSlice";
 import { Template } from "../../types/TemplateType";
 import { CurrentCardContext } from "../../Store/cardReducer/CardReducer";
 import LoadingIndicator from "../LoadingIndicator";
-import EditableCanvas, { DEFAULT_IMAGE } from "./editCanvas/EditableCanvas";
-import { GreetingCard, initialGreetingCardState } from "../../types/GreetingCardsTypes";
+import EditableCanvas from "./editCanvas/EditableCanvas";
+import { initialGreetingCardState } from "../../types/GreetingCardsTypes";
 
 const CreatingCard = () => {
     const { currentCard, cardDispatch} = useContext(CurrentCardContext);

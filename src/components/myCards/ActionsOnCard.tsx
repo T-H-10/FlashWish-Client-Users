@@ -12,7 +12,7 @@ const ActionsOnCards = ({ index, card }: { index: number, card: GreetingCard }) 
   const navigate = useNavigate();
   const dispatch = useDispatch<appDispatch>();
   const { currentCard, cardDispatch } = useContext(CurrentCardContext);
-  const handleDelete = (index: number) => {
+  const handleDelete = () => {
     cardDispatch({
       type: 'DELETE_CARD',
       id: card.cardID
@@ -60,7 +60,7 @@ const ActionsOnCards = ({ index, card }: { index: number, card: GreetingCard }) 
       }}
     >
       <DeleteIcon
-        onClick={() => handleDelete(index)}
+        onClick={() => handleDelete()}
         style={{ cursor: 'pointer', color: 'red', fontSize: '24px' }}
       />
       <EditIcon

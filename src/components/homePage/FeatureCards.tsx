@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import '../cssPages/FeatureCards.css';
-
+import '../cssPages/home/FeatureCards.css';
 const FeatureCards = () => {
   const features = [
     {

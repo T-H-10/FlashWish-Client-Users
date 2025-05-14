@@ -1,11 +1,11 @@
 // import UseStylesHome from "./style/UseStyleHome";
 
-// import { CallToAction } from "@mui/icons-material";
 import CosmicBackground from "./CosmicBackground";
 import DesignExamples from "./DesignExamples";
 import FeatureCards from "./FeatureCards";
 import HeroSection from "./HeroSection";
-import '../cssPages/HomePage.css';
+import CallToAction from "./CallToAction";
+import '../cssPages/home/HomePage.css'
 const Home = () => {
     // const classes = UseStylesHome();
 
@@ -17,10 +17,10 @@ const Home = () => {
         <HeroSection />
         <FeatureCards />
         <DesignExamples />
-        {/* <CallToAction /> */}
+        <CallToAction />
       </div>
     </div>
-    </>
+        </>
     );
 };
 

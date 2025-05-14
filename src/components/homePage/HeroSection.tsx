@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import '../cssPages/HeroSection.css';
+import '../cssPages/home/HeroSection.css';
 
 const HeroSection = () => {
   const titleVariants = {
@@ -57,10 +57,10 @@ const HeroSection = () => {
             <span className="button-text">צור ברכה חדשה</span>
             <div className="button-glow"></div>
           </button>
-          <button className="cosmic-button secondary">
+          {/* <button className="cosmic-button secondary">
             <span className="button-text">גלה עיצובים</span>
             <div className="button-glow"></div>
-          </button>
+          </button> */}
         </motion.div>
       </div>
       

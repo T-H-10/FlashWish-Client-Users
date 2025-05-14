@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import '../cssPages/DesignExamples.css';
+import '../cssPages/home/DesignExamples.css';
 
 const DesignExamples = () => {
   const [activeIndex, setActiveIndex] = useState(0);

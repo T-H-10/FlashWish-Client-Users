@@ -1,25 +1,34 @@
-import { useEffect, useRef } from 'react';
-import '../cssPages/home/CosmicBackground.css'
+import React, { useEffect, useState } from 'react';
+import '../cssPages/header/CosmicBackground.css';
+interface CosmicParticle {
+  top: number;
+  left: number;
+  size: number;
+  delay: number;
+  duration: number;
+}
 
-const CosmicBackground = () => {
-  const particlesRef = useRef<{ top: number; left: number; size: number; delay: number; duration: number; }[]>([]);
-  
+const CosmicBackground: React.FC = () => {
+  const [particles, setParticles] = useState<CosmicParticle[]>([]);
+
   useEffect(() => {
     // Generate random particles
-    particlesRef.current = Array(15).fill(null).map(() => ({
+    const newParticles = Array.from({ length: 15 }, () => ({
       top: Math.random() * 100,
       left: Math.random() * 100,
-      size: Math.random() * 100 + 50,
+      size: Math.random() * 3 + 1,
       delay: Math.random() * 5,
-      duration: Math.random() * 10 + 15
+      duration: Math.random() * 5 + 5
     }));
+    
+    setParticles(newParticles);
   }, []);
 
   return (
     <div className="cosmic-background">
       <div className="nebula-layer"></div>
       <div className="stars-layer">
-        {particlesRef.current.map((particle, index) => (
+        {particles.map((particle, index) => (
           <div 
             key={index}
             className="cosmic-particle"

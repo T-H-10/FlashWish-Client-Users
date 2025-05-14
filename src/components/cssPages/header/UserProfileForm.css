@@ -1,0 +1,84 @@
+.cosmic-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cosmic-text-field {
+    margin-bottom: 10px !important;
+  }
+  
+  .cosmic-input-label {
+    color: rgba(251, 190, 101, 0.7) !important;
+  }
+  
+  .cosmic-input-label.Mui-focused {
+    color: var(--secondary-color) !important;
+  }
+  
+  .cosmic-input {
+    color: var(--text-light) !important;
+  }
+  
+  .cosmic-input:before {
+    border-bottom: 1px solid rgba(251, 190, 101, 0.3) !important;
+  }
+  
+  .cosmic-input:after {
+    border-bottom: 2px solid var(--secondary-color) !important;
+  }
+  
+  .cosmic-input:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(251, 190, 101, 0.5) !important;
+  }
+  
+  .cosmic-error {
+    color: var(--accent-color);
+    margin-top: -8px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+  }
+  
+  .cosmic-submit-button {
+    position: relative !important;
+    margin-top: 16px !important;
+    padding: 10px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color)) !important;
+    color: var(--text-dark) !important;
+    font-weight: 600 !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .cosmic-submit-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px var(--glow-color) !important;
+  }
+  
+  .cosmic-submit-button:disabled {
+    background: rgba(251, 190, 101, 0.3) !important;
+    color: rgba(37, 23, 59, 0.7) !important;
+  }
+  
+  .cosmic-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }

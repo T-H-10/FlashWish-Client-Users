@@ -1,0 +1,97 @@
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .auth-link {
+    text-decoration: none;
+  }
+  
+  .cosmic-auth-button {
+    position: relative;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    color: var(--secondary-color) !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(251, 190, 101, 0.2) !important;
+  }
+  
+  .cosmic-auth-button:hover {
+    background: rgba(251, 190, 101, 0.1) !important;
+    transform: translateY(-2px);
+    border-color: rgba(251, 190, 101, 0.3) !important;
+  }
+  
+  .cosmic-auth-button.active {
+    background: rgba(251, 190, 101, 0.15) !important;
+    color: var(--secondary-light) !important;
+    border-color: rgba(251, 190, 101, 0.4) !important;
+  }
+  
+  .cosmic-profile-button {
+    position: relative;
+    padding: 6px 16px !important;
+    border-radius: 20px !important;
+    color: var(--secondary-color) !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(251, 190, 101, 0.2) !important;
+  }
+  
+  .cosmic-profile-button:hover {
+    background: rgba(251, 190, 101, 0.1) !important;
+    transform: translateY(-2px);
+    border-color: rgba(251, 190, 101, 0.3) !important;
+  }
+  
+  .avatar-container {
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  .avatar-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.5) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .avatar-container:hover .avatar-glow {
+    opacity: 0.5;
+    animation: pulse-avatar 2s infinite alternate;
+  }
+  
+  @keyframes pulse-avatar {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .cosmic-auth-button,
+    .cosmic-profile-button {
+      font-size: 0.8rem !important;
+      padding: 4px 12px !important;
+    }
+  }

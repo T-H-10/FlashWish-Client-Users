@@ -1,0 +1,48 @@
+.cosmic-avatar {
+    position: relative;
+    width: 40px !important;
+    height: 40px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden !important;
+  }
+  
+  .cosmic-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4), 0 0 5px var(--secondary-color) !important;
+  }
+  
+  .avatar-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-letter {
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+  }
+  
+  .avatar-inner-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .cosmic-avatar:hover .avatar-inner-glow {
+    opacity: 0.3;
+  }

@@ -1,0 +1,97 @@
+.cosmic-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+    overflow: hidden;
+  }
+  
+  .nebula-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      var(--primary-dark) 0%, 
+      var(--primary-color) 50%,
+      var(--primary-dark) 100%);
+    opacity: 0.95;
+  }
+  
+  .stars-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* .cosmic-particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle infinite alternate;
+  } */
+  .cosmic-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      rgba(251, 190, 101, 0.1) 50%, 
+      transparent 70%);
+    opacity: 0.2;
+    filter: blur(20px);
+    animation: float infinite ease-in-out;
+  }
+  
+  .cosmic-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .cosmic-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(251, 190, 101, 0.05));
+    border-radius: 50%;
+    animation: wave-animation infinite linear;
+  }
+  
+  .wave1 {
+    height: 60%;
+    animation-duration: 15s;
+  }
+  
+  .wave2 {
+    height: 80%;
+    animation-duration: 20s;
+    animation-delay: -5s;
+    opacity: 0.3;
+  }
+  
+  .wave3 {
+    height: 100%;
+    animation-duration: 25s;
+    animation-delay: -10s;
+    opacity: 0.2;
+  }
+  
+  @keyframes wave-animation {
+    0% {
+      transform: translateX(0) translateY(0) rotate(0);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0) rotate(360deg);
+    }
+  }

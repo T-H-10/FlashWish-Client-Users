@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import '../cssPages/CallToAction.css';
+import '../cssPages/home/CallToAction.css'
 
 const CallToAction = () => {
   return (

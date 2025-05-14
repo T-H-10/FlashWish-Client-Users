@@ -35,7 +35,7 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
             {categoriesList.length > 0 && (
                 <div>
                     <h3>בחר קטגוריה:</h3>
-                    {categoriesList.map((category: Category) => (
+                    {categoriesList.length>0 && categoriesList.map((category: Category) => (
                         <span key={category.categoryID}>
                             <MyButton onClick={() => onCategorySelect(category.categoryID)} content={category.categoryName} />
                         </span>

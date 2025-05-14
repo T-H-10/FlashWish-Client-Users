@@ -29,8 +29,6 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                 categoryID: selectedCategoryId
             }
         });
-        console.log(currentCard);
-        
         // dispatch(updateGreetingCard({ id: newCard.textID, greetingCard: { ...newCard, templateID: 0 } }));//fix it!
         navigate('/creatingCard');
     };
@@ -53,7 +51,7 @@ const GreetingCardMessage = ({ message }: { message: GreetingMessage }) => {
                     {message.title}
                 </Typography>
                 <div>
-                    {content.map((line, index) => (
+                    {content.length>0 && content.map((line, index) => (
                         <Typography key={index} variant="body2" sx={{ color: '#25173b', margin: '5px 0' }}>
                             {line}
                         </Typography>

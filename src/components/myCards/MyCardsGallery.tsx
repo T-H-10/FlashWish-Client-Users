@@ -41,7 +41,7 @@ const MyCardsGallery = () => {
                     flexWrap: 'wrap'
                 }}>
                     {
-                        !loading &&
+                        !loading && greetingCardsList.length > 0 &&
                         greetingCardsList.map((card: GreetingCard, index: number) => {
                             return (
                                 <div key={index} >

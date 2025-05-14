@@ -4,7 +4,7 @@ import TemplateItem from "./TemplateItem";
 
 const TemplatesGrid = ({ templates, onTemplateClick, isEditable, currentUserId }:{ templates: Template[], onTemplateClick: Function, isEditable: boolean, currentUserId: number }) => (
     <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-      {templates.map((template: Template) => (
+      {templates.length>0 && templates.map((template: Template) => (
         <TemplateItem
           key={template.templateID}
           template={template}

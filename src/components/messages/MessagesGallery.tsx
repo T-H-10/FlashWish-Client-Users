@@ -35,7 +35,7 @@ const GreetingMessagesGallery = () => {
             }
             {!loading && filteredGreetingMessages.length !== 0 &&
                 <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-                    {filteredGreetingMessages.map((message: GreetingMessage) => (
+                    {filteredGreetingMessages.length>0 && filteredGreetingMessages.map((message: GreetingMessage) => (
                         <GreetingCard key={message.textID} message={message} />
                     ))}
                 </Box>

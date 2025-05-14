@@ -31,20 +31,11 @@ const TextColor = ({ canvas }: { canvas: fabric.Canvas }) => {
             <input
                 type="color"
                 color='white'
-                // value={color}
                 onChange={(e)=>changeTextColor(e.target.value)}
                 style={{height:'40px', marginRight: '5px' }} 
             />
             </span>
 
-        {/* <input type='color' 
-        onChange={(e)=>changeTextColor(e.target.value)}
-        style={{
-            width: '35px',
-            height: '35px'
-        }}
-        >
-        </input> */}
         </>
     )
 }

@@ -5,20 +5,8 @@ export type GreetingMessage = {
     content: string;
     signature: string;
     userID: number;
-    // createdAt: Date;
-    // updatedAt: Date;
 }
 
-// export type GreetingMessageDTO = {
-//     textID: number;
-//     categoryID: number;
-//     title: string;
-//     content: string;
-//     signature: string;
-//     userID: number;
-//     createdAt: Date;
-//     updatedAt: Date;
-// }
 
 export type GreetingMessagePostModel = {
     categoryID: number;
@@ -35,7 +23,5 @@ export const initialMessage: GreetingMessage={
     content: 'תוכן',
     signature: 'חתימה',
     userID: 0
-    // createdAt: Date;
-    // updatedAt: Date;
 }
 

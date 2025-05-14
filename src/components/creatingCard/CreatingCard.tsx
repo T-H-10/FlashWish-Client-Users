@@ -32,7 +32,6 @@ const CreatingCard = () => {
                     type: 'UPDATE_CARD',
                     data: {templateID: template.templateID}
                 })
-                // setCurrentTemplate(template);
             }
         }
     }, [currentCard.templateID, templatesList]);
@@ -45,14 +44,6 @@ const CreatingCard = () => {
         }
     };
     const initialCardData = getInitialContent();
-    // currentTemplate=templatesList.find((template: Template)=>template.templateID===currentCard.templateID) || initialTemplate;
-    // currentMessage=greetingMessagesList.find((message:GreetingMessage)=> message.textID===currentCard.textID) || initialMessage;
-    // console.log(currentCard);
-
-    // if (!loading) {
-    //     currentTemplate = templatesList.find((template: Template) => template.templateID === currentCard.templateID) || initialTemplate;
-    //     // currentMessage = greetingMessagesList.find((message: GreetingMessage) => message.textID === currentCard.textID) || initialMessage;
-    // }
     return (
         <>
             <Box

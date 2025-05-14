@@ -36,13 +36,6 @@ const TemplatesGallery = () => {
     }, [dispatch, templatesList.length]);
 
     const handleTemplateClick = (templateID: number) => {
-        // const newCard: GreetingCardPostModel = {
-        //     userID: currentUserId,
-        //     templateID: templateID,
-        //     textID: 0,
-        //     canvasStyle:'',
-        //     categoryID: selectedCategoryId
-        // };
         cardDispatch({
             type: 'UPDATE_CARD',
             data: {

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CanvasControls from "./CanvasControls";
 import Swal from "sweetalert2";
 import { appDispatch } from "../../../Store/Store";
-// import { CurrentCardContext } from "../../../Store/cardReducer/CardReducer";
 import { UserContext } from "../../../types/UserTypes";
 import { selectTemplates } from "../../../Store/templatesStore/TemplatesSlice";
 import * as fabric from "fabric";
@@ -12,7 +11,7 @@ import setCanvasBackground from "./setCanvasBackground";
 import { addGreetingCard, updateGreetingCard } from "../../../Store/cardsStore/GreetingCardsApi";
 import LoadingIndicator from "../../LoadingIndicator";
 import { GreetingCard } from "../../../types/GreetingCardsTypes";
-// נתיב לרקע דיפולטיבי
+
 export const DEFAULT_IMAGE = "v1746302666/logo.jpg.jpg";
 
 const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
@@ -28,13 +27,12 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
         fabricRef.current.setHeight(500); // גובה הקנבס
         fabricRef.current.setWidth(500); // רוחב הקנבס
         let parsedJSON;
-        try{
+        try {
             parsedJSON = JSON.parse(json);
-        } catch(e){
+        } catch (e) {
             console.log("שגיאה בטעינת הJSON", e);
             return;
         }
-        // const parsedJSON = JSON.parse(json);
         fabricRef.current.loadFromJSON(parsedJSON, () => {
             parsedJSON.objects.forEach((obj: any) => {
                 if (obj.type === "Textbox") {
@@ -60,39 +58,37 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                 }
             });
 
-            // if (fabricRef.current) {
-                fabricRef.current?.renderAll(); // רענן את הקנבס
-            // }
+            fabricRef.current?.renderAll();
         });
     };
 
     useEffect(() => {
-const setupCanvas=async()=>{
-        const element = canvasRef.current;
-        if (!element) return;
+        const setupCanvas = async () => {
+            const element = canvasRef.current;
+            if (!element) return;
 
-        if (!fabricRef.current) {
-            const canvas = new fabric.Canvas(element, { preserveObjectStacking: true });
-            fabricRef.current = canvas;
-        }
-        // אם יש תבנית, נוודא שטוענים את הרקע והתבנית כראוי
-        if (cardData && cardData.templateID) {
-            const { canvasStyle, templateID } = cardData;
-            // אם התבנית לא טעונה, נבקש לטעון אותה
-            if (!selectedTemplate || selectedTemplate.templateID !== templateID) {
-                // console.log("טעינה מחדש של התבנית...");
-                await dispatch(fetchTemplateById(templateID));
+            if (!fabricRef.current) {
+                const canvas = new fabric.Canvas(element, { preserveObjectStacking: true });
+                fabricRef.current = canvas;
             }
-            const imageURL = selectedTemplate.imageURL || DEFAULT_IMAGE;
-            // אם יש סגנון קנבס, נטען אותו. אחרת נטען את התמונה מהתבנית או דיפולטיבית
-            if (canvasStyle) {
-                loadCanvasFromJSON(canvasStyle, fabricRef);
-            } else {
-                setCanvasBackground(imageURL, setLoading, fabricRef);
+            // אם יש תבנית, נוודא שטוענים את הרקע והתבנית כראוי
+            if (cardData && cardData.templateID) {
+                const { canvasStyle, templateID } = cardData;
+                // אם התבנית לא טעונה, נבקש לטעון אותה
+                if (!selectedTemplate || selectedTemplate.templateID !== templateID) {
+                    // console.log("טעינה מחדש של התבנית...");
+                    await dispatch(fetchTemplateById(templateID));
+                }
+                const imageURL = selectedTemplate.imageURL || DEFAULT_IMAGE;
+                // אם יש סגנון קנבס, נטען אותו. אחרת נטען את התמונה מהתבנית או דיפולטיבית
+                if (canvasStyle) {
+                    loadCanvasFromJSON(canvasStyle, fabricRef);
+                } else {
+                    setCanvasBackground(imageURL, setLoading, fabricRef);
+                }
             }
-        }
-    };
-    setupCanvas();
+        };
+        setupCanvas();
         return () => {
             fabricRef.current?.dispose();
             fabricRef.current = null;

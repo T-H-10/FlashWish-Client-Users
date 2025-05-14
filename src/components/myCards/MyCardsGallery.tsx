@@ -45,8 +45,6 @@ const MyCardsGallery = () => {
                         greetingCardsList.map((card: GreetingCard, index: number) => {
                             return (
                                 <div key={index} >
-                                    {/* // <GreetingCardItem key={card.cardID} card={card} /> */}
-                                    {/* // <GreetingCardPreview key={card.cardID} canvasStyle={card.canvasStyle} width={500} height={500} /> */}
                                     <CanvasPreview card={card} key={card.cardID} index={index} />
                                 </div>
                             )

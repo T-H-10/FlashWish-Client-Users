@@ -19,7 +19,6 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     const dispatch = useDispatch<appDispatch>();
     useEffect(() => {
         if (!loading) return;
-        // dispatch(fetchTemplates());
         dispatch(fetchGreetingMessages());
     }, [dispatch, loading]);
 
@@ -45,13 +44,6 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
         if (!hasTextType('signature')) {
             addTextToCanvas(signature, 100, 250, 'signature');
         }
-        // const textObjects = canvas.getObjects('text') as fabric.Textbox[];
-
-        // if (textObjects.length === 0) {
-        // addTextToCanvas(title, 100, 50, 'title');
-        // addTextToCanvas(content, 100, 150, 'content');
-        // addTextToCanvas(signature, 100, 250, 'signature');
-        // }
     }, [canvas]);
 
     useEffect(() => updateCanvasText('title', title), [title, canvas]);
@@ -77,7 +69,7 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
             direction: 'rtl',
             textAlign: 'right',
         });
-        textObject.set('customType', type); // שומר סוג האובייקט
+        textObject.set('customType', type);
         canvas.add(textObject);
         canvas.renderAll();
     };

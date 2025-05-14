@@ -8,25 +8,13 @@ export type UserType = {
     userName: string;
     email: string;
     password: string; 
-    // createdAt: Date;
-    // updatedAt: Date;
-    // roles?: Role[]; 
-    // greetingCards?: GreetingCard[];
 }
-// export type UserWithTokenType = {
-//     user: UserType;
-//     token: string;
-// }
 
 export const initialUserState: UserType = {
     id: 0,
     userName: '', 
     email: '', 
     password: '', 
-    // createdAt: new Date(), 
-    // updatedAt: new Date(), 
-    // roles: [],
-    // greetingCards: [] 
 };
 
 export type UserContextType={

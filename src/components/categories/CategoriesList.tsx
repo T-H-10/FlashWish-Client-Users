@@ -16,7 +16,6 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
     const dispatch = useDispatch<appDispatch>();
     const { categoriesList, loading } = useSelector(selectCategories);
     const [isLogin] = useContext(IsLogin);
-    // const categories = useSelector(selectCategories);
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);

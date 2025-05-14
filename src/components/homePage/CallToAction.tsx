@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import '../cssPages/home/CallToAction.css'
-import { useNavigate } from 'react-router-dom';
 
 const CallToAction = () => {
   return (

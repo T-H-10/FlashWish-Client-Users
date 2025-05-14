@@ -117,3 +117,12 @@
       transform: scale(1.5);
     }
   }
+  
+  /* Registration button specific styles */
+  .cosmic-registration-form.cosmic-login-button {
+    background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-blue)) !important;
+  }
+  
+  .cosmic-registration-form.cosmic-login-button:hover:not(:disabled) + .button-glow {
+    box-shadow: 0 5px 20px rgba(99, 68, 196, 0.5);
+  }

@@ -1,0 +1,204 @@
+.designs-section {
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  .designs-showcase {
+    margin-top: 3rem;
+  }
+  
+  .designs-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .design-card {
+    position: relative;
+    width: 300px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .design-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
+                0 0 20px var(--glow-color);
+  }
+  
+  .design-card.active {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 30px var(--glow-color);
+  }
+  
+  .design-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .design-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .design-card:hover .design-image {
+    transform: scale(1.1);
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 16, 46, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .design-card:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  .view-text {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+  
+  .design-card:hover .view-text {
+    transform: translateY(0);
+  }
+  
+  .design-info {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .design-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+  
+  .design-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+  
+  .card-constellation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .constellation-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--secondary-light);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--secondary-light);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .cs1 {
+    top: 20%;
+    left: 10%;
+  }
+  
+  .cs2 {
+    top: 30%;
+    left: 50%;
+  }
+  
+  .cs3 {
+    top: 20%;
+    left: 90%;
+  }
+  
+  .constellation-line {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .design-card:hover .constellation-star,
+  .design-card:hover .constellation-line {
+    opacity: 0.5;
+    animation: twinkle 3s infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.5);
+    }
+  }
+  
+  .designs-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-dot.active {
+    background: var(--secondary-color);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px var(--secondary-color);
+  }
+  
+  @media (max-width: 992px) {
+    .designs-carousel {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .design-card {
+      width: 100%;
+      max-width: 350px;
+    }
+  }

@@ -1,0 +1,208 @@
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 2rem 0;
+    position: relative;
+  }
+  
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(to right, var(--secondary-light), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.3);
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .cosmic-button {
+    position: relative;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cosmic-button.primary {
+    background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
+    color: var(--text-dark);
+  }
+  
+  .cosmic-button.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border: 1px solid rgba(251, 190, 101, 0.3);
+  }
+  
+  .button-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .button-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .cosmic-button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .cosmic-button.primary:hover {
+    box-shadow: 0 8px 25px rgba(251, 190, 101, 0.4);
+  }
+  
+  .cosmic-button:hover .button-glow {
+    opacity: 0.3;
+    animation: rotate-glow 3s infinite linear;
+  }
+  
+  @keyframes rotate-glow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .hero-decoration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .cosmic-orb {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .orb-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(251, 190, 101, 0.3);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+  }
+  
+  .orb-core {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, 
+      var(--secondary-color) 0%, 
+      var(--primary-light) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(251, 190, 101, 0.5);
+    animation: pulse 4s infinite alternate;
+  }
+  
+  .orb-glow {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.5) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: pulse 4s infinite alternate-reverse;
+  }
+  
+  @media (max-width: 992px) {
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 100%;
+      margin-bottom: 3rem;
+    }
+    
+    .hero-buttons {
+      justify-content: center;
+    }
+    
+    .cosmic-orb {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .orb-core {
+      top: 35px;
+      left: 35px;
+      width: 130px;
+      height: 130px;
+    }
+    
+    .orb-glow {
+      top: 15px;
+      left: 15px;
+      width: 170px;
+      height: 170px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }

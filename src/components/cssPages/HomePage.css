@@ -1,0 +1,19 @@
+.home-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .home-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .home-content {
+      padding: 1rem;
+    }
+  }

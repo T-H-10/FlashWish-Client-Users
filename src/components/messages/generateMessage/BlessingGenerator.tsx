@@ -6,7 +6,7 @@ import { GreetingMessagePostModel } from '../../../types/GreetingMessageType';
 import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../../Store/Store';
 import { addGreetingMessage } from '../../../Store/messagesStore/GreetingsMessagesApi';
-import CategorySelector from '../../templates/CategorySelector';
+import CategorySelector from '../../CategorySelector';
 import PromptInput from './PromptInput';
 import ActionButtons from './ActionButtons';
 import BlessingPreview from './BlessingPreview';

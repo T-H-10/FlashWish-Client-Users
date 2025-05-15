@@ -4,15 +4,12 @@ export type Template = {
     categoryID: number,
     userID: number,
     imageURL: string,
-    // createdAt: Date,
-    // updatedAt: Date
 }
-// הגדרת TemplatePostModel
 export type TemplatePostModel = {
-    templateName: string;     // שם
-    categoryID: number;       // מזהה הקטגוריה
-    userID: number;           // מזהה המשתמש
-    image: File;         // URL לתמונה
+    templateName: string;    
+    categoryID: number;   
+    userID: number;           
+    image: File;         
 }
 export const initialTemplate:Template={
     templateID : 0,

@@ -1,10 +1,24 @@
-import { Box } from "@mui/material";
+import React from "react";
 import { Template } from "../../types/TemplateType";
 import TemplateItem from "./TemplateItem";
+import "../cssPages/templates/TemplatesGrid.css";
 
-const TemplatesGrid = ({ templates, onTemplateClick, isEditable, currentUserId }:{ templates: Template[], onTemplateClick: Function, isEditable: boolean, currentUserId: number }) => (
-    <Box display="flex" flexWrap="wrap" justifyContent="space-around">
-      {templates.length>0 && templates.map((template: Template) => (
+interface TemplatesGridProps {
+  templates: Template[];
+  onTemplateClick: (templateId: number) => void;
+  isEditable: boolean;
+  currentUserId: number;
+}
+
+const TemplatesGrid: React.FC<TemplatesGridProps> = ({ 
+  templates, 
+  onTemplateClick, 
+  isEditable, 
+  currentUserId 
+}) => {
+  return (
+    <div className="cosmic-templates-grid">
+      {templates.map((template: Template) => (
         <TemplateItem
           key={template.templateID}
           template={template}
@@ -13,7 +27,28 @@ const TemplatesGrid = ({ templates, onTemplateClick, isEditable, currentUserId }
           currentUserId={currentUserId}
         />
       ))}
-    </Box>
+    </div>
   );
-  export default TemplatesGrid;
+};
+
+export default TemplatesGrid;
+
+// import { Box } from "@mui/material";
+// import { Template } from "../../types/TemplateType";
+// import TemplateItem from "./TemplateItem";
+
+// const TemplatesGrid = ({ templates, onTemplateClick, isEditable, currentUserId }:{ templates: Template[], onTemplateClick: Function, isEditable: boolean, currentUserId: number }) => (
+//     <Box display="flex" flexWrap="wrap" justifyContent="space-around">
+//       {templates.length>0 && templates.map((template: Template) => (
+//         <TemplateItem
+//           key={template.templateID}
+//           template={template}
+//           onClick={() => onTemplateClick(template.templateID)}
+//           isEditable={isEditable}
+//           currentUserId={currentUserId}
+//         />
+//       ))}
+//     </Box>
+//   );
+//   export default TemplatesGrid;
   

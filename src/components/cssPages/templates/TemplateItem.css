@@ -1,0 +1,167 @@
+.cosmic-template-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .cosmic-template-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .template-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(251, 190, 101, 0.2);
+    z-index: 2;
+  }
+  
+  .template-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .template-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .cosmic-template-item:hover .template-image {
+    transform: scale(1.05);
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 16, 46, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-template-item:hover .image-overlay {
+    opacity: 1;
+  }
+  
+  .overlay-text {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    background: linear-gradient(to right, var(--secondary-light), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.5);
+  }
+  
+  .cosmic-template-item:hover .overlay-text {
+    transform: translateY(0);
+  }
+  
+  .template-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(27, 16, 46, 0.9), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .template-info.visible {
+    opacity: 1;
+  }
+  
+  .template-name {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .template-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 0 rgba(251, 190, 101, 0);
+    pointer-events: none;
+    transition: box-shadow 0.3s ease;
+    z-index: 1;
+  }
+  
+  .cosmic-template-item:hover .template-glow {
+    box-shadow: 0 5px 20px rgba(251, 190, 101, 0.3);
+  }
+  
+  .template-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .decoration-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--secondary-light);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--secondary-light);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .ds1 {
+    top: 20%;
+    left: 10%;
+  }
+  
+  .ds2 {
+    top: 10%;
+    right: 20%;
+  }
+  
+  .ds3 {
+    bottom: 15%;
+    left: 15%;
+  }
+  
+  .cosmic-template-item:hover .decoration-star {
+    opacity: 0.7;
+    animation: twinkle 3s infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.5);
+    }
+  }

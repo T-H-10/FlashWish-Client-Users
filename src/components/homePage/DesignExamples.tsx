@@ -50,7 +50,7 @@ const DesignExamples = () => {
               <div className="design-image-container">
                 <img src={design.image || "/placeholder.svg"} alt={design.title} className="design-image" />
                 <div className="image-overlay">
-                  <span className="view-text">לצפייה</span>
+                  <span className="view-text">דוגמה</span>
                 </div>
               </div>
               <div className="design-info">

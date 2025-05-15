@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { appDispatch } from '../../Store/Store';
 import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 import { GreetingMessagePostModel } from '../../types/GreetingMessageType';
-import CategorySelector from '../templates/CategorySelector';
+import CategorySelector from '../CategorySelector';
 import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
 import { IconButton } from '@mui/material';
 import {Done, Close } from '@mui/icons-material';

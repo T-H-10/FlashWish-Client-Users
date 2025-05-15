@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --primary-dark: #1b102e;
     --primary-color: #25173b;
     --primary-light: #352252;
@@ -14,15 +14,13 @@
     --cosmic-pink: #f271c7;
     --cosmic-purple: #6344c4;
     --glow-color: rgba(251, 190, 101, 0.6);
-  }
+    --panel-bg: rgba(37, 23, 59, 0.85);
+  } */
   
-  .cosmic-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem 1rem;
+  .cosmic-gallery-container {
     position: relative;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
     direction: rtl;
   }
   
@@ -64,8 +62,7 @@
     opacity: 0.7;
     animation: twinkle infinite alternate;
   }
-  
-  @keyframes twinkle {
+  /* }xxxxxxxxxxxxxxxxxxxxle {
     0% {
       opacity: 0.3;
       transform: scale(0.8);
@@ -76,7 +73,7 @@
       transform: scale(1.2);
       box-shadow: 0 0 8px white, 0 0 12px var(--secondary-light);
     }
-  }
+  } */
   
   .cosmic-waves {
     position: absolute;
@@ -126,21 +123,27 @@
     }
   }
   
-  .cosmic-form-box {
+  .cosmic-gallery-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .cosmic-panel {
     position: relative;
-    width: 100%;
-    max-width: 450px;
-    background: rgba(37, 23, 59, 0.85);
+    background: var(--panel-bg);
     backdrop-filter: blur(10px);
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(251, 190, 101, 0.2);
     overflow: hidden;
-    animation: form-appear 0.8s ease-out;
+    animation: panel-appear 0.8s ease-out;
   }
   
-  @keyframes form-appear {
+  @keyframes panel-appear {
     0% {
       opacity: 0;
       transform: translateY(20px);
@@ -151,7 +154,7 @@
     }
   }
   
-  .form-glow {
+  .panel-glow {
     position: absolute;
     top: -50%;
     left: -50%;
@@ -164,24 +167,54 @@
     );
     opacity: 0.5;
     pointer-events: none;
+    z-index: 0;
   }
   
-  /* Registration form specific styles */
-  .cosmic-registration-form + .form-glow {
-    background: radial-gradient(
-      ellipse at bottom right,
-      rgba(99, 68, 196, 0.3) 0%,
-      transparent 70%
-    );
-  }
-  
-  .form-content {
+  .panel-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
     position: relative;
     z-index: 1;
   }
   
-  @media (max-width: 600px) {
-    .cosmic-form-box {
-      padding: 1.5rem;
+  .categories-panel {
+    z-index: 2;
+  }
+  
+  .templates-panel {
+    z-index: 1;
+    min-height: 400px;
+  }
+  
+  @media (min-width: 992px) {
+    .cosmic-gallery-content {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    
+    .categories-panel {
+      flex: 0 0 300px;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .templates-panel {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cosmic-gallery-container {
+      padding: 90px 15px 30px;
+    }
+    
+    .cosmic-panel {
+      padding: 20px;
+    }
+    
+    .panel-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
   }

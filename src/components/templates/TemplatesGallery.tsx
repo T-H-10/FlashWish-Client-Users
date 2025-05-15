@@ -59,7 +59,7 @@ const TemplatesGallery = () => {
         <div className="cosmic-templates-gallery">
             <div className="gallery-header">
                 <h2 className="gallery-title">
-                    {selectedCategoryId === 1012 ? '���� ������������' : 
+                    {selectedCategoryId === 1012 ? '���� ������������' : //לטפל ב 1012!!!
                         categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || '����������'}
                 </h2>
                 

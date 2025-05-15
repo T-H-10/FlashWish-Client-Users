@@ -22,12 +22,12 @@ const DeleteButton: React.FC<CosmicDeleteButtonProps> = ({
     e.stopPropagation();
     
     Swal.fire({
-      title: '������ ��������?',
-      text: "���� �������� ���������� �������� ������������!",
+      title: 'האם אתה בטוח?',
+      text: "לא תוכל לשחזר לאחר המחיקה!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: '����, ������ ���� ����!',
-      cancelButtonText: '����, �������� ���� ����',
+      confirmButtonText: 'כן, מחק את זה!',
+      cancelButtonText: 'לא, השאר את זה',
       background: '#25173b',
       color: '#ffffff',
       iconColor: '#ff6b6b',
@@ -37,8 +37,8 @@ const DeleteButton: React.FC<CosmicDeleteButtonProps> = ({
       if (result.isConfirmed) {
         dispatch(deleteFunc());
         Swal.fire({
-          title: '��������!',
-          text: '�������� ������������.',
+          title: 'נמחק!',
+          text: 'נמחק בהצלחה',
           icon: 'success',
           background: '#25173b',
           color: '#ffffff',
@@ -48,7 +48,6 @@ const DeleteButton: React.FC<CosmicDeleteButtonProps> = ({
       }
     });
   };
-
   if (uploaderId !== currentUserId) {
     return null;
   }

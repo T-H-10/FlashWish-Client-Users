@@ -36,7 +36,7 @@ const Gallery = () => {
             <div className="cosmic-gallery-content">
                 <div className="cosmic-panel categories-panel">
                     <div className="panel-glow"></div>
-                    <h2 className="panel-title">����������������</h2>
+                    <h2 className="panel-title">בחר קטגוריה:</h2>
                     <CategoriesList onCategorySelect={setSelectedCategoryId} />
                 </div>
                 

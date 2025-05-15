@@ -32,7 +32,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
     return (
       <div className="cosmic-loading">
         <div className="cosmic-loader"></div>
-        <span>�������� ����������������...</span>
+        <span>טוען קטגוריות...</span>
       </div>
     );
   }
@@ -45,7 +45,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
           onClick={() => handleCategoryClick(1012)}
         >
           <div className="category-content">
-            <span className="category-name">������</span>
+            <span className="category-name">שם הקטגוריה:</span>
           </div>
           <div className="category-glow"></div>
         </div>

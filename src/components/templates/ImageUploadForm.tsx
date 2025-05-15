@@ -119,16 +119,16 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       )}
       
       <div className="form-notice">
-        <p>������ ����! ������������ ���������� ������ �������� ���������������� ���������� ���������� ���������� ����.</p>
+        <p>שים לב! בהעלאת תמונה היא תהפך לציבורית וכולם יוכלו לשתמש בה.</p>
       </div>
       
       <div className="form-actions">
         <button className="cosmic-action-button upload" onClick={handleUpload}>
-          ����������
+        הוסף
           <div className="button-glow"></div>
         </button>
         <button className="cosmic-action-button cancel" onClick={onClose}>
-          ����������
+        סגור
           <div className="button-glow"></div>
         </button>
       </div>

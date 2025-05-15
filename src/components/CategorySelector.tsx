@@ -21,7 +21,7 @@ const CategorySelector: React.FC<CategorySelectorrProps> = ({
         onChange={(e) => setSelectedCategory(parseInt(e.target.value))}
         className="cosmic-select"
       >
-        <option value={0} disabled>������ ��������������</option>
+        <option value={0} disabled>פפ ��������������</option>
         {allCategories.length > 0 && allCategories.map((category: Category) => (
           <option key={category.categoryID} value={category.categoryID}>
             {category.categoryName}

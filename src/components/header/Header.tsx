@@ -28,7 +28,7 @@ const Header = () => {
               <div className="orbit-particle op3"></div>
             </div>
             <div className="logo-wrapper">
-              <img src="../public/logo.jpg" alt="Logo" className="logo" />
+              <img src={import.meta.env.VITE_LOGO_URL} alt="Logo" className="logo" />
               <div className="logo-glow"></div>
             </div>
           </div>

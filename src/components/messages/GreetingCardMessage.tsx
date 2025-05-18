@@ -4,8 +4,9 @@ import { UserContext } from '../../types/UserTypes';
 import { CurrentCardContext } from '../../Store/cardReducer/CardReducer';
 import { GreetingMessage } from "../../types/GreetingMessageType";
 import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
-import '../cssPages/messages/GreetingCardMessage.css';
 import DeleteButton from '../templates/DeleteButton';
+import '../cssPages/messages/GreetingCardMessage.css';
+
 interface GreetingCardMessageProps {
   message: GreetingMessage;
 }

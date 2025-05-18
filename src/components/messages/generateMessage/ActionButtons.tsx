@@ -1,26 +1,80 @@
-import { IconButton, Box } from '@mui/material';
+import React from 'react';
 import { Send, Refresh, Close } from '@mui/icons-material';
+import '../../cssPages/messages/ActionButtons.css';
 
-const ActionButtons = ({
-  onGenerate,
-  onClose,
-  disabled,
-}: {
+interface ActionButtonsProps {
   onGenerate: () => void;
   onClose: () => void;
   disabled: boolean;
-}) => (
-  <Box display="flex" justifyContent="center" gap={2} mt={1}>
-    <IconButton onClick={onGenerate} disabled={disabled} title="צור ברכה">
-      <Send />
-    </IconButton>
-    <IconButton onClick={onGenerate} disabled={disabled} title="נסה ברכה אחרת">
-      <Refresh />
-    </IconButton>
-    <IconButton onClick={onClose} title="סגור">
-      <Close />
-    </IconButton>
-  </Box>
-);
+}
+
+const ActionButtons: React.FC<ActionButtonsProps> = ({
+  onGenerate,
+  onClose,
+  disabled
+}) => {
+  return (
+    <div className="cosmic-action-buttons">
+      <button 
+        className="cosmic-action-button generate"
+        onClick={onGenerate}
+        disabled={disabled}
+        title="צור ברכה"
+      >
+        <Send className="button-icon" />
+        <span className="button-text">צור ברכה</span>
+        <div className="button-glow"></div>
+      </button>
+      
+      <button 
+        className="cosmic-action-button refresh"
+        onClick={onGenerate}
+        disabled={disabled}
+        title="נסה ברכה אחרת"
+      >
+        <Refresh className="button-icon" />
+        <span className="button-text">נסה שוב</span>
+        <div className="button-glow"></div>
+      </button>
+      
+      <button 
+        className="cosmic-action-button cancel"
+        onClick={onClose}
+        title="סגור"
+      >
+        <Close className="button-icon" />
+        <span className="button-text">סגור</span>
+        <div className="button-glow"></div>
+      </button>
+    </div>
+  );
+};
 
 export default ActionButtons;
+
+// import { IconButton, Box } from '@mui/material';
+// import { Send, Refresh, Close } from '@mui/icons-material';
+
+// const ActionButtons = ({
+//   onGenerate,
+//   onClose,
+//   disabled,
+// }: {
+//   onGenerate: () => void;
+//   onClose: () => void;
+//   disabled: boolean;
+// }) => (
+//   <Box display="flex" justifyContent="center" gap={2} mt={1}>
+//     <IconButton onClick={onGenerate} disabled={disabled} title="צור ברכה">
+//       <Send />
+//     </IconButton>
+//     <IconButton onClick={onGenerate} disabled={disabled} title="נסה ברכה אחרת">
+//       <Refresh />
+//     </IconButton>
+//     <IconButton onClick={onClose} title="סגור">
+//       <Close />
+//     </IconButton>
+//   </Box>
+// );
+
+// export default ActionButtons;

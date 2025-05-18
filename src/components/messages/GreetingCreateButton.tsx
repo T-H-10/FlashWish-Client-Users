@@ -3,7 +3,7 @@ import { Add, AutoAwesome } from '@mui/icons-material';
 import GreetingForm from './GreetingForm';
 import BlessingGenerator from './generateMessage/BlessingGenerator';
 import '../cssPages/messages/GreetingCreateButton.css';
-'
+
 const GreetingCreateButton = () => {
   const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
   const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);

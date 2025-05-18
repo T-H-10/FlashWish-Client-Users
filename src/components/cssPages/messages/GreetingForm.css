@@ -1,0 +1,134 @@
+.cosmic-greeting-form {
+    position: relative;
+    z-index: 1;
+    direction: rtl;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    text-align: center;
+    background: linear-gradient(to right, var(--secondary-light), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.3);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  
+  .cosmic-input,
+  .cosmic-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(251, 190, 101, 0.3);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    direction: rtl;
+  }
+  
+  .cosmic-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .cosmic-input:focus,
+  .cosmic-textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(251, 190, 101, 0.3);
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+  }
+  
+  .cosmic-action-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  
+  .cosmic-action-button.save {
+    background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
+    color: var(--text-dark);
+  }
+  
+  .cosmic-action-button.cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .cosmic-action-button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .cosmic-action-button.save:hover {
+    box-shadow: 0 5px 15px rgba(251, 190, 101, 0.3);
+  }
+  
+  .cosmic-action-button.cancel:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .button-icon {
+    font-size: 18px;
+  }
+  
+  .button-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .cosmic-action-button:hover .button-glow {
+    opacity: 0.3;
+    animation: rotate-glow 3s infinite linear;
+  }
+  
+  @keyframes rotate-glow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

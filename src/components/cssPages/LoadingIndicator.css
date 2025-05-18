@@ -1,4 +1,136 @@
 .cosmic-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 200px;
+}
+
+.cosmic-loading-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.cosmic-orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(251, 190, 101, 0.3);
+  border-radius: 50%;
+  animation: rotate 10s linear infinite;
+}
+
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(251, 190, 101, 0.5);
+  animation: pulse 2s infinite alternate;
+}
+
+.satellite {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--cosmic-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cosmic-blue);
+}
+
+.s1 {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pulse 2s infinite alternate 0.3s;
+}
+
+.s2 {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pulse 2s infinite alternate 0.6s;
+}
+
+.s3 {
+  top: 50%;
+  right: -4px;
+  transform: translateY(-50%);
+  animation: pulse 2s infinite alternate 0.9s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.loading-text {
+  display: flex;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  direction: rtl;
+}
+
+.loading-content {
+  margin-left: 5px;
+}
+
+.loading-dots {
+  display: inline-block;
+}
+
+.dot {
+  opacity: 0;
+  animation: dot-fade 1.5s infinite;
+}
+
+.dot1 {
+  animation-delay: 0s;
+}
+
+.dot2 {
+  animation-delay: 0.5s;
+}
+
+.dot3 {
+  animation-delay: 1s;
+}
+
+@keyframes dot-fade {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* .cosmic-loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,4 +222,4 @@
       opacity: 1;
       transform: translate(-50%, -50%) scale(1.1);
     }
-  }
+  } */

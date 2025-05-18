@@ -4,7 +4,7 @@ import DeleteButton from "./DeleteButton";
 import '../cssPages/templates/TemplateItem.css';
 import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
 
-export const CLOUDE_URL_START = import.meta.env.VITE_CLOUDE_URL_START;
+export const CLOUD_URL_START = import.meta.env.VITE_CLOUD_URL_START;
 
 interface CosmicTemplateItemProps {
   template: Template;
@@ -30,7 +30,7 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
       <div className="template-frame">
         <div className="template-image-container" onClick={onClick}>
           <img 
-            src={CLOUDE_URL_START + template.imageURL || "/placeholder.svg"}
+            src={CLOUD_URL_START + template.imageURL || "/placeholder.svg"}
             alt={template.templateName}
             className="template-image"
           />
@@ -73,7 +73,7 @@ export default TemplateItem;
 // import DeleteButton from "./DeleteButton";
 // import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
 
-// export const CLOUDE_URL_START= import.meta.env.VITE_CLOUDE_URL_START;
+// export const CLOUD_URL_START= import.meta.env.VITE_CLOUD_URL_START;
 // const TemplateItem = ({ template, onClick, isEditable, currentUserId }:{ template:Template, onClick:()=>{}, isEditable: boolean, currentUserId:number })=>{
 //   return(
 //     <StyledImageContainer width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}>
@@ -83,7 +83,7 @@ export default TemplateItem;
 //             onClick={onClick}
 //             >
 
-//         <img src={CLOUDE_URL_START+template.imageURL}
+//         <img src={CLOUD_URL_START+template.imageURL}
 //           alt={template.templateName} 
 //           style={{ maxWidth: '100%', maxHeight: '100%', transition: 'transform 0.3s ease' }} />
 //       </span>

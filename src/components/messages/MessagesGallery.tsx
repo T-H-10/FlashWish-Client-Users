@@ -7,8 +7,6 @@ import { selectGreetingMessages } from '../../Store/messagesStore/GreetingMessag
 import { selectCategories } from '../../Store/categoriesStore/CategoriesSlice';
 import { GreetingMessage } from "../../types/GreetingMessageType";
 import { IsLogin } from '../../App';
-import { CategoriesListContext } from '../CategoriesList';
-import GreetingCreateButton from './GreetingCreateButton';
 import LoadingIndicator from '../LoadingIndicator';
 import GreetingCardMessage from './GreetingCardMessage';
 import '../cssPages/messages/GreetingMessagesGallery.css';

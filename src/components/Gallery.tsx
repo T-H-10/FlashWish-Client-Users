@@ -51,7 +51,6 @@ const Gallery = () => {
 
 export default Gallery;
 
-// import { Box, Paper, Typography } from '@mui/material';
 // import { Outlet } from 'react-router';
 // import CategoriesList from './categories/CategoriesList';
 // import { useState } from 'react';

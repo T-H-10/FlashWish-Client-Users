@@ -14,7 +14,7 @@ import { initialGreetingCardState } from "../../types/GreetingCardsTypes";
 
 const CreatingCard = () => {
     const { currentCard, cardDispatch} = useContext(CurrentCardContext);
-    const [selectedCategoryId, setSelectedCategoryId] = useState(1012);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(1012);//change it!!!
     const dispatch = useDispatch<appDispatch>();
     const { templatesList, loading } = useSelector(selectTemplates);
 

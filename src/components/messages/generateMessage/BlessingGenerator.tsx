@@ -13,6 +13,7 @@ import { addGreetingMessage } from '../../../Store/messagesStore/GreetingsMessag
 import BlessingOptions from './BlessingOptions';
 import '../../cssPages/messages/BlessingGenerator.css';
 import GeneratorHeader from './GeneratorHeader';
+import GeneratorLoading from './GeneratorLoading';
 
 interface BlessingGeneratorProps {
   onClose: () => void;

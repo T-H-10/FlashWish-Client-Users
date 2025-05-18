@@ -57,7 +57,9 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
     <button className="cosmic-delete-button"
      onClick={handleDelete}
      onMouseEnter={()=>setIsHovered(true)}
-     onMouseLeave={()=> setIsHovered(false)}>
+     onMouseLeave={()=> setIsHovered(false)}
+     aria-label='מחק פריט'
+     >
       <DeleteOutline className="delete-icon" />
       <div className={`delete-tooltip ${isHovered ? 'visible' : ''}`}>
         מחק

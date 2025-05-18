@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { DeleteOutline } from '@mui/icons-material';
 import { appDispatch } from '../../Store/Store';
 import '../cssPages/templates/DeleteButton.css';
 
-interface CosmicDeleteButtonProps {
+interface DeleteButtonProps {
   uploaderId: number;
   currentUserId: number;
   deleteFunc: Function;
 }
 
-const DeleteButton: React.FC<CosmicDeleteButtonProps> = ({ 
+const DeleteButton: React.FC<DeleteButtonProps> = ({ 
   uploaderId, 
   currentUserId, 
   deleteFunc 
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const dispatch = useDispatch<appDispatch>();
   
   const handleDelete = (e: React.MouseEvent) => {
@@ -53,8 +54,14 @@ const DeleteButton: React.FC<CosmicDeleteButtonProps> = ({
   }
 
   return (
-    <button className="cosmic-delete-button" onClick={handleDelete}>
+    <button className="cosmic-delete-button"
+     onClick={handleDelete}
+     onMouseEnter={()=>setIsHovered(true)}
+     onMouseLeave={()=> setIsHovered(false)}>
       <DeleteOutline className="delete-icon" />
+      <div className={`delete-tooltip ${isHovered ? 'visible' : ''}`}>
+        מחק
+      </div>
       <div className="button-glow"></div>
     </button>
   );

@@ -53,7 +53,11 @@ export const addGreetingCard = createAsyncThunk('greetingCards/add', async (newC
 
 export const updateGreetingCard = createAsyncThunk('greetingCards/update', async ({ id, updatedCard }: { id: number, updatedCard: GreetingCardPostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLGreetingCards}/${id}`, updatedCard);
+        const response = await axios.put(`${routerURLGreetingCards}/${id}`, updatedCard,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
@@ -65,7 +69,11 @@ export const updateGreetingCard = createAsyncThunk('greetingCards/update', async
 
 export const deleteGreetingCard = createAsyncThunk('greetingCards/delete', async (id: number, thunkAPI) => {
     try {
-        await axios.delete(`${routerURLGreetingCards}/${id}`);
+        await axios.delete(`${routerURLGreetingCards}/${id}`,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return id; // מחזירים את ה-ID למחיקה
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

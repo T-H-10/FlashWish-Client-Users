@@ -40,7 +40,7 @@ const TextColor: React.FC<TextColorProps> = ({ canvas }) => {
   return (
     <div className="relative inline-block">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <FormatColorTextIcon style={{ color: COSMIC_COLORS.textLight }} />
+        <FormatColorTextIcon style={{ color: COSMIC_COLORS.primaryDark }} />
       </div>
       <input
         type="color"
@@ -49,7 +49,7 @@ const TextColor: React.FC<TextColorProps> = ({ canvas }) => {
         className={`
           w-10 h-10 rounded-full cursor-pointer
           opacity-0
-          border-2 border-[${COSMIC_COLORS.primaryLight}]
+          border-2 border-[${COSMIC_COLORS.primaryDark}]
           transition-all duration-300
           hover:scale-110
         `}
@@ -59,7 +59,7 @@ const TextColor: React.FC<TextColorProps> = ({ canvas }) => {
         className={`
           absolute inset-0 rounded-full
           transition-all duration-300
-          hover:shadow-lg hover:shadow-[${COSMIC_COLORS.glowColor}]
+          hover:shadow-lg hover:shadow-[${COSMIC_COLORS.primaryDark}]
         `}
         style={{ backgroundColor: color }}
       />

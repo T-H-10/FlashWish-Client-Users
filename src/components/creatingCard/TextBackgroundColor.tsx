@@ -80,7 +80,7 @@ const TextBackground: React.FC<TextBackgroundProps> = ({ canvas }) => {
     <div className="flex items-center space-x-2">
       <div className="relative inline-block">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <FormatColorFillRoundedIcon style={{ color: COSMIC_COLORS.textLight }} />
+          <FormatColorFillRoundedIcon style={{ color: COSMIC_COLORS.primaryDark }} />
         </div>
         <input
           type="color"

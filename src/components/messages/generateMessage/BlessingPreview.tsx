@@ -1,5 +1,5 @@
-import React from 'react';
-import { Celebration, Done } from '@mui/icons-material';
+import React, { useState } from 'react';
+import { Celebration, ContentCopy, Done } from '@mui/icons-material';
 import { GreetingMessagePostModel } from '../../../types/GreetingMessageType';
 import '../../cssPages/messages/BlessingPreview.css';
 
@@ -9,6 +9,16 @@ interface BlessingPreviewProps {
 }
 
 const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) => {
+  const [copied, setCopied] = useState(false);
+  
+  const copyToClipboard = () => {
+    const content = `${blessing.title}\n\n${blessing.content}\n\n${blessing.signature}`;
+    navigator.clipboard.writeText(content).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+  
   return (
     <div className="cosmic-blessing-preview">
       <div className="preview-header">
@@ -47,6 +57,11 @@ const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) =
             </div>
             <p className="blessing-signature">{blessing.signature}</p>
           </div>
+          <div className="blessing-decoration">
+            <div className="decoration-star ds1"></div>
+            <div className="decoration-star ds2"></div>
+            <div className="decoration-star ds3"></div>
+          </div>
         </div>
       </div>
       
@@ -54,6 +69,11 @@ const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) =
         <button className="cosmic-save-button" onClick={onSave}>
           <Done className="button-icon" />
           <span className="button-text">שמור ברכה</span>
+          <div className="button-glow"></div>
+        </button>
+        <button className="cosmic-copy-button" onClick={copyToClipboard}>
+          <ContentCopy className="button-icon" />
+          <span className="button-text">{copied ? 'הועתק!' : 'העתק לזכרון'}</span>
           <div className="button-glow"></div>
         </button>
       </div>

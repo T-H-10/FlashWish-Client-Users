@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StyleSelect from "../style/StyleSelect";
 import '../cssPages/creatingCard/TextFont.css'
+import * as fabric from "fabric";
 
 interface TextFontProps {
   canvas: fabric.Canvas

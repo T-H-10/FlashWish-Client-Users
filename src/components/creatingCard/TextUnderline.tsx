@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FormatUnderlinedRoundedIcon from '@mui/icons-material/FormatUnderlinedRounded';
 import StyleButton from '../style/StyleButton';
 import '../cssPages/creatingCard/TextUnderline.css';
+import * as fabric from "fabric";
 
 interface TextUnderlineProps {
   canvas: fabric.Canvas

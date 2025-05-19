@@ -39,9 +39,12 @@ const TextItalic: React.FC<TextItalicProps> = ({ canvas }) => {
   }
 
   return (
-    <StyleButton onClick={toggleItalic} isActive={isItalic} title="נטוי">
-      <FormatItalicRoundedIcon />
-    </StyleButton>
+    <div className="relative">
+      <StyleButton onClick={toggleItalic} isActive={isItalic} title="נטוי">
+        <FormatItalicRoundedIcon />
+      </StyleButton>
+    </div>
+
   )
 }
 
@@ -71,7 +74,7 @@ export default TextItalic
 
 //     return (
 //         <>
-//         <MyOptionToStyleButton onClick={toggleItalic} 
+//         <MyOptionToStyleButton onClick={toggleItalic}
 //             isActive={!isItalic}>
 //             <FormatItalicRoundedIcon />
 //         </MyOptionToStyleButton>

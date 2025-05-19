@@ -38,9 +38,11 @@ const TextUnderline: React.FC<TextUnderlineProps> = ({ canvas }) => {
   }
 
   return (
+    <div className="relative">
     <StyleButton onClick={toggleUnderline} isActive={isUnderlined} title="קו תחתון">
       <FormatUnderlinedRoundedIcon />
     </StyleButton>
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
-"use client"
+// "use client"
 
-import type React from "react"
+// import type React from "react"
 
 import { useState, useEffect } from "react"
 import type * as fabric from "fabric"
@@ -42,9 +42,11 @@ const TextBold: React.FC<TextBoldProps> = ({ canvas }) => {
   }
 
   return (
+    <div className="relative">
     <StyleButton onClick={toggleBold} isActive={isBold} title="הדגשה">
       <FormatBoldRoundedIcon />
     </StyleButton>
+  </div>
   )
 }
 

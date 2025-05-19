@@ -1,0 +1,42 @@
+.canvas-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+  }
+  
+  .canvas-controls > * {
+    flex: 0 0 auto;
+    transition: transform 0.2s ease;
+  }
+  
+  .canvas-controls > *:hover {
+    transform: scale(1.05);
+  }
+  
+  .save-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #805ad5, #ed64a6);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background: linear-gradient(135deg, #6b46c1, #d53f8c);
+    transform: scale(1.05);
+  }
+  
+  .save-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ed64a6;
+  }
+  

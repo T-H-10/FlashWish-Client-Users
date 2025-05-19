@@ -61,13 +61,17 @@ const TextSize: React.FC<TextSizeProps> = ({ canvas }) => {
 
   return (
     <>
+        <div className="relative">
       <StyleButton onClick={increaseFontSize} title="הגדל טקסט">
         <TextIncreaseRoundedIcon />
       </StyleButton>
+      </div>
 
+      <div className="relative">
       <StyleButton onClick={decreaseFontSize} title="הקטן טקסט">
         <TextDecreaseRoundedIcon />
       </StyleButton>
+      </div>
 
       <input
         type="number"

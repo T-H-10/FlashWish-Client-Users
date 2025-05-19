@@ -1,3 +1,39 @@
+import { useContext } from "react";
+import DownloadButton from "../DownLoadButton";
+import TextAddition from "../TextAddition";
+import TextBackground from "../TextBackgroundColor";
+import TextBold from "../TextBold";
+import TextColor from "../TextColor";
+import TextItalic from "../TextItalic";
+import TextSize from "../TextSize";
+import TextUnderline from "../TextUnderline";
+import * as fabric from "fabric";
+import { IsLogin } from "../../../App";
+import "../../cssPages/creatingCard/CanvasControls.css";
+
+const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDesign: () => void }) => {
+  const [isLogin] = useContext(IsLogin);
+
+  return (
+    <div className="canvas-controls">
+      <TextAddition canvas={canvas} />
+      <TextBold canvas={canvas} />
+      <TextSize canvas={canvas} />
+      <TextItalic canvas={canvas} />
+      <TextUnderline canvas={canvas} />
+      <TextColor canvas={canvas} />
+      <TextBackground canvas={canvas} />
+      <DownloadButton canvas={canvas} />
+      {isLogin && (
+        <button className="save-button" onClick={saveDesign}>שמור עיצוב</button>
+      )}
+    </div>
+  );
+};
+
+export default CanvasControls;
+
+
 // "use client"
 // import { useContext } from "react"
 // import type * as fabric from "fabric"
@@ -64,35 +100,35 @@
 
 // export default CanvasControls
 
+//1:
+// import { useContext } from "react";
+// import DownloadButton from "../DownLoadButton";
+// import TextAddition from "../TextAddition";
+// import TextBackground from "../TextBackgroundColor";
+// import TextBold from "../TextBold";
+// import TextColor from "../TextColor";
+// import TextItalic from "../TextItalic";
+// import TextSize from "../TextSize";
+// import TextUnderline from "../TextUnderline";
+// import * as fabric from "fabric";
+// import { IsLogin } from "../../../App";
 
-import { useContext } from "react";
-import DownloadButton from "../DownLoadButton";
-import TextAddition from "../TextAddition";
-import TextBackground from "../TextBackgroundColor";
-import TextBold from "../TextBold";
-import TextColor from "../TextColor";
-import TextItalic from "../TextItalic";
-import TextSize from "../TextSize";
-import TextUnderline from "../TextUnderline";
-import * as fabric from "fabric";
-import { IsLogin } from "../../../App";
+// const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDesign: ()=>void }) => {
+//     const [isLogin] = useContext(IsLogin);
+//     return (
+//         <div>
+//             <TextAddition canvas={canvas} />
+//             <TextBold canvas={canvas} />
+//             <TextSize canvas={canvas} />
+//             <TextItalic canvas={canvas} />
+//             <TextUnderline canvas={canvas} />
+//             <TextColor canvas={canvas} />
+//             <TextBackground canvas={canvas} />
+//             <DownloadButton canvas={canvas} />
+//             {isLogin &&
+//              <button onClick={() => saveDesign()}>שמור עיצוב</button>}
+//         </div>
+//     );
+// };
 
-const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDesign: ()=>void }) => {
-    const [isLogin] = useContext(IsLogin);
-    return (
-        <div>
-            <TextAddition canvas={canvas} />
-            <TextBold canvas={canvas} />
-            <TextSize canvas={canvas} />
-            <TextItalic canvas={canvas} />
-            <TextUnderline canvas={canvas} />
-            <TextColor canvas={canvas} />
-            <TextBackground canvas={canvas} />
-            <DownloadButton canvas={canvas} />
-            {isLogin &&
-             <button onClick={() => saveDesign()}>שמור עיצוב</button>}
-        </div>
-    );
-};
-
-export default CanvasControls;
+// export default CanvasControls;

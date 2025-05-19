@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CanvasControls from "./CanvasControls";
 import Swal from "sweetalert2";
 import { appDispatch } from "../../../Store/Store";
 import { UserContext } from "../../../types/UserTypes";
@@ -11,6 +10,7 @@ import setCanvasBackground from "./setCanvasBackground";
 import { addGreetingCard, updateGreetingCard } from "../../../Store/cardsStore/GreetingCardsApi";
 import LoadingIndicator from "../../LoadingIndicator";
 import { GreetingCard } from "../../../types/GreetingCardsTypes";
+import CanvasControls from "./CanvasControls";
 
 export const DEFAULT_IMAGE = "v1746302666/logo.jpg.jpg";
 

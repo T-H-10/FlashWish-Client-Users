@@ -1,0 +1,161 @@
+.cosmic-modal-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: modal-fade-in 0.3s ease;
+  }
+  
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .cosmic-modal-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .cosmic-modal-star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    /* animation: modxxxxxxxxxxxxxle 3s infinite alternate; */
+  }
+/*   
+  @keyframes modal-xxxxxxxxxxle {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.2);
+      box-shadow: 0 0 4px white;
+    }
+  } */
+  
+  .cosmic-modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    background: linear-gradient(135deg, rgba(10, 10, 42, 0.95) 0%, rgba(26, 26, 74, 0.95) 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    /* animation: modal-slide-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    border: 1px solid rgba(251, 190, 101, 0.2);
+  }
+  
+  /* @keyframes modal-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  } */
+  
+  .cosmic-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(251, 190, 101, 0.2);
+    position: relative;
+  }
+  
+  .cosmic-modal-title {
+    margin: 0;
+    color: #fbfbff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.3);
+  }
+  
+  .cosmic-modal-close {
+    background: transparent;
+    border: none;
+    color: #fbfbff;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-modal-close:hover {
+    background: rgba(251, 190, 101, 0.2);
+    transform: rotate(90deg);
+  }
+  
+  .cosmic-modal-content {
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cosmic-modal-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(251, 190, 101, 0.3) 0%,
+      transparent 70%
+    );
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+    /* animation: modal-glow-rotate 20s linear infinite; */
+  }
+  
+  /* @keyframes modal-glow-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } */
+  
+  @media (max-width: 768px) {
+    .cosmic-modal-container {
+      width: 95%;
+    }
+    
+    .cosmic-modal-header {
+      padding: 15px 20px;
+    }
+    
+    .cosmic-modal-content {
+      padding: 20px;
+    }
+    
+    .cosmic-modal-title {
+      font-size: 1.3rem;
+    }
+  }

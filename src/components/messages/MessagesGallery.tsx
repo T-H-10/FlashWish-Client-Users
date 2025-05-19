@@ -53,7 +53,7 @@ const GreetingMessagesGallery = () => {
       ) : (
         <EmptyState
         message="לא נמצאו ברכות בקטגוריה זו"
-        subMessage={isLogin? "התחבר כדי להוסיף ברכות חדשות":"לחץ על 'יצירת תוכן חדש' כדי להוסיף ברכה"}
+        subMessage={!isLogin? "התחבר כדי להוסיף ברכות חדשות":"לחץ על 'יצירת תוכן חדש' כדי להוסיף ברכה"}
 />
       )}
     </div>

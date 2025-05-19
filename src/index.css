@@ -53,7 +53,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Space for fixed header */
+  padding-top: 80px;   /* Space for fixed header  */
 }
 
 @keyframes float {

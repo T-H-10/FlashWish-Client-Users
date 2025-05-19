@@ -38,8 +38,8 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
     if (!imageName || !imageFile || !selectedCategory) {
       Swal.fire({
         icon: 'warning',
-        title: '����������',
-        text: '���� �������� ���� ���� ����������',
+        title: 'יייייי',
+        text: 'טטטטטטטטטטטטטטט',
         background: '#25173b',
         color: '#ffffff',
         iconColor: '#ff9800',
@@ -64,8 +64,8 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
     
     Swal.fire({
       icon: 'success',
-      title: '���������� ������������',
-      text: '������������ ������������ ������������',
+      title: 'כככככככככככככככ',
+      text: 'נננננננננננננננ',
       background: '#25173b',
       color: '#ffffff',
       iconColor: '#4caf50',
@@ -75,13 +75,13 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
 
   return (
     <div className="cosmic-upload-form">
-      <h2 className="form-title">���������� ���������� ��������</h2>
+      <h2 className="form-title">//////////////</h2>
       
       <div className="form-group">
-        <label className="form-label">���� ������������</label>
+        <label className="form-label">קקקקקקקקקקקקקקקקקקקקקקקקקקק</label>
         <input
           type="text"
-          placeholder="������ ���� ������������"
+          placeholder="רררררררררררררר"
           value={imageName}
           onChange={(e) => setImageName(e.target.value)}
           className="cosmic-input"
@@ -89,7 +89,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       </div>
       
       <div className="form-group">
-        <label className="form-label">������ ��������������</label>
+        <label className="form-label">אאאאאאאאאאאאא</label>
         <CategorySelector 
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
@@ -97,7 +97,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       </div>
       
       <div className="form-group">
-        <label className="form-label">������ ����������</label>
+        <label className="form-label">טטטט</label>
         <div className="file-input-container">
           <input
             type="file"
@@ -107,7 +107,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             id="file-input"
           />
           <label htmlFor="file-input" className="file-input-label">
-            {imageFile ? imageFile.name : '������ ��������'}
+            {imageFile ? imageFile.name : 'ךךךךךךךךךךךךךךךךך'}
           </label>
         </div>
       </div>

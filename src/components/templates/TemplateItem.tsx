@@ -35,7 +35,7 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
             className="template-image"
           />
           <div className="image-overlay">
-            <span className="overlay-text">������</span>
+            <span className="overlay-text">בחר</span>
           </div>
         </div>
         

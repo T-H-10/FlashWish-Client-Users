@@ -1,0 +1,270 @@
+.cosmic-cards-gallery-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+    direction: rtl;
+    overflow: hidden;
+}
+
+.cosmic-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.nebula-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+    var(--primary-dark) 0%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+    opacity: 0.95;
+}
+
+.stars-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cosmic-particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+        box-shadow: 0 0 2px white;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 8px white, 0 0 12px rgba(251, 190, 101, 0.8);
+    }
+}
+
+.cosmic-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cosmic-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(251, 190, 101, 0.05));
+    border-radius: 50%;
+    animation: wave-animation infinite linear;
+}
+
+.wave1 {
+    height: 60%;
+    animation-duration: 15s;
+}
+
+.wave2 {
+    height: 80%;
+    animation-duration: 20s;
+    animation-delay: -5s;
+    opacity: 0.3;
+}
+
+.wave3 {
+    height: 100%;
+    animation-duration: 25s;
+    animation-delay: -10s;
+    opacity: 0.2;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0) rotate(360deg);
+    }
+}
+
+.cosmic-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cosmic-title {
+    font-size: 5rem;
+    text-align: center;
+    margin: 85px 0;
+    color: #fbfbff;
+    text-shadow: 0 0 15px rgba(251, 190, 101, 0.7), 0 0 30px rgba(251, 190, 101, 0.4);
+    animation: title-glow 3s infinite alternate;
+    font-weight: 700;
+}
+
+@keyframes title-glow {
+    0% {
+        text-shadow: 0 0 15px rgba(251, 190, 101, 0.7), 0 0 30px rgba(251, 190, 101, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(251, 190, 101, 0.9), 0 0 40px rgba(251, 190, 101, 0.6);
+    }
+}
+
+.cosmic-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.cosmic-card-wrapper {
+    transform-style: preserve-3d;
+    animation: card-float 6s infinite ease-in-out;
+    animation-delay: calc(var(--index, 0) * 0.2s);
+}
+
+@keyframes card-float {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(2deg);
+    }
+}
+
+/* Loading state */
+.cosmic-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+}
+
+.cosmic-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cosmic-loader-orbit {
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(251, 190, 101, 0.3);
+    border-radius: 50%;
+    position: relative;
+    animation: orbit-rotate 2s linear infinite;
+}
+
+.cosmic-loader-planet {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #fbfbff, rgba(251, 190, 101, 0.8));
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 10px);
+    box-shadow: 0 0 15px rgba(251, 190, 101, 0.8);
+}
+
+@keyframes orbit-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cosmic-loader-text {
+    font-size: 1.5rem;
+    color: #fbfbff;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.7);
+}
+
+/* Empty state */
+.cosmic-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+    gap: 30px;
+}
+
+.cosmic-empty-icon {
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(251, 190, 101, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cosmic-empty-star {
+    width: 40px;
+    height: 40px;
+    background: rgba(251, 190, 101, 0.8);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: star-pulse 3s infinite alternate;
+}
+
+@keyframes star-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.cosmic-empty-text {
+    font-size: 2rem;
+    color: #fbfbff;
+    text-shadow: 0 0 10px rgba(251, 190, 101, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cosmic-title {
+        font-size: 3rem;
+        margin: 50px 0;
+    }
+    
+    .cosmic-cards-grid {
+        gap: 20px;
+    }
+}

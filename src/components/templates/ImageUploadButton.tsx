@@ -13,7 +13,7 @@ const ImageUploadButton = () => {
         onClick={() => setModalVisible(true)}
       >
         <CropOriginal className="upload-icon" />
-        <span className="upload-text">���������� ����������</span>
+        <span className="upload-text">ףףףףףףףףףףףףףף</span>
         <div className="button-glow"></div>
       </button>
       

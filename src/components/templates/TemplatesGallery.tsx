@@ -59,8 +59,8 @@ const TemplatesGallery = () => {
         <div className="cosmic-templates-gallery">
             <div className="gallery-header">
                 <h2 className="gallery-title">
-                    {selectedCategoryId === 1012 ? '���� ������������' : //לטפל ב 1012!!!
-                        categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || '����������'}
+                    {selectedCategoryId === null ? 'הכל' : //לטפל ב 1012!!!
+                        categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || 'ללללללללללל'}
                 </h2>
                 
                 {isLogin && (
@@ -71,7 +71,7 @@ const TemplatesGallery = () => {
             </div>
             
             {loading ? (
-                <LoadingIndicator content='�������� ����������...' />
+                <LoadingIndicator content='סססססססססססס...' />
             ) : filteredTemplates.length > 0 ? (
                 <TemplatesGrid
                     templates={filteredTemplates}
@@ -82,7 +82,7 @@ const TemplatesGallery = () => {
             ) : (
                 <div className="no-templates-message">
                     <div className="message-glow"></div>
-                    <p>���� ���������� ����������</p>
+                    <p>זזזזזזזזזזז</p>
                 </div>
             )}
         </div>

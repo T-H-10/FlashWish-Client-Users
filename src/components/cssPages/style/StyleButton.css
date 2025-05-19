@@ -1,0 +1,66 @@
+.style-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background-color: var(--primary-color);
+    color: var(--secondary-dark);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    border: none;
+  }
+  
+  .style-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, 
+    var(--primary-dark) 10%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .style-button.active::before {
+    opacity: 0.2;
+  }
+  
+  .style-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: linear-gradient(135deg, 
+    var(--primary-dark) 0%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .style-button.active::after {
+    opacity: 0.1;
+  }
+  
+  .style-button:hover {
+    transform: scale(1.1);
+    background-color: linear-gradient(135deg, 
+    var(--primary-dark) 10%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+  }
+  
+  .style-button:focus {
+    box-shadow: 0 0 0 2pxlinear-gradient(135deg, 
+    var(--primary-dark) 0%, 
+    var(--primary-color) 50%,
+    var(--primary-dark) 100%);
+  }
+  

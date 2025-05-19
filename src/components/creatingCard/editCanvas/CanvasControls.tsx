@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import DownloadButton from "../DownLoadButton";
-import TextAddition from "../TextAddition";
 import TextBackground from "../TextBackgroundColor";
 import TextBold from "../TextBold";
 import TextColor from "../TextColor";
@@ -10,6 +9,9 @@ import TextUnderline from "../TextUnderline";
 import * as fabric from "fabric";
 import { IsLogin } from "../../../App";
 import "../../cssPages/creatingCard/CanvasControls.css";
+import TextAlign from "../TextAlign";
+import TextAddition from "../TextAddition";
+import TextFont from "../TextFont";
 
 const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDesign: () => void }) => {
   const [isLogin] = useContext(IsLogin);
@@ -18,6 +20,8 @@ const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDes
     <div className="canvas-controls">
       <TextAddition canvas={canvas} />
       <TextBold canvas={canvas} />
+      <TextAlign canvas={canvas}/>
+      <TextFont canvas={canvas}/>
       <TextSize canvas={canvas} />
       <TextItalic canvas={canvas} />
       <TextUnderline canvas={canvas} />

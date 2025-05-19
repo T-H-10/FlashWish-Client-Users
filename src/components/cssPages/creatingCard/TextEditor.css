@@ -1,0 +1,193 @@
+.cosmic-editor-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(10, 10, 42, 0.9) 0%, rgba(26, 26, 74, 0.9) 100%);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cosmic-editor-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .cosmic-editor-star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: editor-star-twinkle 3s infinite alternate;
+  }
+  
+  @keyframes editor-star-twinkle {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.2);
+      box-shadow: 0 0 4px white;
+    }
+  }
+  
+  .cosmic-editor-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cosmic-editor-field {
+    position: relative;
+    width: 100%;
+  }
+  
+  .cosmic-editor-textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(10, 10, 42, 0.7);
+    color: #fbfbff;
+    border: 1px solid rgba(251, 190, 101, 0.3);
+    resize: none;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-editor-textarea:focus {
+    outline: none;
+    border-color: rgba(251, 190, 101, 0.7);
+    box-shadow: 0 0 15px rgba(251, 190, 101, 0.3);
+  }
+  
+  .cosmic-editor-textarea::placeholder {
+    color: rgba(251, 251, 255, 0.5);
+  }
+  
+  .cosmic-editor-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at 70% 30%,
+      rgba(251, 190, 101, 0.2) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-editor-field:hover .cosmic-editor-glow,
+  .cosmic-editor-textarea:focus + .cosmic-editor-glow {
+    opacity: 1;
+  }
+  
+  .cosmic-editor-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .cosmic-editor-button {
+    position: relative;
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-button-text {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cosmic-button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .cosmic-editor-cancel {
+    background-color: rgba(10, 10, 42, 0.7);
+    color: #fbfbff;
+    border: 1px solid rgba(251, 190, 101, 0.3);
+  }
+  
+  .cosmic-editor-cancel .cosmic-button-glow {
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.2) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-editor-cancel:hover {
+    background-color: rgba(26, 26, 74, 0.8);
+    transform: translateY(-2px);
+  }
+  
+  .cosmic-editor-cancel:hover .cosmic-button-glow {
+    opacity: 1;
+  }
+  
+  .cosmic-editor-save {
+    background: linear-gradient(135deg, #6b2afd 0%, #a91fe6 100%);
+    color: #fbfbff;
+    border: none;
+  }
+  
+  .cosmic-editor-save .cosmic-button-glow {
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.4) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-editor-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(107, 42, 253, 0.4);
+  }
+  
+  .cosmic-editor-save:hover .cosmic-button-glow {
+    opacity: 1;
+    animation: save-glow-pulse 2s infinite alternate;
+  }
+  
+  @keyframes save-glow-pulse {
+    0% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }

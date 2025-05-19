@@ -1,0 +1,70 @@
+.cosmic-font-container {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-font-container:hover {
+    transform: translateY(-2px);
+  }
+  
+  .cosmic-font-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.4) 0%,
+      rgba(251, 190, 101, 0) 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .cosmic-font-container:hover .cosmic-font-glow {
+    opacity: 1;
+    animation: font-glow-pulse 2s infinite alternate;
+  }
+  
+  @keyframes font-glow-pulse {
+    0% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.2);
+    }
+  }
+  
+  /* Style the select element inside StyleSelect */
+  .cosmic-font-container select {
+    background-color: rgba(10, 10, 42, 0.7);
+    color: #fbfbff;
+    border: 1px solid rgba(251, 190, 101, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-font-container select:hover,
+  .cosmic-font-container select:focus {
+    border-color: rgba(251, 190, 101, 0.7);
+    box-shadow: 0 0 10px rgba(251, 190, 101, 0.3);
+    outline: none;
+  }
+  
+  .cosmic-font-container select option {
+    background-color: rgba(10, 10, 42, 0.95);
+    color: #fbfbff;
+    padding: 8px;
+  }

@@ -45,7 +45,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
           onClick={() => handleCategoryClick(1012)}
         >
           <div className="category-content">
-            <span className="category-name">שם הקטגוריה:</span>
+            <span className="category-name">הכל</span>
           </div>
           <div className="category-glow"></div>
         </div>

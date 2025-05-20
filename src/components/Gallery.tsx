@@ -4,7 +4,7 @@ import './cssPages/Gallery.css';
 import CategoriesList from './CategoriesList';
 
 const Gallery = () => {
-    const [selectedCategoryId, setSelectedCategoryId] = useState(1012);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(0);
 
     return (
         <div className="cosmic-gallery-container">

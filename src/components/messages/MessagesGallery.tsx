@@ -21,11 +21,11 @@ const GreetingMessagesGallery = () => {
   const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  const categoryName = selectedCategoryId === 1012
+  const categoryName = selectedCategoryId === 0
     ? 'כל הברכות'
     : categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || 'ברכות';
 
-  const filteredGreetingMessages = selectedCategoryId === 1012  //change!!!
+  const filteredGreetingMessages = selectedCategoryId === 0  //change!!!
     ? greetingMessagesList
     : greetingMessagesList.filter((message: GreetingMessage) => message.categoryID === selectedCategoryId);
 

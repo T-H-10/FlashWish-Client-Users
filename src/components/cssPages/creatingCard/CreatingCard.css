@@ -113,7 +113,7 @@
   }
   
   .cosmic-panel {
-    position: relative;
+    /* position: relative; */
     background: rgba(10, 10, 42, 0.7) !important;
     backdrop-filter: blur(10px);
     border-radius: 16px !important;
@@ -181,12 +181,12 @@
   .categories-panel {
     width: 100%;
     margin-bottom: 16px;
-    max-width: 600px;
+    /* max-width: 600px; */
   }
   
   .canvas-panel {
     width: 100%;
-    max-width: 600px;
+    /* max-width: 600px; */
   }
   
   .cosmic-loading {

@@ -15,7 +15,7 @@ interface CategoriesListProps {
 const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => {
   const dispatch: appDispatch = useDispatch<appDispatch>();
   const { categoriesList, loading } = useSelector(selectCategories);
-  const [activeCategory, setActiveCategory] = useState<number>(1012);
+  const [activeCategory, setActiveCategory] = useState<number>(0);
 
   useEffect(() => {
     if (categoriesList.length === 0) {
@@ -41,8 +41,8 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
     <CategoriesListContext.Provider value={categoriesList}>
       <div className="cosmic-categories-list">
         <div 
-          className={`cosmic-category-item ${activeCategory === 1012 ? 'active' : ''}`}
-          onClick={() => handleCategoryClick(1012)}
+          className={`cosmic-category-item ${activeCategory === 0 ? 'active' : ''}`}
+          onClick={() => handleCategoryClick(0)}
         >
           <div className="category-content">
             <span className="category-name">הכל</span>

@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import '../cssPages/home/HeroSection.css';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+
+  const navigate = useNavigate();
+  
   const titleVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
@@ -54,7 +58,7 @@ const HeroSection = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <button className="cosmic-button primary">
-            <span className="button-text">צור ברכה חדשה</span>
+            <span className="button-text" onClick={()=>navigate('/Gallery/templates')}>צור ברכה חדשה</span>
             <div className="button-glow"></div>
           </button>
           {/* <button className="cosmic-button secondary">

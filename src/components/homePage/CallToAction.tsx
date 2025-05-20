@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import '../cssPages/home/CallToAction.css'
+import { useNavigate } from 'react-router-dom';
 
 const CallToAction = () => {
+  
+  const navigate = useNavigate();
   return (
     <section className="cta-section">
       <div className="cta-cosmic-particles">
@@ -23,7 +26,7 @@ const CallToAction = () => {
         </p>
         
         <button className="cosmic-button primary large">
-          <span className="button-text">צור ברכה עכשיו</span>
+          <span className="button-text" onClick={()=>navigate('/Gallery/templates')}>צור ברכה עכשיו</span>
           <div className="button-glow"></div>
         </button>
       </motion.div>

@@ -80,6 +80,7 @@ const Registration = () => {
                     errorMessage = 'אנא ודא שהזנת אימייל וסיסמה.';
                 } else if (status === 409) {
                     errorMessage = 'המשתמש כבר קיים.';
+                    navigate('/login')
                 } else if (status === 500) {
                     errorMessage = 'אירעה שגיאה בשרת. אנא נסה שוב מאוחר יותר.';
                 }

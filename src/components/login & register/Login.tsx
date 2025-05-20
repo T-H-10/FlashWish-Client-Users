@@ -42,11 +42,16 @@ const Login = () => {
         }
 
         try {
+            // const checkEmail = await axios.get(
+            //    `${API_URL}/Users/email-exists?email=${email}`
+            // );
+            // if (checkEmail.status!=200) {
+            //     navigate('/register')
+            // }
             const res = await axios.post<{ user: UserType, token: string }>(
                 API_URL + '/Auth/login', 
                 { email, password }
             );
-            
             userDispatch({
                 type: 'LOGIN_USER',
                 payload: { user: res.data.user, token: res.data.token }
@@ -75,6 +80,7 @@ const Login = () => {
             let errorMessage: string;
             
             if (e.response?.status === 401) {
+                navigate('/register')
                 errorMessage = '!אימייל או סיסמה שגויים';
             } else if (e.response?.status === 400) {
                 errorMessage = 'אימייל וסיסמה הם שדות חובה!';

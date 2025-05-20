@@ -19,10 +19,10 @@ const CanvasControls = ({ canvas, saveDesign }: { canvas: fabric.Canvas, saveDes
   return (
     <div className="canvas-controls">
       <TextAddition canvas={canvas} />
-      <TextBold canvas={canvas} />
       <TextAlign canvas={canvas}/>
-      <TextFont canvas={canvas}/>
       <TextSize canvas={canvas} />
+      <TextFont canvas={canvas}/>
+      <TextBold canvas={canvas} />
       <TextItalic canvas={canvas} />
       <TextUnderline canvas={canvas} />
       <TextColor canvas={canvas} />

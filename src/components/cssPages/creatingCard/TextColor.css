@@ -1,0 +1,135 @@
+/* .cosmic-text-color {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+  }
+  
+  .cosmic-color-orbit {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cosmic-orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(251, 190, 101, 0.3);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-text-color:hover .cosmic-orbit-ring {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    animation: orbit-pulse 2s infinite alternate;
+  }
+  
+  @keyframes orbit-pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      border-color: rgba(251, 190, 101, 0.3);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.1);
+      border-color: rgba(251, 190, 101, 0.7);
+    }
+  }
+  
+  .cosmic-orbit-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cosmic-text-color:hover .cosmic-orbit-particles {
+    opacity: 1;
+  }
+  
+  .cosmic-orbit-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-top: -2px;
+    margin-left: -2px;
+    animation: orbit-rotate 3s linear infinite;
+  }
+  
+  @keyframes orbit-rotate {
+    0% {
+      transform-origin: 0 0;
+      transform: rotate(0deg) translateX(20px);
+    }
+    100% {
+      transform-origin: 0 0;
+      transform: rotate(360deg) translateX(20px);
+    }
+  }
+  
+  .cosmic-color-picker-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  
+  .cosmic-text-color:hover .cosmic-color-picker-wrapper {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(251, 190, 101, 0.4);
+  }
+  
+  .cosmic-color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+  }
+  
+  .cosmic-color-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .cosmic-color-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  } */

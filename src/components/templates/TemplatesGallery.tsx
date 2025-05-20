@@ -14,6 +14,7 @@ import '../cssPages/templates/TemplatesGallery.css';
 import ImageUploadButton from './ImageUploadButton';
 import LoadingIndicator from '../LoadingIndicator';
 import TemplatesGrid from './TemplateGrid';
+import EmptyState from '../messages/EmptyState';
 
 const TemplatesGallery = () => {
     const [isLogin] = useContext(IsLogin);
@@ -60,7 +61,7 @@ const TemplatesGallery = () => {
             <div className="gallery-header">
                 <h2 className="gallery-title">
                     {selectedCategoryId === null ? 'הכל' : //לטפל ב 1012!!!
-                        categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || 'ללללללללללל'}
+                        categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || 'כל הרקעים'}
                 </h2>
                 
                 {isLogin && (
@@ -71,7 +72,7 @@ const TemplatesGallery = () => {
             </div>
             
             {loading ? (
-                <LoadingIndicator content='סססססססססססס...' />
+                <LoadingIndicator content='מעלה רקעים...' />
             ) : filteredTemplates.length > 0 ? (
                 <TemplatesGrid
                     templates={filteredTemplates}
@@ -80,10 +81,15 @@ const TemplatesGallery = () => {
                     currentUserId={currentUserId}
                 />
             ) : (
-                <div className="no-templates-message">
-                    <div className="message-glow"></div>
-                    <p>זזזזזזזזזזז</p>
-                </div>
+                // <div className="no-templates-message">
+                    // <div className="message-glow"></div>
+                    <EmptyState
+                message="לא נמצאו ברכות בקטגוריה זו"
+                subMessage={!isLogin? "התחבר כדי להוסיף רקעים חדשים":"לחץ על 'העלאת תמונה' כדי להוסיף רקע"}
+            />
+      
+                /* <p>אין רקעים זמינים.</p> */
+                // </div>
             )}
         </div>
     );

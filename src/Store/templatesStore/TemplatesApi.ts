@@ -71,7 +71,11 @@ export const updateTemplate = createAsyncThunk('templates/update', async ({ id, 
 
 export const deleteTemplate = createAsyncThunk('templates/delete', async (id: number, thunkAPI) => {
     try {
-        await axios.delete(`${routerURLTemplates}/${id}`);
+        await axios.delete(`${routerURLTemplates}/${id}`,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return id; // מחזירים את ה-ID למחיקה
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

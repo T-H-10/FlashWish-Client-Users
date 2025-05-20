@@ -49,7 +49,11 @@ export const updateGreetingMessage = createAsyncThunk('greetingMessages/update',
 
 export const deleteGreetingMessage = createAsyncThunk('greetingMessages/delete', async (id: number, thunkAPI) => {
     try {
-        await axios.delete(`${routerURLMessages}/${id}`);
+        await axios.delete(`${routerURLMessages}/${id}`,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return id;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

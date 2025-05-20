@@ -48,7 +48,11 @@ export const updateCategory = createAsyncThunk('categories/update', async ({ id,
 
 export const deleteCategory = createAsyncThunk('categories/delete', async (id: number, thunkAPI) => {
     try {
-        await axios.delete(`${routerURLCategories}/${id}`);
+        await axios.delete(`${routerURLCategories}/${id}`,{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return id;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

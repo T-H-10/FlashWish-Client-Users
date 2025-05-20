@@ -1,0 +1,97 @@
+.cosmic-text-align {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cosmic-align-container {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(10, 10, 42, 0.3);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+  }
+  
+  .cosmic-align-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .cosmic-align-star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: align-star-twinkle 3s infinite alternate;
+  }
+  
+  @keyframes align-star-twinkle {
+    0% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.2);
+      box-shadow: 0 0 4px white;
+    }
+  }
+  
+  .cosmic-align-buttons {
+    display: flex;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cosmic-align-button-wrapper {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .cosmic-align-button-wrapper:hover {
+    transform: translateY(-2px);
+  }
+  
+  .cosmic-align-button-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(251, 190, 101, 0.6) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+  
+  .cosmic-align-button-wrapper:hover::before {
+    width: 150%;
+    height: 150%;
+    opacity: 0.5;
+    animation: align-pulse 2s infinite alternate;
+  }
+  
+  @keyframes align-pulse {
+    0% {
+      opacity: 0.3;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+      opacity: 0.6;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }

@@ -12,7 +12,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(251, 190, 101, 0.3);
   border-radius: 8px;
-  color: var(--text-light);
+  color: var(--secondary-color);
   font-size: 1rem;
   appearance: none;
   cursor: pointer;

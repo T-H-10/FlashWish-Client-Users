@@ -28,6 +28,9 @@
   --card-bg-hover: rgba(37, 23, 59, 0.95);
   --shadow-color: rgba(27, 16, 46, 0.3);
   --glow-color: rgba(251, 190, 101, 0.6);
+  --cosmic-blue: #4c73e3;
+  --cosmic-pink: #f271c7;
+  --cosmic-purple: #6344c4;
 }
 
 * {

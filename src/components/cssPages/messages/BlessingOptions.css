@@ -34,7 +34,7 @@
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(108, 99, 255, 0.3);
     border-radius: 8px;
-    color: var(--text-light);
+    color: var(--secondary-dark);
     font-size: 1rem;
     appearance: none;
     cursor: pointer;
@@ -73,6 +73,10 @@
     direction: rtl;
   }
   
+  .cosmic-select option{
+    background:  var(--primary-dark) ;
+  }
+
   .cosmic-input:focus {
     outline: none;
     border-color: var(--cosmic-blue);
@@ -123,7 +127,6 @@
   }
   
   .cosmic-checkbox:checked ~ .checkbox-custom {
-    background: var(--cosmic-blue);
     border-color: var(--cosmic-blue);
   }
   
@@ -135,7 +138,7 @@
     top: 3px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid var(--secondary-dark);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }

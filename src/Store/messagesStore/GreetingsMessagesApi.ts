@@ -37,7 +37,11 @@ export const addGreetingMessage = createAsyncThunk('greetingMessages/add', async
 
 export const updateGreetingMessage = createAsyncThunk('greetingMessages/update', async ({ id, message }: { id: number, message: GreetingMessagePostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLMessages}/${id}`, message);//לבדוק האם צריך להוסיף : לפני הid.
+        const response = await axios.put(`${routerURLMessages}/${id}`, message, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });//לבדוק האם צריך להוסיף : לפני הid.
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

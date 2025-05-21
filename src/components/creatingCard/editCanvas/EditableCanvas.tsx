@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Swal from "sweetalert2";
 import { appDispatch } from "../../../Store/Store";
 import { UserContext } from "../../../types/UserTypes";
 import { selectTemplates } from "../../../Store/templatesStore/TemplatesSlice";
@@ -11,6 +10,7 @@ import { addGreetingCard, updateGreetingCard } from "../../../Store/cardsStore/G
 import LoadingIndicator from "../../LoadingIndicator";
 import { GreetingCard } from "../../../types/GreetingCardsTypes";
 import CanvasControls from "./CanvasControls";
+import MyAlert from "../../style/MyAlert";
 
 export const DEFAULT_IMAGE = "v1746302666/logo.jpg.jpg";
 
@@ -19,8 +19,11 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const fabricRef = useRef<fabric.Canvas | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-    const currentUserId = useContext(UserContext).user.id;
-    const { selectedTemplate } = useSelector(selectTemplates);
+    const currentUserId = useContext(UserContext).user.id; const { selectedTemplate } = useSelector(selectTemplates);
+    const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
+    const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
 
     const loadCanvasFromJSON = (json: string, fabricRef: React.RefObject<fabric.Canvas | null>) => {
         if (!fabricRef.current) return;
@@ -116,7 +119,11 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                             canvasStyle: json
                         }
                     }));
-                    Swal.fire({ icon: 'success', title: 'העיצוב עודכן בהצלחה!' });
+                    setTitle("העיצוב התעדכן בהצלחה!");
+                    setTypeMessage("success");
+                    setIsAlertOpen(true);
+
+                    // Swal.fire({ icon: 'success', title: 'העיצוב עודכן בהצלחה!' });
                 } else {
                     dispatch(addGreetingCard({
                         userID: currentUserId,
@@ -125,25 +132,44 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                         templateID: cardData.templateID,
                         canvasStyle: json,
                     }));
-                    Swal.fire({ icon: 'success', title: 'העיצוב נשמר בהצלחה!' });
+                    setTitle("העיצוב נשמר בהצלחה!");
+                    setTypeMessage("success");
+                    setIsAlertOpen(true);
+                    // Swal.fire({ icon: 'success', title: 'העיצוב נשמר בהצלחה!' });
                 }
 
             } catch (error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'שגיאה',
-                    text: 'שגיאה בשמירת העיצוב. אנא נסה שוב מאוחר יותר.',
-                });
+                setTitle("שגיאה!");
+                setMessage("שגיאה בשמירת העיצוב.  אנא נסה שוב מאוחר יותר.");
+                setTypeMessage("error");
+                setIsAlertOpen(true);
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'שגיאה',
+                //     text: 'שגיאה בשמירת העיצוב. אנא נסה שוב מאוחר יותר.',
+                // });
             }
         }
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-            <canvas ref={canvasRef} style={{ cursor: 'default' }} />
-            {fabricRef.current && !loading && <CanvasControls saveDesign={saveDesign} canvas={fabricRef.current} />}
-            {loading && <LoadingIndicator content="טוען רקע..." />}
-        </div>
+        <>
+            <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                <canvas ref={canvasRef} style={{ cursor: 'default' }} />
+                {fabricRef.current && !loading && <CanvasControls saveDesign={saveDesign} canvas={fabricRef.current} />}
+                {loading && <LoadingIndicator content="טוען רקע..." />}
+            </div>
+            <MyAlert
+                isOpen={isAlertOpen}
+                title={title}
+                type={typeMessage}
+                message={message}
+                onConfirm={
+                    () => {
+                        setIsAlertOpen(false)
+                    }}
+            />
+        </>
     );
 };
 

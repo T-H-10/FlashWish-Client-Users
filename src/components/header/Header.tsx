@@ -47,8 +47,8 @@ const Header = () => {
             selectedButton={selectedButton}
             setSelectedButton={setSelectedButton}
             setModalOpen={setModalOpen}
-            userDispatch={userDispatch}
-            navigate={navigate}
+            // userDispatch={userDispatch}
+            // navigate={navigate}
             setIsLogin={setIsLogin}
           />
         </Toolbar>

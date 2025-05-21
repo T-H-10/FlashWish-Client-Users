@@ -8,6 +8,7 @@ import { router } from './Routes';
 import { initialUserState, UserContext } from './types/UserTypes';
 import CardReducer, { CurrentCardContext } from './Store/cardReducer/CardReducer';
 import { initialGreetingCardState } from './types/GreetingCardsTypes';
+import { AlertProvider } from './components/style/MyAlert';
 
 export const IsLogin = createContext<[boolean, Dispatch<React.SetStateAction<boolean>>]>([false, () => {}]);
 
@@ -24,7 +25,9 @@ const App = () => {
         <UserContext.Provider value={{ user, userDispatch }}>
           <CurrentCardContext.Provider value={{ currentCard, cardDispatch }}>
             <Provider store={Store}>
+              <AlertProvider>
               <RouterProvider router={router} />
+              </AlertProvider>
             </Provider>
           </CurrentCardContext.Provider>
         </UserContext.Provider>

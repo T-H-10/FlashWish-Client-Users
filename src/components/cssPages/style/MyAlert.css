@@ -1,0 +1,640 @@
+.cosmic-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  perspective: 1000px;
+  direction: rtl;
+}
+
+.cosmic-alert-overlay.visible {
+  opacity: 1;
+}
+
+.cosmic-alert-overlay.hidden {
+  opacity: 0;
+}
+
+.cosmic-alert-universe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cosmic-alert-galaxy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(107, 42, 253, 0.2) 0%,
+    rgba(169, 31, 230, 0.1) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  animation: galaxy-rotate 60s linear infinite;
+}
+
+@keyframes galaxy-rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.cosmic-alert-star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: alert-star-pulse 3s infinite alternate;
+}
+
+@keyframes alert-star-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.5);
+    box-shadow: 0 0 10px white, 0 0 20px rgba(251, 190, 101, 0.8);
+  }
+}
+
+.cosmic-alert-comet {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(to right, transparent, white, transparent);
+  transform: rotate(-45deg);
+  animation: comet-fly linear infinite;
+}
+
+@keyframes comet-fly {
+  0% {
+    transform: translateX(-100%) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+.cosmic-alert-container {
+  position: relative;
+  width: 90%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+.cosmic-alert-container.initial {
+  transform: translateY(50px) rotateX(20deg) scale(0.8);
+  opacity: 0;
+}
+
+.cosmic-alert-container.entrance {
+  animation: alert-entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.cosmic-alert-container.exit {
+  animation: alert-exit 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes alert-entrance {
+  0% {
+    transform: translateY(50px) rotateX(20deg) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-20px) rotateX(-10deg) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes alert-exit {
+  0% {
+    transform: translateY(0) rotateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px) rotateX(-30deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.cosmic-alert-hologram {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(10, 10, 42, 0.8) 0%, rgba(26, 26, 74, 0.8) 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(251, 190, 101, 0.3),
+    inset 0 0 30px rgba(251, 190, 101, 0.2);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+
+.hologram-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 190, 101, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hologram-ring.ring1 {
+  width: 100%;
+  height: 100%;
+  animation: hologram-ring-pulse 4s infinite alternate;
+}
+
+.hologram-ring.ring2 {
+  width: 150%;
+  height: 150%;
+  animation: hologram-ring-pulse 6s infinite alternate-reverse;
+}
+
+.hologram-ring.ring3 {
+  width: 200%;
+  height: 200%;
+  animation: hologram-ring-pulse 8s infinite alternate;
+}
+
+@keyframes hologram-ring-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.3;
+    border-color: rgba(251, 190, 101, 0.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.7;
+    border-color: rgba(251, 190, 101, 0.5);
+  }
+}
+
+.cosmic-alert-content {
+  position: relative;
+  z-index: 2;
+  padding: 25px;
+}
+
+.cosmic-alert-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.cosmic-alert-close {
+  background: transparent;
+  border: none;
+  color: #fbfbff;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-alert-close:hover {
+  background: rgba(251, 190, 101, 0.2);
+  transform: rotate(90deg);
+}
+
+.cosmic-alert-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cosmic-alert-icon-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cosmic-alert-icon {
+  font-size: 60px !important;
+  z-index: 2;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  animation: icon-float 3s ease-in-out infinite;
+}
+
+@keyframes icon-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cosmic-alert-icon.success {
+  color: #4caf50;
+}
+
+.cosmic-alert-icon.error {
+  color: #f44336;
+}
+
+.cosmic-alert-icon.warning {
+  color: #ff9800;
+}
+
+.cosmic-alert-icon.info {
+  color: #2196f3;
+}
+
+.cosmic-alert-icon-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  animation: icon-glow-pulse 2s infinite alternate;
+}
+
+.success .cosmic-alert-icon-glow {
+  background: radial-gradient(circle at center, rgba(76, 175, 80, 0.5) 0%, transparent 70%);
+}
+
+.error .cosmic-alert-icon-glow {
+  background: radial-gradient(circle at center, rgba(244, 67, 54, 0.5) 0%, transparent 70%);
+}
+
+.warning .cosmic-alert-icon-glow {
+  background: radial-gradient(circle at center, rgba(255, 152, 0, 0.5) 0%, transparent 70%);
+}
+
+.info .cosmic-alert-icon-glow {
+  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.5) 0%, transparent 70%);
+}
+
+.cosmic-alert-icon-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  z-index: 0;
+  animation: icon-pulse-wave 2s infinite;
+}
+
+.success .cosmic-alert-icon-pulse {
+  border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.error .cosmic-alert-icon-pulse {
+  border: 2px solid rgba(244, 67, 54, 0.5);
+}
+
+.warning .cosmic-alert-icon-pulse {
+  border: 2px solid rgba(255, 152, 0, 0.5);
+}
+
+.info .cosmic-alert-icon-pulse {
+  border: 2px solid rgba(33, 150, 243, 0.5);
+}
+
+@keyframes icon-glow-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes icon-pulse-wave {
+  0% {
+    width: 60%;
+    height: 60%;
+    opacity: 0.8;
+  }
+  100% {
+    width: 120%;
+    height: 120%;
+    opacity: 0;
+  }
+}
+
+.cosmic-alert-title {
+  margin: 0 0 15px;
+  color: #fbfbff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(251, 190, 101, 0.7);
+  animation: title-glow 2s infinite alternate;
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(251, 190, 101, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(251, 190, 101, 0.9), 0 0 30px rgba(251, 190, 101, 0.5);
+  }
+}
+
+.cosmic-alert-message {
+  margin: 0;
+  color: rgba(251, 251, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.cosmic-alert-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.cosmic-alert-button {
+  position: relative;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  z-index: 1;
+}
+
+.cosmic-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.cosmic-button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cosmic-alert-cancel {
+  background-color: rgba(10, 10, 42, 0.7);
+  color: #fbfbff;
+  border: 1px solid rgba(251, 190, 101, 0.3);
+}
+
+.cosmic-alert-cancel .cosmic-button-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 190, 101, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cosmic-alert-cancel:hover {
+  background-color: rgba(26, 26, 74, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cosmic-alert-cancel:hover .cosmic-button-glow {
+  opacity: 1;
+  animation: cancel-glow-pulse 2s infinite alternate;
+}
+
+@keyframes cancel-glow-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.cosmic-alert-confirm {
+  background: linear-gradient(135deg, #6b2afd 0%, #a91fe6 100%);
+  color: #fbfbff;
+  border: none;
+}
+
+.success .cosmic-alert-confirm {
+  background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+}
+
+.error .cosmic-alert-confirm {
+  background: linear-gradient(135deg, #c62828 0%, #f44336 100%);
+}
+
+.warning .cosmic-alert-confirm {
+  background: linear-gradient(135deg, #ef6c00 0%, #ff9800 100%);
+}
+
+.info .cosmic-alert-confirm {
+  background: linear-gradient(135deg, #1565c0 0%, #2196f3 100%);
+}
+
+.cosmic-alert-confirm .cosmic-button-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cosmic-alert-confirm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.success .cosmic-alert-confirm:hover {
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+}
+
+.error .cosmic-alert-confirm:hover {
+  box-shadow: 0 10px 20px rgba(244, 67, 54, 0.3);
+}
+
+.warning .cosmic-alert-confirm:hover {
+  box-shadow: 0 10px 20px rgba(255, 152, 0, 0.3);
+}
+
+.info .cosmic-alert-confirm:hover {
+  box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+}
+
+.cosmic-alert-confirm:hover .cosmic-button-glow {
+  opacity: 1;
+  animation: confirm-glow-pulse 2s infinite alternate;
+}
+
+@keyframes confirm-glow-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.cosmic-alert-platform {
+  position: relative;
+  width: 90%;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(251, 190, 101, 0.3), transparent);
+  border-radius: 50%;
+  margin-top: -10px;
+  filter: blur(5px);
+  transform: perspective(500px) rotateX(60deg);
+  z-index: 1;
+}
+
+.platform-light {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(251, 190, 101, 0.3) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0.7;
+  animation: platform-light-pulse 3s infinite alternate;
+}
+
+@keyframes platform-light-pulse {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(0.9);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cosmic-alert-container {
+    width: 95%;
+    max-width: 400px;
+  }
+  
+  .cosmic-alert-title {
+    font-size: 1.5rem;
+  }
+  
+  .cosmic-alert-message {
+    font-size: 1rem;
+  }
+  
+  .cosmic-alert-icon {
+    font-size: 50px !important;
+  }
+  
+  .cosmic-alert-icon-container {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+  
+  .cosmic-alert-button {
+    padding: 10px 20px;
+    min-width: 100px;
+  }
+  
+  .cosmic-alert-actions {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cosmic-alert-content {
+    padding: 20px 15px;
+  }
+  
+  .cosmic-alert-title {
+    font-size: 1.3rem;
+  }
+  
+  .cosmic-alert-message {
+    font-size: 0.9rem;
+  }
+  
+  .cosmic-alert-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cosmic-alert-button {
+    width: 100%;
+  }
+}

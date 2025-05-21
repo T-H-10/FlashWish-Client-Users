@@ -36,7 +36,11 @@ export const addCategory = createAsyncThunk('categories/add', async (categoryNam
 
 export const updateCategory = createAsyncThunk('categories/update', async ({ id, updatedCategory }: { id: number, updatedCategory: CategoryPostModel }, thunkAPI) => {
     try {
-        const response = await axios.put(`${routerURLCategories}/${id}`, updatedCategory);
+        const response = await axios.put(`${routerURLCategories}/${id}`, updatedCategory, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

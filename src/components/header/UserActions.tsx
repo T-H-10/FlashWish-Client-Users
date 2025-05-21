@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
-import { Link, NavigateFunction } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoutUser from '../Logout';
 import '../cssPages/header/UserActions.css';
 import { UserType } from '../../types/UserTypes';
@@ -12,8 +12,6 @@ interface UserActionsProps {
   selectedButton: string;
   setSelectedButton: (button: string) => void;
   setModalOpen: (open: boolean) => void;
-  userDispatch: any;
-  navigate: NavigateFunction;
   setIsLogin: (isLogin: boolean) => void;
 }
 
@@ -23,10 +21,9 @@ const UserActions: React.FC<UserActionsProps> = ({
   selectedButton,
   setSelectedButton,
   setModalOpen,
-  userDispatch,
-  navigate,
   setIsLogin
 }) => {
+  const [showLogoutPrompt, setShowLogoutPrompt] = useState(false);
   return (
     <div className="user-actions">
       {!isLogin ? (
@@ -56,13 +53,21 @@ const UserActions: React.FC<UserActionsProps> = ({
             className={`cosmic-auth-button ${selectedButton === 'logout' ? 'active' : ''}`}
             onClick={() => {
               setSelectedButton('logout');
-              LogoutUser(userDispatch, navigate, setIsLogin);
+              setShowLogoutPrompt(true)
+              // LogoutUser(userDispatch, navigate, setIsLogin);
             }}
           >
             <span className="button-text">התנתקות</span>
             <div className="button-glow"></div>
           </Button>
-          
+          {
+            showLogoutPrompt && (
+              <LogoutUser 
+              setIsLogin={setIsLogin}
+              onClose={()=>setShowLogoutPrompt(false)}
+              />
+            )
+          }
           <Button 
             className="cosmic-profile-button"
             onClick={() => setModalOpen(true)}

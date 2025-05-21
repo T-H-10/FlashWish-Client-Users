@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Swal from 'sweetalert2';
 import { UserContext } from '../../types/UserTypes';
 import { appDispatch } from '../../Store/Store';
 import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
@@ -9,6 +8,7 @@ import { Done, Close } from '@mui/icons-material';
 import { CategoriesListContext } from '../CategoriesList';
 import CategorySelector from '../CategorySelector';
 import '../cssPages/messages/GreetingForm.css';
+import MyAlert from '../style/MyAlert';
 
 interface GreetingFormProps {
   onClose: () => void;
@@ -16,6 +16,10 @@ interface GreetingFormProps {
 
 const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
   const { user } = useContext(UserContext);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [title, setTitle] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -33,15 +37,10 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
   const validate = () => {
     const { title, content, signature } = formData;
     if (!title || !content || !signature || !selectedCategory) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'שגיאה',
-        text: 'נא למלא את כל השדות',
-        background: '#25173b',
-        color: '#ffffff',
-        iconColor: '#ff9800',
-        confirmButtonColor: '#fbbe65',
-      });
+      setTitle("שגיאה");
+      setMessage("נא למלא את כל השדות");
+      setTypeMessage("warning")
+      setIsAlertOpen(true);
       return false;
     }
     return true;
@@ -59,15 +58,10 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
       resetForm();
       onClose();
       
-      Swal.fire({
-        icon: 'success',
-        title: 'נשמר בהצלחה',
-        text: 'הברכה נשמרה בהצלחה',
-        background: '#25173b',
-        color: '#ffffff',
-        iconColor: '#4caf50',
-        confirmButtonColor: '#fbbe65',
-      });
+      setTitle('הברכה נשמרה בהצלחה');
+      setMessage("");
+      setTypeMessage("success")
+      setIsAlertOpen(true);
     }
   };
   
@@ -82,6 +76,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
   };
 
   return (
+    <>
     <div className="cosmic-greeting-form">
       <h2 className="form-title">יצירת ברכה חדשה</h2>
       
@@ -151,120 +146,16 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
         </div>
       </form>
     </div>
+    <MyAlert
+                isOpen={isAlertOpen}
+                title={title}
+                message={message}
+                type={typeMessage}
+                onConfirm={() => {
+                    setIsAlertOpen(false);
+                }}/>
+    </>
   );
 };
 
 export default GreetingForm;
-
-// import React, { useContext, useState } from 'react';
-// import Swal from 'sweetalert2';
-// import { UserContext } from '../../types/UserTypes';
-// import { useDispatch } from 'react-redux';
-// import { appDispatch } from '../../Store/Store';
-// import { addGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
-// import { GreetingMessagePostModel } from '../../types/GreetingMessageType';
-// import CategorySelector from '../CategorySelector';
-// import UseStyleAddNewForm from '../style/UseStyleAddNewForm';
-// import { IconButton } from '@mui/material';
-// import {Done, Close } from '@mui/icons-material';
-
-// interface GreetingFormProps {
-//     onClose: () => void;
-// }
-// const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
-//     const classes = UseStyleAddNewForm();
-//     const { user } = useContext(UserContext);
-//     const [formData, setFormData] = useState({
-//         title: '',
-//         content: '',
-//         signature: '',
-//         userID: user.id,
-//     });
-//     const [selectedCategory, setSelectedCategory] = useState<number>(0);
-//     const dispatch = useDispatch<appDispatch>();
-//     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//         const { name, value } = e.target;
-//         setFormData({ ...formData, [name]: value });
-
-//     };
-//     const validate = () => {
-//         const { title, content, signature } = formData;
-//         if (!title || !content || !signature) {
-//             Swal.fire({
-//                 icon: 'warning',
-//                 title: 'שגיאה',
-//                 text: 'נא למלא את כל השדות',
-//             });
-//             return false;
-//         }
-//         return true;
-//     };
-//     const handleSubmit = (e: React.FormEvent) => {
-//         e.preventDefault();
-//         if (validate()) {
-//             const greetingData: GreetingMessagePostModel = {
-//                 ...formData,
-//                 userID: user.id,
-//                 categoryID: selectedCategory
-//             };
-//             dispatch(addGreetingMessage(greetingData));
-//             resetForm();
-//             onClose();
-//         }
-//     };
-//     const resetForm = () => {
-//         setFormData({
-//             title: '',
-//             content: '',
-//             signature: '',
-//             userID: 1, //current userID
-//         });
-//         setSelectedCategory(0);
-//     };
-//     return (
-//         <div className={classes.formContainer}>
-//             <form onSubmit={handleSubmit}>
-//                 <CategorySelector selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-//                 <input
-//                     type="text"
-//                     placeholder="כותרת"
-//                     name="title"
-//                     value={formData.title}
-//                     onChange={handleChange}
-//                     required
-//                     className={classes.input}
-//                 />
-//                 <textarea
-//                     placeholder="תוכן"
-//                     name="content"
-//                     value={formData.content}
-//                     onChange={handleChange}
-//                     required
-//                     className={classes.input}
-//                 />
-//                 <input
-//                     type="text"
-//                     placeholder="חתימה"
-//                     name="signature"
-//                     value={formData.signature}
-//                     onChange={handleChange}
-//                     required
-//                     className={classes.input}
-//                 />
-//                 <div>
-// {/*  */}
-//                     {/* <button type="submit" className={`${classes.button}`}>הוסף</button> */}
-//                     <IconButton type='submit' title="שמור ברכה">
-//                         <Done />
-//                     </IconButton>
-//                     <IconButton onClick={onClose} title="סגור">
-//                         <Close />
-//                     </IconButton>
-//                     {/* <button type="button" onClick={onClose} className={`${classes.button}`}>סגור</button> */}
-//                 </div>
-//             </form>
-//         </div>
-//     );
-// };
-
-// export default GreetingForm;

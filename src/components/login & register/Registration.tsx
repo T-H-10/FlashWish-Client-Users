@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useContext, useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_URL, UserContext } from '../../types/UserTypes';
@@ -14,6 +13,7 @@ import '../cssPages/login & register/Registration.css';
 
 
 import CosmicNameInput from './CosmicNameInput';
+import MyAlert from '../style/MyAlert';
 const Registration = () => {
     const [userName, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -23,6 +23,11 @@ const Registration = () => {
     const [, setIsLogin] = useContext(IsLogin);
     const { cardDispatch } = useContext(CurrentCardContext);
     const navigate = useNavigate();
+    const [isAlertOpen, setIsAlertOpen] = useState(false);
+    const [title, setTitle] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
+    const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
+    const onConfirmRef = useRef<() => void>(() => { });
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,80 +35,88 @@ const Registration = () => {
 
         const isValid = await Validation.registration({ userName, email, password });
         if (!isValid) {
-            Swal.fire({
-                icon: 'error',
-                title: 'קלט לא חוקי',
-                text: 'אנא הכנס שם, אימייל חוקי וסיסמה עם לפחות 6 תווים.',
-                background: '#25173b',
-                color: '#ffffff',
-                iconColor: '#ff6b6b',
-                confirmButtonColor: '#fbbe65',
-            });
+            // Swal.fire({
+            //     icon: ,
+            //     title: ,
+            //     text: ',
+            //     background: '#25173b',
+            //     color: '#ffffff',
+            //     iconColor: '#ff6b6b',
+            //     confirmButtonColor: '#fbbe65',
+            // });
+            setTypeMessage('error');
+            setTitle('קלט לא חוקי');
+            setMessage('אנא הכנס שם, אימייל חוקי וסיסמה עם לפחות 6 תווים.');
+            onConfirmRef.current = () => { }
+            setIsAlertOpen(true);
             setIsLoading(false);
             return;
         }
 
         try {
-            const res = await axios.post(`${API_URL}/Auth/register`, { 
-                userName, 
-                email, 
-                password 
+            const res = await axios.post(`${API_URL}/Auth/register`, {
+                userName,
+                email,
+                password
             });
-            
+
             userDispatch({
                 type: 'REGISTER_USER',
                 payload: res.data
             });
-            
-            Swal.fire({
-                icon: 'success',
-                title: 'נרשמת בהצלחה',
-                text: 'ההרשמה הצליחה!',
-                background: '#25173b',
-                color: '#ffffff',
-                iconColor: '#4caf50',
-                confirmButtonColor: '#fbbe65',
-            });
-            
             setIsLogin(true);
             cardDispatch({
                 type: 'CREATE_NEW_CARD'
             });
-            
-            navigate('/');
+            setTypeMessage('success');
+            setTitle('ברוכים הבאים!');
+            setMessage('נרשמת בהצלחה');
+            onConfirmRef.current = () => { navigate('/'); }
+            setIsAlertOpen(true);
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const status = error.response.status;
-                let errorMessage = 'שגיאה לא ידועה.';
-                
+                // let errorMessage = 'שגיאה לא ידועה.';
+
                 if (status === 400) {
-                    errorMessage = 'אנא ודא שהזנת אימייל וסיסמה.';
+                    setMessage('אנא ודא שהזנת אימייל וסיסמה.');
+                    onConfirmRef.current = () => { }
                 } else if (status === 409) {
-                    errorMessage = 'המשתמש כבר קיים.';
-                    navigate('/login')
+                    setMessage('המשתמש כבר קיים.');
+                    onConfirmRef.current = () => {
+                        navigate('/login');
+                    }
                 } else if (status === 500) {
-                    errorMessage = 'אירעה שגיאה בשרת. אנא נסה שוב מאוחר יותר.';
+                    setMessage('אירעה שגיאה בשרת. אנא נסה שוב מאוחר יותר.');
+                    onConfirmRef.current = () => { }
                 }
-                
-                Swal.fire({
-                    icon: 'error',
-                    title: 'שגיאה',
-                    text: errorMessage,
-                    background: '#25173b',
-                    color: '#ffffff',
-                    iconColor: '#ff6b6b',
-                    confirmButtonColor: '#fbbe65',
-                });
+
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'שגיאה',
+                //     text: errorMessage,
+                //     background: '#25173b',
+                //     color: '#ffffff',
+                //     iconColor: '#ff6b6b',
+                //     confirmButtonColor: '#fbbe65',
+                // });
+                setTypeMessage('error');
+                setTitle('שגיאה');
+                setIsAlertOpen(true);
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'שגיאה',
-                    text: 'אירעה שגיאה לא צפויה. אנא נסה שוב מאוחר יותר.',
-                    background: '#25173b',
-                    color: '#ffffff',
-                    iconColor: '#ff6b6b',
-                    confirmButtonColor: '#fbbe65',
-                });
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'שגיאה',
+                //     text: ,
+                //     background: '#25173b',
+                //     color: '#ffffff',
+                //     iconColor: '#ff6b6b',
+                //     confirmButtonColor: '#fbbe65',
+                // });
+                setTypeMessage('error');
+                setTitle('שגיאה');
+                setMessage('אירעה שגיאה לא צפויה. אנא נסה שוב מאוחר יותר.');
+                setIsAlertOpen(true);
             }
         } finally {
             setIsLoading(false);
@@ -111,23 +124,34 @@ const Registration = () => {
     };
 
     return (
-        <CosmicFormContainer>
-            <div className="registration-form-header">
-                <h1 className="registration-title">הרשמה</h1>
-                <p className="registration-subtitle">הצטרפו לעולם הברכות הקסום שלנו</p>
-            </div>
-            
-            <form className="cosmic-registration-form" onSubmit={handleRegister}>
-                <CosmicNameInput userName={userName} setName={setName} />
-                <CosmicEmailInput email={email} setEmail={setEmail} />
-                <CosmicPasswordInput password={password} setPassword={setPassword} />
-                <CosmicLoginButton 
-                    content='הרשמה' 
-                    onClick={handleRegister} 
-                    isLoading={isLoading} 
-                />
-            </form>
-        </CosmicFormContainer>
+        <>
+            <CosmicFormContainer>
+                <div className="registration-form-header">
+                    <h1 className="registration-title">הרשמה</h1>
+                    <p className="registration-subtitle">הצטרפו לעולם הברכות הקסום שלנו</p>
+                </div>
+
+                <form className="cosmic-registration-form" onSubmit={handleRegister}>
+                    <CosmicNameInput userName={userName} setName={setName} />
+                    <CosmicEmailInput email={email} setEmail={setEmail} />
+                    <CosmicPasswordInput password={password} setPassword={setPassword} />
+                    <CosmicLoginButton
+                        content='הרשמה'
+                        onClick={handleRegister}
+                        isLoading={isLoading}
+                    />
+                </form>
+            </CosmicFormContainer>
+            <MyAlert
+                isOpen={isAlertOpen}
+                title={title}
+                message={message}
+                type={typeMessage}
+                onConfirm={() => {
+                    setIsAlertOpen(false);
+                    onConfirmRef.current();
+                }}/>
+        </>
     );
 };
 

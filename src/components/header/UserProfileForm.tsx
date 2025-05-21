@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, TextField } from '@mui/material';
 import useUserProfileForm from './useUserProfileForm';
 import '../cssPages/header/UserProfileForm.css';
+import MyAlert from '../style/MyAlert';
 
 interface UserProfileFormProps {
   handleClose: () => void;
@@ -16,10 +17,13 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({ handleClose }) => {
     userNameError,
     emailError,
     formSubmitted,
-    isLoading
+    isLoading,
+    alert,
+    closeAlert,
   } = useUserProfileForm(handleClose);
 
   return (
+    <>
     <div className="cosmic-form">
       <TextField
         autoFocus
@@ -67,6 +71,16 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({ handleClose }) => {
         {isLoading && <div className="cosmic-loader"></div>}
       </Button>
     </div>
+    {alert.isOpen && (
+        <MyAlert
+          isOpen={true}
+          title={alert.title}
+          message={alert.message}
+          type={alert.type}
+          onConfirm={closeAlert}
+        />
+      )}
+    </>
   );
 };
 

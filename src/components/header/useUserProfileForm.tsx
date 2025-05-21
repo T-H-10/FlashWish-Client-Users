@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import { API_URL, UserContext } from '../../types/UserTypes';
+import MyAlert from '../style/MyAlert';
 
 const useUserProfileForm = (handleClose: () => void) => {
   const { user, userDispatch } = useContext(UserContext);
@@ -11,6 +11,12 @@ const useUserProfileForm = (handleClose: () => void) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userNameError, setUserNameError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [alert, setAlert] = useState<{
+    isOpen: boolean;
+    type: 'success' | 'error';
+    title: string;
+    message?: string;
+  }>({ isOpen: false, type: 'success', title: '' });
 
   useEffect(() => {
     setUserName(user.userName);
@@ -36,7 +42,6 @@ const useUserProfileForm = (handleClose: () => void) => {
     } else {
       setEmailError('');
     }
-
     return valid;
   };
 
@@ -57,36 +62,60 @@ const useUserProfileForm = (handleClose: () => void) => {
         userName,
         email,
         password: '123456', // Required by the server
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
+      // console.log(user);
+      // console.log(response);
+      
 
       userDispatch({
         type: 'UPDATE_USER',
         payload: response.data,
       });
 
-      Swal.fire({
-        icon: 'success',
-        title: 'הפרטים  שלך עודכנו בהצלחה',
-        background: '#25173b',
-        color: '#ffffff',
-        iconColor: '#fbbe65',
-        confirmButtonColor: '#fbbe65',
-      });
+      // Swal.fire({
+      //   icon: 'success',
+      //   title: 'הפרטים  שלך עודכנו בהצלחה',
+      //   background: '#25173b',
+      //   color: '#ffffff',
+      //   iconColor: '#fbbe65',
+      //   confirmButtonColor: '#fbbe65',
+      // });
 
+      setAlert({
+        isOpen: true,
+        type: 'success',
+        title: 'הפרטים שלך עודכנו בהצלחה',
+      });
       handleClose();
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
+      console.log(error);
+      
+      setAlert({
+        isOpen: true,
+        type: 'error',
         title: 'שגיאה',
-        text: 'לא הצלחנו לעדכן את הפרטים שלך. אנא נסה שוב מאוחר יותר.',
-        background: '#25173b',
-        color: '#ffffff',
-        iconColor: '#ff6b6b',
-        confirmButtonColor: '#fbbe65',
+        message: 'לא הצלחנו לעדכן את הפרטים שלך. אנא נסה שוב מאוחר יותר.',
       });
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'שגיאה',
+      //   text: 'לא הצלחנו לעדכן את הפרטים שלך. אנא נסה שוב מאוחר יותר.',
+      //   background: '#25173b',
+      //   color: '#ffffff',
+      //   iconColor: '#ff6b6b',
+      //   confirmButtonColor: '#fbbe65',
+      // });
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const closeAlert = () => {
+    setAlert((prev:any) => ({ ...prev, isOpen: false }));
   };
 
   return {
@@ -98,6 +127,8 @@ const useUserProfileForm = (handleClose: () => void) => {
     isLoading,
     handleChange,
     handleSubmit,
+    alert,
+    closeAlert
   };
 };
 

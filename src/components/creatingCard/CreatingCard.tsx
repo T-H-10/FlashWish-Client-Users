@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Box, Paper } from '@mui/material';
@@ -11,7 +11,7 @@ import { Template } from '../../types/TemplateType';
 import CategoriesList from '../CategoriesList';
 import LoadingIndicator from '../LoadingIndicator';
 import EditableCanvas from './editCanvas/EditableCanvas';
-import '../cssPages/creatingCard/CreatingCard.css'
+import '../cssPages/creatingCard/CreatingCard.css';
 
 const CreatingCard = () => {
     const { currentCard, cardDispatch } = useContext(CurrentCardContext);
@@ -20,7 +20,7 @@ const CreatingCard = () => {
     const { templatesList, loading } = useSelector(selectTemplates);
 
     useEffect(() => {
-        if (templatesList.length === 0) {
+        if (templatesList.length === 0 && !loading) {
             dispatch(fetchTemplates());
         }
     }, [dispatch, templatesList.length]);
@@ -31,7 +31,7 @@ const CreatingCard = () => {
             if (template) {
                 cardDispatch({
                     type: 'UPDATE_CARD',
-                    data: {templateID: template.templateID}
+                    data: { templateID: template.templateID }
                 });
             }
         }
@@ -44,25 +44,37 @@ const CreatingCard = () => {
             return currentCard;
         }
     };
-    
+
     const initialCardData = getInitialContent();
+
+    const stars = useMemo(() => (
+        Array.from({ length: 50 }).map((_, index) => ({
+            id: index,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            size: `${Math.random() * 3 + 1}px`,
+            delay: `${Math.random() * 5}s`,
+            duration: `${Math.random() * 5 + 5}s`
+        }))
+    ), []);
 
     return (
         <div className="cosmic-creating-card">
+            {/* Cosmic Background */}
             <div className="cosmic-background">
                 <div className="cosmic-nebula"></div>
                 <div className="cosmic-stars">
-                    {Array.from({ length: 30 }).map((_, index) => (
-                        <div 
-                            key={index}
+                    {stars.map(star => (
+                        <div
+                            key={star.id}
                             className="cosmic-star"
                             style={{
-                                top: `${Math.random() * 100}%`,
-                                left: `${Math.random() * 100}%`,
-                                width: `${Math.random() * 3 + 1}px`,
-                                height: `${Math.random() * 3 + 1}px`,
-                                animationDelay: `${Math.random() * 5}s`,
-                                animationDuration: `${Math.random() * 5 + 5}s`
+                                top: star.top,
+                                left: star.left,
+                                width: star.size,
+                                height: star.size,
+                                animationDelay: star.delay,
+                                animationDuration: star.duration
                             }}
                         />
                     ))}
@@ -73,38 +85,46 @@ const CreatingCard = () => {
                     <div className="cosmic-wave wave3"></div>
                 </div>
             </div>
-            
-            <Box
-                className="cosmic-content"
-                display="flex"
-                flexDirection={{ xs: 'column-reverse', md: 'row' }}
-                flexWrap={{ xs: 'wrap', md: 'nowrap' }}
-                justifyContent="space-between"
-                p={2}
-                width="100%"
-            >
-                <Paper className="cosmic-panel categories-panel">
-                    <div className="panel-glow"></div>
-                    <div className="panel-content">
-                        {/* <h2 className="panel-title">בחר קטגוריה</h2> */}
-                        <CategoriesList onCategorySelect={setSelectedCategoryId} />
-                        <Outlet context={{ selectedCategoryId }} />
-                    </div>
-                </Paper>
-                
-                <Paper className="cosmic-panel canvas-panel">
-                    <div className="panel-glow"></div>
-                    <div className="panel-content">
-                        {loading ? (
-                            <div className="cosmic-loading">
-                                <LoadingIndicator content='' />
+
+            {/* Main Content */}
+            <div className="cosmic-content-wrapper">
+                <Box
+                    className="cosmic-content"
+                    display="flex"
+                    flexDirection={{ xs: 'column', md: 'row-reverse' }}
+                    gap={3}
+                    width="100%"
+                >
+                    {/* Canvas Panel - Shown first on mobile */}
+                    <Paper className="sticky-block creating-card-paper cosmic-panel canvas-panel" elevation={6}>
+                            <div className="panel-glow"></div>
+                            <div className="panel-content">
+                                <h2 className="panel-title">עיצוב הכרטיס</h2>
+                                {loading ? (
+                                    <div className="cosmic-loading">
+                                        <LoadingIndicator content='טוען...' />
+                                    </div>
+                                ) : (
+                                    <div className="canvas-container">
+                                        <EditableCanvas cardData={initialCardData} />
+                                    </div>
+                                )}
                             </div>
-                        ) : (
-                            <EditableCanvas cardData={initialCardData} />
-                        )}
-                    </div>
-                </Paper>
-            </Box>
+                    </Paper>
+
+                    {/* Categories Panel */}
+                    <Paper className="cosmic-panel categories-panel" elevation={6}>
+                        <div className="panel-glow"></div>
+                        <div className="panel-content">
+                            <h2 className="panel-title">בחר קטגוריה</h2>
+                            <div className="categories-container">
+                                <CategoriesList onCategorySelect={setSelectedCategoryId} />
+                                <Outlet context={{ selectedCategoryId }} />
+                            </div>
+                        </div>
+                    </Paper>
+                </Box>
+            </div>
         </div>
     );
 };

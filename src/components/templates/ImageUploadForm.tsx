@@ -89,13 +89,13 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
   return (
     <>
     <div className="cosmic-upload-form">
-      <h2 className="form-title">//////////////</h2>
+      <h2 className="form-title">הוספת רקע</h2>
       
       <div className="form-group">
-        <label className="form-label">קקקקקקקקקקקקקקקקקקקקקקקקקקק</label>
+        <label className="form-label">שם הרקע</label>
         <input
           type="text"
-          placeholder="רררררררררררררר"
+          placeholder="הכנס תאור תמציתי לרקע שיוצג כשם הרקע"
           value={imageName}
           onChange={(e) => setImageName(e.target.value)}
           className="cosmic-input"
@@ -103,7 +103,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       </div>
       
       <div className="form-group">
-        <label className="form-label">אאאאאאאאאאאאא</label>
+        <label className="form-label">קטגוריה</label>
         <CategorySelector 
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
@@ -111,7 +111,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       </div>
       
       <div className="form-group">
-        <label className="form-label">טטטט</label>
+        <label className="form-label">קובץ תמונה</label>
         <div className="file-input-container">
           <input
             type="file"
@@ -121,7 +121,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
             id="file-input"
           />
           <label htmlFor="file-input" className="file-input-label">
-            {imageFile ? imageFile.name : 'ךךךךךךךךךךךךךךךךך'}
+            {imageFile ? imageFile.name : 'בחר קובץ...'}
           </label>
         </div>
       </div>

@@ -1,6 +1,4 @@
-// Store/greetingMessagesSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import Swal from 'sweetalert2';
 import { addGreetingMessage, deleteGreetingMessage, fetchGreetingMessages, updateGreetingMessage } from './GreetingsMessagesApi';
 import { storeType } from '../Store';
 import { GreetingMessage } from '../../types/GreetingMessageType';
@@ -71,11 +69,11 @@ const handleApiError = (error: any) => {
         errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
     }
 
-    Swal.fire({
-        icon: 'error',
-        title: 'תקלה!',
-        text: errorMessage,
-    });
+    // Swal.fire({
+    //     icon: 'error',
+    //     title: 'תקלה!',
+    //     text: errorMessage,
+    // });
 };
 
 export const selectGreetingMessages = (state: storeType) => state.greetingMessages;

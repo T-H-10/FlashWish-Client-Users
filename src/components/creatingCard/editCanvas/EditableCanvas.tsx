@@ -79,7 +79,6 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                 const { canvasStyle, templateID } = cardData;
                 // אם התבנית לא טעונה, נבקש לטעון אותה
                 if (!selectedTemplate || selectedTemplate.templateID !== templateID) {
-                    // console.log("טעינה מחדש של התבנית...");
                     await dispatch(fetchTemplateById(templateID));
                 }
                 const imageURL = selectedTemplate.imageURL || DEFAULT_IMAGE;
@@ -109,7 +108,6 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                 //         console.log(e);
                 //     }
                 // }
-                // console.log(selectedCard);
                 // if (selectedCard) 
                 if (cardData.cardID != -1) {
                     dispatch(updateGreetingCard({

@@ -71,10 +71,8 @@ const Login = () => {
             setIsAlertOpen(true);
         } catch (e: any) {
             // let errorMessage: string;
-console.log(e);
-
             if (e.response?.status === 401) {
-                onConfirmRef.current = ()=>{ console.log("in navigate");
+                onConfirmRef.current = ()=>{
                 navigate('/register'); 
                 }
                 setMessage('!אימייל או סיסמה שגויים');

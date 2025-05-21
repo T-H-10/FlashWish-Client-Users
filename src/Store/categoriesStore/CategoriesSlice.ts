@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addCategory, deleteCategory, fetchCategories, updateCategory } from "./CategoriesApi";
-import Swal from 'sweetalert2';
 import { Category } from "../../types/CategoryTypes";
 import { storeType } from "../Store";
 
@@ -74,11 +73,11 @@ const handleApiError = (error: any) => {
         errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
     }
 
-    Swal.fire({
-        icon: 'error',
-        title: 'תקלה!',
-        text: errorMessage,
-    });
+    // Swal.fire({
+    //     icon: 'error',
+    //     title: 'תקלה!',
+    //     text: errorMessage,
+    // });
 };
 
 export const selectCategories = (state: storeType) => state.categories;

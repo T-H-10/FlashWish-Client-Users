@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-import Swal from 'sweetalert2';
 import { API_URL } from "../../types/UserTypes";
 import { Template, TemplatePostModel } from "../../types/TemplateType";
 
@@ -47,7 +45,7 @@ export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplat
              }
         }
     );
-        Swal.fire('Success', 'הרקע נוסף בהצלחה', 'success');
+        // Swal.fire('Success', 'הרקע נוסף בהצלחה', 'success');
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

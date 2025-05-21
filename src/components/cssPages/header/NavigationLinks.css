@@ -1,4 +1,88 @@
 .nav-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-link-wrapper {
+  text-decoration: none;
+}
+
+.cosmic-nav-button {
+  position: relative;
+  padding: 8px 16px !important;
+  color: rgba(251, 251, 255, 0.8) !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+}
+
+.cosmic-nav-button:hover {
+  color: #fbfbff !important;
+  transform: translateY(-2px);
+}
+
+.cosmic-nav-button.active {
+  color: #fbfbff !important;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 190, 101, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.cosmic-nav-button:hover .button-glow,
+.cosmic-nav-button.active .button-glow {
+  opacity: 1;
+}
+
+.button-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #fbbd65, transparent);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.cosmic-nav-button.active .button-indicator {
+  transform: translateX(-50%) scaleX(1);
+  box-shadow: 0 0 10px rgba(251, 190, 101, 0.5);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 5px;
+  }
+  
+  .cosmic-nav-button {
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* .nav-links {
     display: flex;
     align-items: center;
   }
@@ -101,4 +185,4 @@
       font-size: 0.8rem !important;
       padding: 4px 8px !important;
     }
-  }
+  } */

@@ -83,11 +83,11 @@ const handleApiError = (error: any) => {
         errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
     }
 
-    Swal.fire({
-        icon: 'error',
-        title: 'תקלה!',
-        text: errorMessage,
-    });
+    // Swal.fire({
+    //     icon: 'error',
+    //     title: 'תקלה!',
+    //     text: errorMessage,
+    // });
 };
 export const selectSelectedTemplate = (state: storeType) => state.templates.selectedTemplate;
 export const selectTemplates = (state: storeType) => state.templates;

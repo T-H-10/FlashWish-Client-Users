@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "../../types/UserTypes";
-import Swal from "sweetalert2";
 import { GreetingMessage, GreetingMessagePostModel } from "../../types/GreetingMessageType";
 
 const routerURLMessages = API_URL+"/GreetingMessages";
@@ -25,7 +24,7 @@ export const addGreetingMessage = createAsyncThunk('greetingMessages/add', async
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           });
-        Swal.fire('Success', 'הכרטיס נוספה בהצלחה', 'success');
+        // Swal.fire('Success', 'הכרטיס נוסף בהצלחה', 'success');
         return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({

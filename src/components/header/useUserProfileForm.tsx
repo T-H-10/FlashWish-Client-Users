@@ -66,9 +66,6 @@ const useUserProfileForm = (handleClose: () => void) => {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      // console.log(user);
-      // console.log(response);
-      
 
       userDispatch({
         type: 'UPDATE_USER',

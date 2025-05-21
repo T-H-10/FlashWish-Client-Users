@@ -72,15 +72,17 @@ const GreetingCardsSlice = createSlice({
 });
 
 const handleApiError = (error: any) => {
-    let errorMessage = 'נסה מאוחר יותר.';
+    console.log(error);
     
-    if (error.message.includes('401')) {
-        errorMessage = 'שגיאת אימות. אנא התחבר מחדש.';
-    } else if (error.message.includes('400')) {
-        errorMessage = 'נתונים חסרים או לא תקינים.';
-    } else if (error.message.includes('500')) {
-        errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
-    }
+    // let errorMessage = 'נסה מאוחר יותר.';
+    
+    // if (error.message.includes('401')) {
+    //     errorMessage = 'שגיאת אימות. אנא התחבר מחדש.';
+    // } else if (error.message.includes('400')) {
+    //     errorMessage = 'נתונים חסרים או לא תקינים.';
+    // } else if (error.message.includes('500')) {
+    //     errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
+    // }
 
     // Swal.fire({
     //     icon: 'error',

@@ -68,7 +68,7 @@ const handleApiError = (error: any) => {
     } else if (error.message.includes('500')) {
         errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
     }
-
+    console.log(errorMessage);
     // Swal.fire({
     //     icon: 'error',
     //     title: 'תקלה!',

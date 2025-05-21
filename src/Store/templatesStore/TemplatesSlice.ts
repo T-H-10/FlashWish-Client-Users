@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { addTemplate, deleteTemplate, fetchTemplateById, fetchTemplates, updateTemplate } from "./TemplatesApi";
-import Swal from 'sweetalert2';
 import { initialTemplate, Template } from "../../types/TemplateType";
 import { storeType } from "../Store";
 
@@ -82,7 +81,7 @@ const handleApiError = (error: any) => {
     } else if (error.message.includes('500')) {
         errorMessage = 'שגיאה בשרת. נסו שוב מאוחר יותר.';
     }
-
+    console.log(errorMessage);
     // Swal.fire({
     //     icon: 'error',
     //     title: 'תקלה!',

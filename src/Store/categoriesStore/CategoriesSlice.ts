@@ -64,6 +64,7 @@ const CategoriesSlice = createSlice({
 
 const handleApiError = (error: any) => {
     let errorMessage = 'נסה מאוחר יותר.';
+    console.log(errorMessage);
     
     if (error.message.includes('401')) {
         errorMessage = 'שגיאת אימות. אנא התחבר מחדש.';

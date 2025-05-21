@@ -133,7 +133,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
       )}
       
       <div className="form-notice">
-        <p>שים לב! בהעלאת תמונה היא תהפך לציבורית וכולם יוכלו לשתמש בה.</p>
+        <p>שים לב! בהעלאת תמונה היא תהפך לציבורית וכולם יוכלו להשתמש בה.</p>
       </div>
       
       <div className="form-actions">

@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { AppBar, Toolbar } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../types/UserTypes';
 import { IsLogin } from '../../App';
 import CosmicBackground from './CosmicBackground';
@@ -10,11 +9,11 @@ import UserProfileModal from './UserProfileModal';
 import '../cssPages/header/Header.css'
 
 const Header = () => {
-  const { user, userDispatch } = useContext(UserContext);
+  const { user, } = useContext(UserContext);
   const [isLogin, setIsLogin] = useContext(IsLogin);
   const [selectedButton, setSelectedButton] = useState<string>('home-page');
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>

@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL, UserContext } from '../../types/UserTypes';
-import MyAlert from '../style/MyAlert';
 
 const useUserProfileForm = (handleClose: () => void) => {
   const { user, userDispatch } = useContext(UserContext);

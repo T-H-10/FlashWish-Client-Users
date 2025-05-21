@@ -72,10 +72,10 @@ const Login = () => {
         } catch (e: any) {
             // let errorMessage: string;
             if (e.response?.status === 401) {
-                onConfirmRef.current = ()=>{
+                     onConfirmRef.current = ()=>{
                 navigate('/register'); 
                 }
-                setMessage('!אימייל או סיסמה שגויים');
+                setMessage(`לא קיים במערכת משתמש עם פרטים אלו.`);
             } else if (e.response?.status === 400) {
                 onConfirmRef.current=()=>{}
                 setMessage('אימייל וסיסמה הם שדות חובה!');

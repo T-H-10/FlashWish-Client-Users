@@ -4,14 +4,14 @@ import { Action } from "../Store/userReducer/UserReducer";
 export const API_URL= import.meta.env.VITE_API_URL + 'api';
 
 export type UserType = {
-    id: number;
+    id?: number;
     userName: string;
     email: string;
     password: string; 
 }
 
 export const initialUserState: UserType = {
-    id: 0,
+    // id: ,
     userName: '', 
     email: '', 
     password: '', 

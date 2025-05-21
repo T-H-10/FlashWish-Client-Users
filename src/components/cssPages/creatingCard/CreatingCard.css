@@ -1,8 +1,6 @@
 .cosmic-creating-card {
   position: relative;
-  /* min-height: 100vh; */
   padding: 20px;
-  /* overflow: hidden; */
   direction: rtl;
 }
 
@@ -13,7 +11,301 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  /* overflow: hidden; */
+}
+
+.cosmic-nebula {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(10, 10, 42, 0.95) 0%, 
+    rgba(26, 26, 74, 0.95) 50%,
+    rgba(10, 10, 42, 0.95) 100%);
+}
+
+.cosmic-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cosmic-star {
+  position: absolute;
+  background-color: var(--secondary-dark);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: card-star-twinkle infinite alternate;
+}
+
+@keyframes card-star-twinkle{
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+    box-shadow: 0 0 2px var(--secondary-dark);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px var(--secondary-dark), 0 0 12px rgba(251, 190, 101, 0.8);
+  }
+}
+
+.cosmic-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cosmic-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(251, 190, 101, 0.05));
+  border-radius: 50%;
+  animation: card-wave-animation infinite linear;
+}
+
+.wave1 {
+  height: 60%;
+  animation-duration: 15s;
+}
+
+.wave2 {
+  height: 80%;
+  animation-duration: 20s;
+  animation-delay: -5s;
+  opacity: 0.3;
+}
+
+.wave3 {
+  height: 100%;
+  animation-duration: 25s;
+  animation-delay: -10s;
+  opacity: 0.2;
+}
+
+@keyframes card-wave-animation {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) rotate(360deg);
+  }
+}
+
+/* Canvas Panel Sticky Behavior */
+.canvas-panel-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.canvas-panel {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  z-index: 10;
+}
+
+.cosmic-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px;
+}
+
+.cosmic-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cosmic-panel {
+  background: rgba(10, 10, 42, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(251, 190, 101, 0.2) !important;
+  transition: all 0.3s ease;
+  animation: panel-appear 0.8s ease-out;
+  flex: 1;
+}
+
+.categories-panel {
+  position: relative;
+  flex: 1;
+}
+
+.cosmic-panel:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(251, 190, 101, 0.2) !important;
+  transform: translateY(-5px);
+}
+
+@keyframes panel-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at bottom right,
+    rgba(251, 190, 101, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  animation: panel-glow-rotate 20s linear infinite;
+}
+
+@keyframes panel-glow-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.panel-content {
+  position: relative;
+  z-index: 1;
+  padding: 25px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #fbfbff;
+  text-shadow: 0 0 10px rgba(251, 190, 101, 0.5);
+  text-align: center;
+}
+
+.canvas-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.categories-container {
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(251, 190, 101, 0.5) rgba(10, 10, 42, 0.5);
+  overflow-y: auto;
+  max-height: 70vh; 
+}
+
+.categories-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.categories-container::-webkit-scrollbar-track {
+  background: rgba(10, 10, 42, 0.5);
+  border-radius: 4px;
+}
+
+.categories-container::-webkit-scrollbar-thumb {
+  background-color: rgba(251, 190, 101, 0.5);
+  border-radius: 4px;
+}
+
+.cosmic-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  flex: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 960px) {
+  .cosmic-content-wrapper {
+    padding-top: 40px;
+  }
+  
+  .cosmic-panel {
+    margin-bottom: 20px;
+  }
+  
+  .panel-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .panel-content {
+    padding: 20px;
+  }
+  
+  /* On mobile, we want the canvas panel to appear first but not be sticky */
+  .canvas-panel-wrapper {
+    order: -1;
+  }
+  
+  .canvas-panel {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .cosmic-creating-card {
+    padding: 10px;
+  }
+  
+  .cosmic-content-wrapper {
+    padding-top: 20px;
+  }
+  
+  .panel-title {
+    font-size: 1.3rem;
+  }
+  
+  .panel-content {
+    padding: 15px;
+  }
+}
+
+/* .cosmic-creating-card {
+  position: relative;
+  padding: 20px;
+  direction: rtl;
+}
+
+.cosmic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .sticky-block{
@@ -69,7 +361,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
   pointer-events: none;
 }
 
@@ -117,7 +408,7 @@
   top: 10px;
   align-self: flex-start;
   z-index: 10;
-  background-color: #000; /* או כל רקע שאתה רוצה כדי למנוע שקיפות */
+  background-color: #000; 
 }
 
 .cosmic-content-wrapper {
@@ -125,7 +416,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-top: 80px;
-  /* min-height: calc(100vh - 40px); */
+
 }
 
 .cosmic-content {
@@ -142,20 +433,12 @@
   background: rgba(10, 10, 42, 0.7) !important;
   backdrop-filter: blur(10px);
   border-radius: 16px !important;
-  /* overflow: hidden; */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
   border: 1px solid rgba(251, 190, 101, 0.2) !important;
   transition: all 0.3s ease;
   animation: panel-appear 0.8s ease-out;
   flex: 1;
 }
-
-/* @media (max-width: 768px) {
-  .cosmic-panel {
-    position: static;
-  }
-} */
-
 
 .cosmic-panel:hover {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(251, 190, 101, 0.2) !important;
@@ -178,7 +461,6 @@
   top: -50%;
   left: -50%;
   width: 200%;
-  /* height: 200%; */
   background: radial-gradient(
     ellipse at bottom right,
     rgba(251, 190, 101, 0.3) 0%,
@@ -216,12 +498,7 @@
   text-align: center;
 }
 
-/* .categories-panel { */
-  /* min-height: 500px; */
-/* } */
-
 .canvas-panel {
-  /* min-height: 600px; */
   display: flex;
   flex-direction: column;
 }
@@ -236,7 +513,6 @@
 
 .categories-container {
   flex: 1;
-  /* overflow-y: auto; */
   scrollbar-width: thin;
   scrollbar-color: rgba(251, 190, 101, 0.5) rgba(10, 10, 42, 0.5);
 }
@@ -263,7 +539,6 @@
   flex: 1;
 }
 
-/* Responsive styles */
 @media (max-width: 960px) {
   .cosmic-content-wrapper {
     padding-top: 40px;
@@ -283,7 +558,7 @@
   }
   
   .canvas-panel {
-    order: -1; /* Show canvas first on mobile */
+    order: -1; 
   }
 }
 
@@ -303,4 +578,4 @@
   .panel-content {
     padding: 15px;
   }
-}
+} */

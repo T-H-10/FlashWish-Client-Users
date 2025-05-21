@@ -16,7 +16,7 @@ export const initialTemplate:Template={
     templateName: 'רקע ברירת מחדל',
     categoryID: 0,
     userID: 0,
-    imageURL: 'https://res.cloudinary.com/dnschz6cr/image/upload/v1745241133/Flux_Schnell_Create_a_lush_and_naturalthemed_border_for_Sukkot_2.jpeg.jpg', //להוסיף תחילת מחרוזת לבד - מפני בטיחות
+    imageURL: 'v1746459089/logo.jpg.jpg', //להוסיף תחילת מחרוזת לבד - מפני בטיחות
 }
 
 // הגדרת שגיאה API

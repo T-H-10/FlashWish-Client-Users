@@ -26,10 +26,14 @@ const BlessingGenerator: React.FC<BlessingGeneratorProps> = ({ onClose }) => {
   const [length, setLength] = useState('בינוני');
   const [gender, setGender] = useState('לא ידוע');
   const [requiredWords, setRequiredWords] = useState('');
-  
+
   const [result, setResult] = useState<null | GreetingMessagePostModel>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError]= useState<string | null>(null);
+
+  const [isSaving, setIsSaving] = useState(false);
+  const [, setSaveError] = useState<string | null>(null);
+
   const dispatch = useDispatch<appDispatch>();
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
   const { user } = useContext(UserContext);
@@ -77,12 +81,26 @@ const BlessingGenerator: React.FC<BlessingGeneratorProps> = ({ onClose }) => {
     }
   };
   
-  const saveBlessing = () => {
-    if (result) {
-      dispatch(addGreetingMessage(result));
+  const saveBlessing = async () => {
+    if (!result) return;
+    setIsSaving(true);
+    setSaveError(null);
+
+    try{
+      await dispatch(addGreetingMessage(result)).unwrap();
       onClose();
+    } catch (error: any) {
+      console.error('Error saving blessing:', error.message);
+      setSaveError('אירעה שגיאה בעת שמירת הברכה. אנא נסה שנית.');
+    } finally {
+      setIsSaving(false);
+    }};
+    
+    const handleClose=()=>{
+      if(!isSaving) {
+        onClose();
+      }
     }
-  };
 
   return (
     <div className="cosmic-blessing-generator">
@@ -126,17 +144,10 @@ const BlessingGenerator: React.FC<BlessingGeneratorProps> = ({ onClose }) => {
 
         <ActionButtons 
           onGenerate={generateBlessing} 
-          onClose={onClose} 
+          onClose={handleClose} 
           disabled={loading || !prompt.trim() || !selectedCategory} 
         />
       </div>
-      
-      {loading && (
-        <div className="cosmic-loading">
-          <div className="cosmic-loader"></div>
-          <span>יוצר ברכה מותאמת אישית...</span>
-        </div>
-      )}
       
       {loading && <GeneratorLoading/>}
 
@@ -144,6 +155,7 @@ const BlessingGenerator: React.FC<BlessingGeneratorProps> = ({ onClose }) => {
         <BlessingPreview 
           blessing={result} 
           onSave={saveBlessing} 
+          isSaving={isSaving}
         />
       )}
     </div>

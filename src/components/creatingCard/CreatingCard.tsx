@@ -103,7 +103,7 @@ const CreatingCard = () => {
                                 <h2 className="panel-title">עיצוב הכרטיס</h2>
                                 {loading ? (
                                     <div className="cosmic-loading">
-                                        <LoadingIndicator content='טוען...' />
+                                        <LoadingIndicator content='טוען' />
                                     </div>
                                 ) : (
                                     <div className="canvas-container">

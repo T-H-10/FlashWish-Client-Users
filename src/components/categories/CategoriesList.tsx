@@ -45,7 +45,7 @@ const CategoriesList = ({ onCategorySelect }: { onCategorySelect: Function }) =>
                 <AddCategory existingCategories={categoriesList.length>0? categoriesList?.map(category => category.categoryName): []} onAddCategory={handleAddCategory} />
             }
             {loading &&
-                <LoadingIndicator content='טוען קטגוריות...' />
+                <LoadingIndicator content='טוען קטגוריות' />
             }
         </>
     );

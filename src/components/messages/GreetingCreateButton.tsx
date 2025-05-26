@@ -7,12 +7,14 @@ import '../cssPages/messages/GreetingCreateButton.css';
 const GreetingCreateButton = () => {
   const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
   const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
-
+  const [loadingAdd, setLoadingAdd] = useState<boolean>(false);
+  const [loadingCreate, setLoadingCreate] = useState<boolean>(false);
   return (
     <div className="cosmic-create-buttons">
       <button 
         className="cosmic-create-button add-button"
         onClick={() => setAddModalVisible(true)}
+        disabled={loadingAdd}
       >
         <Add className="button-icon" />
         <span className="button-text">יצירת תוכן חדש</span>
@@ -22,6 +24,7 @@ const GreetingCreateButton = () => {
       <button 
         className="cosmic-create-button ai-button"
         onClick={() => setCreateModalVisible(true)}
+        disabled={loadingCreate}
       >
         <AutoAwesome className="button-icon" />
         <span className="button-text">בקשת תוכן חדש ע"י AI</span>

@@ -94,7 +94,7 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
             <div style={{ display: "flex", flexDirection: "column-reverse" }}>
                 <canvas ref={canvasRef} style={{ cursor: "default" }} />
                 {fabricRef.current && !loading && <CanvasControls saveDesign={saveDesign} canvas={fabricRef.current} cardData={cardData} />}
-                {loading && <LoadingIndicator content="טוען רקע..." />}
+                {loading && <LoadingIndicator content="טוען רקע" />}
             </div>
             <MyAlert
                 isOpen={isAlertOpen}

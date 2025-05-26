@@ -6,11 +6,12 @@ import '../../cssPages/messages/BlessingPreview.css';
 interface BlessingPreviewProps {
   blessing: GreetingMessagePostModel;
   onSave: () => void;
+  isSaving?: boolean;
 }
 
-const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) => {
+const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave, isSaving }) => {
   const [copied, setCopied] = useState(false);
-  
+
   const copyToClipboard = () => {
     const content = `${blessing.title}\n\n${blessing.content}\n\n${blessing.signature}`;
     navigator.clipboard.writeText(content).then(() => {
@@ -18,7 +19,7 @@ const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) =
       setTimeout(() => setCopied(false), 2000);
     });
   };
-  
+
   return (
     <div className="cosmic-blessing-preview">
       <div className="preview-header">
@@ -66,9 +67,9 @@ const BlessingPreview: React.FC<BlessingPreviewProps> = ({ blessing, onSave }) =
       </div>
       
       <div className="preview-actions">
-        <button className="cosmic-save-button" onClick={onSave}>
+        <button className="cosmic-save-button" onClick={onSave} disabled={isSaving}>
           <Done className="button-icon" />
-          <span className="button-text">שמור ברכה</span>
+          <span className="button-text">{!isSaving? 'שמור ברכה' : 'שומר...'}</span>
           <div className="button-glow"></div>
         </button>
         <button className="cosmic-copy-button" onClick={copyToClipboard}>

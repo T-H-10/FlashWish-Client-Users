@@ -45,12 +45,15 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
           </div>
         )}
         
-        {isEditable && (
+        {isEditable && ( 
+          <div className="card-actions">
           <DeleteButton
             uploaderId={template.userID}
             currentUserId={currentUserId}
-            deleteFunc={() => deleteTemplate(template.templateID)}
-          />
+            deleteFunc={() => deleteTemplate(template.templateID)} 
+            showConfirmation={()=>{}}          
+            />
+          </div>
         )}
       </div>
       

@@ -86,15 +86,15 @@ const TextBackground: React.FC<TextBackgroundProps> = ({ canvas }) => {
             className="cosmic-color-picker"
             title="צבע רקע"
           />
-          <div 
-            className="cosmic-color-preview" 
+          <div
+            className="cosmic-color-preview"
             style={{ backgroundColor: color }}
           ></div>
           <div className="cosmic-color-icon">
             <FormatColorFillRoundedIcon />
           </div>
         </div>
-        
+
         <div className="cosmic-alpha-slider-container">
           <input
             type="range"
@@ -105,19 +105,21 @@ const TextBackground: React.FC<TextBackgroundProps> = ({ canvas }) => {
             onChange={handleAlphaChange}
             className="cosmic-alpha-slider"
             title="שקיפות רקע"
-            style={{ 
-              background: `linear-gradient(to right, transparent, ${color})` 
+            style={{
+              background: `linear-gradient(to right, ${color} 0%, transparent 100%)`,
+              ["--thumb-color" as any]: color,
+              ["--thumb-opacity" as any]: alpha
             }}
           />
           <div className="cosmic-alpha-track"></div>
-          <div 
-            className="cosmic-alpha-thumb" 
-            style={{ 
-              left: `calc(${alpha * 100}% - ${alpha * 10}px)`,
-              backgroundColor: color,
-              opacity: alpha
-            }}
-          ></div>
+          {/* <div
+            className="cosmic-alpha-thumb"
+            style={{
+              left: `calc(${(1 - alpha) * 100}% - ${(1 - alpha) * 10}px)`
+            }}> */}
+            {/* <div className="thumb-inner"
+              style={{ backgroundColor: color, opacity: alpha }} /> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

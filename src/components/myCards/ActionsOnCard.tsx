@@ -89,11 +89,11 @@ const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
       {isConfirmOpen && (
         <MyAlert
           isOpen={true}
-          title="האם אתה בטוח?"
-          message="לאחר שתצא, תצטרך להתחבר שוב"
-          type="warning"
-          confirmText="כן, התנתק"
-          cancelText="לא, השאר"
+          title= 'האם אתה בטוח?'
+          message= 'לא תוכל לשחזר לאחר המחיקה!'
+          type= 'warning'
+          confirmText= 'כן, מחק את זה!'
+          cancelText= 'לא, השאר את זה'
           onConfirm={handleConfirmDelete}
           onCancel={handleCancel}
         />

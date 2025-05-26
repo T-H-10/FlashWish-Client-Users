@@ -43,7 +43,7 @@ const GreetingMessagesGallery = () => {
       />
 
       {loading && isInitialLoad ? (
-        <LoadingIndicator content='מעלה כרטיסי ברכה...' />
+        <LoadingIndicator content='מעלה כרטיסי ברכה' />
       ) : filteredGreetingMessages.length > 0 ? (
         <div className="greeting-cards-grid">
           {filteredGreetingMessages?.map((message: GreetingMessage) => (

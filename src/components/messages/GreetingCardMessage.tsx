@@ -6,6 +6,7 @@ import { GreetingMessage } from "../../types/GreetingMessageType";
 import { deleteGreetingMessage } from '../../Store/messagesStore/GreetingsMessagesApi';
 import DeleteButton from '../templates/DeleteButton';
 import '../cssPages/messages/GreetingCardMessage.css';
+import MyAlert from '../style/MyAlert';
 
 interface GreetingCardMessageProps {
   message: GreetingMessage;
@@ -19,6 +20,25 @@ const GreetingCardMessage: React.FC<GreetingCardMessageProps> = ({ message }) =>
   const navigate = useNavigate();
   const { cardDispatch } = useContext(CurrentCardContext);
   
+  const [alertData, setAlertData] = useState<{
+    isOpen: boolean;
+    title: string;
+    message?: string;
+    type: 'warning' | 'success';
+    confirmText?: string;
+    cancelText?: string;
+    isConfirmation?: boolean;
+    onConfirm?: () => void;
+  }>({
+    isOpen: false,
+    title: '',
+    type: 'warning'
+  });
+
+  const showConfirmation = (data: typeof alertData) => {
+    setAlertData({ ...data, isOpen: true });
+  };
+
   const handleMessageClick = () => {
     cardDispatch({
       type: 'UPDATE_CARD',
@@ -31,7 +51,10 @@ const GreetingCardMessage: React.FC<GreetingCardMessageProps> = ({ message }) =>
     navigate('/creatingCard');
   };
 
+ 
+
   return (
+    <>
     <div 
       className="cosmic-greeting-card"
       onMouseEnter={() => setIsHovered(true)}
@@ -75,9 +98,10 @@ const GreetingCardMessage: React.FC<GreetingCardMessageProps> = ({ message }) =>
       <div className="card-actions">
         <DeleteButton
           uploaderId={message.userID}
-          currentUserId={currentUserId ||0} 
+          currentUserId={currentUserId || 0}
           deleteFunc={() => deleteGreetingMessage(message.textID)}
-        />
+          showConfirmation={showConfirmation}        
+          />
       </div>
       
       <div className="card-glow"></div>
@@ -88,6 +112,25 @@ const GreetingCardMessage: React.FC<GreetingCardMessageProps> = ({ message }) =>
         <div className="decoration-star ds3"></div>
       </div>
     </div>
+    <MyAlert
+        isOpen={alertData.isOpen}
+        title={alertData.title}
+        message={alertData.message}
+        type={alertData.type}
+        confirmText={alertData.confirmText}
+        cancelText={alertData.cancelText}
+        onConfirm={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+          if (alertData.onConfirm) alertData.onConfirm();
+        }}
+        onCancel={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+        }}
+        onClose={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+        }}
+      />
+    </>
   );
 };
 

@@ -89,7 +89,7 @@ const TextAddition = ({ canvas, loadedFromJSON }: { canvas: fabric.Canvas, loade
         const textObjects = canvas.getObjects('textbox') as fabric.Textbox[];
         const textObj = textObjects.find(obj => (obj as any).get('customType') === type);
         if (textObj) {
-            textObj.set({ text: newText });
+            textObj.set({ text: newText, width: canvas.getWidth()-200 });
             canvas.renderAll();
         }
     };

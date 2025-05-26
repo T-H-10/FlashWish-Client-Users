@@ -75,7 +75,7 @@ const GreetingCardMessage: React.FC<GreetingCardMessageProps> = ({ message }) =>
       <div className="card-actions">
         <DeleteButton
           uploaderId={message.userID}
-          currentUserId={currentUserId}
+          currentUserId={currentUserId ||0} 
           deleteFunc={() => deleteGreetingMessage(message.textID)}
         />
       </div>

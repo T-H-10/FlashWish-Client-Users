@@ -1,7 +1,4 @@
-"use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import type * as fabric from "fabric"
 import saveAs from "file-saver"
@@ -20,22 +17,44 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ canvas }) => {
 
     setIsDownloading(true)
     try {
-      const canvasElement = canvas.toCanvasElement()
-
-      // Add a small delay to ensure the canvas is fully rendered
-      await new Promise((resolve) => setTimeout(resolve, 100))
-
-      canvasElement.toBlob((blob) => {
-        if (blob) {
-          saveAs(blob, "greeting-card-flashwish.png")
-        }
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      const dataUrl = canvas.toDataURL({
+        format: "png",
+        quality: 1,
+        multiplier: 2 // תמונה באיכות גבוהה
+      });
+      console.log(dataUrl);
+      
+      const blob = await (await fetch(dataUrl)).blob();
+      saveAs(blob, "greeting-card-flashwish.png");
+      } catch (error) {
+        console.error("Error downloading image:", error)
+      } finally {
         setIsDownloading(false)
-      }, "image/png")
-    } catch (error) {
-      console.error("Error downloading image:", error)
-      setIsDownloading(false)
     }
-  }
+  };
+
+  // const downloadImage = async () => {
+  //   if (!canvas) return
+
+  //   setIsDownloading(true)
+  //   try {
+  //     const canvasElement = canvas.toCanvasElement()
+
+  //     // Add a small delay to ensure the canvas is fully rendered
+  //     await new Promise((resolve) => setTimeout(resolve, 100))
+
+  //     canvasElement.toBlob((blob) => {
+  //       if (blob) {
+  //         saveAs(blob, "greeting-card-flashwish.png")
+  //       }
+  //       setIsDownloading(false)
+  //     }, "image/png")
+  //   } catch (error) {
+  //     console.error("Error downloading image:", error)
+  //     setIsDownloading(false)
+  //   }
+  // }
 
   return (
     <div className="relative">

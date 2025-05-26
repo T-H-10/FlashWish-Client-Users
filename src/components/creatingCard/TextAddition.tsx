@@ -20,7 +20,7 @@ const initialMessage = {
   signature: DEFAULT_SIGNATURE
 };
 
-const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
+const TextAddition = ({ canvas, loadedFromJSON }: { canvas: fabric.Canvas, loadedFromJSON: boolean }) => {
     const { currentCard } = useContext(CurrentCardContext);
     const { greetingMessagesList, loading } = useSelector(selectGreetingMessages);
     const dispatch = useDispatch<appDispatch>();
@@ -42,6 +42,7 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
     const [modalTitle, setModalTitile] = useState<string>('');
     
     useEffect(() => {
+        if(loadedFromJSON) return;
         const hasTextType = (type: string) =>
             canvas.getObjects('textbox').some((obj) => (obj as any).get('customType') === type);
 
@@ -54,7 +55,7 @@ const TextAddition = ({ canvas }: { canvas: fabric.Canvas }) => {
         if (!hasTextType('signature')) {
             addTextToCanvas(signature, 100, 250, 'signature');
         }
-    }, [canvas]);
+    }, [canvas, loadedFromJSON]);
 
     useEffect(() => updateCanvasText('title', title), [title, canvas]);
     useEffect(() => updateCanvasText('content', content), [content, canvas]);

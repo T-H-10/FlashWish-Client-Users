@@ -17,10 +17,10 @@ export const fetchTemplates = createAsyncThunk('templates/fetch', async (_, thun
     }
 });
 
-export const fetchTemplateById = createAsyncThunk('templates/fetchById', async (id: number, thunkAPI) => {
+export const fetchTemplateById = createAsyncThunk<Template, number>('templates/fetchById', async (id: number, thunkAPI) => {
     try {
         const response = await axios.get<Template>(`${routerURLTemplates}/${id}`);
-        return response.data as Template;
+        return response.data;
     } catch (e: any) {
         return thunkAPI.rejectWithValue({
             message: e.message,

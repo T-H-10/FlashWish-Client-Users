@@ -12,7 +12,7 @@ import MyAlert from '../style/MyAlert';
 const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<appDispatch>();
-  const { cardDispatch } = useContext(CurrentCardContext);
+  const {currentCard ,cardDispatch } = useContext(CurrentCardContext);
   const [title, setTitle] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
@@ -62,6 +62,9 @@ const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
     });
 
     navigate('/creatingCard');
+    console.log("Editing card with ID:", card);
+    console.log("Current card state before edit:", currentCard);
+    
   };
 
   return (

@@ -7,8 +7,8 @@ import '../cssPages/messages/GreetingCreateButton.css';
 const GreetingCreateButton = () => {
   const [addModalVisible, setAddModalVisible] = useState<boolean>(false);
   const [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
-  const [loadingAdd, setLoadingAdd] = useState<boolean>(false);
-  const [loadingCreate, setLoadingCreate] = useState<boolean>(false);
+  const [loadingAdd, ] = useState<boolean>(false);
+  const [loadingCreate, ] = useState<boolean>(false);
   return (
     <div className="cosmic-create-buttons">
       <button 

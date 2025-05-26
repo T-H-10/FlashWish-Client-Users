@@ -78,7 +78,7 @@ const TemplatesGallery = () => {
                     templates={filteredTemplates}
                     onTemplateClick={handleTemplateClick}
                     isEditable={lastSegment === 'templates'}
-                    currentUserId={currentUserId}
+                    currentUserId={currentUserId || 0}
                 />
             ) : (
                 // <div className="no-templates-message">

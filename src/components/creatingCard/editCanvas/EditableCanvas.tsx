@@ -124,7 +124,7 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                     // Swal.fire({ icon: 'success', title: 'העיצוב עודכן בהצלחה!' });
                 } else {
                     dispatch(addGreetingCard({
-                        userID: currentUserId,
+                        userID: currentUserId || 0,
                         textID: cardData.textID,
                         categoryID: cardData.categoryID,
                         templateID: cardData.templateID,

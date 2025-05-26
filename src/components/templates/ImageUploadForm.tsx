@@ -60,7 +60,7 @@ const ImageUploadForm: React.FC<ImageUploadFormProps> = ({ onClose }) => {
     const uploadData: TemplatePostModel = {
       templateName: imageName,
       categoryID: selectedCategory,
-      userID: user.id,
+      userID: user.id || 0,
       image: imageFile,
     };
 

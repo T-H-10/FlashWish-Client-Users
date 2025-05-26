@@ -51,7 +51,7 @@ const GreetingForm: React.FC<GreetingFormProps> = ({ onClose }) => {
     if (validate()) {
       const greetingData: GreetingMessagePostModel = {
         ...formData,
-        userID: user.id,
+        userID: user.id ||0,
         categoryID: selectedCategory
       };
       dispatch(addGreetingMessage(greetingData));

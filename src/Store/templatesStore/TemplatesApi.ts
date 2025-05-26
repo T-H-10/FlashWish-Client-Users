@@ -38,13 +38,11 @@ export const addTemplate = createAsyncThunk('templates/add', async ({ newTemplat
         formData.append('ImageFile', newTemplate.image);      
         const token = localStorage.getItem("token"); // Or your specific key
 
-        const response = await axios.post(routerURLTemplates, formData,
-            {
+        const response = await axios.post(routerURLTemplates, formData,{
             headers: { 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
              }
-        }
-    );
+        });
         // Swal.fire('Success', 'הרקע נוסף בהצלחה', 'success');
         return response.data;
     } catch (e: any) {

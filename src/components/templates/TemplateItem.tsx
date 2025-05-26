@@ -3,6 +3,7 @@ import { Template } from "../../types/TemplateType";
 import DeleteButton from "./DeleteButton";
 import '../cssPages/templates/TemplateItem.css';
 import { deleteTemplate } from "../../Store/templatesStore/TemplatesApi";
+import MyAlert from "../style/MyAlert";
 
 export const CLOUD_URL_START = import.meta.env.VITE_CLOUD_URL_START;
 
@@ -21,7 +22,29 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+    const [alertData, setAlertData] = useState<{
+      isOpen: boolean;
+      title: string;
+      message?: string;
+      type: 'warning' | 'success';
+      confirmText?: string;
+      cancelText?: string;
+      isConfirmation?: boolean;
+      onConfirm?: () => void;
+    }>({
+      isOpen: false,
+      title: '',
+      type: 'warning'
+    });
+
+  const showConfirmation = (data: typeof alertData) => {
+    console.log("showConfirmation called with data:", data);
+    
+    setAlertData({ ...data, isOpen: true });
+  };
+
   return (
+    <>
     <div 
       className="cosmic-template-item"
       onMouseEnter={() => setIsHovered(true)}
@@ -51,7 +74,7 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
             uploaderId={template.userID}
             currentUserId={currentUserId}
             deleteFunc={() => deleteTemplate(template.templateID)} 
-            showConfirmation={()=>{}}          
+            showConfirmation={showConfirmation}        
             />
           </div>
         )}
@@ -65,6 +88,25 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
         <div className="decoration-star ds3"></div>
       </div>
     </div>
+    <MyAlert
+        isOpen={alertData.isOpen}
+        title={alertData.title}
+        message={alertData.message}
+        type={alertData.type}
+        confirmText={alertData.confirmText}
+        cancelText={alertData.cancelText}
+        onConfirm={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+          if (alertData.onConfirm) alertData.onConfirm();
+        }}
+        onCancel={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+        }}
+        onClose={() => {
+          setAlertData(prev => ({ ...prev, isOpen: false }));
+        }}
+      />
+    </>
   );
 };
 

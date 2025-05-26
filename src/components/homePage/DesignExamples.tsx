@@ -8,17 +8,17 @@ const DesignExamples = () => {
   const designs = [
     {
       title: 'עיצוב קלאסי',
-      image: 'public/flashwish.png',
+      image: import.meta.env.VITE_STANDART_EXAMPLE_URL,
       description: 'עיצוב אלגנטי המתאים לכל אירוע חגיגי'
     },
     {
       title: 'עיצוב מודרני',
-      image: 'public/flashwish.png',
+      image: import.meta.env.VITE_MODERN_EXAMPLE_URL,
       description: 'מראה נקי ועכשווי עם דגש על מינימליזם'
     },
     {
       title: 'עיצוב צבעוני',
-      image: 'public/flashwish.png',
+      image: import.meta.env.VITE_COLORFULL_EXAMPLE_URL,
       description: 'שילוב צבעים עשיר ומרהיב לאירועים שמחים'
     }
   ];

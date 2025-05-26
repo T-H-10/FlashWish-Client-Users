@@ -7,3 +7,6 @@
 @import "@fontsource/rubik";
 @import "@fontsource/secular-one";
 @import "@fontsource/varela-round";
+:root{
+    overflow: auto;
+}

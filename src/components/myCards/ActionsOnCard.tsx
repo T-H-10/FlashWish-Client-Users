@@ -13,12 +13,17 @@ const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<appDispatch>();
   const { cardDispatch } = useContext(CurrentCardContext);
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleDelete = () => {
+    setIsConfirmOpen(true);
+  }
+
+  const handleConfirmDelete = () => {
     cardDispatch({
       type: 'DELETE_CARD',
       id: card.cardID
@@ -30,13 +35,17 @@ const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
       setMessage("");
       setTypeMessage("success");
     } catch {
-      setTitle( 'שגיאה');
+      setTitle('שגיאה');
       setMessage('שגיאה במחיקת הכרטיס. אנא נסה שוב מאוחר יותר.');
       setTypeMessage("error");
     }
-    finally{
+    finally {
       setIsAlertOpen(true);
     }
+  };
+
+  const handleCancel = () => {
+    setIsConfirmOpen(false);
   };
 
   const handleEdit = () => {
@@ -76,6 +85,20 @@ const ActionsOnCards = ({ card }: { card: GreetingCard }) => {
           <span className="cosmic-action-tooltip">ערוך</span>
         </button>
       </div>
+
+      {isConfirmOpen && (
+        <MyAlert
+          isOpen={true}
+          title="האם אתה בטוח?"
+          message="לאחר שתצא, תצטרך להתחבר שוב"
+          type="warning"
+          confirmText="כן, התנתק"
+          cancelText="לא, השאר"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancel}
+        />
+      )}
+
       <MyAlert
         isOpen={isAlertOpen}
         title={title}

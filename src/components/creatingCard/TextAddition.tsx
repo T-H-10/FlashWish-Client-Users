@@ -47,7 +47,7 @@ const TextAddition = ({ canvas, loadedFromJSON }: { canvas: fabric.Canvas, loade
             canvas.getObjects('textbox').some((obj) => (obj as any).get('customType') === type);
 
         if (!hasTextType('title')) {
-            addTextToCanvas(title, 100, 50, 'title');
+            addTextToCanvas(title, 50, 50, 'title');
         }
         if (!hasTextType('content')) {
             addTextToCanvas(content, 100, 150, 'content');

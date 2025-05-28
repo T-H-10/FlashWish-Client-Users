@@ -23,17 +23,17 @@ const TemplatesGallery = () => {
     const { templatesList, loading } = useSelector(selectTemplates);
     const { selectedCategoryId }: { selectedCategoryId: number } = useOutletContext();
     const currentUserId = useContext(UserContext).user.id;
-    
-    const filteredTemplates = selectedCategoryId === 0 
+
+    const filteredTemplates = selectedCategoryId === 0
         ? templatesList
         : templatesList.filter((template: Template) => template.categoryID === selectedCategoryId);
-    
+
     const location = useLocation();
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];
     const navigate = useNavigate();
     const { cardDispatch } = useContext(CurrentCardContext);
-    
+
     useEffect(() => {
         if (templatesList.length === 0) {
             dispatch(fetchTemplates());
@@ -50,7 +50,7 @@ const TemplatesGallery = () => {
                 canvasStyle: ''
             }
         });
-        
+
         if (lastSegment === 'templates') {
             navigate('/Gallery/content');
         }
@@ -63,14 +63,14 @@ const TemplatesGallery = () => {
                     {selectedCategoryId === null ? 'הכל' : //לטפל ב 0!!!
                         categoriesList.find(c => c.categoryID === selectedCategoryId)?.categoryName || 'כל הרקעים'}
                 </h2> */}
-                
+
                 {isLogin && (
                     <CategoriesListContext.Provider value={categoriesList}>
                         <ImageUploadButton />
                     </CategoriesListContext.Provider>
                 )}
             </div>
-            
+
             {loading ? (
                 <LoadingIndicator content='מעלה רקעים...' />
             ) : filteredTemplates.length > 0 ? (
@@ -81,15 +81,10 @@ const TemplatesGallery = () => {
                     currentUserId={currentUserId || 0}
                 />
             ) : (
-                // <div className="no-templates-message">
-                    // <div className="message-glow"></div>
-                    <EmptyState
-                message="לא נמצאו רקעים בקטגוריה זו"
-                subMessage={!isLogin? "התחבר כדי להוסיף רקעים חדשים":"לחץ על 'העלאת תמונה' כדי להוסיף רקע"}
-            />
-      
-                /* <p>אין רקעים זמינים.</p> */
-                // </div>
+                <EmptyState
+                    message="לא נמצאו רקעים בקטגוריה זו"
+                    subMessage={!isLogin ? "התחבר כדי להוסיף רקעים חדשים" : "לחץ על 'העלאת תמונה' כדי להוסיף רקע"}
+                />
             )}
         </div>
     );

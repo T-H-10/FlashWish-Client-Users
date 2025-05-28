@@ -53,7 +53,7 @@ const TextAddition = ({ canvas, loadedFromJSON }: { canvas: fabric.Canvas, loade
             addTextToCanvas(content, 100, 150, 'content');
         }
         if (!hasTextType('signature')) {
-            addTextToCanvas(signature, 100, 250, 'signature');
+            addTextToCanvas(signature, 10, 400, 'signature');
         }
     }, [canvas, loadedFromJSON]);
 

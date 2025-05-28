@@ -8,6 +8,8 @@ const loadCanvasFromJSONKeepBackgroundFromTemplate = async (
     setLoading: React.Dispatch<React.SetStateAction<boolean>>,
     loadedFromJSON: boolean
 ) => {
+    console.log(loadedFromJSON);
+    
     if(!fabricRef.current) return;
     setLoading(true);  
     fabricRef.current.clear();

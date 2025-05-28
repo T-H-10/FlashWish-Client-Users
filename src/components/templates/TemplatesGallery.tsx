@@ -84,7 +84,7 @@ const TemplatesGallery = () => {
                 // <div className="no-templates-message">
                     // <div className="message-glow"></div>
                     <EmptyState
-                message="לא נמצאו ברכות בקטגוריה זו"
+                message="לא נמצאו רקעים בקטגוריה זו"
                 subMessage={!isLogin? "התחבר כדי להוסיף רקעים חדשים":"לחץ על 'העלאת תמונה' כדי להוסיף רקע"}
             />
       

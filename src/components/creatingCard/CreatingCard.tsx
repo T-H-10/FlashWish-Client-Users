@@ -118,7 +118,7 @@ const CreatingCard = () => {
                     <Paper className="cosmic-panel categories-panel" elevation={6}>
                         <div className="panel-glow"></div>
                         <div className="panel-content">
-                            <h2 className="panel-title">בחר קטגוריה</h2>
+                            {/* <h2 className="panel-title">בחר קטגוריה</h2> */}
                             <div className="categories-container">
                                 <CategoriesList onCategorySelect={setSelectedCategoryId} />
                                 <Outlet context={{ selectedCategoryId }} />

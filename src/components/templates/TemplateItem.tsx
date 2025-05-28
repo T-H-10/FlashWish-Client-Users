@@ -82,11 +82,11 @@ const TemplateItem: React.FC<CosmicTemplateItemProps> = ({
       
       <div className="template-glow"></div>
       
-      <div className="template-decoration">
+      {/* <div className="template-decoration">
         <div className="decoration-star ds1"></div>
         <div className="decoration-star ds2"></div>
         <div className="decoration-star ds3"></div>
-      </div>
+      </div> */}
     </div>
     <MyAlert
         isOpen={alertData.isOpen}

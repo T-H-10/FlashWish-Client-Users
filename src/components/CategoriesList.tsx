@@ -16,6 +16,11 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
   const dispatch: appDispatch = useDispatch<appDispatch>();
   const { categoriesList, loading } = useSelector(selectCategories);
   const [activeCategory, setActiveCategory] = useState<number>(0);
+  // const [isLogin] = useContext(IsLogin);
+
+  // const handleAddCategory = (newCategory: { categoryName: string }) => {
+  //   dispatch(addCategory(newCategory));
+  // };
 
   useEffect(() => {
     if (categoriesList.length === 0) {
@@ -40,7 +45,7 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
   return (
     <CategoriesListContext.Provider value={categoriesList}>
       <div className="cosmic-categories-list">
-        <div 
+        <div
           className={`cosmic-category-item ${activeCategory === 0 ? 'active' : ''}`}
           onClick={() => handleCategoryClick(0)}
         >
@@ -49,9 +54,9 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
           </div>
           <div className="category-glow"></div>
         </div>
-        
+
         {categoriesList.map((category: Category) => (
-          <div 
+          <div
             key={category.categoryID}
             className={`cosmic-category-item ${activeCategory === category.categoryID ? 'active' : ''}`}
             onClick={() => handleCategoryClick(category.categoryID)}
@@ -62,6 +67,8 @@ const CategoriesList: React.FC<CategoriesListProps> = ({ onCategorySelect }) => 
             <div className="category-glow"></div>
           </div>
         ))}
+        {/* {isLogin &&  */}
+        {/* <AddCategory existingCategories={categoriesList.length > 0 ? categoriesList?.map(category => category.categoryName) : []} onAddCategory={handleAddCategory} />} */}
       </div>
     </CategoriesListContext.Provider>
   );

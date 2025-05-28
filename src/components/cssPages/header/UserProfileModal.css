@@ -1,3 +1,510 @@
+/* Base styles for the dialog */
+.cosmic-dialog .MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.cosmic-dialog-paper {
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.95), rgba(10, 10, 30, 0.95)) !important;
+  border: 1px solid rgba(251, 190, 101, 0.3) !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  color: var(--text-light) !important;
+  width: 600px !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  box-shadow: 0 0 30px rgba(251, 190, 101, 0.2) !important;
+  direction: rtl !important;
+}
+
+/* Responsive adjustments for tablet */
+.cosmic-dialog-paper.tablet {
+  width: 500px !important;
+  max-width: 85vw !important;
+}
+
+/* Responsive adjustments for mobile */
+.cosmic-dialog-paper.mobile {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  height: 100% !important;
+}
+
+/* Cosmic background effects */
+.modal-cosmic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.modal-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                    radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+                    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.modal-nebula {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(251, 190, 101, 0.2) 0%,
+    transparent 60%
+  );
+  opacity: 0.6;
+}
+
+/* Dialog title */
+.cosmic-dialog-title {
+  color: var(--secondary-color) !important;
+  font-size: 1.5rem !important;
+  text-align: center !important;
+  padding: 20px 24px 10px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 10px rgba(251, 190, 101, 0.5) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Close button in title */
+.cosmic-close-button {
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  min-width: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 6px !important;
+  border-radius: 50% !important;
+  color: var(--secondary-color) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(251, 190, 101, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.cosmic-close-button:hover {
+  background: rgba(251, 190, 101, 0.15) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 0 15px rgba(251, 190, 101, 0.3) !important;
+}
+
+/* Dialog content */
+.cosmic-dialog-content {
+  position: relative !important;
+  z-index: 1 !important;
+  padding: 0 24px 20px !important;
+}
+
+/* Dialog actions - container for the cancel button */
+.cosmic-dialog-actions {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 24px 20px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Redesigned Cancel button */
+.cosmic-cancel-button {
+  position: relative !important;
+  padding: 10px 30px !important;
+  border-radius: 25px !important;
+  color: var(--secondary-color) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(251, 190, 101, 0.3) !important;
+  min-width: 120px !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cosmic-cancel-button:hover {
+  background: rgba(251, 190, 101, 0.15) !important;
+  transform: translateY(-3px) !important;
+  border-color: rgba(251, 190, 101, 0.5) !important;
+  box-shadow: 0 5px 15px rgba(251, 190, 101, 0.2) !important;
+}
+
+.cosmic-cancel-button:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(251, 190, 101, 0.2) !important;
+}
+
+.cosmic-cancel-button .button-text {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+}
+
+.cosmic-cancel-button .button-glow {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 190, 101, 0.4) 0%,
+    transparent 70%
+  ) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  border-radius: 25px !important;
+  z-index: 1 !important;
+}
+
+.cosmic-cancel-button:hover .button-glow {
+  opacity: 1 !important;
+  animation: pulse-glow 2s infinite alternate !important;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cosmic-dialog-title {
+    font-size: 1.3rem !important;
+    padding: 16px 20px 8px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 20px 16px !important;
+  }
+  
+  .cosmic-dialog-actions {
+    padding: 8px 20px 16px !important;
+  }
+  
+  .cosmic-cancel-button {
+    padding: 8px 25px !important;
+    font-size: 0.95rem !important;
+    min-width: 110px !important;
+  }
+  
+  .cosmic-close-button {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .cosmic-dialog-title {
+    font-size: 1.2rem !important;
+    padding: 16px 16px 8px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 16px 12px !important;
+  }
+  
+  .cosmic-dialog-actions {
+    padding: 8px 16px 16px !important;
+  }
+  
+  .cosmic-cancel-button {
+    padding: 8px 20px !important;
+    font-size: 0.9rem !important;
+    min-width: 100px !important;
+  }
+  
+  .modal-stars {
+    background-size: 150px 150px;
+  }
+  
+  .cosmic-close-button {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    left: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cosmic-dialog-title {
+    font-size: 1.1rem !important;
+    padding: 12px 12px 6px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 12px 10px !important;
+  }
+  
+  .cosmic-dialog-actions {
+    padding: 6px 12px 12px !important;
+  }
+  
+  .cosmic-cancel-button {
+    padding: 6px 18px !important;
+    font-size: 0.85rem !important;
+    min-width: 90px !important;
+    border-radius: 20px !important;
+  }
+  
+  .cosmic-close-button {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 4px !important;
+    left: 5px !important;
+  }
+}
+
+/* Handle fullscreen mode for mobile */
+@media (max-width: 600px) {
+  .cosmic-dialog-paper.mobile {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .cosmic-dialog-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+  }
+}
+/* .cosmic-dialog .MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.cosmic-dialog-paper {
+  background: linear-gradient(135deg, rgba(20, 20, 40, 0.95), rgba(10, 10, 30, 0.95)) !important;
+  border: 1px solid rgba(251, 190, 101, 0.3) !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  color: var(--text-light) !important;
+  width: 600px !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  box-shadow: 0 0 30px rgba(251, 190, 101, 0.2) !important;
+  direction: rtl !important;
+}
+
+.cosmic-dialog-paper.tablet {
+  width: 500px !important;
+  max-width: 85vw !important;
+}
+
+.cosmic-dialog-paper.mobile {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  height: 100% !important;
+}
+
+.modal-cosmic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.modal-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                    radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+                    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.modal-nebula {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(251, 190, 101, 0.2) 0%,
+    transparent 60%
+  );
+  opacity: 0.6;
+}
+
+.cosmic-dialog-title {
+  color: var(--secondary-color) !important;
+  font-size: 1.5rem !important;
+  text-align: center !important;
+  padding: 20px 24px 10px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 10px rgba(251, 190, 101, 0.5) !important;
+}
+
+.cosmic-dialog-content {
+  position: relative !important;
+  z-index: 1 !important;
+  padding: 0 24px 20px !important;
+}
+ 
+.cosmic-cancel-button {
+  position: relative !important;
+  margin: 0 24px 16px !important;
+  padding: 10px !important;
+  border-radius: 25px !important;
+  color: var(--secondary-color) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(251, 190, 101, 0.2) !important;
+  z-index: 1 !important;
+}
+
+.cosmic-cancel-button:hover {
+  background: rgba(251, 190, 101, 0.1) !important;
+  transform: translateY(-2px);
+  border-color: rgba(251, 190, 101, 0.3) !important;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(251, 190, 101, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 25px;
+}
+
+.cosmic-cancel-button:hover .button-glow {
+  opacity: 1;
+  animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .cosmic-dialog-title {
+    font-size: 1.3rem !important;
+    padding: 16px 20px 8px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 20px 16px !important;
+  }
+  
+  .cosmic-cancel-button {
+    margin: 0 20px 12px !important;
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .cosmic-dialog-title {
+    font-size: 1.2rem !important;
+    padding: 16px 16px 8px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 16px 12px !important;
+  }
+  
+  .cosmic-cancel-button {
+    margin: 0 16px 12px !important;
+    padding: 8px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .modal-stars {
+    background-size: 150px 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cosmic-dialog-title {
+    font-size: 1.1rem !important;
+    padding: 12px 12px 6px !important;
+  }
+  
+  .cosmic-dialog-content {
+    padding: 0 12px 10px !important;
+  }
+  
+  .cosmic-cancel-button {
+    margin: 0 12px 10px !important;
+    padding: 6px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .cosmic-dialog-paper.mobile {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .cosmic-dialog-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+  }
+}
 .cosmic-dialog .MuiBackdrop-root {
     background-color: rgba(27, 16, 46, 0.8);
     backdrop-filter: blur(5px);
@@ -76,7 +583,6 @@
   
   .cosmic-cancel-button {
     position: relative !important;
-    /* left: 50% !important; */
     color: var(--secondary-color) !important;
     border-radius: 20px !important;
     overflow: hidden !important;
@@ -93,4 +599,4 @@
   .cosmic-cancel-button:hover {
     background: rgba(251, 190, 101, 0.1) !important;
     transform: translateY(-2px);
-  }
+  } */

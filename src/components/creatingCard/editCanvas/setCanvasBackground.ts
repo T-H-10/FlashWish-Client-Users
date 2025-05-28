@@ -16,10 +16,10 @@ const setCanvasBackground = async (url: string, setLoading: React.Dispatch<React
             testImg.src = url;
         });
         const img = new fabric.Image(loadedImage);
+        fabricRef.current.setWidth(img.width || 500);
+        fabricRef.current.setHeight(img.height || 500);
         img.scaleToWidth(500);
         const canvas = fabricRef.current;
-        canvas.setWidth(img.width || 500);
-        canvas.setHeight(img.height || 500);
         canvas.backgroundImage = img;
         canvas.renderAll();
     } catch (err) {

@@ -13,10 +13,9 @@ import TextAlign from "../TextAlign";
 import TextAddition from "../TextAddition";
 import TextFont from "../TextFont";
 
-const CanvasControls = ({ canvas, saveDesign, cardData }: { canvas: fabric.Canvas, saveDesign: () => void, cardData: {canvasStyle?: string}; }) => {
+const CanvasControls = ({ canvas, saveDesign, loadedFromJSON }: { canvas: fabric.Canvas, saveDesign: () => void, loadedFromJSON:boolean}) => {
   const [isLogin] = useContext(IsLogin);
-  const loadedFromJSON = !!cardData.canvasStyle;
-
+  
   return (
     <div className="canvas-controls">
      <TextAddition canvas={canvas} loadedFromJSON={loadedFromJSON} />

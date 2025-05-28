@@ -211,6 +211,7 @@
   @media (min-width: 576px) {
     .cosmic-greeting-card {
       width: calc(50% - 20px);
+      height: 400px;
       margin: 10px;
     }
   }
@@ -218,11 +219,13 @@
   @media (min-width: 768px) {
     .cosmic-greeting-card {
       width: calc(33.33% - 20px);
+      height: 400px;
     }
   }
   
   @media (min-width: 992px) {
     .cosmic-greeting-card {
       width: calc(25% - 20px);
+      height: 400px;
     }
   }

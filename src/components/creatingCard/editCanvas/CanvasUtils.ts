@@ -5,11 +5,11 @@ const loadCanvasFromJSONKeepBackgroundFromTemplate = async (
     json: string,
     fabricRef: React.RefObject<fabric.Canvas | null>,
     backgroundImageURL: string,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    loadedFromJSON: boolean
 ) => {
     if(!fabricRef.current) return;
-    setLoading(true);
-
+    setLoading(true);  
     fabricRef.current.clear();
 
     let parsedJSON;
@@ -26,7 +26,7 @@ const loadCanvasFromJSONKeepBackgroundFromTemplate = async (
 
     fabricRef.current.loadFromJSON({...parsedJSON, objects: objectsToLoad }, 
         () => {
-            fabricRef.current?.renderAll();
+            // fabricRef.current?.renderAll();
             setCanvasBackground(backgroundImageURL, setLoading, fabricRef);
         }
         )

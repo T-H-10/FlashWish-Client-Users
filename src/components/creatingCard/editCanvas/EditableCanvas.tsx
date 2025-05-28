@@ -26,6 +26,7 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
     const [title, setTitle] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const [typeMessage, setTypeMessage] = useState<"error" | "warning" | "info" | "success">("info");
+    const [loadedFromJSON, setLoadedFromJSON] = useState<boolean>(false);
 
     useEffect(() => {
         const setupCanvas = async () => {
@@ -45,7 +46,8 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
                 }
                 const imageURL = template?.imageURL || DEFAULT_IMAGE;
                 if(cardData.canvasStyle) {
-                    await loadCanvasFromJSONKeepBackgroundFromTemplate(cardData.canvasStyle, fabricRef, imageURL, setLoading);
+                    setLoadedFromJSON(true);
+                    await loadCanvasFromJSONKeepBackgroundFromTemplate(cardData.canvasStyle, fabricRef, imageURL, setLoading, true);
                 } else {
                     setCanvasBackground(imageURL, setLoading, fabricRef);
                 }
@@ -93,7 +95,7 @@ const EditableCanvas = ({ cardData }: { cardData: GreetingCard }) => {
         <>
             <div style={{ display: "flex", flexDirection: "column-reverse" }}>
                 <canvas ref={canvasRef} style={{ cursor: "default" }} />
-                {fabricRef.current && !loading && <CanvasControls saveDesign={saveDesign} canvas={fabricRef.current} cardData={cardData} />}
+                {fabricRef.current && !loading && <CanvasControls saveDesign={saveDesign} canvas={fabricRef.current} loadedFromJSON={loadedFromJSON} />}
                 {loading && <LoadingIndicator content="טוען רקע" />}
             </div>
             <MyAlert
